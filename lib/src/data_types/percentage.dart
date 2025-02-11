@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 final class Percentage extends Equatable {
-  final double rawValue;
+  final num rawValue;
 
   Percentage(this.rawValue);
 
@@ -16,13 +16,7 @@ final class Percentage extends Equatable {
   }
 
   Percentage operator /(Percentage other) {
-    final result = rawValue / other.rawValue;
-
-    if (result == double.infinity) {
-      throw ArgumentError('Cannot divide with 0.');
-    }
-
-    return Percentage(result);
+    return Percentage(rawValue / other.rawValue);
   }
 
   Percentage operator *(Percentage other) {
@@ -34,6 +28,6 @@ final class Percentage extends Equatable {
 
   @override
   String toString() {
-    return '$rawValue%';
+    return '$rawValue %';
   }
 }

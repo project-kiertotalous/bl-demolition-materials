@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 final class SquareMeter extends Equatable {
-  final double area;
+  final num area;
 
   SquareMeter(this.area);
 
-  factory SquareMeter.fromSquare(double length) => SquareMeter(length * length);
+  factory SquareMeter.fromSquare(num length) => SquareMeter(length * length);
 
-  factory SquareMeter.fromRectangle(double length, double width) =>
+  factory SquareMeter.fromRectangle(num length, double width) =>
       SquareMeter(length * width);
 
   SquareMeter operator +(SquareMeter other) {
@@ -19,10 +19,6 @@ final class SquareMeter extends Equatable {
   }
 
   SquareMeter operator /(SquareMeter other) {
-    if (other.area == 0) {
-      throw ArgumentError('Cannot divide by zero area.');
-    }
-
     return SquareMeter(area / other.area);
   }
 
@@ -32,7 +28,7 @@ final class SquareMeter extends Equatable {
 
   @override
   String toString() {
-    return '${area}m²';
+    return '${area} m²';
   }
 
   @override

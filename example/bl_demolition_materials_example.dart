@@ -1,7 +1,6 @@
 import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 
 void main() {
-  final meters = Meter(500);
-  final meters2 = Meter(250);
-  print(meters - meters2);
+  final Length houseHeight = Length.fromMeters(25);
+  final SquareMeter houseVolume = SquareMeter.fromSquare(houseHeight.meters);
 }

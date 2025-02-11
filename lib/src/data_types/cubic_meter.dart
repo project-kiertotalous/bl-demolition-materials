@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
 final class CubicMeter extends Equatable {
-  final double volume;
+  final num volume;
 
   CubicMeter(this.volume);
 
-  factory CubicMeter.fromCube(double length, double width, double height) =>
+  factory CubicMeter.fromCube(num length, num width, num height) =>
       CubicMeter(length * width * height);
 
   CubicMeter operator +(CubicMeter other) {
@@ -17,10 +17,6 @@ final class CubicMeter extends Equatable {
   }
 
   CubicMeter operator /(CubicMeter other) {
-    if (other.volume == 0) {
-      throw ArgumentError('Cannot divide by zero area.');
-    }
-
     return CubicMeter(volume / other.volume);
   }
 
@@ -30,7 +26,7 @@ final class CubicMeter extends Equatable {
 
   @override
   String toString() {
-    return '${volume}m³';
+    return '${volume} m³';
   }
 
   @override
