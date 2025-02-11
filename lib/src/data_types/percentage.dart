@@ -3,7 +3,9 @@ import 'package:equatable/equatable.dart';
 final class Percentage extends Equatable {
   final num rawValue;
 
-  static final PERCENT_100 = Percentage(100);
+  static const percentage100 = Percentage.constant(100);
+
+  const Percentage.constant(this.rawValue);
 
   Percentage(this.rawValue);
 

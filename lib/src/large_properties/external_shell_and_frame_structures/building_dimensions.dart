@@ -1,15 +1,15 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../data_types/cubic_meter.dart';
 import '../../data_types/square_meter.dart';
 
-class BuildingDimensions {
-  final SquareMeter realFloorAreaGross;
-  final CubicMeter realVolume;
-  final int floorCountExcludingBasements;
-  final SquareMeter realAverageFloorArea;
+part 'building_dimensions.freezed.dart';
 
-  BuildingDimensions(
-      {required this.realAverageFloorArea,
-      required this.realVolume,
-      required this.floorCountExcludingBasements,
-      required this.realFloorAreaGross});
+@freezed
+class BuildingDimensions with _$BuildingDimensions {
+  factory BuildingDimensions(
+      {required SquareMeter realAverageFloorArea,
+      required CubicMeter realVolume,
+      required int floorCountExcludingBasements,
+      required SquareMeter realFloorAreaGross}) = _BuildingDimensions;
 }

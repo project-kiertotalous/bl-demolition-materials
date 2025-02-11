@@ -1,4 +1,5 @@
 import 'package:bl_demolition_materials/bl_demolition_materials.dart';
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/building_dimensions.dart';
 import 'package:test/test.dart';
 
 void main() {

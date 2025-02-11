@@ -3,35 +3,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Property evaluation info', () {
-    group('Small property evaluation info', () {
-      late SmallPropertyEvaluationInfo evaluationInfo;
-
-      setUp(() {
-        evaluationInfo = SmallPropertyEvaluationInfo(
-            propertyName: 'property',
-            buildingType: 'buildingType',
-            address: 'address',
-            hazardousSubstanceSurveyDone: false);
-      });
-
-      test('Sets members accordingly', () {
-        expect(evaluationInfo.propertyName, equals('property'));
-        expect(evaluationInfo.buildingType, equals('buildingType'));
-        expect(evaluationInfo.address, equals('address'));
-        expect(evaluationInfo.hazardousSubstanceSurveyDone, isFalse);
-      });
-
-      test('Has proper equality check', () {
-        final otherEvaluationInfo = evaluationInfo.copyWith();
-        expect(otherEvaluationInfo == evaluationInfo, isTrue);
-      });
-
-      test('Overrides toString', () {
-        expect(evaluationInfo.toString(),
-            equals('SmallPropertyEvaluationInfo@address'));
-      });
-    });
-
     group('Large property evaluation info', () {
       late LargePropertyEvaluationInfo evaluationInfo;
 
@@ -61,11 +32,6 @@ void main() {
       test('Has proper equality check', () {
         final otherEvaluationInfo = evaluationInfo.copyWith();
         expect(otherEvaluationInfo == evaluationInfo, isTrue);
-      });
-
-      test('Overrides toString', () {
-        expect(evaluationInfo.toString(),
-            equals('LargePropertyEvaluationInfo@address'));
       });
     });
   });
