@@ -1,4 +1,3 @@
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -15,15 +14,17 @@ class FoundationAndFloors with _$FoundationAndFloors {
       required Foundation pillar,
       required Foundation hollowCoreSlab}) = _FoundationAndFLoors;
 
-  SquareMeter get totalArea => SquareMeter(falsePinth.area.area +
-      crawlSpace.areaValue +
-      shallow.areaValue +
-      pillar.areaValue +
-      hollowCoreSlab.areaValue);
+  num get totalArea =>
+      falsePinth.area +
+      crawlSpace.area +
+      shallow.area +
+      pillar.area +
+      hollowCoreSlab.area;
 
-  Length get totalLength => Length.fromMeters(falsePinth.circumference.meters +
-      crawlSpace.circumference.meters +
-      shallow.circumference.meters +
-      pillar.circumference.meters +
-      hollowCoreSlab.circumference.meters);
+  num get totalLength =>
+      falsePinth.circumference +
+      crawlSpace.circumference +
+      shallow.circumference +
+      pillar.circumference +
+      hollowCoreSlab.circumference;
 }
