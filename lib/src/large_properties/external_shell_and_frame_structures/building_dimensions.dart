@@ -7,7 +7,7 @@ part 'building_dimensions.freezed.dart';
 
 @freezed
 class BuildingDimensions with _$BuildingDimensions {
-  factory BuildingDimensions(
+  const factory BuildingDimensions(
       {required SquareMeter realAverageFloorArea,
       required CubicMeter realVolume,
       required int floorCountExcludingBasements,

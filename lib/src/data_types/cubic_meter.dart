@@ -3,10 +3,10 @@ import 'package:equatable/equatable.dart';
 final class CubicMeter extends Equatable {
   final num volume;
 
-  CubicMeter(this.volume);
+  const CubicMeter(this.volume);
 
-  factory CubicMeter.fromCube(num length, num width, num height) =>
-      CubicMeter(length * width * height);
+  const CubicMeter.fromCube(num length, num width, num height)
+      : this(length * width * height);
 
   CubicMeter operator +(CubicMeter other) {
     return CubicMeter(volume + other.volume);

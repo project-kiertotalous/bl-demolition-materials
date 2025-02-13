@@ -7,13 +7,14 @@ final class Length extends Equatable {
 
   num get runningMeters => meters;
 
-  Length._(this.millimeters);
+  const Length._(this.millimeters);
 
-  Length.fromMeters(num meters) : this._(meters * 1000);
+  const Length.fromMeters(num meters) : this._(meters * 1000);
 
-  Length.fromRunningMeters(num runningMeters) : this._(runningMeters * 1000);
+  const Length.fromRunningMeters(num runningMeters)
+      : this._(runningMeters * 1000);
 
-  Length.fromMillimeters(num millimeters) : this._(millimeters);
+  const Length.fromMillimeters(num millimeters) : this._(millimeters);
 
   @override
   List<Object?> get props => [millimeters];

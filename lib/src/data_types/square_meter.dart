@@ -3,12 +3,12 @@ import 'package:equatable/equatable.dart';
 final class SquareMeter extends Equatable {
   final num area;
 
-  SquareMeter(this.area);
+  const SquareMeter(this.area);
 
-  factory SquareMeter.fromSquare(num length) => SquareMeter(length * length);
+  const SquareMeter.fromSquare(num length) : this(length * length);
 
-  factory SquareMeter.fromRectangle(num length, double width) =>
-      SquareMeter(length * width);
+  const SquareMeter.fromRectangle(num length, double width)
+      : this(length * width);
 
   SquareMeter operator +(SquareMeter other) {
     return SquareMeter(area + other.area);

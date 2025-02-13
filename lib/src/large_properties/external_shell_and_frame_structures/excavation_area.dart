@@ -7,7 +7,7 @@ part 'excavation_area.freezed.dart';
 class ExcavationArea with _$ExcavationArea {
   const ExcavationArea._();
 
-  factory ExcavationArea(
+  const factory ExcavationArea(
           {required SquareMeter areaToRemoveSize,
           required Length areaToRemoveDepth,
           required SquareMeter asphaltArea,

@@ -3,13 +3,11 @@ import 'package:equatable/equatable.dart';
 final class Percentage extends Equatable {
   final num rawValue;
 
-  static const percentage100 = Percentage.constant(100);
+  static const percentage100 = Percentage(100);
 
-  const Percentage.constant(this.rawValue);
+  const Percentage(this.rawValue);
 
-  Percentage(this.rawValue);
-
-  Percentage.fromFraction(double fraction) : rawValue = fraction * 100;
+  const Percentage.fromFraction(double fraction) : rawValue = fraction * 100;
 
   Percentage operator +(Percentage other) {
     return Percentage(rawValue + other.rawValue);
