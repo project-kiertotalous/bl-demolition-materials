@@ -13,5 +13,6 @@ class FloorStructures with _$FloorStructures {
       required FloorStructure kitchens,
       required FloorStructure teachingAndTreatmentSpaces,
       required FloorStructure storageAndWorkspaces,
-      required FloorStructure otherSpaces}) = _FloorStructures;
+      required FloorStructure otherSpaces,
+      required bool surfaceMaterialCoatingContainsAsbestos}) = _FloorStructures;
 }

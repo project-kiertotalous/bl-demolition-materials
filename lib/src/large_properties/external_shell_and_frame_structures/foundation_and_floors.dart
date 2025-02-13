@@ -12,7 +12,8 @@ class FoundationAndFloors with _$FoundationAndFloors {
       required Foundation crawlSpace,
       required Foundation shallow,
       required Foundation pillar,
-      required Foundation hollowCoreSlab}) = _FoundationAndFLoors;
+      required Foundation hollowCoreSlab,
+      required bool bituminousWaterProofing}) = _FoundationAndFLoors;
 
   num get totalArea =>
       falsePinth.area +
