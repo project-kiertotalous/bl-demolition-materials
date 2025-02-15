@@ -8,7 +8,5 @@ class Foundation with _$Foundation {
   const Foundation._();
 
   const factory Foundation(
-      {required num area,
-      required num circumference,
-      Material? material}) = _Foundation;
+      {num? area, num? circumference, Material? material}) = _Foundation;
 }

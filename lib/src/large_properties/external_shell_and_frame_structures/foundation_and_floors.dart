@@ -8,24 +8,34 @@ class FoundationAndFloors with _$FoundationAndFloors {
   const FoundationAndFloors._();
 
   const factory FoundationAndFloors(
-      {required Foundation falsePinth,
-      required Foundation crawlSpace,
-      required Foundation shallow,
-      required Foundation pillar,
-      required Foundation hollowCoreSlab,
-      required bool bituminousWaterProofing}) = _FoundationAndFLoors;
+      {Foundation? falsePinth,
+      Foundation? crawlSpace,
+      Foundation? shallow,
+      Foundation? pillar,
+      Foundation? hollowCoreSlab,
+      @Default(false) bool bituminousWaterProofing}) = _FoundationAndFLoors;
 
-  num get totalArea =>
-      falsePinth.area +
-      crawlSpace.area +
-      shallow.area +
-      pillar.area +
-      hollowCoreSlab.area;
+  num? get totalArea => _allNull()
+      ? null
+      : (falsePinth?.area ?? 0) +
+          (crawlSpace?.area ?? 0) +
+          (shallow?.area ?? 0) +
+          (pillar?.area ?? 0) +
+          (hollowCoreSlab?.area ?? 0);
 
-  num get totalLength =>
-      falsePinth.circumference +
-      crawlSpace.circumference +
-      shallow.circumference +
-      pillar.circumference +
-      hollowCoreSlab.circumference;
+  num? get totalLength => _allNull()
+      ? null
+      : (falsePinth?.circumference ?? 0) +
+          (crawlSpace?.circumference ?? 0) +
+          (shallow?.circumference ?? 0) +
+          (pillar?.circumference ?? 0) +
+          (hollowCoreSlab?.circumference ?? 0);
+
+  bool _allNull() {
+    return falsePinth == null &&
+        crawlSpace == null &&
+        shallow == null &&
+        pillar == null &&
+        hollowCoreSlab == null;
+  }
 }
