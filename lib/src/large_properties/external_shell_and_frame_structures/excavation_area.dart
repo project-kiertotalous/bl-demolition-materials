@@ -1,3 +1,4 @@
+import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'excavation_area.freezed.dart';
@@ -7,12 +8,63 @@ class ExcavationArea with _$ExcavationArea {
   const ExcavationArea._();
 
   const factory ExcavationArea(
-      {required num areaToRemoveSize,
-      required num areaToRemoveDepth,
-      required num asphaltArea,
-      @Default(100) num cleanSoilPortionPercentage}) = _ExcavationArea;
+      {num? areaToRemoveSize,
+      num? areaToRemoveDepth,
+      num? asphaltArea,
+      @Default(100) num cleanSoilPortionPercentageFraction}) = _ExcavationArea;
 
-  num get volumeToRemove => areaToRemoveSize * areaToRemoveDepth;
+  num? get volumeToRemove {
+    if (areaToRemoveSize == null || areaToRemoveDepth == null) {
+      return null;
+    }
 
-  num get contaminatedSoil => (100 - cleanSoilPortionPercentage) * volumeToRemove;
+    return areaToRemoveSize! * areaToRemoveDepth!;
+  }
+
+  num? get contaminatedSoil {
+    if (volumeToRemove == null) {
+      return null;
+    }
+
+    return (1 - cleanSoilPortionPercentageFraction) * volumeToRemove!;
+  }
+
+  num? get cleanLandTons {
+    if (volumeToRemove == null) {
+      return null;
+    }
+
+    return volumeToRemove! *
+        cleanSoilPortionPercentageFraction *
+        YardStructure.soilToRemoveDensityKgPerCbm /
+        1000;
+  }
+
+  num? get contaminatedLandTons {
+    if (volumeToRemove == null) {
+      return null;
+    }
+
+    return (1 - cleanSoilPortionPercentageFraction) *
+        volumeToRemove! *
+        YardStructure.soilToRemoveDensityKgPerCbm;
+  }
+
+  num? get asphaltTons {
+    if (asphaltArea == null) {
+      return null;
+    }
+
+    return asphaltArea! * YardStructure.asphaltWeightKgPerSqm / 1000;
+  }
+
+  num? get asphaltVolume {
+    if (asphaltArea == null) {
+      return null;
+    }
+
+    return asphaltArea! *
+        YardStructure.asphaltWeightKgPerSqm /
+        YardStructure.aslphaltDensityKgPerCbm;
+  }
 }
