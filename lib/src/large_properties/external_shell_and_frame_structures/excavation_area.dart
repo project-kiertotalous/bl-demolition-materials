@@ -36,7 +36,7 @@ class ExcavationArea with _$ExcavationArea {
 
     return volumeToRemove! *
         cleanSoilPortionPercentageFraction *
-        YardStructure.soilToRemoveDensityKgPerCbm /
+        YardStructureWeights.soilToRemoveDensityKgPerCbm /
         1000;
   }
 
@@ -47,7 +47,7 @@ class ExcavationArea with _$ExcavationArea {
 
     return (1 - cleanSoilPortionPercentageFraction) *
         volumeToRemove! *
-        YardStructure.soilToRemoveDensityKgPerCbm;
+        YardStructureWeights.soilToRemoveDensityKgPerCbm;
   }
 
   num? get asphaltTons {
@@ -55,7 +55,7 @@ class ExcavationArea with _$ExcavationArea {
       return null;
     }
 
-    return asphaltArea! * YardStructure.asphaltWeightKgPerSqm / 1000;
+    return asphaltArea! * YardStructureWeights.asphaltWeightKgPerSqm / 1000;
   }
 
   num? get asphaltVolume {
@@ -64,7 +64,7 @@ class ExcavationArea with _$ExcavationArea {
     }
 
     return asphaltArea! *
-        YardStructure.asphaltWeightKgPerSqm /
-        YardStructure.aslphaltDensityKgPerCbm;
+        YardStructureWeights.asphaltWeightKgPerSqm /
+        YardStructureWeights.asphaltDensityKgPerCbm;
   }
 }
