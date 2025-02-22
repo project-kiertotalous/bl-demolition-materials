@@ -1,0 +1,13 @@
+// TODO:
+// FalsePlinth
+// FalsePlinthGroundFloor
+// CrawlSpace
+// CrawlSpaceGroundFloor
+// ShallowFoundation
+// ShallowFoundationGroundFloor
+// ColumnFoundation
+// ColumnFoundationGroundFloor
+// HollowCoreSlabFoundation
+// HollowCoreSlabFoundationGroundFloor
+// IntermediateFloorStructure
+// IntermediateFloorStructureGroundFloor
