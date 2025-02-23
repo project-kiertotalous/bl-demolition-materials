@@ -1,9 +1,11 @@
 abstract class DemolitionMaterials {
-  num get kgPerSquareMeter => 0;
+  num? get kgPerMeter => 0;
 
-  num get kgPerCubicMeter => 0;
+  num? get kgPerSquareMeter => 0;
 
-  num get steelKgPerCubicMeter => 0;
+  num? get kgPerCubicMeter => 0;
+
+  num? get steelKgPerCubicMeter => 0;
 
   num? get volume => 0;
 
