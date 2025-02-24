@@ -8,7 +8,7 @@ enum WoodMaterialType {
 }
 
 class WoodMaterialInfo {
-  static final Map<WoodMaterialType, num> _volumes = {
+  static Map<WoodMaterialType, num> _volumes = {
     WoodMaterialType.board20x125: 0.004,
     WoodMaterialType.trunkWood50x100: 0.005,
     WoodMaterialType.trunkWood50x150: 0.0075,
@@ -23,7 +23,7 @@ class WoodMaterialInfo {
   static num weightPerLinearMeter(WoodMaterialType materialType) =>
       _volumes[materialType]! * 500;
 
-  static final Map<WoodMaterialType, num> _boardConsumption = {
+  static Map<WoodMaterialType, num> _boardConsumption = {
     WoodMaterialType.board20x125: 8,
     WoodMaterialType.trunkWood50x100: 1.25,
     WoodMaterialType.trunkWood50x150: 1.25,
@@ -35,7 +35,8 @@ class WoodMaterialInfo {
   static num getBoardConsumptionPerSquareMeter(WoodMaterialType materialType) =>
       _boardConsumption[materialType]!;
 
-  static void setBoardConsumptionPerSquareMeter(WoodMaterialType materialType, num value) {
+  static void setBoardConsumptionPerSquareMeter(
+      WoodMaterialType materialType, num value) {
     _boardConsumption[materialType] = value;
   }
 
@@ -47,12 +48,12 @@ class WoodMaterialInfo {
 }
 
 class FoundationWeights {
-  static num steelConcreteSilt250x250KgPerM = 155;
-  static num steelConcreteSilt250x250KgPerSqm = 50;
-  static num steelConcreteSilt250x250KgPerCbm = 2500;
-  static num steelConcreteSilt250x250SteelKgPerCbm = 100;
-  static num steelConcreteCastKgPerCbm = 2500;
-  static num steelConcreteCastSteelKgPerCbm = 100;
+  static num reinforcedConcreteColumn250x250KgPerM = 155;
+  static num reinforcedConcreteColumn250x250KgPerSqm = 50;
+  static num reinforcedConcreteColumn250x250KgPerCbm = 2500;
+  static num reinforcedConcreteColumn250x250SteelKgPerCbm = 100;
+  static num concreteCastingKgPerCbm = 2500;
+  static num concreteCastingSteelKgPerCbm = 100;
   static num hollowSlab200mmKgPerSqm = 260;
   static num hollowSlab200mmKgPerCbm = 1300;
   static num frostProofStyrox100mmKgPerSqm = 0.54;
@@ -66,8 +67,8 @@ class FoundationWeights {
 class FoundationSlabWeights {
   static num plasticMatKgPerSqm = 3.3;
   static num plasticMatKgPerCbm = 1100;
-  static num rockWool200mmKgPerSqm = 4;
-  static num rockWool200mmKgPerCbm = 20;
+  static num mineralWool200mmKgPerSqm = 4;
+  static num mineralWool200mmKgPerCbm = 20;
   static num bitiumSolutionBrushingKgPerSqm = 0.1;
   static num bitiumSolutionBrushingKgPerCbm = 700;
   static num hotBitiumBrushingKgPerSqm = 0.3;
@@ -95,7 +96,7 @@ class FoundationStructureWeights {
   static num vaporBarrierPlasticKgPerCbm = 970;
   static num mineralWool64mmAndVerticalFrameKgPerSqm = 6.7;
   static num mineralWool64mmAndVerticalFrameKgPerCbm = 23;
-  static final num mineralWool64mmAndVerticalFrameWoodKgPerCbm = 3.125;
+  static num mineralWool64mmAndVerticalFrameWoodKgPerCbm = 3.125;
   static num xpsInsulation50mmKgPerSqm = 0.216;
   static num xpsInsulation50mmKgPerCbm = 32;
   static num blockFoundationKgPerSqm = 205;
@@ -113,24 +114,24 @@ class FoundationStructureWeights {
 class FrameBarWeights {
   static num concreteVerticalBars300x300KgPerM = 225;
   static num concreteVerticalBars300x300KgPerCbm = 2500;
-  static final num concreteVerticalBars300x300SteelKgPerCbm = 100;
+  static num concreteVerticalBars300x300SteelKgPerCbm = 100;
   static num concreteVerticalBars500x500KgPerM = 375;
   static num concreteVerticalBars500x500KgPerCbm = 2500;
-  static final num concreteVerticalBars500x500SteelKgPerCbm = 100;
+  static num concreteVerticalBars500x500SteelKgPerCbm = 100;
   static num steelVerticalBarsIProfile200hx100bKgPerM = 22.4;
   static num steelVerticalBarsIProfile200hx100bKgPerCbm = 7000;
   static num steelVerticalBarsPipeProfile250x250KgPerM = 45.2;
   static num steelVerticalBarsPipeProfile250x250KgPerCbm = 7000;
-  static final num glueBarsVerticalVolume004CbmPerLinearMeterKgPerM = 20;
-  static final num glueBarsVerticalVolume004CbmPerLinearMeterKgPerCbm = 500;
-  static final num glueBarsRoofVolume005CbmPerLinearMeterKgPerM = 25;
-  static final num glueBarsRoofVolume005CbmPerLinearMeterKgPerCbm = 500;
+  static num glulamBeamsVerticalVolume004CbmPerLinearMeterKgPerM = 20;
+  static num glulamBeamsVerticalVolume004CbmPerLinearMeterKgPerCbm = 500;
+  static num glulamBeamsRoofVolume005CbmPerLinearMeterKgPerM = 25;
+  static num glulamBeamsRoofVolume005CbmPerLinearMeterKgPerCbm = 500;
   static num concreteWallElement200mmThickConcreteKgPerSqm = 260;
-  static final num concreteWallElement200mmThickConcreteKgPerCbm = 1300;
+  static num concreteWallElement200mmThickConcreteKgPerCbm = 1300;
   static num glassWallFrameSteelRhs100x100x5KgPerM = 14.2;
-  static final num glassWallFrameSteelRhs100x100x5KgPerSqm = 24.14;
+  static num glassWallFrameSteelRhs100x100x5KgPerSqm = 24.14;
   static num aluminiumFrameRectangle150x200x5KgPerM = 9.22;
-  static final num aluminiumFrameRectangle150x200x5KgPerSqm = 15.674;
+  static num aluminiumFrameRectangle150x200x5KgPerSqm = 15.674;
 }
 
 class ExteriorWallWeights {
@@ -191,8 +192,8 @@ class UpperBaseStructureAndWaterRoofWeights {
   static num woodenTrunk50x150mmKgPerCbm = 500;
   static num underPlankingKgPerSqm = 16;
   static num underPlankingKgPerCbm = 500;
-  static num glueBarsVolume004SqmPerLinearMeterKgPerM = 30;
-  static num glueBarsVolume004SqmPerLinearMeterKgPerCbm = 800;
+  static num glulamBeamsVolume004SqmPerLinearMeterKgPerM = 30;
+  static num glulamBeamsVolume004SqmPerLinearMeterKgPerCbm = 800;
   static num mineralWool175mmKgPerSqm = 9.625;
   static num mineralWool175mmKgPerCbm = 55;
   static num hardDiskKgPerSqm = 9;
@@ -207,8 +208,8 @@ class UpperBaseStructureAndWaterRoofWeights {
   static num chipBoard15mmKgPerCbm = 1000;
   static num windProofWool30mmKgPerSqm = 1.65;
   static num windProofWool30mmKgPerCbm = 55;
-  static num cutterSwarf100mmKgPerSqm = 11.00;
-  static num cutterSwarf100mmKgPerCbm = 100;
+  static num woodShavings100mmKgPerSqm = 11.00;
+  static num woodShavings100mmKgPerCbm = 100;
 }
 
 class YardStructureWeights {
@@ -223,7 +224,7 @@ class YardStructureWeights {
 class CellarStructureWeights {
   static num ferroConcreteSlab200mmKgPerSqm = 500;
   static num ferroConcreteSlab200mmKgPerCbm = 2500;
-  static final num ferroConcreteSlab200mmSteelKgPerCbm = 100;
+  static num ferroConcreteSlab200mmSteelKgPerCbm = 100;
   static num styrofoamKgPerSqm = 0.54;
   static num styrofoamKgPerCbm = 18;
   static num vaporBarrierKgPerSqm = 0.21;
@@ -317,7 +318,8 @@ class AvhcAndElectricalInstallationsWeights {
   static num airConditioningPipesSteelDn500KgPerM = 52;
   static num electricalWiresCopperKgPerM = 0.13;
   static num waterAccumulatorsElectricSmallKgPerPcs = 100;
-  static num waterAccumulatorsElectricBigDistrictHeating500To1000LtrsKgPerPcs = 400;
+  static num waterAccumulatorsElectricBigDistrictHeating500To1000LtrsKgPerPcs =
+      400;
   static num radiatorsElectricKgPerPcs = 8;
   static num radiatorsWaterCirculationKgPerPcs = 15;
   static num ventilationMachinesKgPerPcs = 100;
@@ -331,9 +333,9 @@ class FurnitureDressingKitchenToiletSpaceWeights {
   static num toiletSeatPorcelainKgPerCbm = 2500;
   static num toiletSinkPorcelainKgPerPcs = 13.0;
   static num toiletSinkPorcelainKgPerCbm = 2500;
-  static final num metallicDressingClosets500x1600KgPerLinearMeter = 50;
+  static num metallicDressingClosets500x1600KgPerLinearMeter = 50;
   static num metallicDressingClosets500x1600KgPerPcs = 25;
-  static final num woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter = 25;
+  static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter = 25;
   static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerPcs = 15;
   static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerCbm = 500;
   static num steelSinksAndTablesRustProofKgPerPcs = 7.3;

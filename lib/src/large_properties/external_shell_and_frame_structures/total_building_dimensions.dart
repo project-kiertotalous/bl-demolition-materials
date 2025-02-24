@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'building_dimensions.dart';
 import 'building_framework.dart';
 import 'cellar.dart';
-import 'foundation_and_floors.dart';
+import 'total_foundations.dart';
 
 part 'total_building_dimensions.freezed.dart';
 
@@ -14,7 +14,7 @@ class TotalBuildingDimensions with _$TotalBuildingDimensions {
   const factory TotalBuildingDimensions(
       {BuildingDimensions? buildingDimensions,
       Cellar? cellar,
-      FoundationAndFloors? foundationAndFloors,
+      TotalFoundations? totalFoundations,
       BuildingFramework? buildingFramework}) = _TotalBuildingDimensions;
 
   num? get grossFloorArea => buildingDimensions?.grossFloorArea;
@@ -59,12 +59,12 @@ class TotalBuildingDimensions with _$TotalBuildingDimensions {
 
     if (cellar?.floorArea == null &&
         cellar?.wallHeight == null &&
-        foundationAndFloors?.totalArea == null &&
+        totalFoundations?.area == null &&
         buildingFramework?.externalWallsAverageHeight == null) {
       return null;
     }
 
-    return ((foundationAndFloors?.totalArea ?? 0) *
+    return ((totalFoundations?.area ?? 0) *
             (buildingFramework?.externalWallsAverageHeight ?? 0)) +
         ((cellar?.floorArea ?? 0) * (cellar?.wallHeight ?? 0));
   }

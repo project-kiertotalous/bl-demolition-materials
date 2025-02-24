@@ -1,6 +1,6 @@
 import '../../data_types/cellar_exterior_material.dart';
-import '../material_info.dart';
 import '../external_shell_and_frame_structures/cellar.dart';
+import '../material_info.dart';
 import 'demolition_materials.dart';
 
 class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
@@ -13,11 +13,11 @@ class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
   num get kgPerSquareMeter => sizing / 1000 * kgPerCubicMeter;
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.steelConcreteCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.steelConcreteCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -35,7 +35,8 @@ class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
   num? get concreteTons => tons! - steelTons!;
 
   @override
-  num? get steelTons => FoundationWeights.steelConcreteSilt250x250SteelKgPerCbm;
+  num? get steelTons =>
+      FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm;
 }
 
 class HotBitiumBrushingGroundFloor extends DemolitionMaterials {
@@ -155,11 +156,11 @@ class ConcreteCastingGroundFloor extends DemolitionMaterials {
   num get kgPerSquareMeter => sizing / 1000 * kgPerCubicMeter;
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.steelConcreteCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.steelConcreteCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -195,7 +196,7 @@ class ConcreteCastingGroundFloor extends DemolitionMaterials {
     }
 
     return volume! *
-        FoundationWeights.steelConcreteSilt250x250SteelKgPerCbm /
+        FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm /
         1000;
   }
 }
@@ -405,11 +406,11 @@ class ConcreteCastingWalls extends DemolitionMaterials {
   num get kgPerSquareMeter => sizing / 1000 * kgPerCubicMeter;
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.steelConcreteCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.steelConcreteCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -444,7 +445,9 @@ class ConcreteCastingWalls extends DemolitionMaterials {
 
   @override
   num? get steelTons =>
-      volume! * FoundationWeights.steelConcreteSilt250x250SteelKgPerCbm / 1000;
+      volume! *
+      FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm /
+      1000;
 }
 
 class BrickWalls extends DemolitionMaterials {
