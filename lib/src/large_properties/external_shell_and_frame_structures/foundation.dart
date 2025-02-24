@@ -198,11 +198,11 @@ class CrawlSpaceFoundation extends Foundation {
   num? get concreteTons => Utils.sumOrNull([
         material == FoundationMaterial.concreteCasting
             ? _reinforcedConcreteSlabFalsePlinthGroundFloor.concreteTons
-            : 0,
+            : null,
         _reinforcedConcreteSlabFalsePlinthGroundFloor.tons,
         material == FoundationMaterial.concreteCasting
             ? _reinforcedConcreteCastFoundationCrawlSpace.tons
-            : 0,
+            : null,
       ]);
 
   @override
@@ -508,7 +508,7 @@ class HollowCoreSlabFoundation extends Foundation {
   num? get concreteVolume => Utils.sumOrNull([
         material == FoundationMaterial.concreteCasting
             ? _reinforcedConcreteColumnHollowCoreSlabFoundation.volume
-            : 0,
+            : null,
         _hollowCoreSlabHollowCoreSlabFoundationGroundFloor.volume,
         _concreteCastingHollowCoreSlabFoundationGroundFloor.volume
       ]);
@@ -533,12 +533,12 @@ class HollowCoreSlabFoundation extends Foundation {
   @override
   num? get concreteBlockVolume => material == FoundationMaterial.concreteCasting
       ? _concreteBlockHollowCoreSlabFoundation.volume
-      : null;
+      : 0;
 
   @override
   num? get concreteBlockTons => material == FoundationMaterial.concreteCasting
       ? _concreteBlockHollowCoreSlabFoundation.tons
-      : null;
+      : 0;
 
   @override
   num? get mineralWoolVolume =>

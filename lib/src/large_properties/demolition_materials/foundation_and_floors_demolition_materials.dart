@@ -66,11 +66,11 @@ class FootingFalsePlinth extends DemolitionMaterials {
   }
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -241,11 +241,11 @@ class ReinforcedConcreteSlabFalsePlinthGroundFloor extends DemolitionMaterials {
   num get kgPerSquareMeter => sizing / 1000 * kgPerCubicMeter;
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -387,11 +387,11 @@ class ConcreteCastingFalsePlinthGroundFloor extends DemolitionMaterials {
   }
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -478,11 +478,11 @@ class ReinforcedConcreteCastFoundationCrawlSpace extends DemolitionMaterials {
       [this.foundation, this.width = 0.3, this.height = 0.6]);
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -846,11 +846,11 @@ class ReinforcedConcreteSlabShallowFoundationGroundFloor
   num? get kgPerSquareMeter => sizing / 1000 * kgPerCubicMeter;
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -1002,11 +1002,11 @@ class ConcreteCastingShallowFoundationGroundFloor extends DemolitionMaterials {
   }
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -1610,11 +1610,11 @@ class ConcreteCastingHollowCoreSlabFoundationGroundFloor
   }
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 
   @override
   num? get volume {
@@ -1654,11 +1654,11 @@ class ConcreteCastingIntermediateFloorFrames extends DemolitionMaterials {
   num get kgPerSquareMeter => sizing / 1000 * kgPerCubicMeter;
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.concreteCastingCastKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.concreteCastingKgPerCbm;
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.concreteCastingCastSteelKgPerCbm;
+      FoundationWeights.concreteCastingSteelKgPerCbm;
 }
 
 class GlulamBeamsIntermediateFloorFrames extends DemolitionMaterials {

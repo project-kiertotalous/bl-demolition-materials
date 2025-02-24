@@ -52,8 +52,8 @@ class FoundationWeights {
   static num reinforcedConcreteColumn250x250KgPerSqm = 50;
   static num reinforcedConcreteColumn250x250KgPerCbm = 2500;
   static num reinforcedConcreteColumn250x250SteelKgPerCbm = 100;
-  static num concreteCastingCastKgPerCbm = 2500;
-  static num concreteCastingCastSteelKgPerCbm = 100;
+  static num concreteCastingKgPerCbm = 2500;
+  static num concreteCastingSteelKgPerCbm = 100;
   static num hollowSlab200mmKgPerSqm = 260;
   static num hollowSlab200mmKgPerCbm = 1300;
   static num frostProofStyrox100mmKgPerSqm = 0.54;
