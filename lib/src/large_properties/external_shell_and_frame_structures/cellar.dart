@@ -1,5 +1,5 @@
 import 'package:bl_demolition_materials/src/large_properties/demolition_materials/cellar_demolition_materials.dart';
-import 'package:bl_demolition_materials/src/utils/arithmetics.dart';
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../data_types/cellar_exterior_material.dart';
@@ -42,7 +42,7 @@ class Cellar with _$Cellar {
       num? wallHeight,
       CellarExteriorMaterial? exteriorWallsMaterial}) = _Cellar;
 
-  num? get concreteDemolitionVolume => Arithmetics.sumOrNull([
+  num? get concreteDemolitionVolume => Utils.sumOrNull([
         _reinforcedConcreteSlabGroundFloor.volume,
         _concreteCastingGroundFloor.volume,
         _concreteCastingWalls.volume,
@@ -50,7 +50,7 @@ class Cellar with _$Cellar {
         _plasteringInteriorAndExteriorWalls.volume
       ]);
 
-  num? get concreteDemolitionTons => Arithmetics.sumOrNull([
+  num? get concreteDemolitionTons => Utils.sumOrNull([
         _reinforcedConcreteSlabGroundFloor.concreteTons,
         _concreteCastingGroundFloor.concreteTons,
         _concreteCastingWalls.concreteTons,
@@ -58,7 +58,7 @@ class Cellar with _$Cellar {
         _plasteringInteriorAndExteriorWalls.tons
       ]);
 
-  num? get rebarTons => Arithmetics.sumOrNull([
+  num? get rebarTons => Utils.sumOrNull([
         _reinforcedConcreteSlabGroundFloor.steelTons,
         _concreteCastingGroundFloor.steelTons,
         _concreteCastingWalls.steelTons
@@ -77,7 +77,7 @@ class Cellar with _$Cellar {
 
   num? get glassAndMineralWoolInsulationTons => _mineralWoolGroundFloor.tons;
 
-  num? get plasticWasteVolume => Arithmetics.sumOrNull([
+  num? get plasticWasteVolume => Utils.sumOrNull([
         _styroxGroundFloor.volume,
         _vaporBarrierPlasticGroundFloor.volume,
         _frostProofStyroxInsulation.volume,
@@ -86,7 +86,7 @@ class Cellar with _$Cellar {
         _vaporBarrierPlasticInsulation.volume
       ]);
 
-  num? get plasticWasteTons => Arithmetics.sumOrNull([
+  num? get plasticWasteTons => Utils.sumOrNull([
         _styroxGroundFloor.tons,
         _vaporBarrierPlasticGroundFloor.tons,
         _frostProofStyroxInsulation.tons,
@@ -95,11 +95,11 @@ class Cellar with _$Cellar {
         _vaporBarrierPlasticInsulation.tons
       ]);
 
-  num? get hotBitumenCoatingVolume => Arithmetics.sumOrNull([
+  num? get hotBitumenCoatingVolume => Utils.sumOrNull([
         _hotBitiumBrushingGroundFloor.volume,
         _hotBitumenCoatingInsulation.volume
       ]);
 
-  num? get hotBitumenCoatingTons => Arithmetics.sumOrNull(
+  num? get hotBitumenCoatingTons => Utils.sumOrNull(
       [_hotBitiumBrushingGroundFloor.tons, _hotBitumenCoatingInsulation.tons]);
 }

@@ -688,6 +688,7 @@ class ConstructionPaperCrawlSpaceGroundFloor extends DemolitionMaterials {
 class TarPaperCrawlSpaceGroundFloor
     extends ConstructionPaperCrawlSpaceGroundFloor {
   // Can this be removed? tar paper is identical to construction paper
+  TarPaperCrawlSpaceGroundFloor([Foundation? foundation]) : super(foundation);
 }
 
 class ReinforcedConcreteColumnShallowFoundation extends DemolitionMaterials {
