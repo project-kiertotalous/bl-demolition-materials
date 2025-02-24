@@ -8,6 +8,7 @@ part 'roof.freezed.dart';
 class Roof with _$Roof {
   const factory Roof(
       {required num ceilingArea,
+      required num lowerCeilingArea,
       required num ridgeOrGableRoofPortion,
       required RoofType ridgeOrGableRoofType,
       required WaterRoofType ridgeOrGableWaterRoofType,
