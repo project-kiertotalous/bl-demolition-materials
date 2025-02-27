@@ -1,3 +1,4 @@
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'floor_structure.freezed.dart';
@@ -7,23 +8,25 @@ class FloorStructure with _$FloorStructure {
   const FloorStructure._();
 
   const factory FloorStructure(
-      {required num totalArea,
-      required num particleBoardingMidsolePortion,
-      required num gypsumBoardingMidsolePortion,
-      required num solidBoardingMidsolePortion,
-      required num floorPanelFloorPortion,
-      required num vinylFlooringOrTileFloorPortion,
-      required num parquetFloorPortion,
-      required num ceramicTileFloorPortion}) = _FloorStructure;
+      {num? totalArea,
+      num? particleBoardingMidsolePortion,
+      num? gypsumBoardingMidsolePortion,
+      num? solidBoardingMidsolePortion,
+      num? floorPanelFloorPortion,
+      num? vinylFlooringOrTileFloorPortion,
+      num? parquetFloorPortion,
+      num? ceramicTileFloorPortion}) = _FloorStructure;
 
-  num get midsolePortionTotal =>
-      particleBoardingMidsolePortion +
-      gypsumBoardingMidsolePortion +
-      solidBoardingMidsolePortion;
+  num? get midsolePortionTotal => Utils.sumOrNull([
+        particleBoardingMidsolePortion,
+        gypsumBoardingMidsolePortion,
+        solidBoardingMidsolePortion
+      ]);
 
-  num get floorPortionTotal =>
-      floorPanelFloorPortion +
-      vinylFlooringOrTileFloorPortion +
-      parquetFloorPortion +
-      ceramicTileFloorPortion;
+  num? get floorPortionTotal => Utils.sumOrNull([
+        floorPanelFloorPortion,
+        vinylFlooringOrTileFloorPortion,
+        parquetFloorPortion,
+        ceramicTileFloorPortion
+      ]);
 }
