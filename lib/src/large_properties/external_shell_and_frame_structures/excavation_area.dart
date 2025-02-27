@@ -11,7 +11,7 @@ class ExcavationArea with _$ExcavationArea {
       {num? areaToRemoveSize,
       num? areaToRemoveDepth,
       num? asphaltArea,
-      @Default(100) num cleanSoilPortionPercentageFraction}) = _ExcavationArea;
+      @Default(1) num cleanSoilPortionPercentageFraction}) = _ExcavationArea;
 
   num? get volumeToRemove {
     if (areaToRemoveSize == null || areaToRemoveDepth == null) {

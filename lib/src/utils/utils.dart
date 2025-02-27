@@ -7,6 +7,11 @@ class Utils {
     return values.every((val) => val == null) ? null : sum;
   }
 
+  static num? multiplyOrNull(List<num?> values) {
+    num sum = values.fold<num>(0, (acc, val) => acc * (val ?? 0));
+    return values.every((val) => val == null) ? null : sum;
+  }
+
   static bool anyNonNull(List<num?> values) {
     return values.any((val) => val != null);
   }
