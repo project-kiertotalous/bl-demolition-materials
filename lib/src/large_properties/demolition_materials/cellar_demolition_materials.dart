@@ -113,19 +113,19 @@ class MineralWoolGroundFloor extends DemolitionMaterials {
   }
 }
 
-class StyroxGroundFloor extends DemolitionMaterials {
+class StyrofoamGroundFloor extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
 
-  StyroxGroundFloor([this.cellar, this.sizing = 100]);
+  StyrofoamGroundFloor([this.cellar, this.sizing = 100]);
 
   @override
   num get kgPerSquareMeter =>
-      FoundationSlabWeights.styrox120mmKgPerSqm / 100 * sizing;
+      FoundationSlabWeights.styrofoam120mmKgPerSqm / 100 * sizing;
 
   @override
   num get kgPerCubicMeter =>
-      FoundationSlabWeights.styrox120mmKgPerCbm / 100 * sizing;
+      FoundationSlabWeights.styrofoam120mmKgPerCbm / 100 * sizing;
 
   @override
   num? get volume {
@@ -233,19 +233,19 @@ class VaporBarrierPlasticGroundFloor extends DemolitionMaterials {
   }
 }
 
-class FrostProofStyroxInsulation extends DemolitionMaterials {
+class FrostProofStyrofoamInsulation extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
 
-  FrostProofStyroxInsulation([this.cellar, this.sizing = 100]);
+  FrostProofStyrofoamInsulation([this.cellar, this.sizing = 100]);
 
   @override
   num get kgPerSquareMeter =>
-      FoundationWeights.frostProofStyrox100mmKgPerSqm / 100 * sizing;
+      FoundationWeights.frostProofStyrofoam100mmKgPerSqm / 100 * sizing;
 
   @override
   num get kgPerCubicMeter =>
-      FoundationWeights.frostProofStyrox100mmKgPerCbm / 100 * sizing;
+      FoundationWeights.frostProofStyrofoam100mmKgPerCbm / 100 * sizing;
 
   @override
   num? get volume {
@@ -266,19 +266,19 @@ class FrostProofStyroxInsulation extends DemolitionMaterials {
   }
 }
 
-class StyroxInsulation extends DemolitionMaterials {
+class StyrofoamInsulation extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
 
-  StyroxInsulation([this.cellar, this.sizing = 150]);
+  StyrofoamInsulation([this.cellar, this.sizing = 150]);
 
   @override
   num get kgPerSquareMeter =>
-      FoundationWeights.styrox150mmKgPerSqm / 150 * sizing;
+      FoundationWeights.styrofoam150mmKgPerSqm / 150 * sizing;
 
   @override
   num get kgPerCubicMeter =>
-      FoundationWeights.styrox150mmKgPerCbm / 150 * sizing;
+      FoundationWeights.styrofoam150mmKgPerCbm / 150 * sizing;
 
   @override
   num? get volume {

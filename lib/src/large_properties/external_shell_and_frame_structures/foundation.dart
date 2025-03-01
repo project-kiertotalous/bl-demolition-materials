@@ -61,7 +61,8 @@ class FalsePlinthFoundation extends Foundation {
   late final _reinforcedConcreteColumnFalsePlinth =
       ReinforcedConcreteColumnFalsePlinth(this);
   late final _concreteBlockFalsePlinth = ConcreteBlockFalsePlinth(this);
-  late final _frostProofStyroxFalsePlinth = FrostProofStyroxFalsePlinth(this);
+  late final _frostProofStyrofoamFalsePlinth =
+      FrostProofStyrofoamFalsePlinth(this);
   late final _finnFoamFalsePlinth = FinnFoamFalsePlinth(this);
   late final _vaporBarrierPlasticFalsePlinth =
       VaporBarrierPlasticFalsePlinth(this);
@@ -71,7 +72,8 @@ class FalsePlinthFoundation extends Foundation {
       HotBitiumBrushingFalsePlinthGroundFloor(this);
   late final _mineralWoolFalsePlinthGroundFloor =
       MineralWoolFalsePlinthGroundFloor(this);
-  late final _styroxFalsePlinthGroundFloor = StyroxFalsePlinthGroundFloor(this);
+  late final _styrofoamFalsePlinthGroundFloor =
+      StyrofoamFalsePlinthGroundFloor(this);
   late final _concreteCastingFalsePlinthGroundFloor =
       ConcreteCastingFalsePlinthGroundFloor(this);
 
@@ -114,18 +116,18 @@ class FalsePlinthFoundation extends Foundation {
 
   @override
   num? get plasticWasteVolume => Utils.sumOrNull([
-        _frostProofStyroxFalsePlinth.volume,
+        _frostProofStyrofoamFalsePlinth.volume,
         _finnFoamFalsePlinth.volume,
         _vaporBarrierPlasticFalsePlinth.volume,
-        _styroxFalsePlinthGroundFloor.volume
+        _styrofoamFalsePlinthGroundFloor.volume
       ]);
 
   @override
   num? get plasticWasteTons => Utils.sumOrNull([
-        _frostProofStyroxFalsePlinth.tons,
+        _frostProofStyrofoamFalsePlinth.tons,
         _finnFoamFalsePlinth.tons,
         _vaporBarrierPlasticFalsePlinth.tons,
-        _styroxFalsePlinthGroundFloor.tons
+        _styrofoamFalsePlinthGroundFloor.tons
       ]);
 
   @override
@@ -275,8 +277,8 @@ class ShallowFoundation extends Foundation {
 
   ShallowFoundation({this.area, this.circumference});
 
-  late final _frostProofStyroxShallowFoundation =
-      FrostProofStyroxShallowFoundation(this);
+  late final _frostProofStyrofoamShallowFoundation =
+      FrostProofStyrofoamShallowFoundation(this);
   late final _finnFoamShallowFoundation = FinnFoamShallowFoundation(this);
   late final _vaporBarrierPlasticShallowFoundation =
       VaporBarrierPlasticShallowFoundation(this);
@@ -286,8 +288,8 @@ class ShallowFoundation extends Foundation {
       HotBitiumBrushingShallowFoundationGroundFloor(this);
   late final _mineralWoolShallowFoundationGroundFloor =
       MineralWoolShallowFoundationGroundFloor(this);
-  late final _styroxShallowFoundationGroundFloor =
-      StyroxShallowFoundationGroundFloor(this);
+  late final _styrofoamShallowFoundationGroundFloor =
+      StyrofoamShallowFoundationGroundFloor(this);
   late final _reinforcedConcreteColumnColumnFoundation =
       ReinforcedConcreteColumnColumnFoundation(this);
 
@@ -323,18 +325,18 @@ class ShallowFoundation extends Foundation {
 
   @override
   num? get plasticWasteVolume => Utils.sumOrNull([
-        _frostProofStyroxShallowFoundation.volume,
+        _frostProofStyrofoamShallowFoundation.volume,
         _finnFoamShallowFoundation.volume,
         _vaporBarrierPlasticShallowFoundation.volume,
-        _styroxShallowFoundationGroundFloor.volume
+        _styrofoamShallowFoundationGroundFloor.volume
       ]);
 
   @override
   num? get plasticWasteTons => Utils.sumOrNull([
-        _frostProofStyroxShallowFoundation.tons,
+        _frostProofStyrofoamShallowFoundation.tons,
         _finnFoamShallowFoundation.tons,
         _vaporBarrierPlasticShallowFoundation.tons,
-        _styroxShallowFoundationGroundFloor.tons
+        _styrofoamShallowFoundationGroundFloor.tons
       ]);
 
   @override
@@ -384,8 +386,8 @@ class PillarFoundation extends Foundation {
       ReinforcedConcreteColumnColumnFoundation(this);
   late final _concreteBlockColumnFoundation =
       ConcreteBlockColumnFoundation(this);
-  late final _frostProofStyroxColumnFoundation =
-      FrostProofStyroxColumnFoundation(this);
+  late final _frostProofStyrofoamColumnFoundation =
+      FrostProofStyrofoamColumnFoundation(this);
   late final _finnFoamColumnFoundation = FinnFoamColumnFoundation(this);
   late final _vaporBarrierPlasticColumnFoundation =
       VaporBarrierPlasticColumnFoundation(this);
@@ -427,14 +429,14 @@ class PillarFoundation extends Foundation {
 
   @override
   num? get plasticWasteVolume => Utils.sumOrNull([
-        _frostProofStyroxColumnFoundation.volume,
+        _frostProofStyrofoamColumnFoundation.volume,
         _finnFoamColumnFoundation.volume,
         _vaporBarrierPlasticColumnFoundation.volume
       ]);
 
   @override
   num? get plasticWasteTons => Utils.sumOrNull([
-        _frostProofStyroxColumnFoundation.tons,
+        _frostProofStyrofoamColumnFoundation.tons,
         _finnFoamColumnFoundation.tons,
         _vaporBarrierPlasticColumnFoundation.tons
       ]);
@@ -487,8 +489,8 @@ class HollowCoreSlabFoundation extends Foundation {
       ReinforcedConcreteColumnHollowCoreSlabFoundation(this);
   late final _concreteBlockHollowCoreSlabFoundation =
       ConcreteBlockHollowCoreSlabFoundation(this);
-  late final _frostProofStyroxHollowCoreSlabFoundation =
-      FrostProofStyroxHollowCoreSlabFoundation(this);
+  late final _frostProofStyrofoamHollowCoreSlabFoundation =
+      FrostProofStyrofoamHollowCoreSlabFoundation(this);
   late final _finnFoamHollowCoreSlabFoundation =
       FinnFoamHollowCoreSlabFoundation(this);
   late final _vaporBarrierPlasticHollowCoreSlabFoundation =
@@ -499,8 +501,8 @@ class HollowCoreSlabFoundation extends Foundation {
       HotBitiumBrushingHollowCoreSlabFoundationGroundFloor(this);
   late final _mineralWoolHollowCoreSlabFoundationGroundFloor =
       MineralWoolHollowCoreSlabFoundationGroundFloor(this);
-  late final _styroxHollowCoreSlabFoundationGroundFloor =
-      StyroxHollowCoreSlabFoundationGroundFloor(this);
+  late final _styrofoamHollowCoreSlabFoundationGroundFloor =
+      StyrofoamHollowCoreSlabFoundationGroundFloor(this);
   late final _concreteCastingHollowCoreSlabFoundationGroundFloor =
       ConcreteCastingHollowCoreSlabFoundationGroundFloor(this);
 
@@ -550,18 +552,18 @@ class HollowCoreSlabFoundation extends Foundation {
 
   @override
   num? get plasticWasteVolume => Utils.sumOrNull([
-        _frostProofStyroxHollowCoreSlabFoundation.volume,
+        _frostProofStyrofoamHollowCoreSlabFoundation.volume,
         _finnFoamHollowCoreSlabFoundation.volume,
         _vaporBarrierPlasticHollowCoreSlabFoundation.volume,
-        _styroxHollowCoreSlabFoundationGroundFloor.volume
+        _styrofoamHollowCoreSlabFoundationGroundFloor.volume
       ]);
 
   @override
   num? get plasticWasteTons => Utils.sumOrNull([
-        _frostProofStyroxHollowCoreSlabFoundation.tons,
+        _frostProofStyrofoamHollowCoreSlabFoundation.tons,
         _finnFoamHollowCoreSlabFoundation.tons,
         _vaporBarrierPlasticHollowCoreSlabFoundation.tons,
-        _styroxHollowCoreSlabFoundationGroundFloor.tons
+        _styrofoamHollowCoreSlabFoundationGroundFloor.tons
       ]);
 
   @override

@@ -56,10 +56,10 @@ class FoundationWeights {
   static num concreteCastingSteelKgPerCbm = 100;
   static num hollowSlab200mmKgPerSqm = 260;
   static num hollowSlab200mmKgPerCbm = 1300;
-  static num frostProofStyrox100mmKgPerSqm = 0.54;
-  static num frostProofStyrox100mmKgPerCbm = 5.4;
-  static num styrox150mmKgPerSqm = 2.7;
-  static num styrox150mmKgPerCbm = 18;
+  static num frostProofStyrofoam100mmKgPerSqm = 0.54;
+  static num frostProofStyrofoam100mmKgPerCbm = 5.4;
+  static num styrofoam150mmKgPerSqm = 2.7;
+  static num styrofoam150mmKgPerCbm = 18;
   static num finnFoam50mmKgPerSqm = 1.6;
   static num finnFoam50mmKgPerCbm = 32;
 }
@@ -77,8 +77,8 @@ class FoundationSlabWeights {
   static num acrylicCoatingKgPerCbm = 700;
   static num sinteredTileMortarKgPerSqm = 16;
   static num sinteredTileMortarKgPerCbm = 2500;
-  static num styrox120mmKgPerSqm = 0.54;
-  static num styrox120mmKgPerCbm = 18;
+  static num styrofoam120mmKgPerSqm = 0.54;
+  static num styrofoam120mmKgPerCbm = 18;
 }
 
 class FoundationStructureWeights {
@@ -161,8 +161,8 @@ class ExteriorWallWeights {
   static num bitumenMembraneKgPerCbm = 460;
   static num semiHardFiberboardKgPerSqm = 7;
   static num semiHardFiberboardKgPerCbm = 460;
-  static num styroxKgPerSqm = 0.54;
-  static num styroxKgPerCbm = 18;
+  static num styrofoamKgPerSqm = 0.54;
+  static num styrofoamKgPerCbm = 18;
   static num plasteringInteriorAndExteriorWallsKgPerSqm = 2.4;
   static num plasteringInteriorAndExteriorWallsKgPerCbm = 2500;
   static num mineriteBoardKgPerSqm = 15;

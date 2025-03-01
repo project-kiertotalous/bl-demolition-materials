@@ -7,6 +7,10 @@ class Utils {
     return values.every((val) => val == null) ? null : sum;
   }
 
+  static bool anyNull(List<Object?> values) {
+    return values.any((val) => val == null);
+  }
+
   static bool anyNonNull(List<num?> values) {
     return values.any((val) => val != null);
   }
