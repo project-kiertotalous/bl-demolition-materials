@@ -115,9 +115,9 @@ class FrameBarWeights {
   static num concreteVerticalBars300x300KgPerM = 225;
   static num concreteVerticalBars300x300KgPerCbm = 2500;
   static num concreteVerticalBars300x300SteelKgPerCbm = 100;
-  static num concreteVerticalBars500x500KgPerM = 375;
-  static num concreteVerticalBars500x500KgPerCbm = 2500;
-  static num concreteVerticalBars500x500SteelKgPerCbm = 100;
+  static num concreteRoofBars500x500KgPerM = 375;
+  static num concreteRoofBars500x500KgPerCbm = 2500;
+  static num concreteRoofBars500x500SteelKgPerCbm = 100;
   static num steelVerticalBarsIProfile200hx100bKgPerM = 22.4;
   static num steelVerticalBarsIProfile200hx100bKgPerCbm = 7000;
   static num steelVerticalBarsPipeProfile250x250KgPerM = 45.2;
