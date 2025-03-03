@@ -4,6 +4,8 @@ part 'building_framework.freezed.dart';
 
 @freezed
 class BuildingFramework with _$BuildingFramework {
+  const BuildingFramework._();
+
   const factory BuildingFramework(
           {@Default(false) bool useFoundationCircumference,
           num? externalWallsPerimeter,
