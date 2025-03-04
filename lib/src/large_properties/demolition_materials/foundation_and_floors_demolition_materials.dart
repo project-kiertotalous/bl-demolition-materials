@@ -1647,9 +1647,8 @@ class ConcreteCastingHollowCoreSlabFoundationGroundFloor
 
 class ConcreteCastingIntermediateFloorFrames extends DemolitionMaterials {
   final num sizing;
-  final Foundation? foundation;
 
-  ConcreteCastingIntermediateFloorFrames([this.foundation, this.sizing = 200]);
+  ConcreteCastingIntermediateFloorFrames([this.sizing = 200]);
 
   @override
   num get kgPerSquareMeter => sizing / 1000 * kgPerCubicMeter;
@@ -1664,9 +1663,8 @@ class ConcreteCastingIntermediateFloorFrames extends DemolitionMaterials {
 
 class GlulamBeamsIntermediateFloorFrames extends DemolitionMaterials {
   final num sizing;
-  final Foundation? foundation;
 
-  GlulamBeamsIntermediateFloorFrames([this.foundation, this.sizing = 0.4]);
+  GlulamBeamsIntermediateFloorFrames([this.sizing = 0.4]);
 
   @override
   num get kgPerMeter => UpperBaseStructureAndWaterRoofWeights

@@ -14,6 +14,6 @@ class Roof with _$Roof {
       required WaterRoofType ridgeOrGableWaterRoofType,
       required RoofType flatOrMonoPitchedRoofType,
       required WaterRoofType flatOrMonoPitchedWaterRoofType,
-      required bool usedDefaultDimensions,
-      required bool roofTrussesAreRecyclable}) = _Roof;
+      @Default(true) bool usedDefaultDimensions,
+      @Default(false) bool roofTrussesAreRecyclable}) = _Roof;
 }

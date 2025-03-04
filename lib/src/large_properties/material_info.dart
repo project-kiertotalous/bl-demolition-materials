@@ -204,8 +204,8 @@ class UpperBaseStructureAndWaterRoofWeights {
   static num vaporBarrierKgPerCbm = 970;
   static num plasterBoardKgPerSqm = 9;
   static num plasterBoardKgPerCbm = 900;
-  static num chipBoard15mmKgPerSqm = 10.00;
-  static num chipBoard15mmKgPerCbm = 1000;
+  static num particleBoard15mmKgPerSqm = 10.00;
+  static num particleBoard15mmKgPerCbm = 1000;
   static num windProofWool30mmKgPerSqm = 1.65;
   static num windProofWool30mmKgPerCbm = 55;
   static num woodShavings100mmKgPerSqm = 11.00;
@@ -264,8 +264,8 @@ class FloorStructureAndMaterialWeights {
   static num plasticMatKgPerCbm = 1100;
   static num plasticFloorTileKgPerSqm = 4.2;
   static num plasticFloorTileKgPerCbm = 1100;
-  static num tilesKgPerSqm = 16;
-  static num tilesKgPerCbm = 2500;
+  static num ceramicTilesKgPerSqm = 16;
+  static num ceramicTilesKgPerCbm = 2500;
 }
 
 class WindowWeights {
