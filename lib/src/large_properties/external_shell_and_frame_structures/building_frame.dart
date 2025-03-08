@@ -1,16 +1,16 @@
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total_building_framework.dart';
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total_building_frame.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../utils/utils.dart';
 import '../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
 
-part 'building_framework.freezed.dart';
+part 'building_frame.freezed.dart';
 
 @freezed
-class BuildingFramework with _$BuildingFramework {
-  const BuildingFramework._();
+class BuildingFrame with _$BuildingFrame {
+  const BuildingFrame._();
 
-  const factory BuildingFramework(
+  const factory BuildingFrame(
           {@Default(false) bool useFoundationCircumference,
           num? externalWallsPerimeter,
           num? externalWallsAverageHeight,
@@ -26,7 +26,7 @@ class BuildingFramework with _$BuildingFramework {
           num? profiledSheetMetalPortionFractionPercentage,
           num? steelProfileSandwichStructurePortionFractionPercentage,
           num? mineriteOrOtherStoneBoardPortionFractionPercentage}) =
-      _BuildingFramework;
+      _BuildingFrame;
 }
 
 abstract class BuildingFramePart {
@@ -281,7 +281,7 @@ class MineriteOrOtherStoneFramePart extends BuildingEnvelopeFramePart {
       {super.totalBuildingFrame, super.portionFractionPercentage});
 
   final mineralWoolFrame = MineralWoolFrame();
-  final semiRigidFiberBoardFrame = SemiRigidFiberBoardFrame();
+  final semiHardFiberBoardFrame = SemiHardFiberBoardFrame();
   final mineriteBoardFrame = MineriteBoardFrame();
 
   @override
@@ -291,7 +291,7 @@ class MineriteOrOtherStoneFramePart extends BuildingEnvelopeFramePart {
   @override
   num? get semiHardFiberBoardTons => area == null
       ? null
-      : area! * semiRigidFiberBoardFrame.kgPerSquareMeter / 1000;
+      : area! * semiHardFiberBoardFrame.kgPerSquareMeter / 1000;
 
   @override
   num? get mineriteBoardTons =>

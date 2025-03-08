@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'building_dimensions.dart';
-import 'building_framework.dart';
+import 'building_frame.dart';
 import 'cellar.dart';
 import 'total_foundations.dart';
 
@@ -15,7 +15,7 @@ class TotalBuildingDimensions with _$TotalBuildingDimensions {
       {BuildingDimensions? buildingDimensions,
       Cellar? cellar,
       TotalFoundations? totalFoundations,
-      BuildingFramework? buildingFramework}) = _TotalBuildingDimensions;
+      BuildingFrame? buildingFrame}) = _TotalBuildingDimensions;
 
   num? get grossFloorArea => buildingDimensions?.grossFloorArea;
 
@@ -60,12 +60,12 @@ class TotalBuildingDimensions with _$TotalBuildingDimensions {
     if (cellar?.floorArea == null &&
         cellar?.wallHeight == null &&
         totalFoundations?.area == null &&
-        buildingFramework?.externalWallsAverageHeight == null) {
+        buildingFrame?.externalWallsAverageHeight == null) {
       return null;
     }
 
     return ((totalFoundations?.area ?? 0) *
-            (buildingFramework?.externalWallsAverageHeight ?? 0)) +
+            (buildingFrame?.externalWallsAverageHeight ?? 0)) +
         ((cellar?.floorArea ?? 0) * (cellar?.wallHeight ?? 0));
   }
 
