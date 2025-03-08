@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'total_building_frame.freezed.dart';
 
 @freezed
-class TotalBuildingFrame with _$TotalBuildingFrame {
+abstract class TotalBuildingFrame with _$TotalBuildingFrame {
   TotalBuildingFrame._();
 
   factory TotalBuildingFrame(

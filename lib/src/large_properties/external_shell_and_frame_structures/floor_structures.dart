@@ -7,7 +7,7 @@ import 'floor_structure.dart';
 part 'floor_structures.freezed.dart';
 
 @freezed
-class FloorStructures with _$FloorStructures {
+abstract class FloorStructures with _$FloorStructures {
   const FloorStructures._();
 
   const factory FloorStructures(

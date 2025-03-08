@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'roofs.freezed.dart';
 
 @freezed
-class Roofs with _$Roofs {
+abstract class Roofs with _$Roofs {
   const Roofs._();
 
   const factory Roofs(

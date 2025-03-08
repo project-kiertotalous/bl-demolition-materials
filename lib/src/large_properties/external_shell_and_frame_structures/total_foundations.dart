@@ -7,7 +7,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'total_foundations.freezed.dart';
 
 @freezed
-class TotalFoundations with _$TotalFoundations implements Foundation {
+abstract class TotalFoundations with _$TotalFoundations implements Foundation {
   const TotalFoundations._();
 
   const factory TotalFoundations(

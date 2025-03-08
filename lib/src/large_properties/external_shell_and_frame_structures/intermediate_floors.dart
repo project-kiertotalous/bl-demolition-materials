@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'intermediate_floors.freezed.dart';
 
 @freezed
-class IntermediateFloors with _$IntermediateFloors {
+abstract class IntermediateFloors with _$IntermediateFloors {
   const IntermediateFloors._();
 
   const factory IntermediateFloors(

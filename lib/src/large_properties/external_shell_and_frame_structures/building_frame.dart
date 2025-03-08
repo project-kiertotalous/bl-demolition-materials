@@ -7,7 +7,7 @@ import '../demolition_materials/outer_walls_and_frame_demolition_materials.dart'
 part 'building_frame.freezed.dart';
 
 @freezed
-class BuildingFrame with _$BuildingFrame {
+abstract class BuildingFrame with _$BuildingFrame {
   const BuildingFrame._();
 
   const factory BuildingFrame(

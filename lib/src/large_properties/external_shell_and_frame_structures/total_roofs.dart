@@ -10,7 +10,7 @@ import '../demolition_materials/roofs_demolition_materials.dart';
 part 'total_roofs.freezed.dart';
 
 @freezed
-class TotalRoofs with _$TotalRoofs {
+abstract class TotalRoofs with _$TotalRoofs {
   TotalRoofs._();
 
   late final _woodenTrussRidgeOrGableRoof = WoodenTrussRidgeOrGableRoof(this);

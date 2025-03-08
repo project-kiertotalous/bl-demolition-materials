@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'total_intermediate_floors.freezed.dart';
 
 @freezed
-class TotalIntermediateFloors with _$TotalIntermediateFloors {
+abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
   const TotalIntermediateFloors._();
 
   const factory TotalIntermediateFloors(

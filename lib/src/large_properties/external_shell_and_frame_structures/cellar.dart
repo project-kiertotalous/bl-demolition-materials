@@ -7,7 +7,7 @@ import '../../data_types/cellar_exterior_material.dart';
 part 'cellar.freezed.dart';
 
 @freezed
-class Cellar with _$Cellar {
+abstract class Cellar with _$Cellar {
   late final _reinforcedConcreteSlabGroundFloor =
       ReinforcedConcreteSlabGroundFloor(this);
   late final _hotBitiumBrushingGroundFloor = HotBitiumBrushingGroundFloor(this);

@@ -8,7 +8,7 @@ import 'total_foundations.dart';
 part 'total_building_dimensions.freezed.dart';
 
 @freezed
-class TotalBuildingDimensions with _$TotalBuildingDimensions {
+abstract class TotalBuildingDimensions with _$TotalBuildingDimensions {
   const TotalBuildingDimensions._();
 
   const factory TotalBuildingDimensions(

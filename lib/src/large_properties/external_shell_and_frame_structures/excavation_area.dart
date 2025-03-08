@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'excavation_area.freezed.dart';
 
 @freezed
-class ExcavationArea with _$ExcavationArea {
+abstract class ExcavationArea with _$ExcavationArea {
   const ExcavationArea._();
 
   const factory ExcavationArea(
