@@ -6,122 +6,101 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'total_building_framework.freezed.dart';
 
 @freezed
-class TotalBuildingFramework with _$TotalBuildingFramework {
-  const TotalBuildingFramework._();
+class TotalBuildingFrame with _$TotalBuildingFrame  {
+  TotalBuildingFrame._();
 
-  const factory TotalBuildingFramework(
+  factory TotalBuildingFrame(
       {BuildingFramework? buildingFramework,
-      TotalFoundations? totalFoundations}) = _TotalBuildingFramework;
+      TotalFoundations? totalFoundations}) = _TotalBuildingFrame;
 
-  bool? get useFoundationCircumference =>
-      buildingFramework?.useFoundationCircumference;
+  num? get externalWallsHeight => buildingFramework?.externalWallsAverageHeight;
 
-  num? get externalWallsPerimeter => buildingFramework?.externalWallsPerimeter;
+  num? get externalWallsPerimeter {
+    if (buildingFramework == null) {
+      return null;
+    }
 
-  num? get externalWallsAverageHeight =>
-      buildingFramework?.externalWallsAverageHeight;
-
-  bool? get areMaterialsRecyclable => buildingFramework?.areMaterialsRecyclable;
-
-  num? get woodPortionFractionPercentage =>
-      buildingFramework?.woodPortionFractionPercentage;
-
-  num? get glulamVerticalColumnsPortionFractionPercentage =>
-      buildingFramework?.glulamVerticalColumnsPortionFractionPercentage;
-
-  num? get concreteVerticalColumnsPortionFractionPercentage =>
-      buildingFramework?.concreteVerticalColumnsPortionFractionPercentage;
-
-  num? get steelVerticalColumnsPortionFractionPercentage =>
-      buildingFramework?.steelVerticalColumnsPortionFractionPercentage;
-
-  num? get doubleLoadBearingBrickWallPortionFractionPercentage =>
-      buildingFramework?.doubleLoadBearingBrickWallPortionFractionPercentage;
-
-  num? get concreteElementWallsWithoutFrameworkPortionFractionPercentage =>
-      buildingFramework
-          ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage;
-
-  num? get brickCladWallPortionFractionPercentage =>
-      buildingFramework?.brickCladWallPortionFractionPercentage;
-
-  num? get boardWallPortionFractionPercentage =>
-      buildingFramework?.boardWallPortionFractionPercentage;
-
-  num? get profiledSheetMetalPortionFractionPercentage =>
-      buildingFramework?.profiledSheetMetalPortionFractionPercentage;
-
-  num? get steelProfileSandwichStructurePortionFractionPercentage =>
-      buildingFramework?.steelProfileSandwichStructurePortionFractionPercentage;
-
-  num? get mineriteOrOtherStoneBoardPortionFractionPercentage =>
-      buildingFramework?.mineriteOrOtherStoneBoardPortionFractionPercentage;
-
-  num? get doubleLoadBearingBrickWallPortionSqm => throw UnimplementedError();
-
-  num? get concreteElementWallsWithoutFrameworkPortionSqm =>
-      throw UnimplementedError();
-
-  /// Use this to get the actual external walls perimeter.
-  num? get canonicalExternalWallsPerimeter {
-    if (useFoundationCircumference == true) {
+    if (buildingFramework!.useFoundationCircumference == true) {
       return totalFoundations?.circumference;
     }
 
-    return externalWallsPerimeter;
+    return buildingFramework?.externalWallsPerimeter;
   }
 
-  num? get woodVolume => Utils.multiplyOrNull([
-        woodPortionFractionPercentage,
-        canonicalExternalWallsPerimeter,
-        externalWallsAverageHeight
+  late final StructuralBuildingFramePart woodFramePart = WoodFramePart(
+      totalBuildingFrame: this,
+      portionFractionPercentage:
+          buildingFramework?.woodPortionFractionPercentage);
+
+  late final StructuralBuildingFramePart glulamBeamsPart = GlulamBeamsPart(
+      totalBuildingFrame: this,
+      portionFractionPercentage:
+          buildingFramework?.glulamVerticalColumnsPortionFractionPercentage);
+
+  late final StructuralBuildingFramePart concreteVerticalColumnsPart =
+      ConcreteVerticalColumnsFramePart(
+          totalBuildingFrame: this,
+          portionFractionPercentage: buildingFramework
+              ?.concreteVerticalColumnsPortionFractionPercentage);
+
+  late final StructuralBuildingFramePart steelVerticalColumnsPart =
+      SteelVerticalColumnsFramePart(
+          totalBuildingFrame: this,
+          portionFractionPercentage:
+              buildingFramework?.steelVerticalColumnsPortionFractionPercentage);
+
+  late final StructuralBuildingFramePart doubleLoadBearingBrickWallPart =
+      DoubleLoadBearingBrickWallFramePart(
+          totalBuildingFrame: this,
+          portionFractionPercentage: buildingFramework
+              ?.doubleLoadBearingBrickWallPortionFractionPercentage);
+
+  late final StructuralBuildingFramePart
+      concreteElementWallsWithoutFrameworkPart =
+      ConcreteElementWallsWithoutFrameworkFramePart(
+          totalBuildingFrame: this,
+          portionFractionPercentage: buildingFramework
+              ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage);
+
+  num? get totalStructuralPartsPortionFractionPercentage => Utils.sumOrNull([
+        woodFramePart.portionFractionPercentage,
+        glulamBeamsPart.portionFractionPercentage,
+        concreteVerticalColumnsPart.portionFractionPercentage,
+        steelVerticalColumnsPart.portionFractionPercentage,
+        doubleLoadBearingBrickWallPart.portionFractionPercentage,
+        concreteVerticalColumnsPart.portionFractionPercentage
       ]);
 
-  num? get glulamVerticalBeamVolume => Utils.multiplyOrNull([
-        glulamVerticalColumnsPortionFractionPercentage,
-        canonicalExternalWallsPerimeter,
-        externalWallsAverageHeight
+  num? get totalStructuralPartsArea => Utils.sumOrNull([
+        woodFramePart.area,
+        glulamBeamsPart.area,
+        concreteVerticalColumnsPart.area,
+        steelVerticalColumnsPart.area,
+        doubleLoadBearingBrickWallPart.area,
+        concreteVerticalColumnsPart.area
       ]);
 
-  num? get concreteVerticalColumnsVolume => Utils.multiplyOrNull([
-        concreteVerticalColumnsPortionFractionPercentage,
-        canonicalExternalWallsPerimeter,
-        externalWallsAverageHeight
+  num? get woodVolume =>
+      Utils.sumOrNull([woodFramePart.woodVolume, glulamBeamsPart.woodVolume]);
+
+  num? get woodTons =>
+      Utils.sumOrNull([woodFramePart.woodTons, glulamBeamsPart.woodTons]);
+
+  num? get concreteVolume => Utils.sumOrNull([
+        concreteVerticalColumnsPart.concreteVolume,
+        concreteElementWallsWithoutFrameworkPart.concreteVolume
       ]);
 
-  num? get steelVerticalColumnsVolume => Utils.multiplyOrNull([
-        steelVerticalColumnsPortionFractionPercentage,
-        canonicalExternalWallsPerimeter,
-        externalWallsAverageHeight
+  num? get concreteTons => Utils.sumOrNull([
+        concreteVerticalColumnsPart.concreteTons,
+        concreteElementWallsWithoutFrameworkPart.concreteTons
       ]);
 
-  num? get doubleLoadBearingBrickWallVolume => Utils.multiplyOrNull([
-        doubleLoadBearingBrickWallPortionFractionPercentage,
-        canonicalExternalWallsPerimeter,
-        externalWallsAverageHeight
-      ]);
+  num? get steelTons => steelVerticalColumnsPart.steelTons;
 
-  num? get concreteElementWallsWithoutFrameworkVolume => Utils.multiplyOrNull([
-        concreteElementWallsWithoutFrameworkPortionFractionPercentage,
-        canonicalExternalWallsPerimeter,
-        externalWallsAverageHeight
-      ]);
+  num? get brickVolume => doubleLoadBearingBrickWallPart.brickVolume;
 
-  num? get totalExternalWallsPortionFractionPercentage => Utils.sumOrNull([
-        woodPortionFractionPercentage,
-        glulamVerticalColumnsPortionFractionPercentage,
-        concreteVerticalColumnsPortionFractionPercentage,
-        steelVerticalColumnsPortionFractionPercentage,
-        doubleLoadBearingBrickWallPortionFractionPercentage,
-        concreteElementWallsWithoutFrameworkPortionFractionPercentage
-      ]);
+  num? get brickTons => doubleLoadBearingBrickWallPart.brickTons;
 
-  num? get totalExternalWallsVolume => Utils.sumOrNull([
-        woodVolume,
-        glulamVerticalBeamVolume,
-        concreteVerticalColumnsVolume,
-        steelVerticalColumnsVolume,
-        doubleLoadBearingBrickWallVolume,
-        concreteElementWallsWithoutFrameworkVolume
-      ]);
+  // TODO: Implement StructuralBuildingFramePart and BuildingEnvelopeFramePart
 }
