@@ -1,0 +1,172 @@
+import 'package:bl_demolition_materials/src/data_types/roof_type.dart';
+import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/roofs.dart';
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total_foundations.dart';
+import 'package:bl_demolition_materials/src/utils/utils.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../demolition_materials/roofs_demolition_materials.dart';
+
+part 'total_roofs.freezed.dart';
+
+@freezed
+class TotalRoofs with _$TotalRoofs {
+  TotalRoofs._();
+
+  late final _woodenTrussRidgeOrGableRoof = WoodenTrussRidgeOrGableRoof(this);
+  late final _steelTrussRidgeOrGableRoof = SteelTrussRidgeOrGableRoof(this);
+  late final _concreteColumnRidgeOrGableRoof =
+      ConcreteColumnRidgeOrGableRoof(this);
+  late final _woodenTrussFlatOrMonoPitchedRoof =
+      WoodenTrussFlatOrMonoPitchedRoof(this);
+  late final _steelTrussFlatOrMonoPitchedRoof =
+      SteelTrussFlatOrMonoPitchedRoof(this);
+  late final _concreteColumnFlatOrMonoPitchedRoof =
+      ConcreteColumnFlatOrMonoPitchedRoof(this);
+  late final _roofBracketsFlatOrMonoPitchedRoof =
+      RoofBracketsFlatOrMonoPitchedRoof(this);
+  late final _woodenUnderPlankingWaterRoof = WoodenUnderPlankingWaterRoof(this);
+  late final _windProofWoolWaterRoof = WindProofWoolWaterRoof(this);
+  late final _underLayWaterRoof = UnderLayWaterRoof(this);
+  late final _roofSheetWaterRoof = RoofSheetWaterRoof(this);
+  late final _feltRoofWaterRoof = FeltRoofWaterRoof(this);
+  late final _mineriteCoveringWaterRoof = MineriteCoveringWaterRoof(this);
+  late final _roofTileWaterRoof = RoofTileWaterRoof(this);
+
+  factory TotalRoofs(
+      {TotalFoundations? totalFoundations,
+      Roofs? roofs,
+      @Default(0.25) num ridgeOrGableRoofSlopeRatioFactorFractionPercentage,
+      @Default(0.10) flatOrMonoPitchedRoofEaveOverhangAddition}) = _TotalRoofs;
+
+  num? get calculatedCeilingArea {
+    if (useDefaultDimensions == null &&
+        totalFoundations?.area == null &&
+        ceilingArea == null) {
+      return null;
+    }
+
+    if (useDefaultDimensions == true && totalFoundations?.area != null) {
+      return totalFoundations!.area;
+    }
+
+    return ceilingArea;
+  }
+
+  num? get defaultRidgeOrGableRoofCeilingArea {
+    if (ridgeOrGableRoofPortion == null || calculatedCeilingArea == null) {
+      return null;
+    }
+
+    late final num targetArea;
+
+    if (calculatedCeilingArea == totalFoundations?.area) {
+      targetArea = totalFoundations!.area! *
+          (ridgeOrGableRoofSlopeRatioFactorFractionPercentage + 1);
+    } else {
+      targetArea = calculatedCeilingArea!;
+    }
+
+    return targetArea * ridgeOrGableRoofPortion!;
+  }
+
+  num? get defaultFlatOrMonoPitchedRoofCeilingArea {
+    if (flatOrMonoPitchedRoofPortion == null || calculatedCeilingArea == null) {
+      return null;
+    }
+
+    late final num targetArea;
+
+    if (calculatedCeilingArea == totalFoundations?.area) {
+      targetArea = totalFoundations!.area! *
+          (flatOrMonoPitchedRoofEaveOverhangAddition + 1);
+    } else {
+      targetArea = calculatedCeilingArea!;
+    }
+
+    return targetArea * flatOrMonoPitchedRoofPortion!;
+  }
+
+  num? get roofBaseArea => totalFoundations?.area;
+
+  RoofType? get ridgeOrGableRoofType => roofs?.ridgeOrGableRoofType;
+
+  RoofType? get flatOrMonoPitchedRoofType => roofs?.flatOrMonoPitchedRoofType;
+
+  WaterRoofType? get flatOrMonoPitchedWaterRoofType =>
+      roofs?.flatOrMonoPitchedWaterRoofType;
+
+  WaterRoofType? get ridgeOrGableWaterRoofType =>
+      roofs?.ridgeOrGableWaterRoofType;
+
+  num? get ceilingArea => roofs?.ceilingArea;
+
+  num? get ridgeOrGableRoofPortion => roofs?.ridgeOrGableRoofPortion;
+
+  num? get flatOrMonoPitchedRoofPortion => roofs?.flatOrMonoPitchedRoofPortion;
+
+  bool? get useDefaultDimensions => roofs?.useDefaultDimensions;
+
+  bool? get roofTrussesAreRecyclable => roofs?.roofTrussesAreRecyclable;
+
+  num? get totalArea => Utils.sumOrNull([
+        defaultRidgeOrGableRoofCeilingArea,
+        defaultFlatOrMonoPitchedRoofCeilingArea
+      ]);
+
+  num? get ridgeOrGableRoofArea =>
+      Utils.multiplyOrNull([totalArea, ridgeOrGableRoofPortion]);
+
+  num? get flatOrMonoPitchedRoofArea =>
+      Utils.multiplyOrNull([totalArea, flatOrMonoPitchedRoofPortion]);
+
+  num? get woodVolume => Utils.sumOrNull([
+        _woodenTrussRidgeOrGableRoof.woodVolume,
+        _woodenTrussFlatOrMonoPitchedRoof.woodVolume,
+        _roofBracketsFlatOrMonoPitchedRoof.woodVolume,
+        _woodenUnderPlankingWaterRoof.woodVolume
+      ]);
+
+  num? get woodTons => Utils.sumOrNull([
+        _woodenTrussRidgeOrGableRoof.woodTons,
+        _woodenTrussFlatOrMonoPitchedRoof.woodTons,
+        _roofBracketsFlatOrMonoPitchedRoof.woodTons,
+        _woodenUnderPlankingWaterRoof.woodTons
+      ]);
+
+  num? get steelTons => Utils.sumOrNull([
+        _steelTrussRidgeOrGableRoof.steelTons,
+        _steelTrussFlatOrMonoPitchedRoof.steelTons,
+        _roofSheetWaterRoof.steelTons
+      ]);
+
+  num? get concreteVolume => Utils.sumOrNull([
+        _concreteColumnRidgeOrGableRoof.concreteVolume,
+        _concreteColumnFlatOrMonoPitchedRoof.concreteVolume
+      ]);
+
+  num? get concreteTons => Utils.sumOrNull([
+        _concreteColumnRidgeOrGableRoof.concreteTons,
+        _concreteColumnFlatOrMonoPitchedRoof.concreteTons
+      ]);
+
+  num? get insulationVolume => _windProofWoolWaterRoof.volume;
+
+  num? get insulationTons => _windProofWoolWaterRoof.tons;
+
+  num? get underlayVolume => _underLayWaterRoof.volume;
+
+  num? get underlayTons => _underLayWaterRoof.tons;
+
+  num? get bitumenVolume => _feltRoofWaterRoof.volume;
+
+  num? get bitumenTons => _feltRoofWaterRoof.tons;
+
+  num? get mineriteVolume => _mineriteCoveringWaterRoof.volume;
+
+  num? get mineriteTons => _mineriteCoveringWaterRoof.tons;
+
+  num? get roofTileVolume => _roofTileWaterRoof.volume;
+
+  num? get roofTileTons => _roofTileWaterRoof.tons;
+}

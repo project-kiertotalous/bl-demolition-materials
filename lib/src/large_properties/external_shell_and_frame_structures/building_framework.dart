@@ -12,7 +12,7 @@ class BuildingFramework with _$BuildingFramework {
           num? externalWallsAverageHeight,
           @Default(false) bool areMaterialsRecyclable,
           num? woodPortionFractionPercentage,
-          num? glulamVerticalBeamsPortionFractionPercentage,
+          num? glulamVerticalColumnsPortionFractionPercentage,
           num? concreteVerticalColumnsPortionFractionPercentage,
           num? steelVerticalColumnsPortionFractionPercentage,
           num? doubleLoadBearingBrickWallPortionFractionPercentage,
@@ -23,11 +23,4 @@ class BuildingFramework with _$BuildingFramework {
           num? steelProfileSandwichStructurePortionFractionPercentage,
           num? mineriteOrOtherStoneBoardPortionFractionPercentage}) =
       _BuildingFramework;
-
-  num? get doubleLoadBearingBrickWallPortionSqm => throw UnimplementedError();
-
-  num? get concreteElementWallsWithoutFrameworkPortionSqm =>
-      throw UnimplementedError();
-
-// TODO: Implement aggregates
 }
