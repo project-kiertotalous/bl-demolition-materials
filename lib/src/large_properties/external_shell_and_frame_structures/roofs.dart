@@ -16,7 +16,9 @@ abstract class Roofs with _$Roofs {
       required RoofType? flatOrMonoPitchedRoofType,
       required WaterRoofType? flatOrMonoPitchedWaterRoofType,
       @Default(true) bool? useDefaultDimensions,
-      @Default(false) bool? roofTrussesAreRecyclable}) = _Roofs;
+      @Default(false) bool? roofTrussesAreRecyclable,
+      @Default(0.25) num ridgeOrGableRoofSlopeRatioFactorFractionPercentage,
+      @Default(0.10) flatOrMonoPitchedRoofEaveOverhangAddition}) = _Roofs;
 
   num? get flatOrMonoPitchedRoofPortion =>
       ridgeOrGableRoofPortion == null ? null : 1 - ridgeOrGableRoofPortion!;

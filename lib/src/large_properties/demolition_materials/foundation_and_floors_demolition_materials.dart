@@ -1,6 +1,7 @@
 import 'package:bl_demolition_materials/src/large_properties/demolition_materials/demolition_materials.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundation.dart';
 import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
+
+import '../external_shell_and_frame_structures/foundation/foundation.dart';
 
 class ReinforcedConcreteColumnFalsePlinth extends DemolitionMaterials {
   final num sizing;
@@ -276,17 +277,18 @@ class ReinforcedConcreteSlabFalsePlinthGroundFloor extends DemolitionMaterials {
   }
 }
 
-class HotBitiumBrushingFalsePlinthGroundFloor extends DemolitionMaterials {
+class HotBitumenBrushingFalsePlinthGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
 
-  HotBitiumBrushingFalsePlinthGroundFloor([this.foundation, this.sizing = 100]);
+  HotBitumenBrushingFalsePlinthGroundFloor(
+      [this.foundation, this.sizing = 100]);
 
   @override
-  num get kgPerSquareMeter => FoundationSlabWeights.hotBitiumBrushingKgPerSqm;
+  num get kgPerSquareMeter => FoundationSlabWeights.hotBitumenBrushingKgPerSqm;
 
   @override
-  num get kgPerCubicMeter => FoundationSlabWeights.hotBitiumBrushingKgPerCbm;
+  num get kgPerCubicMeter => FoundationSlabWeights.hotBitumenBrushingKgPerCbm;
 
   @override
   num? get volume {
@@ -689,7 +691,7 @@ class ConstructionPaperCrawlSpaceGroundFloor extends DemolitionMaterials {
 class TarPaperCrawlSpaceGroundFloor
     extends ConstructionPaperCrawlSpaceGroundFloor {
   // Can this be removed? tar paper is identical to construction paper
-  TarPaperCrawlSpaceGroundFloor([Foundation? foundation]) : super(foundation);
+  TarPaperCrawlSpaceGroundFloor([super.foundation]);
 }
 
 class ReinforcedConcreteColumnShallowFoundation extends DemolitionMaterials {
@@ -890,17 +892,17 @@ class ReinforcedConcreteSlabShallowFoundationGroundFloor
   }
 }
 
-class HotBitiumBrushingShallowFoundationGroundFloor
+class HotBitumenBrushingShallowFoundationGroundFloor
     extends DemolitionMaterials {
   final Foundation? foundation;
 
-  HotBitiumBrushingShallowFoundationGroundFloor([this.foundation]);
+  HotBitumenBrushingShallowFoundationGroundFloor([this.foundation]);
 
   @override
-  num get kgPerSquareMeter => FoundationSlabWeights.hotBitiumBrushingKgPerSqm;
+  num get kgPerSquareMeter => FoundationSlabWeights.hotBitumenBrushingKgPerSqm;
 
   @override
-  num get kgPerCubicMeter => FoundationSlabWeights.hotBitiumBrushingKgPerCbm;
+  num get kgPerCubicMeter => FoundationSlabWeights.hotBitumenBrushingKgPerCbm;
 
   @override
   num? get volume {
@@ -1494,17 +1496,17 @@ class HollowCoreSlabHollowCoreSlabFoundationGroundFloor
   }
 }
 
-class HotBitiumBrushingHollowCoreSlabFoundationGroundFloor
+class HotBitumenBrushingHollowCoreSlabFoundationGroundFloor
     extends DemolitionMaterials {
   final Foundation? foundation;
 
-  HotBitiumBrushingHollowCoreSlabFoundationGroundFloor([this.foundation]);
+  HotBitumenBrushingHollowCoreSlabFoundationGroundFloor([this.foundation]);
 
   @override
-  num get kgPerSquareMeter => FoundationSlabWeights.hotBitiumBrushingKgPerSqm;
+  num get kgPerSquareMeter => FoundationSlabWeights.hotBitumenBrushingKgPerSqm;
 
   @override
-  num get kgPerCubicMeter => FoundationSlabWeights.hotBitiumBrushingKgPerCbm;
+  num get kgPerCubicMeter => FoundationSlabWeights.hotBitumenBrushingKgPerCbm;
 
   @override
   num? get volume {

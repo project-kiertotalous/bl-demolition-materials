@@ -1,0 +1,104 @@
+import '../../../../bl_demolition_materials.dart';
+import '../../../utils/utils.dart';
+import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
+import 'foundation.dart';
+
+class ShallowFoundation extends Foundation {
+  @override
+  final num? area;
+  @override
+  final num? circumference;
+
+  ShallowFoundation({this.area, this.circumference});
+
+  late final _frostProofStyrofoamShallowFoundation =
+      FrostProofStyrofoamShallowFoundation(this);
+  late final _finnFoamShallowFoundation = FinnFoamShallowFoundation(this);
+  late final _vaporBarrierPlasticShallowFoundation =
+      VaporBarrierPlasticShallowFoundation(this);
+  late final _reinforcedConcreteSlabShallowFoundationGroundFloor =
+      ReinforcedConcreteSlabShallowFoundationGroundFloor(this);
+  late final _hotBitumenBrushingShallowFoundationGroundFloor =
+      HotBitumenBrushingShallowFoundationGroundFloor(this);
+  late final _mineralWoolShallowFoundationGroundFloor =
+      MineralWoolShallowFoundationGroundFloor(this);
+  late final _styrofoamShallowFoundationGroundFloor =
+      StyrofoamShallowFoundationGroundFloor(this);
+  late final _reinforcedConcreteColumnColumnFoundation =
+      ReinforcedConcreteColumnColumnFoundation(this);
+
+  @override
+  num? get concreteVolume => Utils.sumOrNull([
+        _reinforcedConcreteSlabShallowFoundationGroundFloor.volume,
+        _reinforcedConcreteColumnColumnFoundation.volume
+      ]);
+
+  @override
+  num? get concreteTons => Utils.sumOrNull([
+        _reinforcedConcreteSlabShallowFoundationGroundFloor.concreteTons,
+        _reinforcedConcreteColumnColumnFoundation.concreteTons
+      ]);
+
+  @override
+  num? get rebarTons => Utils.sumOrNull([
+        _reinforcedConcreteSlabShallowFoundationGroundFloor.steelTons,
+        _reinforcedConcreteColumnColumnFoundation.steelTons
+      ]);
+
+  @override
+  num? get concreteBlockVolume => 0;
+
+  @override
+  num? get concreteBlockTons => 0;
+
+  @override
+  num? get mineralWoolVolume => _mineralWoolShallowFoundationGroundFloor.volume;
+
+  @override
+  num? get mineralWoolTons => _mineralWoolShallowFoundationGroundFloor.tons;
+
+  @override
+  num? get plasticWasteVolume => Utils.sumOrNull([
+        _frostProofStyrofoamShallowFoundation.volume,
+        _finnFoamShallowFoundation.volume,
+        _vaporBarrierPlasticShallowFoundation.volume,
+        _styrofoamShallowFoundationGroundFloor.volume
+      ]);
+
+  @override
+  num? get plasticWasteTons => Utils.sumOrNull([
+        _frostProofStyrofoamShallowFoundation.tons,
+        _finnFoamShallowFoundation.tons,
+        _vaporBarrierPlasticShallowFoundation.tons,
+        _styrofoamShallowFoundationGroundFloor.tons
+      ]);
+
+  @override
+  num? get woodShavingsVolume => 0;
+
+  @override
+  num? get woodShavingsTons => 0;
+
+  @override
+  num? get solidBoardingAndWoodFrameVolume => 0;
+
+  @override
+  num? get solidBoardingAndWoodFrameTons => 0;
+
+  @override
+  num? get combustibleWasteVolume => 0;
+
+  @override
+  num? get combustibleWasteTons => 0;
+
+  @override
+  num? get hotBitumenCoatingVolume =>
+      _hotBitumenBrushingShallowFoundationGroundFloor.volume;
+
+  @override
+  num? get hotBitumenCoatingTons =>
+      _hotBitumenBrushingShallowFoundationGroundFloor.tons;
+
+  @override
+  FoundationMaterial? get material => null;
+}

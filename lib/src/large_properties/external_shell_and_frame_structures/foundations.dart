@@ -1,22 +1,28 @@
 import 'package:bl_demolition_materials/src/data_types/foundation_material.dart';
 import 'package:bl_demolition_materials/src/large_properties/demolition_materials/foundation_and_floors_demolition_materials.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundation.dart';
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundation/foundation.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'total_foundations.freezed.dart';
+import 'foundation/crawl_space_foundation.dart';
+import 'foundation/false_plinth_foundation.dart';
+import 'foundation/hollow_core_slab_foundation.dart';
+import 'foundation/pillar_foundation.dart';
+import 'foundation/shallow_foundation.dart';
+
+part 'foundations.freezed.dart';
 
 @freezed
-abstract class TotalFoundations with _$TotalFoundations implements Foundation {
-  const TotalFoundations._();
+abstract class Foundations with _$Foundations implements Foundation {
+  const Foundations._();
 
-  const factory TotalFoundations(
+  const factory Foundations(
       {FalsePlinthFoundation? falsePlinth,
       CrawlSpaceFoundation? crawlSpace,
       ShallowFoundation? shallow,
       PillarFoundation? pillar,
       HollowCoreSlabFoundation? hollowCoreSlab,
-      @Default(false) bool bituminousWaterProofing}) = _TotalFoundations;
+      @Default(false) bool bituminousWaterProofing}) = _Foundations;
 
   @override
   num? get area => Utils.sumOrNull([

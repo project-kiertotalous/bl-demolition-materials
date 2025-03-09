@@ -2,7 +2,7 @@ import 'package:bl_demolition_materials/src/large_properties/demolition_material
 import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 
-import '../external_shell_and_frame_structures/total_building_frame.dart';
+import '../external_shell_and_frame_structures/total/total_building_frame.dart';
 
 // Ulkoseinat ja runko
 

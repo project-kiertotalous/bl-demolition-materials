@@ -39,10 +39,10 @@ class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
       FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm;
 }
 
-class HotBitiumBrushingGroundFloor extends DemolitionMaterials {
+class HotBitumenBrushingGroundFloor extends DemolitionMaterials {
   Cellar? cellar;
 
-  HotBitiumBrushingGroundFloor([this.cellar]);
+  HotBitumenBrushingGroundFloor([this.cellar]);
 
   @override
   num get kgPerSquareMeter =>

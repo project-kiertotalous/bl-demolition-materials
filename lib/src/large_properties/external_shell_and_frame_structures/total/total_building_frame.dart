@@ -1,7 +1,9 @@
 import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/building_frame.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total_foundations.dart';
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundations.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'compositions/building_frame_parts.dart';
 
 part 'total_building_frame.freezed.dart';
 
@@ -11,7 +13,7 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
 
   factory TotalBuildingFrame(
       {BuildingFrame? buildingFrame,
-      TotalFoundations? totalFoundations}) = _TotalBuildingFrame;
+      Foundations? totalFoundations}) = _TotalBuildingFrame;
 
   num? get externalWallsHeight => buildingFrame?.externalWallsAverageHeight;
 

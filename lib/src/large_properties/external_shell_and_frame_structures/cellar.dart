@@ -10,7 +10,8 @@ part 'cellar.freezed.dart';
 abstract class Cellar with _$Cellar {
   late final _reinforcedConcreteSlabGroundFloor =
       ReinforcedConcreteSlabGroundFloor(this);
-  late final _hotBitiumBrushingGroundFloor = HotBitiumBrushingGroundFloor(this);
+  late final _hotBitumenBrushingGroundFloor =
+      HotBitumenBrushingGroundFloor(this);
   late final _mineralWoolGroundFloor = MineralWoolGroundFloor(this);
   late final _styrofoamGroundFloor = StyrofoamGroundFloor(this);
   late final _concreteCastingGroundFloor = ConcreteCastingGroundFloor(this);
@@ -93,10 +94,10 @@ abstract class Cellar with _$Cellar {
       ]);
 
   num? get hotBitumenCoatingVolume => Utils.sumOrNull([
-        _hotBitiumBrushingGroundFloor.volume,
+        _hotBitumenBrushingGroundFloor.volume,
         _hotBitumenCoatingInsulation.volume
       ]);
 
   num? get hotBitumenCoatingTons => Utils.sumOrNull(
-      [_hotBitiumBrushingGroundFloor.tons, _hotBitumenCoatingInsulation.tons]);
+      [_hotBitumenBrushingGroundFloor.tons, _hotBitumenCoatingInsulation.tons]);
 }

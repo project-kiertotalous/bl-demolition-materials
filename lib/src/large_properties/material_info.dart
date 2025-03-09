@@ -69,10 +69,10 @@ class FoundationSlabWeights {
   static num plasticMatKgPerCbm = 1100;
   static num mineralWool200mmKgPerSqm = 4;
   static num mineralWool200mmKgPerCbm = 20;
-  static num bitiumSolutionBrushingKgPerSqm = 0.1;
-  static num bitiumSolutionBrushingKgPerCbm = 700;
-  static num hotBitiumBrushingKgPerSqm = 0.3;
-  static num hotBitiumBrushingKgPerCbm = 700;
+  static num bitumenSolutionBrushingKgPerSqm = 0.1;
+  static num bitumenSolutionBrushingKgPerCbm = 700;
+  static num hotBitumenBrushingKgPerSqm = 0.3;
+  static num hotBitumenBrushingKgPerCbm = 700;
   static num acrylicCoatingKgPerSqm = 0.2;
   static num acrylicCoatingKgPerCbm = 700;
   static num sinteredTileMortarKgPerSqm = 16;
