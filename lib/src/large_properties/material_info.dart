@@ -295,10 +295,10 @@ class DoorWeights {
   static num aluminiumDoorWithGlassGlassKg = 5;
   static num aluminiumDoorWithGlassTrunkAndSlabKgPerCbm = 2730;
   static num aluminiumDoorWithGlassGlassKgPerCbm = 2400;
-  static num steelDorWithGlass05SqmTrunkAndSlabKg = 80;
-  static num steelDorWithGlass05SqmGlassKg = 5;
-  static num steelDorWithGlass05SqmTrunkAndSlabKgPerCbm = 7800;
-  static num steelDorWithGlass05SqmGlassKgPerCbm = 2400;
+  static num steelDoorWithGlass05SqmTrunkAndSlabKg = 80;
+  static num steelDoorWithGlass05SqmGlassKg = 5;
+  static num steelDoorWithGlass05SqmTrunkAndSlabKgPerCbm = 7800;
+  static num steelDoorWithGlass05SqmGlassKgPerCbm = 2400;
   static num steelDoorClosedFireDoorKg = 50;
   static num steelDoorClosedFireDoorKgPerCbm = 7800;
   static num metallicLiftDoorsAndBigPassageDoorsKg = 100;
