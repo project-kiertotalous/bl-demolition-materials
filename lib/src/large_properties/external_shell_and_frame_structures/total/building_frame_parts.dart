@@ -1,6 +1,6 @@
-import '../../../../utils/utils.dart';
-import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
-import '../total_building_frame.dart';
+import '../../../utils/utils.dart';
+import '../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
+import 'total_building_frame.dart';
 
 abstract class BuildingFramePart {
   final num? portionFractionPercentage;
@@ -63,8 +63,9 @@ class WoodFramePart extends StructuralBuildingFramePart {
   }
 }
 
-class GlulamBeamsPart extends StructuralBuildingFramePart {
-  GlulamBeamsPart({super.totalBuildingFrame, super.portionFractionPercentage});
+class GlulamBeamsFramePart extends StructuralBuildingFramePart {
+  GlulamBeamsFramePart(
+      {super.totalBuildingFrame, super.portionFractionPercentage});
 
   late final VerticalGlulamBeamsFrame? glulamBeamsFrame =
       VerticalGlulamBeamsFrame(totalBuildingFrame);

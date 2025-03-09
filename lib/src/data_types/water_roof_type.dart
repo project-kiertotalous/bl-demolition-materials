@@ -1,6 +1,2 @@
-enum WaterRoofType {
-  metalRoof,
-  roofingFelt,
-  mineriteRoof,
-  tiledRoof
-}
+/// Peltikatto, kattohuopa, mineriittikate, tiilikate
+enum WaterRoofType { metalRoof, roofingFelt, mineriteRoof, tiledRoof }

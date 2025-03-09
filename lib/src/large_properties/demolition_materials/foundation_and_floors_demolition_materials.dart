@@ -3,6 +3,8 @@ import 'package:bl_demolition_materials/src/large_properties/material_info.dart'
 
 import '../external_shell_and_frame_structures/foundation/foundation.dart';
 
+/// Valesokkeli
+/// teräsbetonipaalu, metriä/neliö (m/m2)
 class ReinforcedConcreteColumnFalsePlinth extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -51,6 +53,7 @@ class ReinforcedConcreteColumnFalsePlinth extends DemolitionMaterials {
   }
 }
 
+/// Anturan leikkauspoikkipinta-ala (m2)
 class FootingFalsePlinth extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -101,6 +104,7 @@ class FootingFalsePlinth extends DemolitionMaterials {
   }
 }
 
+/// Muurattu harkko, perustuksen korkeus (m)
 class ConcreteBlockFalsePlinth extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -133,6 +137,7 @@ class ConcreteBlockFalsePlinth extends DemolitionMaterials {
   }
 }
 
+/// Routastyrox, minimi kerros paksuus 100 mm
 class FrostProofStyrofoamFalsePlinth extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -165,6 +170,7 @@ class FrostProofStyrofoamFalsePlinth extends DemolitionMaterials {
   }
 }
 
+/// FinnFoam, oletus paksuus 100mm
 class FinnFoamFalsePlinth extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -199,6 +205,7 @@ class FinnFoamFalsePlinth extends DemolitionMaterials {
   }
 }
 
+/// Höyrysulkumuovi
 class VaporBarrierPlasticFalsePlinth extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -232,6 +239,8 @@ class VaporBarrierPlasticFalsePlinth extends DemolitionMaterials {
   }
 }
 
+/// Valesokkelin alapohja
+/// Teräsbetonilaatta (mm)
 class ReinforcedConcreteSlabFalsePlinthGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -277,6 +286,7 @@ class ReinforcedConcreteSlabFalsePlinthGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Kuumabitumisively
 class HotBitumenBrushingFalsePlinthGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -309,6 +319,7 @@ class HotBitumenBrushingFalsePlinthGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Mineraalivilla, oletus paksuus 100mm
 class MineralWoolFalsePlinthGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -342,6 +353,7 @@ class MineralWoolFalsePlinthGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Styrox r, oletuspaksuus 100mm
 class StyrofoamFalsePlinthGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -374,6 +386,7 @@ class StyrofoamFalsePlinthGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Betonivalu, oletuspaksuus 100mm
 class ConcreteCastingFalsePlinthGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -424,6 +437,8 @@ class ConcreteCastingFalsePlinthGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Rossipohja
+/// Teräsbetonipaalu, metriä/neliö (m/m2)
 class ReinforcedConcreteColumnCrawlSpace extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -472,6 +487,7 @@ class ReinforcedConcreteColumnCrawlSpace extends DemolitionMaterials {
   }
 }
 
+/// Teräsbetonivalusokkeli
 class ReinforcedConcreteCastFoundationCrawlSpace extends DemolitionMaterials {
   final num width;
   final num height;
@@ -524,6 +540,7 @@ class ReinforcedConcreteCastFoundationCrawlSpace extends DemolitionMaterials {
   }
 }
 
+/// Muurattu harkko, perustuksen korkeus (m)
 class ConcreteBlockCrawlSpace extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -556,6 +573,8 @@ class ConcreteBlockCrawlSpace extends DemolitionMaterials {
   }
 }
 
+/// Rossipohjan alapohja
+/// Kutterinpuru, oletuspaksuuu 200mm
 class WoodShavingsCrawlSpaceGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -591,6 +610,7 @@ class WoodShavingsCrawlSpaceGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Puurunko, oletus 50x100, väli 600mm, rungon oletuspaino/m2 (kg/m2)
 class WoodFrameCrawlSpaceGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -623,6 +643,7 @@ class WoodFrameCrawlSpaceGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Umpilaudoitus, laudan paksuus oletus 25mm (mm)
 class SolidBoardingCrawlSpaceGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -656,6 +677,7 @@ class SolidBoardingCrawlSpaceGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Rakennuspahvi
 class ConstructionPaperCrawlSpaceGroundFloor extends DemolitionMaterials {
   final Foundation? foundation;
 
@@ -688,12 +710,15 @@ class ConstructionPaperCrawlSpaceGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Tervapaperi
 class TarPaperCrawlSpaceGroundFloor
     extends ConstructionPaperCrawlSpaceGroundFloor {
   // Can this be removed? tar paper is identical to construction paper
   TarPaperCrawlSpaceGroundFloor([super.foundation]);
 }
 
+/// Matalaperustus
+/// Teräsbetonipaalu, metriä/neliö (m/m2)
 class ReinforcedConcreteColumnShallowFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -742,6 +767,7 @@ class ReinforcedConcreteColumnShallowFoundation extends DemolitionMaterials {
   }
 }
 
+/// Routastyrox, minimi kerros paksuus 100 mm
 class FrostProofStyrofoamShallowFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -774,6 +800,7 @@ class FrostProofStyrofoamShallowFoundation extends DemolitionMaterials {
   }
 }
 
+/// FinnFoam, oletus paksuus 100mm
 class FinnFoamShallowFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -805,6 +832,7 @@ class FinnFoamShallowFoundation extends DemolitionMaterials {
   }
 }
 
+/// Höyrysulkumuovi
 class VaporBarrierPlasticShallowFoundation extends DemolitionMaterials {
   final Foundation? foundation;
 
@@ -837,6 +865,8 @@ class VaporBarrierPlasticShallowFoundation extends DemolitionMaterials {
   }
 }
 
+/// Matalaperustuksen alapohja
+/// Teräsbetonilaatta (mm)
 class ReinforcedConcreteSlabShallowFoundationGroundFloor
     extends DemolitionMaterials {
   final num sizing;
@@ -892,6 +922,7 @@ class ReinforcedConcreteSlabShallowFoundationGroundFloor
   }
 }
 
+/// Kuumabitumisively
 class HotBitumenBrushingShallowFoundationGroundFloor
     extends DemolitionMaterials {
   final Foundation? foundation;
@@ -923,6 +954,7 @@ class HotBitumenBrushingShallowFoundationGroundFloor
   }
 }
 
+/// Mineraalivilla, oletus paksuus 100mm
 class MineralWoolShallowFoundationGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -956,6 +988,7 @@ class MineralWoolShallowFoundationGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Styrox r, oletuspaksuus 100mm
 class StyrofoamShallowFoundationGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -988,6 +1021,7 @@ class StyrofoamShallowFoundationGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Betonivalu, oletuspaksuus 100mm
 class ConcreteCastingShallowFoundationGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1039,6 +1073,8 @@ class ConcreteCastingShallowFoundationGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Pilariperustus
+/// teräsbetonipaalu, metriä/neliö (m/m2)
 class ReinforcedConcreteColumnColumnFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1087,6 +1123,7 @@ class ReinforcedConcreteColumnColumnFoundation extends DemolitionMaterials {
   }
 }
 
+/// Muurattu harkko, perustuksen korkeus (m)
 class ConcreteBlockColumnFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1119,6 +1156,7 @@ class ConcreteBlockColumnFoundation extends DemolitionMaterials {
   }
 }
 
+/// Routastyrox, minimi kerros paksuus 100 mm
 class FrostProofStyrofoamColumnFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1151,6 +1189,7 @@ class FrostProofStyrofoamColumnFoundation extends DemolitionMaterials {
   }
 }
 
+/// FinnFoam, oletus paksuus 100mm
 class FinnFoamColumnFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1184,6 +1223,7 @@ class FinnFoamColumnFoundation extends DemolitionMaterials {
   }
 }
 
+/// Höyrysulkumuovi
 class VaporBarrierPlasticColumnFoundation extends DemolitionMaterials {
   final Foundation? foundation;
 
@@ -1216,6 +1256,8 @@ class VaporBarrierPlasticColumnFoundation extends DemolitionMaterials {
   }
 }
 
+/// Pilariperustuksen alapohja
+/// Puurunko, oletus 50x100, väli 600mm, rungon oletuspaino/m2 (kg/m2)
 class WoodFrameColumnFoundationGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1248,6 +1290,7 @@ class WoodFrameColumnFoundationGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Umpilaudoitus, laudan paksuus oletus 25mm (mm)
 class SolidBoardingColumnFoundationGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1281,6 +1324,8 @@ class SolidBoardingColumnFoundationGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Ontelolaattaperustus
+/// Teräsbetonipaalu, metriä/neliö (m/m2)
 class ReinforcedConcreteColumnHollowCoreSlabFoundation
     extends DemolitionMaterials {
   final num sizing;
@@ -1331,6 +1376,7 @@ class ReinforcedConcreteColumnHollowCoreSlabFoundation
   }
 }
 
+/// Muurattu harkko, perustuksen korkeus (m)
 class ConcreteBlockHollowCoreSlabFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1363,6 +1409,7 @@ class ConcreteBlockHollowCoreSlabFoundation extends DemolitionMaterials {
   }
 }
 
+/// Routastyrox, minimi kerros paksuus 100 mm
 class FrostProofStyrofoamHollowCoreSlabFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1396,6 +1443,7 @@ class FrostProofStyrofoamHollowCoreSlabFoundation extends DemolitionMaterials {
   }
 }
 
+/// FinnFoam, oletus paksuus 100mm
 class FinnFoamHollowCoreSlabFoundation extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1427,6 +1475,7 @@ class FinnFoamHollowCoreSlabFoundation extends DemolitionMaterials {
   }
 }
 
+/// Höyrysulkumuovi
 class VaporBarrierPlasticHollowCoreSlabFoundation extends DemolitionMaterials {
   final Foundation? foundation;
 
@@ -1459,6 +1508,8 @@ class VaporBarrierPlasticHollowCoreSlabFoundation extends DemolitionMaterials {
   }
 }
 
+/// Ontelolaattaperustuksen alapohja
+/// Ontelolaatta (kg/m2)
 class HollowCoreSlabHollowCoreSlabFoundationGroundFloor
     extends DemolitionMaterials {
   final num sizing;
@@ -1496,6 +1547,7 @@ class HollowCoreSlabHollowCoreSlabFoundationGroundFloor
   }
 }
 
+/// Kuumabitumisively
 class HotBitumenBrushingHollowCoreSlabFoundationGroundFloor
     extends DemolitionMaterials {
   final Foundation? foundation;
@@ -1527,6 +1579,7 @@ class HotBitumenBrushingHollowCoreSlabFoundationGroundFloor
   }
 }
 
+/// Mineraalivilla, oletus paksuus 100mm
 class MineralWoolHollowCoreSlabFoundationGroundFloor
     extends DemolitionMaterials {
   final num sizing;
@@ -1562,6 +1615,7 @@ class MineralWoolHollowCoreSlabFoundationGroundFloor
   }
 }
 
+/// Styrox r, oletuspaksuus 100mm
 class StyrofoamHollowCoreSlabFoundationGroundFloor extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
@@ -1595,6 +1649,7 @@ class StyrofoamHollowCoreSlabFoundationGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Betonivalu, oletuspaksuus 100mm
 class ConcreteCastingHollowCoreSlabFoundationGroundFloor
     extends DemolitionMaterials {
   final num sizing;
@@ -1647,6 +1702,8 @@ class ConcreteCastingHollowCoreSlabFoundationGroundFloor
   }
 }
 
+/// Välipohjarakenne
+/// Betonivalu, paksuus oletus 200mm (m2)
 class ConcreteCastingIntermediateFloorFrames extends DemolitionMaterials {
   final num sizing;
 
@@ -1663,6 +1720,7 @@ class ConcreteCastingIntermediateFloorFrames extends DemolitionMaterials {
       FoundationWeights.concreteCastingSteelKgPerCbm;
 }
 
+/// Liimapalkki, oletusmäärä 0,4jm/lattianeliölle (m2)
 class GlulamBeamsIntermediateFloorFrames extends DemolitionMaterials {
   final num sizing;
 

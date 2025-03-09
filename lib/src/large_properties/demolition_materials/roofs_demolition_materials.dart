@@ -5,11 +5,9 @@ import 'package:bl_demolition_materials/src/large_properties/material_info.dart'
 
 import '../external_shell_and_frame_structures/total/total_roofs.dart';
 
-// Kattotyypit
-
-//Harja- ja aumakattorunko
-
-// Kattoristikot, puu
+/// Kattotyypit
+///Harja- ja aumakattorunko
+/// Kattoristikot, puu
 class WoodenTrussRidgeOrGableRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -60,7 +58,7 @@ class WoodenTrussRidgeOrGableRoof extends DemolitionMaterials {
   }
 }
 
-// Kattoristikot, teras
+/// Kattoristikot, teras
 class SteelTrussRidgeOrGableRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -91,7 +89,7 @@ class SteelTrussRidgeOrGableRoof extends DemolitionMaterials {
   }
 }
 
-// Betonipalkki
+/// Betonipalkki
 class ConcreteColumnRidgeOrGableRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -141,8 +139,8 @@ class ConcreteColumnRidgeOrGableRoof extends DemolitionMaterials {
   }
 }
 
-// Katon kannatinniskat, 50x150, oletusväli 3000mm
-// This class has no uses as far as I can see?
+/// Katon kannatinniskat, 50x150, oletusväli 3000mm
+/// This class has no uses as far as I can see?
 class RoofBracketsRidgeOrGableRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -190,9 +188,9 @@ class RoofBracketsRidgeOrGableRoof extends DemolitionMaterials {
   }
 }
 
-// Tasakatto ja pulpettikattorunko
+/// Tasakatto ja pulpettikattorunko
 
-// Kattoristikot, puu
+/// Kattoristikot, puu
 class WoodenTrussFlatOrMonoPitchedRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -241,7 +239,7 @@ class WoodenTrussFlatOrMonoPitchedRoof extends DemolitionMaterials {
   }
 }
 
-// Kattoristikot, teras
+/// Kattoristikot, teras
 class SteelTrussFlatOrMonoPitchedRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -271,7 +269,7 @@ class SteelTrussFlatOrMonoPitchedRoof extends DemolitionMaterials {
   }
 }
 
-// Betonipalkki
+/// Betonipalkki
 class ConcreteColumnFlatOrMonoPitchedRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -319,7 +317,7 @@ class ConcreteColumnFlatOrMonoPitchedRoof extends DemolitionMaterials {
   }
 }
 
-// Katon kannatinniskat, 50x150, oletusväli 3000mm
+/// Katon kannatinniskat, 50x150, oletusväli 3000mm
 class RoofBracketsFlatOrMonoPitchedRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -365,9 +363,8 @@ class RoofBracketsFlatOrMonoPitchedRoof extends DemolitionMaterials {
   }
 }
 
-// Vesikatto
-
-// Puurakenteinen aluslaudoitus kg/m2
+/// Vesikatto
+/// Puurakenteinen aluslaudoitus kg/m2
 class WoodenUnderPlankingWaterRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -409,7 +406,7 @@ class WoodenUnderPlankingWaterRoof extends DemolitionMaterials {
   }
 }
 
-// Tuulensuojavilla 30mm
+/// Tuulensuojavilla 30mm
 class WindProofWoolWaterRoof extends DemolitionMaterials {
   final num sizing;
   final TotalRoofs? totalRoofs;
@@ -455,7 +452,7 @@ class WindProofWoolWaterRoof extends DemolitionMaterials {
   }
 }
 
-// Aluskate
+/// Aluskate
 class UnderLayWaterRoof extends DemolitionMaterials {
   final TotalRoofs? totalRoofs;
 
@@ -496,7 +493,7 @@ class UnderLayWaterRoof extends DemolitionMaterials {
   }
 }
 
-// Kattopelti
+/// Kattopelti
 class RoofSheetWaterRoof extends DemolitionMaterials {
   final TotalRoofs? totalRoofs;
 
@@ -528,7 +525,7 @@ class RoofSheetWaterRoof extends DemolitionMaterials {
   }
 }
 
-// Huopakatto
+/// Huopakatto
 class FeltRoofWaterRoof extends DemolitionMaterials {
   final TotalRoofs? totalRoofs;
 
@@ -585,7 +582,7 @@ class FeltRoofWaterRoof extends DemolitionMaterials {
   }
 }
 
-//Mineriittikate
+///Mineriittikate
 
 class MineriteCoveringWaterRoof extends DemolitionMaterials {
   final TotalRoofs? totalRoofs;
@@ -643,7 +640,7 @@ class MineriteCoveringWaterRoof extends DemolitionMaterials {
   }
 }
 
-// Kattotiili
+/// Kattotiili
 class RoofTileWaterRoof extends DemolitionMaterials {
   final TotalRoofs? totalRoofs;
 
