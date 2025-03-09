@@ -1,6 +1,6 @@
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundations.dart';
 import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/intermediate_floors.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total_building_dimensions.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total_foundations.dart';
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total/total_building_dimensions.dart';
 import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,13 +8,13 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'total_intermediate_floors.freezed.dart';
 
 @freezed
-class TotalIntermediateFloors with _$TotalIntermediateFloors {
+abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
   const TotalIntermediateFloors._();
 
   const factory TotalIntermediateFloors(
       {IntermediateFloors? intermediateFloors,
       TotalBuildingDimensions? totalBuildingDimensions,
-      TotalFoundations? totalFoundation}) = _TotalIntermediateFloors;
+      Foundations? totalFoundation}) = _TotalIntermediateFloors;
 
   num? get woodFramePercentageFraction =>
       intermediateFloors?.woodFramePercentageFraction;

@@ -3,6 +3,8 @@ import '../external_shell_and_frame_structures/cellar.dart';
 import '../material_info.dart';
 import 'demolition_materials.dart';
 
+/// Maanvarainen lattia
+/// Teräsbetonilaatta (mm)
 class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -39,10 +41,11 @@ class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
       FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm;
 }
 
-class HotBitiumBrushingGroundFloor extends DemolitionMaterials {
+/// Kuumabitumisively
+class HotBitumenBrushingGroundFloor extends DemolitionMaterials {
   Cellar? cellar;
 
-  HotBitiumBrushingGroundFloor([this.cellar]);
+  HotBitumenBrushingGroundFloor([this.cellar]);
 
   @override
   num get kgPerSquareMeter =>
@@ -80,6 +83,7 @@ class HotBitiumBrushingGroundFloor extends DemolitionMaterials {
   num? get steelTons => 0;
 }
 
+/// Mineraalivilla, oletus paksuus 100mm
 class MineralWoolGroundFloor extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -113,6 +117,7 @@ class MineralWoolGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Styrox r, oletuspaksuus 100mm
 class StyrofoamGroundFloor extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -146,6 +151,7 @@ class StyrofoamGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Betonivalu, oletuspaksuus 100mm
 class ConcreteCastingGroundFloor extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -201,6 +207,7 @@ class ConcreteCastingGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Höyrysulkumuovi
 class VaporBarrierPlasticGroundFloor extends DemolitionMaterials {
   Cellar? cellar;
 
@@ -233,6 +240,8 @@ class VaporBarrierPlasticGroundFloor extends DemolitionMaterials {
   }
 }
 
+/// Kellarin seinäeristeet ja kosteussuoja
+/// Routastyrox 100 mm
 class FrostProofStyrofoamInsulation extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -266,6 +275,7 @@ class FrostProofStyrofoamInsulation extends DemolitionMaterials {
   }
 }
 
+/// Styrox r 150 mm
 class StyrofoamInsulation extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -299,6 +309,7 @@ class StyrofoamInsulation extends DemolitionMaterials {
   }
 }
 
+/// FinnFoam 50 mm
 class FinnFoamInsulation extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -332,6 +343,7 @@ class FinnFoamInsulation extends DemolitionMaterials {
   }
 }
 
+/// Höyrysulkumuovi
 class VaporBarrierPlasticInsulation extends DemolitionMaterials {
   Cellar? cellar;
 
@@ -364,6 +376,7 @@ class VaporBarrierPlasticInsulation extends DemolitionMaterials {
   }
 }
 
+/// Kuumabitumisively
 class HotBitumenCoatingInsulation extends DemolitionMaterials {
   Cellar? cellar;
 
@@ -396,6 +409,7 @@ class HotBitumenCoatingInsulation extends DemolitionMaterials {
   }
 }
 
+/// Betonivaluseinät
 class ConcreteCastingWalls extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -450,6 +464,8 @@ class ConcreteCastingWalls extends DemolitionMaterials {
       1000;
 }
 
+/// Tiiliseinät
+/// 130 mm puna- tai kalkkihiekkatiili, oletus 2 kertainen muuraus
 class BrickWalls extends DemolitionMaterials {
   late final num sizing;
   Cellar? cellar;
@@ -495,6 +511,7 @@ class BrickWalls extends DemolitionMaterials {
   }
 }
 
+/// 1- 3 mm sisäpuolinen tasoite
 class BrickWallInnerFiller extends DemolitionMaterials {
   Cellar? cellar;
 
@@ -539,6 +556,8 @@ class BrickWallInnerFiller extends DemolitionMaterials {
   }
 }
 
+/// Harkkoseinät
+/// Kevytbetoniharkko
 class LightweightConcreteBlockWalls extends DemolitionMaterials {
   Cellar? cellar;
 
@@ -579,6 +598,7 @@ class LightweightConcreteBlockWalls extends DemolitionMaterials {
   }
 }
 
+/// Rappaus, sisä ja ulkoseinät
 class PlasteringInteriorAndExteriorWalls extends DemolitionMaterials {
   Cellar? cellar;
 

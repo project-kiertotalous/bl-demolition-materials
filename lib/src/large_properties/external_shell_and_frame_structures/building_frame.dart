@@ -1,18 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'building_framework.freezed.dart';
+part 'building_frame.freezed.dart';
 
 @freezed
-class BuildingFramework with _$BuildingFramework {
-  const BuildingFramework._();
+abstract class BuildingFrame with _$BuildingFrame {
+  const BuildingFrame._();
 
-  const factory BuildingFramework(
+  const factory BuildingFrame(
           {@Default(false) bool useFoundationCircumference,
           num? externalWallsPerimeter,
           num? externalWallsAverageHeight,
           @Default(false) bool areMaterialsRecyclable,
           num? woodPortionFractionPercentage,
-          num? glulamVerticalBeamsPortionFractionPercentage,
+          num? glulamVerticalColumnsPortionFractionPercentage,
           num? concreteVerticalColumnsPortionFractionPercentage,
           num? steelVerticalColumnsPortionFractionPercentage,
           num? doubleLoadBearingBrickWallPortionFractionPercentage,
@@ -22,12 +22,5 @@ class BuildingFramework with _$BuildingFramework {
           num? profiledSheetMetalPortionFractionPercentage,
           num? steelProfileSandwichStructurePortionFractionPercentage,
           num? mineriteOrOtherStoneBoardPortionFractionPercentage}) =
-      _BuildingFramework;
-
-  num? get doubleLoadBearingBrickWallPortionSqm => throw UnimplementedError();
-
-  num? get concreteElementWallsWithoutFrameworkPortionSqm =>
-      throw UnimplementedError();
-
-// TODO: Implement aggregates
+      _BuildingFrame;
 }

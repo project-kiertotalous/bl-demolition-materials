@@ -24,10 +24,42 @@ class Utils {
     return values.any((val) => val != null);
   }
 
+  /// Returns true if all of the values in the provided list are null.
+  static bool allNull(List<num?> values) {
+    return !anyNonNull(values);
+  }
+
   /// Given a list of nullable numbers, returns 0 if every number is null.
   /// Otherwise, treats every null value as 0 and multiplies the result.
   static num? multiplyOrZero(List<num?> values) {
     num sum = values.fold<num>(0, (acc, val) => acc * (val ?? 0));
     return sum;
+  }
+
+  /// Given a mapping function, aggregates the list of elements. Returns null if
+  /// every element in the list is null.
+  ///
+  /// Example usage:
+  /// ```dart
+  /// final sumAggregate = Utils.aggregateOrNull(
+  ///   parts,
+  ///   (part) => part.value,
+  ///   (total, part) => total + part,
+  ///   0
+  /// );
+  /// ```
+  static A? aggregateOrNull<T, A>(List<T?> elements,
+      A? Function(T) mappingFunction, A Function(A, A) aggregator, A init) {
+    final aggregateElements = elements
+        .where((el) => el != null)
+        .map((el) => mappingFunction(el as T))
+        .where((mappedEl) => mappedEl != null)
+        .cast<A>();
+
+    if (aggregateElements.isEmpty) {
+      return null;
+    }
+
+    return aggregateElements.fold<A>(init, aggregator);
   }
 }

@@ -1,21 +1,21 @@
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundations.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'building_dimensions.dart';
-import 'building_framework.dart';
-import 'cellar.dart';
-import 'total_foundations.dart';
+import '../building_dimensions.dart';
+import '../building_frame.dart';
+import '../cellar.dart';
 
 part 'total_building_dimensions.freezed.dart';
 
 @freezed
-class TotalBuildingDimensions with _$TotalBuildingDimensions {
+abstract class TotalBuildingDimensions with _$TotalBuildingDimensions {
   const TotalBuildingDimensions._();
 
   const factory TotalBuildingDimensions(
       {BuildingDimensions? buildingDimensions,
       Cellar? cellar,
-      TotalFoundations? totalFoundations,
-      BuildingFramework? buildingFramework}) = _TotalBuildingDimensions;
+      Foundations? totalFoundations,
+      BuildingFrame? buildingFrame}) = _TotalBuildingDimensions;
 
   num? get grossFloorArea => buildingDimensions?.grossFloorArea;
 
@@ -60,12 +60,12 @@ class TotalBuildingDimensions with _$TotalBuildingDimensions {
     if (cellar?.floorArea == null &&
         cellar?.wallHeight == null &&
         totalFoundations?.area == null &&
-        buildingFramework?.externalWallsAverageHeight == null) {
+        buildingFrame?.externalWallsAverageHeight == null) {
       return null;
     }
 
     return ((totalFoundations?.area ?? 0) *
-            (buildingFramework?.externalWallsAverageHeight ?? 0)) +
+            (buildingFrame?.externalWallsAverageHeight ?? 0)) +
         ((cellar?.floorArea ?? 0) * (cellar?.wallHeight ?? 0));
   }
 

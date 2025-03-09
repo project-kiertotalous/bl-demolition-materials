@@ -1,11 +1,11 @@
 import 'package:bl_demolition_materials/src/large_properties/demolition_materials/demolition_materials.dart';
 import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/building_framework.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 
-// Ulkoseinat ja runko
+import '../external_shell_and_frame_structures/total/total_building_frame.dart';
 
-// Puurunko, oletus 50x200, oletusmenekki 1,25jm/m2
+/// Ulkoseinat ja runko
+/// Puurunko, oletus 50x200, oletusmenekki 1,25jm/m2
 class WoodFrame extends DemolitionMaterials {
   final num sizing;
 
@@ -25,12 +25,12 @@ class WoodFrame extends DemolitionMaterials {
   num get kgPerCubicMeter => WoodMaterialInfo.densityKgPerCubicMeter();
 }
 
-// Liimapalkit pysty, oletustilavuus 0,04m3/m, oletustukivali 5m
+/// Liimapalkit pysty, oletustilavuus 0,04m3/m, oletustukivali 5m
 class VerticalGlulamBeamsFrame extends DemolitionMaterials {
   final num sizing;
-  final BuildingFramework? buildingFramework;
+  final TotalBuildingFrame? totalBuildingFrame;
 
-  VerticalGlulamBeamsFrame([this.buildingFramework, this.sizing = 5]);
+  VerticalGlulamBeamsFrame([this.totalBuildingFrame, this.sizing = 5]);
 
   @override
   num get kgPerMeter =>
@@ -39,17 +39,17 @@ class VerticalGlulamBeamsFrame extends DemolitionMaterials {
   @override
   num? get linearMeter {
     if (Utils.anyNull([
-      buildingFramework?.externalWallsAverageHeight,
-      buildingFramework?.externalWallsPerimeter,
-      buildingFramework?.glulamVerticalBeamsPortionFractionPercentage
+      totalBuildingFrame?.externalWallsHeight,
+      totalBuildingFrame?.externalWallsPerimeter,
+      totalBuildingFrame?.glulamBeamsPart.portionFractionPercentage
     ])) {
       return null;
     }
 
-    return buildingFramework!.externalWallsPerimeter! /
+    return totalBuildingFrame!.externalWallsPerimeter! /
         sizing *
-        buildingFramework!.externalWallsAverageHeight! *
-        buildingFramework!.glulamVerticalBeamsPortionFractionPercentage!;
+        totalBuildingFrame!.externalWallsHeight! *
+        totalBuildingFrame!.glulamBeamsPart.portionFractionPercentage!;
   }
 
   @override
@@ -65,12 +65,12 @@ class VerticalGlulamBeamsFrame extends DemolitionMaterials {
       linearMeter == null ? null : linearMeter! * kgPerMeter / 1000;
 }
 
-// Betoni pystypalkit, oletustilavuus 0,04m3/jm, oletustukivali 5m
+/// Betoni pystypalkit, oletustilavuus 0,04m3/jm, oletustukivali 5m
 class VerticalConcreteColumnsFrame extends DemolitionMaterials {
   final num sizing;
-  final BuildingFramework? buildingFramework;
+  final TotalBuildingFrame? totalBuildingFrame;
 
-  VerticalConcreteColumnsFrame([this.buildingFramework, this.sizing = 5]);
+  VerticalConcreteColumnsFrame([this.totalBuildingFrame, this.sizing = 5]);
 
   @override
   num get kgPerMeter => FrameBarWeights.concreteRoofBars500x500KgPerM;
@@ -79,17 +79,19 @@ class VerticalConcreteColumnsFrame extends DemolitionMaterials {
   @override
   num? get linearMeter {
     if (Utils.anyNull([
-      buildingFramework?.externalWallsAverageHeight,
-      buildingFramework?.externalWallsPerimeter,
-      buildingFramework?.concreteVerticalColumnsPortionFractionPercentage
+      totalBuildingFrame?.externalWallsHeight,
+      totalBuildingFrame?.externalWallsPerimeter,
+      totalBuildingFrame
+          ?.concreteElementWallsWithoutFrameworkPart.portionFractionPercentage
     ])) {
       return null;
     }
 
-    return buildingFramework!.externalWallsPerimeter! /
+    return totalBuildingFrame!.externalWallsPerimeter! /
         sizing *
-        buildingFramework!.externalWallsAverageHeight! *
-        buildingFramework!.concreteVerticalColumnsPortionFractionPercentage!;
+        totalBuildingFrame!.externalWallsHeight! *
+        totalBuildingFrame!.concreteElementWallsWithoutFrameworkPart
+            .portionFractionPercentage!;
   }
 
   @override
@@ -104,33 +106,47 @@ class VerticalConcreteColumnsFrame extends DemolitionMaterials {
       linearMeter == null ? null : linearMeter! * kgPerMeter / 1000;
 }
 
-// Teräs pystypalkit, oletus putkiprofiili 250x250
+/// Teräs pystypalkit, oletus putkiprofiili 250x250
 class VerticalSteelColumnsFrame extends DemolitionMaterials {
   final num sizing;
-  final BuildingFramework? buildingFramework;
+  final TotalBuildingFrame? totalBuildingFrame;
 
-  VerticalSteelColumnsFrame([this.buildingFramework, this.sizing = 5]);
+  VerticalSteelColumnsFrame([this.totalBuildingFrame, this.sizing = 5]);
 
   @override
   num get kgPerMeter =>
       FrameBarWeights.steelVerticalBarsPipeProfile250x250KgPerM;
 
   @override
-  num get linearMeter => 0; // TODO
+  num? get linearMeter {
+    if (Utils.anyNull([
+      totalBuildingFrame?.externalWallsPerimeter,
+      totalBuildingFrame?.externalWallsHeight,
+      totalBuildingFrame?.steelVerticalColumnsPart.portionFractionPercentage,
+    ])) {
+      return null;
+    }
+
+    return totalBuildingFrame!.externalWallsPerimeter! /
+        sizing *
+        totalBuildingFrame!.externalWallsHeight! *
+        totalBuildingFrame!.steelVerticalColumnsPart.portionFractionPercentage!;
+  }
 
   @override
   num get kgPerCubicMeter =>
       FrameBarWeights.steelVerticalBarsPipeProfile250x250KgPerCbm;
 
   @override
-  num get steelTons => linearMeter * kgPerMeter / 1000;
+  num? get steelTons =>
+      linearMeter == null ? null : linearMeter! * kgPerMeter / 1000;
 }
 
-// Kaksinkertainen tiiliseina
+/// Kaksinkertainen tiiliseina
 class DoubleBrickWallFrame extends DemolitionMaterials {
-  final BuildingFramework? buildingFramework;
+  final TotalBuildingFrame? totalBuildingFrame;
 
-  DoubleBrickWallFrame([this.buildingFramework]);
+  DoubleBrickWallFrame([this.totalBuildingFrame]);
 
   @override
   num get kgPerSquareMeter => ExteriorWallWeights.redBrick130mmKgPerSqm * 2;
@@ -140,33 +156,33 @@ class DoubleBrickWallFrame extends DemolitionMaterials {
 
   @override
   num? get volume {
-    if (buildingFramework?.doubleLoadBearingBrickWallPortionSqm == null) {
+    if (totalBuildingFrame?.doubleLoadBearingBrickWallPart.area == null) {
       return null;
     }
 
     return kgPerSquareMeter *
-        buildingFramework!.doubleLoadBearingBrickWallPortionSqm! /
+        totalBuildingFrame!.doubleLoadBearingBrickWallPart.area! /
         kgPerCubicMeter;
   }
 
   @override
   num? get tons {
-    if (buildingFramework?.doubleLoadBearingBrickWallPortionSqm == null) {
+    if (totalBuildingFrame?.doubleLoadBearingBrickWallPart.area == null) {
       return null;
     }
 
     return kgPerSquareMeter *
-        buildingFramework!.doubleLoadBearingBrickWallPortionSqm! /
+        totalBuildingFrame!.doubleLoadBearingBrickWallPart.area! /
         1000;
   }
 }
 
-// Betoniseina elementti, 200mm paksu betoni, oletus 260kg/m2
+/// Betoniseina elementti, 200mm paksu betoni, oletus 260kg/m2
 class ConcreteWallElementFrame extends DemolitionMaterials {
   final num sizing;
-  final BuildingFramework? buildingFramework;
+  final TotalBuildingFrame? totalBuildingFrame;
 
-  ConcreteWallElementFrame([this.buildingFramework, this.sizing = 260]);
+  ConcreteWallElementFrame([this.totalBuildingFrame, this.sizing = 260]);
 
   @override
   num get kgPerSquareMeter =>
@@ -180,30 +196,30 @@ class ConcreteWallElementFrame extends DemolitionMaterials {
 
   @override
   num? get concreteVolume {
-    if (buildingFramework?.concreteElementWallsWithoutFrameworkPortionSqm ==
+    if (totalBuildingFrame?.concreteElementWallsWithoutFrameworkPart.area ==
         null) {
       return null;
     }
 
     return kgPerSquareMeter *
-        buildingFramework!.concreteElementWallsWithoutFrameworkPortionSqm! /
+        totalBuildingFrame!.concreteElementWallsWithoutFrameworkPart.area! /
         kgPerCubicMeter;
   }
 
   @override
   num? get concreteTons {
-    if (buildingFramework?.concreteElementWallsWithoutFrameworkPortionSqm ==
+    if (totalBuildingFrame?.concreteElementWallsWithoutFrameworkPart.area ==
         null) {
       return null;
     }
 
     return kgPerSquareMeter *
-        buildingFramework!.concreteElementWallsWithoutFrameworkPortionSqm! /
+        totalBuildingFrame!.concreteElementWallsWithoutFrameworkPart.area! /
         1000;
   }
 }
 
-// Tuulensuojalevy (bituliitti), oletuspaksuus 15mm
+/// Tuulensuojalevy (bituliitti), oletuspaksuus 15mm
 class WindProtectionBoardFrame extends DemolitionMaterials {
   final num sizing;
 
@@ -218,7 +234,7 @@ class WindProtectionBoardFrame extends DemolitionMaterials {
       ExteriorWallWeights.windProtectionBoard15mmKgPerCbm;
 }
 
-// Mineraalivilla, oletuspaksuus 100mm
+/// Mineraalivilla, oletuspaksuus 100mm
 class MineralWoolFrame extends DemolitionMaterials {
   final num sizing;
 
@@ -232,7 +248,7 @@ class MineralWoolFrame extends DemolitionMaterials {
   num get kgPerCubicMeter => ExteriorWallWeights.mineralWool100mmKgPerCbm;
 }
 
-// 130mm kalkki tai punatiili
+/// 130mm kalkki tai punatiili
 class LimeOrRedBrickFrame extends DemolitionMaterials {
   @override
   num get kgPerSquareMeter => ExteriorWallWeights.redBrick130mmKgPerSqm;
@@ -241,7 +257,7 @@ class LimeOrRedBrickFrame extends DemolitionMaterials {
   num get kgPerCubicMeter => ExteriorWallWeights.redBrick130mmKgPerCbm;
 }
 
-// 20mm ulkoverhouslauta
+/// 20mm ulkoverhouslauta
 class ExteriorCladdingBoardFrame extends DemolitionMaterials {
   final num sizing;
 
@@ -255,7 +271,7 @@ class ExteriorCladdingBoardFrame extends DemolitionMaterials {
   num get kgPerCubicMeter => ExteriorWallWeights.claddingBoard20mmKgPerCbm;
 }
 
-// Kipsilevy, oletuspaksuus 11mm
+/// Kipsilevy, oletuspaksuus 11mm
 class PlasterBoardFrame extends DemolitionMaterials {
   final num sizing;
 
@@ -269,7 +285,7 @@ class PlasterBoardFrame extends DemolitionMaterials {
   num get kgPerCubicMeter => ExteriorWallWeights.plasterboard11mmKgPerCbm;
 }
 
-// Profiilipoelti, oletus vain toisella puolen (1kertainen)
+/// Profiilipoelti, oletus vain toisella puolen (1kertainen)
 class ProfiledSheetMetalBoard extends DemolitionMaterials {
   final num sizing;
 
@@ -283,8 +299,8 @@ class ProfiledSheetMetalBoard extends DemolitionMaterials {
   num get kgPerCubicMeter => ExteriorWallWeights.profiledSheetMetalKgPerCbm;
 }
 
-// Puolikova kuitulevy
-class SemiRigidFiberBoardFrame extends DemolitionMaterials {
+/// Puolikova kuitulevy
+class SemiHardFiberBoardFrame extends DemolitionMaterials {
   @override
   num get kgPerSquareMeter => ExteriorWallWeights.semiHardFiberboardKgPerSqm;
 
@@ -292,7 +308,7 @@ class SemiRigidFiberBoardFrame extends DemolitionMaterials {
   num get kgPerCubicMeter => ExteriorWallWeights.semiHardFiberboardKgPerCbm;
 }
 
-// Styrox
+/// Styrox
 class StyrofoamFrame extends DemolitionMaterials {
   @override
   num get kgPerSquareMeter => ExteriorWallWeights.styrofoamKgPerSqm;
@@ -301,7 +317,7 @@ class StyrofoamFrame extends DemolitionMaterials {
   num get kgPerCubicMeter => ExteriorWallWeights.styrofoamKgPerCbm;
 }
 
-// Rappaus, sisä ja ulkoseinät
+/// Rappaus, sisä ja ulkoseinät
 class PlasteringInteriorAndExteriorWallsFrame extends DemolitionMaterials {
   @override
   num get kgPerSquareMeter =>
@@ -312,7 +328,7 @@ class PlasteringInteriorAndExteriorWallsFrame extends DemolitionMaterials {
       ExteriorWallWeights.plasteringInteriorAndExteriorWallsKgPerCbm;
 }
 
-// Mineriittilevy
+/// Mineriittilevy
 class MineriteBoardFrame extends DemolitionMaterials {
   @override
   num get kgPerSquareMeter => ExteriorWallWeights.mineriteBoardKgPerSqm;

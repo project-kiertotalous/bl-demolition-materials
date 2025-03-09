@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'floor_structure.freezed.dart';
 
 @freezed
-class FloorStructure with _$FloorStructure {
+abstract class FloorStructure with _$FloorStructure {
   const FloorStructure._();
 
   const factory FloorStructure(
