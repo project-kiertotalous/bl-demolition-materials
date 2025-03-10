@@ -306,7 +306,7 @@ class DoorWeights {
   static num metallicLiftDoorsAndBigPassageDoorsKgPerCbm = 7800;
 }
 
-class AvhcAndElectricalInstallationsWeights {
+class HvacAndElectricalInstallationsWeights {
   static num waterPipesCopperKgPerM = 0.207;
   static num waterPipesPlasticKgPerM = 0.12;
   static num waterPipesPlasticKgPerCbm = 1100;
@@ -314,18 +314,18 @@ class AvhcAndElectricalInstallationsWeights {
   static num sewagePipesCastIronDn150KgPerM = 141;
   static num sewagePipesPlasticDn150KgPerM = 22;
   static num sewagePipesPlasticDn150KgPerCbm = 1100;
-  static num airConditioningPipesSteelDn300KgPerM = 25;
-  static num airConditioningPipesSteelDn500KgPerM = 52;
+  static num steelVentilationPipes300DnKgPerM = 25;
+  static num steelVentilationPipes500DnKgPerM = 52;
   static num electricalWiresCopperKgPerM = 0.13;
   static num waterAccumulatorsElectricSmallKgPerPcs = 100;
-  static num waterAccumulatorsElectricBigDistrictHeating500To1000LtrsKgPerPcs =
-      400;
+  static num
+      waterAccumulatorsElectricBigDistrictHeating500To1000LitersKgPerPcs = 400;
   static num radiatorsElectricKgPerPcs = 8;
   static num radiatorsWaterCirculationKgPerPcs = 15;
-  static num ventilationMachinesKgPerPcs = 100;
-  static num electricalDistirbutionCabinetsAndMetersKgPerPcs = 20;
+  static num ventilationUnitsKgPerPcs = 100;
+  static num electricalDistributionCabinetsAndMetersKgPerPcs = 20;
   static num electricMotorsAndCirculationPumpsKgPerPcs = 25;
-  static num superVacuumCleanersKgPerPcs = 15;
+  static num roofExhaustFansKgPerPcs = 15;
 }
 
 class FurnitureDressingKitchenToiletSpaceWeights {
@@ -348,7 +348,7 @@ class FurnitureDressingKitchenToiletSpaceWeights {
   static num coldRoomCabinetsKgPerPcs = 100;
 }
 
-class FixedFurnitureAndStructuresRelatedToBuildingWeights {
+class FixturesAndStructuresWeights {
   static num rainGuttersKgPerM = 2;
   static num dripTraysAndProtectiveSheeting08mmSteelDiskKgPerSqm = 8;
   static num fireEscapesAndFootBridgesKgPerM = 10;
