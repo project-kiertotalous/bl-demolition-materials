@@ -16,3 +16,4 @@ class OuterDoor with _$OuterDoor {
 
   num? get overallOuterDoors => Utils.sumOrNull([shutDoors, glassDoors]);
 }
+

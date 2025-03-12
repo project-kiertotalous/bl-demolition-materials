@@ -18,6 +18,7 @@ class InnerDoors with _$InnerDoors {
       InnerDoor? fireDoors,
       @Default(false) bool areDoorsRecyclable}) = _InnerDoors;
 
+<<<<<<< HEAD
   num? get totalWoodenMaterialVolume {
     final allNulls = Utils.sumOrNull([
       slabDoors?.shutDoors,
