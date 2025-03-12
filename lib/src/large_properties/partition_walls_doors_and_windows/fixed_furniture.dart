@@ -1,5 +1,6 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
+import 'package:bl_demolition_materials/src/utils/utils.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'fixed_furniture.freezed.dart';
 
@@ -21,62 +22,138 @@ class FixedFurniture with _$FixedFurniture {
 
   const FixedFurniture._();
 
-  num get ceramicMaterialVolume =>
-      (toiletSeats! *
-              FurnitureDressingKitchenToiletSpaceWeights
-                  .toiletSeatPorcelainKgPerPcs +
-          porcelainSinks! *
-              FurnitureDressingKitchenToiletSpaceWeights
-                  .toiletSinkPorcelainKgPerPcs) /
+  num? get ceramicMaterialVolume {
+    final allNulls  = !Utils.anyNonNull([
+      Utils.multiplyOrNull([toiletSeats, FurnitureDressingKitchenToiletSpaceWeights.toiletSeatPorcelainKgPerPcs]),
+      Utils.multiplyOrNull([porcelainSinks, FurnitureDressingKitchenToiletSpaceWeights.toiletSinkPorcelainKgPerPcs]),
+    ]);
+
+    if (allNulls) {
+      return null;
+    }
+      return Utils.sumOrNull([
+        Utils.multiplyOrZero([
+          toiletSeats,
+          FurnitureDressingKitchenToiletSpaceWeights.toiletSeatPorcelainKgPerPcs
+        ]),
+        Utils.multiplyOrZero([
+          porcelainSinks,
+          FurnitureDressingKitchenToiletSpaceWeights.toiletSinkPorcelainKgPerPcs
+        ]),
+      ])! /
       FurnitureDressingKitchenToiletSpaceWeights.toiletSeatPorcelainKgPerCbm;
+  }
 
-  num get ceramicMaterialTons =>
-      (toiletSeats! *
-              FurnitureDressingKitchenToiletSpaceWeights
-                  .toiletSeatPorcelainKgPerPcs +
-          porcelainSinks! *
-              FurnitureDressingKitchenToiletSpaceWeights
-                  .toiletSinkPorcelainKgPerPcs) /
-      1000;
+  num? get ceramicMaterialTons {
+    final allNulls = !Utils.anyNonNull([toiletSeats, porcelainSinks]);
 
-  num get stainlessSteelMaterialTons =>
-      steelTables! *
-      FurnitureDressingKitchenToiletSpaceWeights
-          .steelSinksAndTablesRustProofKgPerPcs /
-      1000;
+    if (allNulls) {
+      return null;
+    }
+    return Utils.sumOrNull([
+      Utils.multiplyOrZero([
+        toiletSeats,
+        FurnitureDressingKitchenToiletSpaceWeights.toiletSeatPorcelainKgPerPcs
+      ]),
+      Utils.multiplyOrZero([
+        porcelainSinks,
+        FurnitureDressingKitchenToiletSpaceWeights.toiletSinkPorcelainKgPerPcs
+      ]),
+    ])! /
+        1000;
+  }
 
-  num get steelMaterialTons =>
-      dressingClosetsSteel! *
-      FurnitureDressingKitchenToiletSpaceWeights
-          .metallicDressingClosets500x1600KgPerLinearMeter /
-      1000;
+  num? get stainlessSteelMaterialTons {
+    if (steelTables == null) {
+      return null;
+    }
+    return steelTables! *
+        FurnitureDressingKitchenToiletSpaceWeights
+            .steelSinksAndTablesRustProofKgPerPcs /
+        1000;
+  }
 
-  num get chipboardMaterialVolume =>
-      (kitchenClosetsWoodOrChipboard! + clothingOrOtherClosetsWood!) *
-      FurnitureDressingKitchenToiletSpaceWeights
-          .woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter /
-      FurnitureDressingKitchenToiletSpaceWeights
-          .woodBasedClosetsAndOtherFurnitureWidth06MKgPerCbm;
+  num? get steelMaterialTons {
+    if (dressingClosetsSteel == null) {
+      return null;
+    }
+    return dressingClosetsSteel! *
+        FurnitureDressingKitchenToiletSpaceWeights
+            .metallicDressingClosets500x1600KgPerLinearMeter /
+        1000;
+  }
 
-  num get chipboardMaterialTons =>
-      (kitchenClosetsWoodOrChipboard! + clothingOrOtherClosetsWood!) *
-      FurnitureDressingKitchenToiletSpaceWeights
-          .woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter /
-      1000;
+  num? get chipboardMaterialVolume {
+    final allNulls = !Utils.anyNonNull([
+      kitchenClosetsWoodOrChipboard,
+      clothingOrOtherClosetsWood,
+    ]);
 
-  num get electricScrapMaterialTons =>
-      (electricStoves! *
-              FurnitureDressingKitchenToiletSpaceWeights
-                  .electricStovesForApartmentsKgPerPcs +
-          electricStovesForBigKitchens! *
-              FurnitureDressingKitchenToiletSpaceWeights
-                  .foodServiceElecticStovesKgPerPcs +
-          coldRoomCabinets! *
-              FurnitureDressingKitchenToiletSpaceWeights
-                  .coldRoomCabinetsKgPerPcs +
-          refrigerators! *
-              FurnitureDressingKitchenToiletSpaceWeights.fridgesKgPerPcs +
-          saunaStoves! *
-              FurnitureDressingKitchenToiletSpaceWeights.saunaStovesKgPerPcs) /
-      1000;
+    if (allNulls) {
+      return null;
+    }
+    return Utils.sumOrNull([
+      kitchenClosetsWoodOrChipboard,
+      clothingOrOtherClosetsWood,
+    ])! *
+        FurnitureDressingKitchenToiletSpaceWeights
+            .woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter /
+        FurnitureDressingKitchenToiletSpaceWeights
+            .woodBasedClosetsAndOtherFurnitureWidth06MKgPerCbm;
+  }
+
+  num? get chipboardMaterialTons {
+    final allNulls = !Utils.anyNonNull([
+      kitchenClosetsWoodOrChipboard,
+      clothingOrOtherClosetsWood,
+    ]);
+
+    if (allNulls) {
+      return null;
+    }
+    return Utils.sumOrNull([
+      kitchenClosetsWoodOrChipboard,
+      clothingOrOtherClosetsWood,
+    ])! *
+        FurnitureDressingKitchenToiletSpaceWeights
+            .woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter /
+        1000;
+  }
+
+  num? get electricScrapMaterialTons {
+    final allNulls = !Utils.anyNonNull([
+      electricStoves,
+      electricStovesForBigKitchens,
+      coldRoomCabinets,
+      refrigerators,
+      saunaStoves,
+    ]);
+
+    if (allNulls) {
+      return null;
+    }
+    return Utils.sumOrNull([
+      Utils.multiplyOrZero([
+        electricStoves,
+        FurnitureDressingKitchenToiletSpaceWeights.electricStovesForApartmentsKgPerPcs
+      ]),
+      Utils.multiplyOrZero([
+        electricStovesForBigKitchens,
+        FurnitureDressingKitchenToiletSpaceWeights.foodServiceElecticStovesKgPerPcs
+      ]),
+      Utils.multiplyOrZero([
+        coldRoomCabinets,
+        FurnitureDressingKitchenToiletSpaceWeights.coldRoomCabinetsKgPerPcs
+      ]),
+      Utils.multiplyOrZero([
+        refrigerators,
+        FurnitureDressingKitchenToiletSpaceWeights.fridgesKgPerPcs
+      ]),
+      Utils.multiplyOrZero([
+        saunaStoves,
+        FurnitureDressingKitchenToiletSpaceWeights.saunaStovesKgPerPcs
+      ]),
+    ])! /
+        1000;
+  }
 }

@@ -33,14 +33,20 @@ class RoomSpace with _$RoomSpace {
   num? get overallWallArea {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();
-    return overallWallLengthLinearMeters! *
-        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls!;
+    return Utils.multiplyOrNull([overallWallLengthLinearMeters,
+        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls]);
   }
 
   // seinien pintarakenteen osuus kaikista valiseinista (seinapinta-alasta)
   num? get partOfAllPartitionWallsInPercents {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();
+  if (Utils.anyNull([
+      overallWallArea,
+      internalWallFramesAndSurfaceMaterial.totalArea
+    ])) {
+      return null;
+    }
     return overallWallArea! / internalWallFramesAndSurfaceMaterial.totalArea!;
   }
 

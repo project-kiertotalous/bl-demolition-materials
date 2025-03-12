@@ -1,3 +1,4 @@
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../material_info.dart';
@@ -17,32 +18,71 @@ class InnerDoors with _$InnerDoors {
       InnerDoor? fireDoors,
       @Default(false) bool areDoorsRecyclable}) = _InnerDoors;
 
-  num? get totalWoodenMaterialVolume =>
-      ((slabDoors?.shutDoors ?? 0) +
-          (slabDoors?.glassDoors ?? 0) +
-          (woodenDoors?.shutDoors ?? 0) +
-          (woodenDoors?.glassDoors ?? 0)) *
-      DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg /
-      DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKgPerCbm;
+  num? get totalWoodenMaterialVolume {
+    final allNulls = Utils.sumOrNull([
+      slabDoors?.shutDoors,
+      slabDoors?.glassDoors,
+      woodenDoors?.shutDoors,
+      woodenDoors?.glassDoors,
+    ]);
+    if (allNulls == 0) {
+      return null;
+    }
+    final result = allNulls! *
+        DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg /
+        DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKgPerCbm;
+    return result;
+  }
 
-  num? get totalGlassMaterialVolume =>
-      ((slabDoors?.glassDoors ?? 0) + (woodenDoors?.glassDoors ?? 0)) *
-      DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg /
-      1000;
+  num? get totalGlassMaterialVolume {
+    final allNulls = Utils.sumOrNull([
+      slabDoors?.glassDoors,
+      woodenDoors?.glassDoors,
+    ]);
+    if (allNulls == 0) {
+      return null;
+    }
+    final result =
+        allNulls! * DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg / 1000;
+    return result;
+  }
 
-  num? get totalWoodMaterialTons =>
-      ((slabDoors?.shutDoors ?? 0) +
-          (slabDoors?.glassDoors ?? 0) +
-          (woodenDoors?.shutDoors ?? 0) +
-          (woodenDoors?.glassDoors ?? 0)) *
-      DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg /
-      1000;
+  num? get totalWoodMaterialTons {
+    final allNulls = Utils.sumOrNull([
+      slabDoors?.shutDoors,
+      slabDoors?.glassDoors,
+      woodenDoors?.shutDoors,
+      woodenDoors?.glassDoors,
+    ]);
+    if (allNulls == 0) {
+      return null;
+    }
+    final result = allNulls! *
+        DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg /
+        1000;
+    return result;
+  }
 
-  num? get totalGlassMaterialTons =>
-      ((slabDoors?.glassDoors ?? 0) + (woodenDoors?.glassDoors ?? 0)) *
-      DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg /
-      DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKgPerCbm;
+  num? get totalGlassMaterialTons {
+    final allNulls = Utils.sumOrNull([
+      slabDoors?.glassDoors,
+      woodenDoors?.glassDoors,
+    ]);
+    if (allNulls == 0) {
+      return null;
+    }
+    final result = allNulls! *
+        DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg /
+        DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKgPerCbm;
+    return result;
+  }
 
-  num? get totalSteelMaterialTons =>
-      (fireDoors?.shutDoors ?? 0) * DoorWeights.steelDoorClosedFireDoorKg / 1000;
+  num? get totalSteelMaterialTons {
+    if (fireDoors?.shutDoors == null) {
+      return null;
+    }
+    final result =
+        fireDoors!.shutDoors! * DoorWeights.steelDoorClosedFireDoorKg / 1000;
+    return result;
+  }
 }

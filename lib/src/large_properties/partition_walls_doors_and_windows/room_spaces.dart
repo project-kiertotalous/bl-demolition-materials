@@ -39,236 +39,327 @@ class RoomSpaces with _$RoomSpaces {
     final totalHeight =
         internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls ?? 0;
     final totalLength = Utils.sumOrNull([
-          officeSpaces?.woodFramedWallsLinearMeters ?? 0,
-          lobbiesAndOtherCommonAreas?.woodFramedWallsLinearMeters ?? 0,
-          restroomsAndWashingFacilities?.woodFramedWallsLinearMeters ?? 0,
-          kitchens?.woodFramedWallsLinearMeters ?? 0,
-          teachingAndTreatmentSpaces?.woodFramedWallsLinearMeters ?? 0,
-          storageAndWorkspaces?.woodFramedWallsLinearMeters ?? 0,
-          otherSpaces?.woodFramedWallsLinearMeters ?? 0,
-        ]) ??
-        0;
-
-    return totalLength * totalHeight;
+      officeSpaces?.woodFramedWallsLinearMeters,
+      lobbiesAndOtherCommonAreas?.woodFramedWallsLinearMeters,
+      restroomsAndWashingFacilities?.woodFramedWallsLinearMeters,
+      kitchens?.woodFramedWallsLinearMeters,
+      teachingAndTreatmentSpaces?.woodFramedWallsLinearMeters,
+      storageAndWorkspaces?.woodFramedWallsLinearMeters,
+      otherSpaces?.woodFramedWallsLinearMeters,
+    ]);
+    if (Utils.anyNull([totalLength, totalHeight])) {
+      return null;
+    }
+    return totalLength! * totalHeight;
   }
 
   num? get totalBrickWallsInSquareMeters {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();
-    if (internalWallFramesAndSurfaceMaterial
-                .overallLengthOfInternalWallsAllFloors ==
-            null ||
-        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls ==
-            null) {
+    if (internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls ==
+        null) {
+      return null;
+    }
+    if (Utils.allNull([
+      officeSpaces?.brickWallsLinearMeters,
+      lobbiesAndOtherCommonAreas?.brickWallsLinearMeters,
+      restroomsAndWashingFacilities?.brickWallsLinearMeters,
+      kitchens?.brickWallsLinearMeters,
+      teachingAndTreatmentSpaces?.brickWallsLinearMeters,
+      storageAndWorkspaces?.brickWallsLinearMeters,
+      otherSpaces?.brickWallsLinearMeters,
+    ])) {
       return null;
     }
     final totalHeight =
-        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls ?? 0;
+        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls;
     final totalLength = Utils.sumOrNull([
-          officeSpaces?.brickWallsLinearMeters ?? 0,
-          lobbiesAndOtherCommonAreas?.brickWallsLinearMeters ?? 0,
-          restroomsAndWashingFacilities?.brickWallsLinearMeters ?? 0,
-          kitchens?.brickWallsLinearMeters ?? 0,
-          teachingAndTreatmentSpaces?.brickWallsLinearMeters ?? 0,
-          storageAndWorkspaces?.brickWallsLinearMeters ?? 0,
-          otherSpaces?.brickWallsLinearMeters ?? 0,
-        ]) ??
-        0;
+      officeSpaces?.brickWallsLinearMeters,
+      lobbiesAndOtherCommonAreas?.brickWallsLinearMeters,
+      restroomsAndWashingFacilities?.brickWallsLinearMeters,
+      kitchens?.brickWallsLinearMeters,
+      teachingAndTreatmentSpaces?.brickWallsLinearMeters,
+      storageAndWorkspaces?.brickWallsLinearMeters,
+      otherSpaces?.brickWallsLinearMeters,
+    ]);
 
-    return totalLength * totalHeight;
+    return totalLength! * totalHeight!;
   }
 
   num? get totalConcreteElementOrCastingWallsInSquareMeters {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();
-    if (internalWallFramesAndSurfaceMaterial
-                .overallLengthOfInternalWallsAllFloors ==
-            null ||
-        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls ==
-            null) {
+    if (internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls ==
+        null) {
+      return null;
+    }
+    if (Utils.allNull([
+      officeSpaces?.concreteElementOrCastingWallsLinearMeters,
+      lobbiesAndOtherCommonAreas?.concreteElementOrCastingWallsLinearMeters,
+      restroomsAndWashingFacilities?.concreteElementOrCastingWallsLinearMeters,
+      kitchens?.concreteElementOrCastingWallsLinearMeters,
+      teachingAndTreatmentSpaces?.concreteElementOrCastingWallsLinearMeters,
+      storageAndWorkspaces?.concreteElementOrCastingWallsLinearMeters,
+      otherSpaces?.concreteElementOrCastingWallsLinearMeters,
+    ])) {
       return null;
     }
     final totalHeight =
-        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls ?? 0;
+        internalWallFramesAndSurfaceMaterial.averageHeightOfInternalWalls;
     final totalLength = Utils.sumOrNull([
-          officeSpaces?.concreteElementOrCastingWallsLinearMeters ?? 0,
-          lobbiesAndOtherCommonAreas
-                  ?.concreteElementOrCastingWallsLinearMeters ??
-              0,
-          restroomsAndWashingFacilities
-                  ?.concreteElementOrCastingWallsLinearMeters ??
-              0,
-          kitchens?.concreteElementOrCastingWallsLinearMeters ?? 0,
-          teachingAndTreatmentSpaces
-                  ?.concreteElementOrCastingWallsLinearMeters ??
-              0,
-          storageAndWorkspaces?.concreteElementOrCastingWallsLinearMeters ?? 0,
-          otherSpaces?.concreteElementOrCastingWallsLinearMeters ?? 0,
-        ]) ??
-        0;
+      officeSpaces?.concreteElementOrCastingWallsLinearMeters,
+      lobbiesAndOtherCommonAreas?.concreteElementOrCastingWallsLinearMeters,
+      restroomsAndWashingFacilities?.concreteElementOrCastingWallsLinearMeters,
+      kitchens?.concreteElementOrCastingWallsLinearMeters,
+      teachingAndTreatmentSpaces?.concreteElementOrCastingWallsLinearMeters,
+      storageAndWorkspaces?.concreteElementOrCastingWallsLinearMeters,
+      otherSpaces?.concreteElementOrCastingWallsLinearMeters,
+    ]);
 
-    return totalLength * totalHeight;
+    return totalLength! * totalHeight!;
   }
 
-  num? get totalSpacesWallLengthInSquareMeters =>
-      Utils.sumOrNull([
-        officeSpaces?.overallWallLengthLinearMeters ?? 0,
-        lobbiesAndOtherCommonAreas?.overallWallLengthLinearMeters ?? 0,
-        restroomsAndWashingFacilities?.overallWallLengthLinearMeters ?? 0,
-        kitchens?.overallWallLengthLinearMeters ?? 0,
-        teachingAndTreatmentSpaces?.overallWallLengthLinearMeters ?? 0,
-        storageAndWorkspaces?.overallWallLengthLinearMeters ?? 0,
-        otherSpaces?.overallWallLengthLinearMeters ?? 0
-      ]) ??
-      0;
+  num? get totalSpacesWallLengthInSquareMeters => Utils.sumOrNull([
+        officeSpaces?.overallWallLengthLinearMeters,
+        lobbiesAndOtherCommonAreas?.overallWallLengthLinearMeters,
+        restroomsAndWashingFacilities?.overallWallLengthLinearMeters,
+        kitchens?.overallWallLengthLinearMeters,
+        teachingAndTreatmentSpaces?.overallWallLengthLinearMeters,
+        storageAndWorkspaces?.overallWallLengthLinearMeters,
+        otherSpaces?.overallWallLengthLinearMeters
+      ]);
 
-  num? get totalSpacesWallArea =>
-      Utils.sumOrNull([
-        officeSpaces?.overallWallArea ?? 0,
-        lobbiesAndOtherCommonAreas?.overallWallArea ?? 0,
-        restroomsAndWashingFacilities?.overallWallArea ?? 0,
-        kitchens?.overallWallArea ?? 0,
-        teachingAndTreatmentSpaces?.overallWallArea ?? 0,
-        storageAndWorkspaces?.overallWallArea ?? 0,
-        otherSpaces?.overallWallArea ?? 0
-      ]) ??
-      0;
+  num? get totalSpacesWallArea => Utils.sumOrNull([
+        officeSpaces?.overallWallArea,
+        lobbiesAndOtherCommonAreas?.overallWallArea,
+        restroomsAndWashingFacilities?.overallWallArea,
+        kitchens?.overallWallArea,
+        teachingAndTreatmentSpaces?.overallWallArea,
+        storageAndWorkspaces?.overallWallArea,
+        otherSpaces?.overallWallArea
+      ]);
 
-  num? get overallPartitionWallsStructuresInPercents =>
-      Utils.sumOrNull([
-        officeSpaces?.overallPartitionWallsStructuresInPercents ?? 0,
-        lobbiesAndOtherCommonAreas?.overallPartitionWallsStructuresInPercents ??
-            0,
+  num? get overallPartitionWallsStructuresInPercents => Utils.sumOrNull([
+        officeSpaces?.overallPartitionWallsStructuresInPercents,
+        lobbiesAndOtherCommonAreas?.overallPartitionWallsStructuresInPercents,
         restroomsAndWashingFacilities
-                ?.overallPartitionWallsStructuresInPercents ??
-            0,
-        kitchens?.overallPartitionWallsStructuresInPercents ?? 0,
-        teachingAndTreatmentSpaces?.overallPartitionWallsStructuresInPercents ??
-            0,
-        storageAndWorkspaces?.overallPartitionWallsStructuresInPercents ?? 0,
-        otherSpaces?.overallPartitionWallsStructuresInPercents ?? 0
-      ]) ??
-      0;
+            ?.overallPartitionWallsStructuresInPercents,
+        kitchens?.overallPartitionWallsStructuresInPercents,
+        teachingAndTreatmentSpaces?.overallPartitionWallsStructuresInPercents,
+        storageAndWorkspaces?.overallPartitionWallsStructuresInPercents,
+        otherSpaces?.overallPartitionWallsStructuresInPercents
+      ]);
 
   // Materiaalimaara yhteensa (m3)
-  num? get totalWoodFramedWallsMaterialVolume =>
-      totalWoodFramedWallsInSquareMeters! *
-      WoodMaterialInfo.getBoardConsumptionPerSquareMeter(
-          WoodMaterialType.trunkWood50x100) *
-      WoodMaterialInfo.volumePerLinearMeter(WoodMaterialType.trunkWood50x100);
+  num? get totalWoodFramedWallsMaterialVolume {
+    if (totalWoodFramedWallsInSquareMeters == null) {
+      return null;
+    }
+    return totalWoodFramedWallsInSquareMeters! *
+        WoodMaterialInfo.getBoardConsumptionPerSquareMeter(
+            WoodMaterialType.trunkWood50x100) *
+        WoodMaterialInfo.volumePerLinearMeter(WoodMaterialType.trunkWood50x100);
+  }
 
-  num? get totalBrickWallsMaterialVolume =>
-      totalBrickWallsInSquareMeters! *
-      FoundationStructureWeights.limeSandBrick130mmKgPerSqm /
-      FoundationStructureWeights.limeSandBrick130mmKgPerCbm;
+  num? get totalBrickWallsMaterialVolume {
+    if (totalBrickWallsInSquareMeters == null) {
+      return null;
+    }
+    return totalBrickWallsInSquareMeters! *
+        FoundationStructureWeights.limeSandBrick130mmKgPerSqm /
+        FoundationStructureWeights.limeSandBrick130mmKgPerCbm;
+  }
 
-  num? get totalConcreteElementOrCastingWallsMaterialVolume =>
-      totalConcreteElementOrCastingWallsInSquareMeters! *
-      FrameBarWeights.concreteWallElement200mmThickConcreteKgPerSqm /
-      FrameBarWeights.concreteWallElement200mmThickConcreteKgPerCbm;
+  num? get totalConcreteElementOrCastingWallsMaterialVolume {
+    if (totalConcreteElementOrCastingWallsInSquareMeters == null) {
+      return null;
+    }
+    return totalConcreteElementOrCastingWallsInSquareMeters! *
+        FrameBarWeights.concreteWallElement200mmThickConcreteKgPerSqm /
+        FrameBarWeights.concreteWallElement200mmThickConcreteKgPerCbm;
+  }
 
   // Materiaalimaara yhteensa (tonnia)
-  num? get totalWoodFramedWallsMaterialTons =>
-      totalWoodFramedWallsMaterialVolume! *
-      WoodMaterialInfo.densityKgPerCubicMeter() /
-      1000;
+  num? get totalWoodFramedWallsMaterialTons {
+    if (totalWoodFramedWallsMaterialVolume == null) {
+      return null;
+    }
+    return totalWoodFramedWallsMaterialVolume! *
+        WoodMaterialInfo.densityKgPerCubicMeter() /
+        1000;
+  }
 
-  num? get totalBrickWallsMaterialTons =>
-      totalBrickWallsMaterialVolume! *
-      FoundationStructureWeights.limeSandBrick130mmKgPerSqm /
-      1000;
+  num? get totalBrickWallsMaterialTons {
+    if (totalBrickWallsMaterialVolume == null) {
+      return null;
+    }
+    return totalBrickWallsMaterialVolume! *
+        FoundationStructureWeights.limeSandBrick130mmKgPerSqm /
+        1000;
+  }
 
-  num? get totalConcreteElementOrCastingWallsMaterialTons =>
-      totalConcreteElementOrCastingWallsMaterialVolume! *
-      FrameBarWeights.concreteWallElement200mmThickConcreteKgPerSqm /
-      1000;
+  num? get totalConcreteElementOrCastingWallsMaterialTons {
+    if (totalConcreteElementOrCastingWallsMaterialVolume == null) {
+      return null;
+    }
+    return totalConcreteElementOrCastingWallsMaterialVolume! *
+        FrameBarWeights.concreteWallElement200mmThickConcreteKgPerSqm /
+        1000;
+  }
 
   // Seinien pintarakenteen osuus % kaikista valiseinista (seinapinta-alasta)
 
   // Kaikki tilat yhteensa (m2)
-  num? get totalChipboardArea =>
-      (officeSpaces?.chipboard ?? 0) * (officeSpaces?.overallWallArea ?? 0) +
-      (lobbiesAndOtherCommonAreas?.chipboard ?? 0) *
-          (lobbiesAndOtherCommonAreas?.overallWallArea ?? 0) +
-      (restroomsAndWashingFacilities?.chipboard ?? 0) *
-          (restroomsAndWashingFacilities?.overallWallArea ?? 0) +
-      (kitchens?.chipboard ?? 0) * (kitchens?.overallWallArea ?? 0) +
-      (teachingAndTreatmentSpaces?.chipboard ?? 0) *
-          (teachingAndTreatmentSpaces?.overallWallArea ?? 0) +
-      (storageAndWorkspaces?.chipboard ?? 0) *
-          (storageAndWorkspaces?.overallWallArea ?? 0) +
-      (otherSpaces?.chipboard ?? 0) * (otherSpaces?.overallWallArea ?? 0);
+  num? get totalChipboardArea => Utils.sumOrNull([
+        Utils.multiplyOrNull(
+            [officeSpaces?.chipboard, officeSpaces?.overallWallArea]),
+        Utils.multiplyOrNull([
+          lobbiesAndOtherCommonAreas?.chipboard,
+          lobbiesAndOtherCommonAreas?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          restroomsAndWashingFacilities?.chipboard,
+          restroomsAndWashingFacilities?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([kitchens?.chipboard, kitchens?.overallWallArea]),
+        Utils.multiplyOrNull([
+          teachingAndTreatmentSpaces?.chipboard,
+          teachingAndTreatmentSpaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          storageAndWorkspaces?.chipboard,
+          storageAndWorkspaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [otherSpaces?.chipboard, otherSpaces?.overallWallArea])
+      ]);
 
-  num? get totalCybrocArea =>
-      (officeSpaces?.cybroc ?? 0) * (officeSpaces?.overallWallArea ?? 0) +
-      (lobbiesAndOtherCommonAreas?.cybroc ?? 0) *
-          (lobbiesAndOtherCommonAreas?.overallWallArea ?? 0) +
-      (restroomsAndWashingFacilities?.cybroc ?? 0) *
-          (restroomsAndWashingFacilities?.overallWallArea ?? 0) +
-      (kitchens?.cybroc ?? 0) * (kitchens?.overallWallArea ?? 0) +
-      (teachingAndTreatmentSpaces?.cybroc ?? 0) *
-          (teachingAndTreatmentSpaces?.overallWallArea ?? 0) +
-      (storageAndWorkspaces?.cybroc ?? 0) *
-          (storageAndWorkspaces?.overallWallArea ?? 0) +
-      (otherSpaces?.cybroc ?? 0) * (otherSpaces?.overallWallArea ?? 0);
+  num? get totalCybrocArea => Utils.sumOrNull([
+        Utils.multiplyOrNull(
+            [officeSpaces?.cybroc, officeSpaces?.overallWallArea]),
+        Utils.multiplyOrNull([
+          lobbiesAndOtherCommonAreas?.cybroc,
+          lobbiesAndOtherCommonAreas?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          restroomsAndWashingFacilities?.cybroc,
+          restroomsAndWashingFacilities?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([kitchens?.cybroc, kitchens?.overallWallArea]),
+        Utils.multiplyOrNull([
+          teachingAndTreatmentSpaces?.cybroc,
+          teachingAndTreatmentSpaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          storageAndWorkspaces?.cybroc,
+          storageAndWorkspaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [otherSpaces?.cybroc, otherSpaces?.overallWallArea])
+      ]);
 
-  num? get totalBoardPanelArea =>
-      (officeSpaces?.boardPanel ?? 0) * (officeSpaces?.overallWallArea ?? 0) +
-      (lobbiesAndOtherCommonAreas?.boardPanel ?? 0) *
-          (lobbiesAndOtherCommonAreas?.overallWallArea ?? 0) +
-      (restroomsAndWashingFacilities?.boardPanel ?? 0) *
-          (restroomsAndWashingFacilities?.overallWallArea ?? 0) +
-      (kitchens?.boardPanel ?? 0) * (kitchens?.overallWallArea ?? 0) +
-      (teachingAndTreatmentSpaces?.boardPanel ?? 0) *
-          (teachingAndTreatmentSpaces?.overallWallArea ?? 0) +
-      (storageAndWorkspaces?.boardPanel ?? 0) *
-          (storageAndWorkspaces?.overallWallArea ?? 0) +
-      (otherSpaces?.boardPanel ?? 0) * (otherSpaces?.overallWallArea ?? 0);
+  num? get totalBoardPanelArea => Utils.sumOrNull([
+        Utils.multiplyOrNull(
+            [officeSpaces?.boardPanel, officeSpaces?.overallWallArea]),
+        Utils.multiplyOrNull([
+          lobbiesAndOtherCommonAreas?.boardPanel,
+          lobbiesAndOtherCommonAreas?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          restroomsAndWashingFacilities?.boardPanel,
+          restroomsAndWashingFacilities?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([kitchens?.boardPanel, kitchens?.overallWallArea]),
+        Utils.multiplyOrNull([
+          teachingAndTreatmentSpaces?.boardPanel,
+          teachingAndTreatmentSpaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          storageAndWorkspaces?.boardPanel,
+          storageAndWorkspaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [otherSpaces?.boardPanel, otherSpaces?.overallWallArea])
+      ]);
 
-  num? get totalCeramicTileWallsArea =>
-      (officeSpaces?.ceramicTileWalls ?? 0) *
-          (officeSpaces?.overallWallArea ?? 0) +
-      (lobbiesAndOtherCommonAreas?.ceramicTileWalls ?? 0) *
-          (lobbiesAndOtherCommonAreas?.overallWallArea ?? 0) +
-      (restroomsAndWashingFacilities?.ceramicTileWalls ?? 0) *
-          (restroomsAndWashingFacilities?.overallWallArea ?? 0) +
-      (kitchens?.ceramicTileWalls ?? 0) * (kitchens?.overallWallArea ?? 0) +
-      (teachingAndTreatmentSpaces?.ceramicTileWalls ?? 0) *
-          (teachingAndTreatmentSpaces?.overallWallArea ?? 0) +
-      (storageAndWorkspaces?.ceramicTileWalls ?? 0) *
-          (storageAndWorkspaces?.overallWallArea ?? 0) +
-      (otherSpaces?.ceramicTileWalls ?? 0) *
-          (otherSpaces?.overallWallArea ?? 0);
+  num? get totalCeramicTileWallsArea => Utils.sumOrNull([
+        Utils.multiplyOrNull(
+            [officeSpaces?.ceramicTileWalls, officeSpaces?.overallWallArea]),
+        Utils.multiplyOrNull([
+          lobbiesAndOtherCommonAreas?.ceramicTileWalls,
+          lobbiesAndOtherCommonAreas?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          restroomsAndWashingFacilities?.ceramicTileWalls,
+          restroomsAndWashingFacilities?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [kitchens?.ceramicTileWalls, kitchens?.overallWallArea]),
+        Utils.multiplyOrNull([
+          teachingAndTreatmentSpaces?.ceramicTileWalls,
+          teachingAndTreatmentSpaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          storageAndWorkspaces?.ceramicTileWalls,
+          storageAndWorkspaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [otherSpaces?.ceramicTileWalls, otherSpaces?.overallWallArea])
+      ]);
 
-  num? get totalPaintedPlasteredBrickWallArea =>
-      (officeSpaces?.paintedPlasteredBrickWall ?? 0) *
-          (officeSpaces?.overallWallArea ?? 0) +
-      (lobbiesAndOtherCommonAreas?.paintedPlasteredBrickWall ?? 0) *
-          (lobbiesAndOtherCommonAreas?.overallWallArea ?? 0) +
-      (restroomsAndWashingFacilities?.paintedPlasteredBrickWall ?? 0) *
-          (restroomsAndWashingFacilities?.overallWallArea ?? 0) +
-      (kitchens?.paintedPlasteredBrickWall ?? 0) *
-          (kitchens?.overallWallArea ?? 0) +
-      (teachingAndTreatmentSpaces?.paintedPlasteredBrickWall ?? 0) *
-          (teachingAndTreatmentSpaces?.overallWallArea ?? 0) +
-      (storageAndWorkspaces?.paintedPlasteredBrickWall ?? 0) *
-          (storageAndWorkspaces?.overallWallArea ?? 0) +
-      (otherSpaces?.paintedPlasteredBrickWall ?? 0) *
-          (otherSpaces?.overallWallArea ?? 0);
+  num? get totalPaintedPlasteredBrickWallArea => Utils.sumOrNull([
+        Utils.multiplyOrNull([
+          officeSpaces?.paintedPlasteredBrickWall,
+          officeSpaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          lobbiesAndOtherCommonAreas?.paintedPlasteredBrickWall,
+          lobbiesAndOtherCommonAreas?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          restroomsAndWashingFacilities?.paintedPlasteredBrickWall,
+          restroomsAndWashingFacilities?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [kitchens?.paintedPlasteredBrickWall, kitchens?.overallWallArea]),
+        Utils.multiplyOrNull([
+          teachingAndTreatmentSpaces?.paintedPlasteredBrickWall,
+          teachingAndTreatmentSpaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          storageAndWorkspaces?.paintedPlasteredBrickWall,
+          storageAndWorkspaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          otherSpaces?.paintedPlasteredBrickWall,
+          otherSpaces?.overallWallArea
+        ])
+      ]);
 
-  num? get totalPlasticCarpetArea =>
-      (officeSpaces?.plasticCarpet ?? 0) *
-          (officeSpaces?.overallWallArea ?? 0) +
-      (lobbiesAndOtherCommonAreas?.plasticCarpet ?? 0) *
-          (lobbiesAndOtherCommonAreas?.overallWallArea ?? 0) +
-      (restroomsAndWashingFacilities?.plasticCarpet ?? 0) *
-          (restroomsAndWashingFacilities?.overallWallArea ?? 0) +
-      (kitchens?.plasticCarpet ?? 0) * (kitchens?.overallWallArea ?? 0) +
-      (teachingAndTreatmentSpaces?.plasticCarpet ?? 0) *
-          (teachingAndTreatmentSpaces?.overallWallArea ?? 0) +
-      (storageAndWorkspaces?.plasticCarpet ?? 0) *
-          (storageAndWorkspaces?.overallWallArea ?? 0) +
-      (otherSpaces?.plasticCarpet ?? 0) * (otherSpaces?.overallWallArea ?? 0);
+  num? get totalPlasticCarpetArea => Utils.sumOrNull([
+        Utils.multiplyOrNull(
+            [officeSpaces?.plasticCarpet, officeSpaces?.overallWallArea]),
+        Utils.multiplyOrNull([
+          lobbiesAndOtherCommonAreas?.plasticCarpet,
+          lobbiesAndOtherCommonAreas?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          restroomsAndWashingFacilities?.plasticCarpet,
+          restroomsAndWashingFacilities?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [kitchens?.plasticCarpet, kitchens?.overallWallArea]),
+        Utils.multiplyOrNull([
+          teachingAndTreatmentSpaces?.plasticCarpet,
+          teachingAndTreatmentSpaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull([
+          storageAndWorkspaces?.plasticCarpet,
+          storageAndWorkspaces?.overallWallArea
+        ]),
+        Utils.multiplyOrNull(
+            [otherSpaces?.plasticCarpet, otherSpaces?.overallWallArea])
+      ]);
 
   num? get totalAreaInPercents => Utils.sumOrNull([
         totalChipboardArea,
@@ -280,64 +371,114 @@ class RoomSpaces with _$RoomSpaces {
       ]);
 
 // Materiaalimaara yhteensa (m3)
-  num? get totalChipboardMaterialVolume =>
-      totalChipboardArea! *
-      UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerSqm /
-      UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerCbm;
+  num? get totalChipboardMaterialVolume {
+    if (totalChipboardArea == null) {
+      return null;
+    }
+    return totalChipboardArea! *
+        UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerSqm /
+        UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerCbm;
+  }
 
-  num? get totalCybrocMaterialVolume =>
-      totalCybrocArea! *
-      UpperBaseStructureAndWaterRoofWeights.plasterBoardKgPerSqm /
-      UpperBaseStructureAndWaterRoofWeights.plasterBoardKgPerCbm;
+  num? get totalCybrocMaterialVolume {
+    if (totalCybrocArea == null) {
+      return null;
+    }
+    return totalCybrocArea! *
+        UpperBaseStructureAndWaterRoofWeights.plasterBoardKgPerSqm /
+        UpperBaseStructureAndWaterRoofWeights.plasterBoardKgPerCbm;
+  }
 
-  num? get totalBoardPanelMaterialVolume =>
-      totalBoardPanelArea! *
-      WoodMaterialInfo.woodWeightPerSquareMeter(WoodMaterialType.board20x125) /
-      WoodMaterialInfo.densityKgPerCubicMeter();
+  num? get totalBoardPanelMaterialVolume {
+    if (totalBoardPanelArea == null) {
+      return null;
+    }
+    return totalBoardPanelArea! *
+        WoodMaterialInfo.woodWeightPerSquareMeter(
+            WoodMaterialType.board20x125) /
+        WoodMaterialInfo.densityKgPerCubicMeter();
+  }
 
-  num? get totalCeramicTileWallsMaterialVolume =>
-      totalCeramicTileWallsArea! *
-      DividingWallWeights.ceramicTileKgPerSqm /
-      DividingWallWeights.ceramicTileKgPerCbm;
+  num? get totalCeramicTileWallsMaterialVolume {
+    if (totalCeramicTileWallsArea == null) {
+      return null;
+    }
+    return totalCeramicTileWallsArea! *
+        DividingWallWeights.ceramicTileKgPerSqm /
+        DividingWallWeights.ceramicTileKgPerCbm;
+  }
 
-  num? get totalPaintedPlasteredBrickWallMaterialVolume =>
-      totalPaintedPlasteredBrickWallArea! *
-      FoundationSlabWeights.acrylicCoatingKgPerSqm /
-      FoundationSlabWeights.acrylicCoatingKgPerCbm;
+  num? get totalPaintedPlasteredBrickWallMaterialVolume {
+    if (totalPaintedPlasteredBrickWallArea == null) {
+      return null;
+    }
+    return totalPaintedPlasteredBrickWallArea! *
+        FoundationSlabWeights.acrylicCoatingKgPerSqm /
+        FoundationSlabWeights.acrylicCoatingKgPerCbm;
+  }
 
-  num? get totalPlasticCarpetMaterialVolume =>
-      totalPlasticCarpetArea! *
-      FloorStructureAndMaterialWeights.plasticMatKgPerSqm /
-      FloorStructureAndMaterialWeights.plasticMatKgPerCbm;
+  num? get totalPlasticCarpetMaterialVolume {
+    if (totalPlasticCarpetArea == null) {
+      return null;
+    }
+    return totalPlasticCarpetArea! *
+        FloorStructureAndMaterialWeights.plasticMatKgPerSqm /
+        FloorStructureAndMaterialWeights.plasticMatKgPerCbm;
+  }
 
 // Materiaalimaara yhteensa (tonnia)
-  num? get totalChipboardMaterialTons =>
-      totalChipboardArea! *
-      UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerSqm /
-      1000;
+  num? get totalChipboardMaterialTons {
+    if (totalChipboardArea == null) {
+      return null;
+    }
+    return totalChipboardArea! *
+        UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerSqm /
+        1000;
+  }
 
-  num? get totalCybrocMaterialTons =>
-      totalCybrocArea! *
-      UpperBaseStructureAndWaterRoofWeights.hardDiskKgPerSqm /
-      1000;
+  num? get totalCybrocMaterialTons {
+    if (totalCybrocArea == null) {
+      return null;
+    }
+    return totalCybrocArea! *
+        UpperBaseStructureAndWaterRoofWeights.hardDiskKgPerSqm /
+        1000;
+  }
 
-  num? get totalBoardPanelMaterialTons =>
-      totalBoardPanelArea! *
-      WoodMaterialInfo.woodWeightPerSquareMeter(WoodMaterialType.board20x125) /
-      1000;
+  num? get totalBoardPanelMaterialTons {
+    if (totalBoardPanelArea == null) {
+      return null;
+    }
+    return totalBoardPanelArea! *
+        WoodMaterialInfo.woodWeightPerSquareMeter(
+            WoodMaterialType.board20x125) /
+        1000;
+  }
 
-  num? get totalCeramicTileWallsMaterialTons =>
-      totalCeramicTileWallsArea! *
-      DividingWallWeights.ceramicTileKgPerSqm /
-      1000;
+  num? get totalCeramicTileWallsMaterialTons {
+    if (totalCeramicTileWallsArea == null) {
+      return null;
+    }
+    return totalCeramicTileWallsArea! *
+        DividingWallWeights.ceramicTileKgPerSqm /
+        1000;
+  }
 
-  num? get totalPaintedPlasteredBrickWallMaterialTons =>
-      totalPaintedPlasteredBrickWallArea! *
-      FoundationSlabWeights.acrylicCoatingKgPerSqm /
-      1000;
+  num? get totalPaintedPlasteredBrickWallMaterialTons {
+    if (totalPaintedPlasteredBrickWallArea == null) {
+      return null;
+    }
+    return totalPaintedPlasteredBrickWallArea! *
+        FoundationSlabWeights.acrylicCoatingKgPerSqm /
+        1000;
+  }
 
-  num? get totalPlasticCarpetMaterialTons =>
-      totalPlasticCarpetArea! *
-      FloorStructureAndMaterialWeights.plasticMatKgPerSqm /
-      1000;
+  num? get totalPlasticCarpetMaterialTons {
+    if (totalPlasticCarpetArea == null) {
+      return null;
+    }
+    return totalPlasticCarpetArea! *
+        FloorStructureAndMaterialWeights.plasticMatKgPerSqm /
+        1000;
+  }
 }

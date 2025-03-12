@@ -1,3 +1,4 @@
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'inner_door.freezed.dart';
@@ -13,5 +14,5 @@ class InnerDoor with _$InnerDoor {
     num? glassDoors,
   }) = _InnerDoor;
 
-  num? get overallOuterDoors => shutDoors! + glassDoors!;
+  num? get overallOuterDoors => Utils.sumOrNull([shutDoors, glassDoors]);
 }
