@@ -41,7 +41,7 @@ class WoodMaterialInfo {
   }
 
   static num woodWeightPerSquareMeter(WoodMaterialType materialType) =>
-      getBoardConsumptionPerSquareMeter(materialType) /
+      getBoardConsumptionPerSquareMeter(materialType) *
       weightPerLinearMeter(materialType);
 
   static num densityKgPerCubicMeter() => 500;
