@@ -132,27 +132,27 @@ void main() {
       expect(
           WoodMaterialInfo.woodWeightPerSquareMeter(
               WoodMaterialType.board20x125),
-          equals(8.00 / (0.004 * 500)));
+          equals(8.00 * (0.004 * 500)));
       expect(
           WoodMaterialInfo.woodWeightPerSquareMeter(
               WoodMaterialType.trunkWood50x100),
-          equals(1.25 / (0.005 * 500)));
+          equals(1.25 * (0.005 * 500)));
       expect(
           WoodMaterialInfo.woodWeightPerSquareMeter(
               WoodMaterialType.trunkWood50x150),
-          equals(1.25 / (0.0075 * 500)));
+          equals(1.25 * (0.0075 * 500)));
       expect(
           WoodMaterialInfo.woodWeightPerSquareMeter(
               WoodMaterialType.trunkWood50x200),
-          equals(1.25 / (0.01 * 500)));
+          equals(1.25 * (0.01 * 500)));
       expect(
           WoodMaterialInfo.woodWeightPerSquareMeter(
               WoodMaterialType.trunkWood100x100),
-          equals(1.25 / (0.01 * 500)));
+          equals(1.25 * (0.01 * 500)));
       expect(
           WoodMaterialInfo.woodWeightPerSquareMeter(
               WoodMaterialType.trunkWood150x150),
-          equals(1.25 / (0.0225 * 500)));
+          equals(1.25 * (0.0225 * 500)));
       print('woodWeightPerSquareMeter test passed');
     });
 
