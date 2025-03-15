@@ -149,7 +149,7 @@ class RoomSpaces with _$RoomSpaces {
         otherSpaces?.overallPartitionWallsStructuresInPercents
       ]);
 
-  /// Materiaalimaara yhteensa (m3)
+  /// Materiaalimäärä yhteensa (m3)
   num? get totalWoodFramedWallsMaterialVolume {
     if (totalWoodFramedWallsInSquareMeters == null) {
       return null;

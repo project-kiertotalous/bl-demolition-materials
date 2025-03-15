@@ -1,6 +1,9 @@
 import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/waste_cost_item.dart';
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../partition_walls_doors_and_windows/room_spaces.dart';
 
 part 'demolition_waste_and_costs.freezed.dart';
 
@@ -11,6 +14,11 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
 
   factory DemolitionWasteAndCosts(
       {ExcavationArea? excavationArea,
+      Foundations? foundations,
+      TotalIntermediateFloors? totalIntermediateFloors,
+      TotalRoofs? totalRoofs,
+      TotalBuildingFrame? totalBuildingFrame,
+      RoomSpaces? roomSpaces,
       num? cleanSoilDemolitionCost,
       num? asphaltWasteDemolitionCost,
       num? cleanConcreteDemolitionCost,
@@ -34,58 +42,58 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       num? energyWasteDemolitionCost}) = _DemolitionWasteAndCosts;
 
   late final cleanSoil = WasteCostItem(
-    volume: excavationArea?.volumeToRemove,
-    tons: excavationArea?.cleanLandTons,
-    demolitionCost: cleanSoilDemolitionCost
-  );
+      volume: excavationArea?.volumeToRemove,
+      tons: excavationArea?.cleanLandTons,
+      demolitionCost: cleanSoilDemolitionCost);
 
   late final asphaltWaste = WasteCostItem(
       volume: excavationArea?.asphaltVolume,
       tons: excavationArea?.asphaltTons,
-      demolitionCost: asphaltWasteDemolitionCost
-  );
+      demolitionCost: asphaltWasteDemolitionCost);
 
   late final cleanConcrete = WasteCostItem(
       volume: excavationArea?.asphaltVolume,
       tons: excavationArea?.asphaltTons,
-      demolitionCost: asphaltWasteDemolitionCost
-  );
+      demolitionCost: asphaltWasteDemolitionCost);
 
-  late final concreteBlocks = WasteCostItem(); // M37, F71, F72
+  late final concreteBlocks = WasteCostItem(
+      volume: _concreteBlocksVolume,
+      tons: _concreteBlocksTons,
+      demolitionCost: concreteBlocksDemolitionCost);
 
-  late final wallAndRoofTiles = WasteCostItem();
+  late final wallAndRoofTiles = WasteCostItem(); // TODO
 
-  late final ceramicTiles = WasteCostItem();
+  late final ceramicTiles = WasteCostItem(); // TODO
 
-  late final rebarAndSteelScrap = WasteCostItem();
+  late final rebarAndSteelScrap = WasteCostItem(); // TODO
 
-  late final stainlessSteel = WasteCostItem();
+  late final stainlessSteel = WasteCostItem(); // TODO
 
-  late final copper = WasteCostItem();
+  late final copper = WasteCostItem(); // TODO
 
-  late final aluminum = WasteCostItem();
+  late final aluminum = WasteCostItem(); // TODO
 
-  late final cleanUsableWood = WasteCostItem();
+  late final cleanUsableWood = WasteCostItem(); // TODO
 
-  late final burnableWoodWaste = WasteCostItem();
+  late final burnableWoodWaste = WasteCostItem(); // TODO
 
-  late final glass = WasteCostItem();
+  late final glass = WasteCostItem(); // TODO
 
-  late final glassAndMineralWool = WasteCostItem();
+  late final glassAndMineralWool = WasteCostItem(); // TODO
 
-  late final fiberCementBoards = WasteCostItem();
+  late final fiberCementBoards = WasteCostItem(); // TODO
 
-  late final gypsumBoards = WasteCostItem();
+  late final gypsumBoards = WasteCostItem(); // TODO
 
-  late final chipboard = WasteCostItem();
+  late final chipboard = WasteCostItem(); // TODO
 
-  late final windProtectionBoard = WasteCostItem();
+  late final windProtectionBoard = WasteCostItem(); // TODO
 
-  late final eWaste = WasteCostItem();
+  late final eWaste = WasteCostItem(); // TODO
 
-  late final plasticWaste = WasteCostItem();
+  late final plasticWaste = WasteCostItem(); // TODO
 
-  late final energyWaste = WasteCostItem();
+  late final energyWaste = WasteCostItem(); // TODO
 
   List<WasteCostItem> get all => [
         cleanSoil,
@@ -119,4 +127,140 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
 
   num? get totalMaterialCost => all.fold<num>(
       0, (acc, element) => acc + (element.totalMaterialCost ?? 0));
+
+  num? get _concreteBlocksVolume => Utils.sumOrNull([
+        _foundationsConcreteVolumeTotal,
+        _intermediateFloorsConcreteVolume,
+        _roofsConcreteVolume,
+        roomSpaces?.totalConcreteElementOrCastingWallsMaterialVolume,
+        _buildingFrameConcreteVolumeTotal
+      ]);
+
+  num? get _foundationsConcreteVolumeTotal {
+    if (foundations == null) {
+      return null;
+    }
+
+    if (foundations!.bituminousWaterProofing) {
+      return 0;
+    }
+
+    return Utils.sumOrNull([
+      foundations!.concreteVolume,
+      foundations!.concreteTons,
+      foundations!.rebarTons,
+      foundations!.concreteBlockTons,
+      foundations!.concreteBlockVolume
+    ]);
+  }
+
+  num? get _buildingFrameConcreteVolumeTotal {
+    if (totalBuildingFrame?.buildingFrame == null) {
+      return null;
+    }
+
+    if (!totalBuildingFrame!.buildingFrame!.areMaterialsRecyclable) {
+      return totalBuildingFrame!.plasterCoatingVolume;
+    }
+
+    return Utils.sumOrNull([
+      totalBuildingFrame!.plasterCoatingVolume,
+      totalBuildingFrame!.concreteVerticalColumnsPart.concreteVolume,
+      totalBuildingFrame!
+          .concreteElementWallsWithoutFrameworkPart.concreteVolume
+    ]);
+  }
+
+  num? get _intermediateFloorsConcreteVolume {
+    if (totalIntermediateFloors == null) {
+      return null;
+    }
+
+    if (totalIntermediateFloors!.hollowCoreSlabsAndGlulamBeamRecyclable! ==
+        false) {
+      return totalIntermediateFloors!.concreteCastingConcreteVolume!;
+    }
+
+    return Utils.sumOrNull([
+      totalIntermediateFloors!.concreteCastingConcreteVolume,
+      totalIntermediateFloors!.hollowCoreSlabConcreteVolume
+    ]);
+  }
+
+  num? get _roofsConcreteVolume {
+    if (totalRoofs?.roofTrussesAreRecyclable == null) {
+      return null;
+    }
+
+    if (totalRoofs!.roofTrussesAreRecyclable!) {
+      return 0;
+    }
+
+    return totalRoofs?.concreteVolume;
+  }
+
+  num? get _concreteBlocksTons => Utils.sumOrNull([
+        _foundationsConcreteTonsTotal,
+        _intermediateFloorsConcreteTons,
+        roomSpaces?.totalConcreteElementOrCastingWallsMaterialTons,
+        _buildingFrameConcreteTonsTotal
+      ]);
+
+  num? get _foundationsConcreteTonsTotal {
+    if (foundations == null) {
+      return null;
+    }
+
+    if (foundations!.bituminousWaterProofing) {
+      return 0;
+    }
+
+    return foundations!.concreteTons;
+  }
+
+  num? get _intermediateFloorsConcreteTons {
+    if (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ==
+        null) {
+      return null;
+    }
+
+    if (!totalIntermediateFloors!.hollowCoreSlabsAndGlulamBeamRecyclable!) {
+      return totalIntermediateFloors?.concreteCastingConcreteTons;
+    }
+
+    return Utils.sumOrNull([
+      totalIntermediateFloors?.concreteCastingConcreteTons,
+      totalIntermediateFloors?.hollowCoreSlabConcreteTons
+    ]);
+  }
+
+  num? get _totalRoofsConcreteTons {
+    if (totalRoofs?.roofTrussesAreRecyclable == null) {
+      return null;
+    }
+
+    if (totalRoofs!.roofTrussesAreRecyclable!) {
+      return 0;
+    }
+
+    return totalRoofs!.concreteTons;
+  }
+
+  num? get _buildingFrameConcreteTonsTotal {
+    if (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable == null) {
+      return null;
+    }
+
+    if (totalBuildingFrame!.buildingFrame!.areMaterialsRecyclable) {
+      return totalBuildingFrame!.plasterCoatingTons;
+    }
+
+    // TODO: Adding concreteVolume here seems suspicious, but is according to spec.
+    return Utils.sumOrNull([
+      totalBuildingFrame?.plasterCoatingTons,
+      totalBuildingFrame
+          ?.concreteElementWallsWithoutFrameworkPart.concreteVolume,
+      totalBuildingFrame?.concreteVerticalColumnsPart.concreteTons
+    ]);
+  }
 }
