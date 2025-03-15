@@ -24,7 +24,7 @@ class RoomSpaces with _$RoomSpaces {
           @Default(false) bool surfaceMaterialCoatingContainsAsbestos}) =
       _RoomSpaces;
 
-// Kaikki tilat yhteensä (m2)
+/// Kaikki tilat yhteensä (m2)
   num? get totalWoodFramedWallsInSquareMeters {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();
@@ -149,7 +149,7 @@ class RoomSpaces with _$RoomSpaces {
         otherSpaces?.overallPartitionWallsStructuresInPercents
       ]);
 
-  // Materiaalimaara yhteensa (m3)
+  /// Materiaalimaara yhteensa (m3)
   num? get totalWoodFramedWallsMaterialVolume {
     if (totalWoodFramedWallsInSquareMeters == null) {
       return null;
@@ -178,7 +178,7 @@ class RoomSpaces with _$RoomSpaces {
         FrameBarWeights.concreteWallElement200mmThickConcreteKgPerCbm;
   }
 
-  // Materiaalimaara yhteensa (tonnia)
+  /// Materiaalimaara yhteensa (tonnia)
   num? get totalWoodFramedWallsMaterialTons {
     if (totalWoodFramedWallsMaterialVolume == null) {
       return null;
@@ -206,9 +206,9 @@ class RoomSpaces with _$RoomSpaces {
         1000;
   }
 
-  // Seinien pintarakenteen osuus % kaikista valiseinista (seinapinta-alasta)
+  /// Seinien pintarakenteen osuus % kaikista valiseinista (seinapinta-alasta)
 
-  // Kaikki tilat yhteensa (m2)
+  /// Kaikki tilat yhteensa (m2)
   num? get totalChipboardArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
             [officeSpaces?.chipboard, officeSpaces?.overallWallArea]),
@@ -369,7 +369,7 @@ class RoomSpaces with _$RoomSpaces {
         totalPlasticCarpetArea
       ]);
 
-// Materiaalimaara yhteensa (m3)
+/// Materiaalimaara yhteensa (m3)
   num? get totalChipboardMaterialVolume {
     if (totalChipboardArea == null) {
       return null;
@@ -425,7 +425,7 @@ class RoomSpaces with _$RoomSpaces {
         FloorStructureAndMaterialWeights.plasticMatKgPerCbm;
   }
 
-// Materiaalimaara yhteensa (tonnia)
+/// Materiaalimaara yhteensa (tonnia)
   num? get totalChipboardMaterialTons {
     if (totalChipboardArea == null) {
       return null;

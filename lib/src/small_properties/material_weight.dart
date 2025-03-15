@@ -1,6 +1,6 @@
-// 5. Rakenteiden materiaali painot
+/// 5. Rakenteiden materiaali painot
 
-// Puutavara
+/// Puutavara
 enum WoodMaterialType {
   board20x125,
   trunkWood50x100,
@@ -48,7 +48,7 @@ class WoodMaterialInfo {
       weightPerLinearMeter(materialType);
 }
 
-// Rakennuslevyt- ja eristemateriaali ja paksuus (mm)
+/// Rakennuslevyt- ja eristemateriaali ja paksuus (mm)
 class BuildingBoardsAndInsulationMaterialWeights {
   static num plasterBoard15mmKgPerSqm = 9;
   static num chipBoard11mmKgPerSqm = 7.5;
@@ -62,8 +62,8 @@ class BuildingBoardsAndInsulationMaterialWeights {
   static num insulationWool100mmKgPerSqm = 5.5;
 }
 
-// Ovet ja ikkunat
-//Runko ja levy (kg), lasi (kg)
+/// Ovet ja ikkunat
+///Runko ja levy (kg), lasi (kg)
 class DoorsAndWindowsWeights {
   static num woodenOutdoors210x180Glass05sqmFrameKg = 51;
   static num woodenOutdoors210x180Glass05GlassKg = 0.5 * 10;
@@ -87,7 +87,7 @@ class DoorsAndWindowsWeights {
   static num steelFramedWindows140x140glass2x1_5sqmGlassKg = 3 * 10;
 }
 
-// Lattiarakenteet ja materiaalit
+/// Lattiarakenteet ja materiaalit
 class FloorStructuresAndMaterialsWeights {
   static num parquetKgPerSqm = 0.2;
   static num plasticCarpetKgPerSqm = 0.2;
@@ -97,21 +97,21 @@ class FloorStructuresAndMaterialsWeights {
   static num concreteCasting100mmKgPerSqm = 0.1 * 2500;
 }
 
-// Puiset kattorakenteet, ristikot, aluslaudoitus yms.
+/// Puiset kattorakenteet, ristikot, aluslaudoitus yms.
 class WoodenRoofStructuresWeights {
   static num gableRoofWithLattice800mmKgPerSqm = 20;
   static num flatRoofWithLattice800mmKgPerSqm = 15;
   static num cofferedCeilingWithLattice800mmKgPerSqm = 15;
 }
 
-// Teraksiset kattorakenteet, ristikor yms.
+/// Teraksiset kattorakenteet, ristikor yms.
 class SteelRoofStructuresWeights {
   static num gableRoofKgPerSqm = 50;
   static num flatRoofKgPerSqm = 40;
   static num cofferedCeilingKgPerSqm = 40;
 }
 
-// Kivi ja keraamiset materiaalit yms.
+/// Kivi ja keraamiset materiaalit yms.
 class StoneAndCeramicMaterialsWeights {
   static num brickWallsAndMortarKgPerSqm = 150;
   static num ceramicTilesKgPerSqm = 16;
@@ -119,7 +119,7 @@ class StoneAndCeramicMaterialsWeights {
   static num yardTilesKgPerSqm = 135;
 }
 
-// Runkopalkit ja niiden mitat (mm)
+/// Runkopalkit ja niiden mitat (mm)
 class FrameBarWeights {
   static num concreteVerticalBars300x300KgPerM = 225;
   static num concreteRoofBars500x300KgPerM = 375;
@@ -129,7 +129,7 @@ class FrameBarWeights {
   static num glulamBeamsRoofVolume005SqmPerLinearMeterKgPerM = 0.05 * 500;
 }
 
-// Kalusteet puku, keittio ja WC-tilat
+/// Kalusteet puku, keittio ja WC-tilat
 class FurnitureDressingKitchenToiletSpaceWeights {
   static num toiletSeatPorcelainKgPerPcs = 25.8;
   static num washingSinkPorcelainKgPerPcs = 13;
@@ -148,7 +148,7 @@ class FurnitureDressingKitchenToiletSpaceWeights {
   static num electricEngineKgPerPcs = 10;
 }
 
-// Putket ja johdot
+/// Putket ja johdot
 class PipesAndCablesWeights {
   static num waterPipesCopperKgPerM = 0.207;
   static num waterPipesPlasticKgPerM = 0.12;
@@ -159,7 +159,7 @@ class PipesAndCablesWeights {
   static num electricalWiresCopperKgPerM = 0.13;
 }
 
-// Perustukset
+/// Perustukset
 class FoundationWeights {
   static num concreteKgPerCbm = 2500;
   static num concreteOrSteelBlockKgPerCbm = 100;
@@ -167,7 +167,7 @@ class FoundationWeights {
   static num asphaltKgPerSqm = 100;
 }
 
-// Piharakenteet, varastot ja muut varusteet
+/// Piharakenteet, varastot ja muut varusteet
 class YardStructureWeights {
   static num concreteYardTilesAndStonesKgPerSqm = 120;
   static num waterGuttersKgPerSqm = 20;
@@ -181,7 +181,7 @@ class YardStructureWeights {
   static num woodenLiftDoorsAndBigPassageDoors3x5mKg = 70;
 }
 
-// Lampokeskukset, keskuslammitys putket ja patterit
+/// Lampokeskukset, keskuslammitys putket ja patterit
 class CentralHeatingWeights {
   static num woodChipBoilerKg = 800;
   static num electricBoilerKg = 500;
