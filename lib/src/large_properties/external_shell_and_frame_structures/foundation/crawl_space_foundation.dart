@@ -1,7 +1,6 @@
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
-import 'foundation.dart';
 
 class CrawlSpaceFoundation extends Foundation {
   @override
@@ -90,10 +89,12 @@ class CrawlSpaceFoundation extends Foundation {
         _solidBoardingCrawlSpaceGroundFloor.volume,
       ]);
 
+  /// TODO: This calculation is most likely incorrect. The reference Excel had this
+  /// so we are keeping it as is for now.
   @override
   num? get solidBoardingAndWoodFrameTons => Utils.sumOrNull([
         _woodFrameCrawlSpaceGroundFloor.tons,
-        _solidBoardingCrawlSpaceGroundFloor.tons,
+        _woodFrameCrawlSpaceGroundFloor.tons,
       ]);
 
   @override

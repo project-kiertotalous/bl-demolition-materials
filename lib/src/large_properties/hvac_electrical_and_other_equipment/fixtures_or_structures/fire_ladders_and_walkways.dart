@@ -1,5 +1,3 @@
-
-
 import 'fixtures_or_structures.dart';
 
 /// Palotikkaat ja kulkusillat

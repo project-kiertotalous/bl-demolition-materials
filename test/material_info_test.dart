@@ -21,12 +21,18 @@ void main() {
   group('WoodMaterialInfo', () {
     setUp(() {
       // Reset the board consumption values to their default state before each test
-      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(WoodMaterialType.board20x125, 8.00);
-      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(WoodMaterialType.trunkWood50x100, 1.25);
-      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(WoodMaterialType.trunkWood50x150, 1.25);
-      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(WoodMaterialType.trunkWood50x200, 1.25);
-      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(WoodMaterialType.trunkWood100x100, 1.25);
-      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(WoodMaterialType.trunkWood150x150, 1.25);
+      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(
+          WoodMaterialType.board20x125, 8.00);
+      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(
+          WoodMaterialType.trunkWood50x100, 1.25);
+      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(
+          WoodMaterialType.trunkWood50x150, 1.25);
+      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(
+          WoodMaterialType.trunkWood50x200, 1.25);
+      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(
+          WoodMaterialType.trunkWood100x100, 1.25);
+      WoodMaterialInfo.setBoardConsumptionPerSquareMeter(
+          WoodMaterialType.trunkWood150x150, 1.25);
     });
 
     test('volumePerLinearMeter returns correct values', () {
@@ -125,7 +131,7 @@ void main() {
           WoodMaterialInfo.getBoardConsumptionPerSquareMeter(
               WoodMaterialType.trunkWood50x100),
           equals(2));
-       print('setBoardConsumptionPerSquareMeter value modifying test passed');
+      print('setBoardConsumptionPerSquareMeter value modifying test passed');
     });
 
     test('woodWeightPerSquareMeter returns correct values', () {
@@ -158,7 +164,7 @@ void main() {
 
     test('densityKgPerCubicMeter returns correct value', () {
       expect(WoodMaterialInfo.densityKgPerCubicMeter(), equals(500));
-       print('densityKgPerCubicMeter test passed');
+      print('densityKgPerCubicMeter test passed');
     });
   });
 }

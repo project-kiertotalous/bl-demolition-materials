@@ -64,12 +64,12 @@ class HollowCoreSlabFoundation extends Foundation {
       ]);
 
   @override
-  num? get concreteBlockVolume => material == FoundationMaterial.concreteCasting
+  num? get concreteBlockVolume => material == FoundationMaterial.concreteBlock
       ? _concreteBlockHollowCoreSlabFoundation.volume
       : 0;
 
   @override
-  num? get concreteBlockTons => material == FoundationMaterial.concreteCasting
+  num? get concreteBlockTons => material == FoundationMaterial.concreteBlock
       ? _concreteBlockHollowCoreSlabFoundation.tons
       : 0;
 

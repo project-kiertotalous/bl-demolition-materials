@@ -7,7 +7,6 @@ class DripTraysAndProtectiveMetalSheets extends YardOrProtectiveStructures {
       {super.squareMeters, super.weightKgPerSquareMeter});
 
   @override
-  num get defaultWeightKgPerSquareMeter =>
-      FixturesAndStructuresWeights
-          .dripTraysAndProtectiveSheeting08mmSteelDiskKgPerSqm;
+  num get defaultWeightKgPerSquareMeter => FixturesAndStructuresWeights
+      .dripTraysAndProtectiveSheeting08mmSteelDiskKgPerSqm;
 }

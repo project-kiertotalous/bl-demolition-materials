@@ -31,13 +31,13 @@ class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
   }
 
   @override
-  num? get tons => volume! * kgPerCubicMeter / 1000;
+  num? get tons => volume == null ? null : volume! * kgPerCubicMeter / 1000;
 
   @override
-  num? get concreteTons => tons! - steelTons!;
+  num? get concreteTons => tons == null ? null : tons! - steelTons;
 
   @override
-  num? get steelTons =>
+  num get steelTons =>
       FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm;
 }
 

@@ -3,8 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'inner_door.freezed.dart';
 
-//Sisaltaa tiedot yksittaisten sisaovityyppien maarista
-
+/// Sisältää tiedot yksittäisten sisäovityyppien määristä
 @freezed
 class InnerDoor with _$InnerDoor {
   const InnerDoor._();

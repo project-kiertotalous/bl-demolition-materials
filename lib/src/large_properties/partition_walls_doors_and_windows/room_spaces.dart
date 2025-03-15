@@ -1,15 +1,14 @@
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'partition_walls_demolition_materials.dart';
 
-import 'room_space.dart';
 import '../material_info.dart';
+import 'partition_walls_demolition_materials.dart';
+import 'room_space.dart';
 
 part 'room_spaces.freezed.dart';
 
-// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
-// Sisaltaa jokaisen huoneen ja niiden yhteislaskettavat arvot
-
+/// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
+/// Sisältää jokaisen huoneen ja niiden yhteislaskettavat arvot
 @freezed
 class RoomSpaces with _$RoomSpaces {
   const RoomSpaces._();
@@ -25,7 +24,7 @@ class RoomSpaces with _$RoomSpaces {
           @Default(false) bool surfaceMaterialCoatingContainsAsbestos}) =
       _RoomSpaces;
 
-// Kaikki tilat yhteensä (m2)
+/// Kaikki tilat yhteensä (m2)
   num? get totalWoodFramedWallsInSquareMeters {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();
@@ -150,7 +149,7 @@ class RoomSpaces with _$RoomSpaces {
         otherSpaces?.overallPartitionWallsStructuresInPercents
       ]);
 
-  // Materiaalimaara yhteensa (m3)
+  /// Materiaalimaara yhteensa (m3)
   num? get totalWoodFramedWallsMaterialVolume {
     if (totalWoodFramedWallsInSquareMeters == null) {
       return null;
@@ -179,7 +178,7 @@ class RoomSpaces with _$RoomSpaces {
         FrameBarWeights.concreteWallElement200mmThickConcreteKgPerCbm;
   }
 
-  // Materiaalimaara yhteensa (tonnia)
+  /// Materiaalimaara yhteensa (tonnia)
   num? get totalWoodFramedWallsMaterialTons {
     if (totalWoodFramedWallsMaterialVolume == null) {
       return null;
@@ -207,9 +206,9 @@ class RoomSpaces with _$RoomSpaces {
         1000;
   }
 
-  // Seinien pintarakenteen osuus % kaikista valiseinista (seinapinta-alasta)
+  /// Seinien pintarakenteen osuus % kaikista valiseinista (seinapinta-alasta)
 
-  // Kaikki tilat yhteensa (m2)
+  /// Kaikki tilat yhteensa (m2)
   num? get totalChipboardArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
             [officeSpaces?.chipboard, officeSpaces?.overallWallArea]),
@@ -370,7 +369,7 @@ class RoomSpaces with _$RoomSpaces {
         totalPlasticCarpetArea
       ]);
 
-// Materiaalimaara yhteensa (m3)
+/// Materiaalimaara yhteensa (m3)
   num? get totalChipboardMaterialVolume {
     if (totalChipboardArea == null) {
       return null;
@@ -426,7 +425,7 @@ class RoomSpaces with _$RoomSpaces {
         FloorStructureAndMaterialWeights.plasticMatKgPerCbm;
   }
 
-// Materiaalimaara yhteensa (tonnia)
+/// Materiaalimaara yhteensa (tonnia)
   num? get totalChipboardMaterialTons {
     if (totalChipboardArea == null) {
       return null;
