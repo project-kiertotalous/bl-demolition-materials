@@ -89,7 +89,6 @@ class HollowCoreSlabFoundation extends Foundation {
         _styrofoamHollowCoreSlabFoundationGroundFloor.volume
       ]);
 
-  // j77, j78, j79, j84
   @override
   num? get plasticWasteTons => Utils.sumOrNull([
         _frostProofStyrofoamHollowCoreSlabFoundation.tons,
