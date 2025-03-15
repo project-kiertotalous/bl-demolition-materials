@@ -177,8 +177,8 @@ class FinnFoamFalsePlinth extends DemolitionMaterials {
 
   FinnFoamFalsePlinth([this.foundation, this.sizing = 100]);
 
-  // NOTE: This is according to specs, but still seems a fishy to use frost proof
-  // styrofoam measurements for finn foam false plinth?
+  /// TODO: This is according to specs, but still seems a fishy to use frost proof
+  /// styrofoam measurements for finn foam false plinth?
   @override
   num get kgPerSquareMeter =>
       FoundationWeights.frostProofStyrofoam100mmKgPerSqm;
@@ -443,7 +443,7 @@ class ReinforcedConcreteColumnCrawlSpace extends DemolitionMaterials {
   final num sizing;
   final Foundation? foundation;
 
-  ReinforcedConcreteColumnCrawlSpace([this.foundation, this.sizing = 100]);
+  ReinforcedConcreteColumnCrawlSpace([this.foundation, this.sizing = 0]);
 
   @override
   num get kgPerMeter => FoundationWeights.reinforcedConcreteColumn250x250KgPerM;

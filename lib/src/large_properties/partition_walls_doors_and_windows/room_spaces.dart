@@ -1,15 +1,14 @@
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'partition_walls_demolition_materials.dart';
 
-import 'room_space.dart';
 import '../material_info.dart';
+import 'partition_walls_demolition_materials.dart';
+import 'room_space.dart';
 
 part 'room_spaces.freezed.dart';
 
-// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
-// Sisaltaa jokaisen huoneen ja niiden yhteislaskettavat arvot
-
+/// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
+/// Sisältää jokaisen huoneen ja niiden yhteislaskettavat arvot
 @freezed
 class RoomSpaces with _$RoomSpaces {
   const RoomSpaces._();

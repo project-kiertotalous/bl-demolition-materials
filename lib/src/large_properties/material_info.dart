@@ -248,7 +248,7 @@ class DividingWallWeights {
   static num mineralWool150mmKgPerSwm = 8.25;
   static num mineralWool150mmKgPerCbm = 55;
   static num limeSandBrick130mmKgPerSqm = 275;
-  static num limeSandBrick130mmKgPerCbm = 1775;
+  static num limeSandBrick130mmKgPerCbm = 2500;
   static num woodenTrunkKgPerSqm = 3.1;
   static num woodenTrunkKgPerCbm = 500;
   static num semiHardFiberBoardKgPerSqm = 7.5;

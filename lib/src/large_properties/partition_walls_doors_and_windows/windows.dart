@@ -4,8 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'windows.freezed.dart';
 
-// Ikkunat
-
+/// Ikkunat
 @freezed
 class Windows with _$Windows {
   const Windows._();

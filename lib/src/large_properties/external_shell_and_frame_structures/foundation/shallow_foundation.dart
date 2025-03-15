@@ -1,7 +1,6 @@
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
-import 'foundation.dart';
 
 class ShallowFoundation extends Foundation {
   @override
@@ -24,25 +23,25 @@ class ShallowFoundation extends Foundation {
       MineralWoolShallowFoundationGroundFloor(this);
   late final _styrofoamShallowFoundationGroundFloor =
       StyrofoamShallowFoundationGroundFloor(this);
-  late final _reinforcedConcreteColumnColumnFoundation =
-      ReinforcedConcreteColumnColumnFoundation(this);
+  late final _concreteCastingShallowFoundationGroundFloor =
+      ConcreteCastingShallowFoundationGroundFloor(this);
 
   @override
   num? get concreteVolume => Utils.sumOrNull([
         _reinforcedConcreteSlabShallowFoundationGroundFloor.volume,
-        _reinforcedConcreteColumnColumnFoundation.volume
+        _concreteCastingShallowFoundationGroundFloor.volume
       ]);
 
   @override
   num? get concreteTons => Utils.sumOrNull([
         _reinforcedConcreteSlabShallowFoundationGroundFloor.concreteTons,
-        _reinforcedConcreteColumnColumnFoundation.concreteTons
+        _concreteCastingShallowFoundationGroundFloor.concreteTons
       ]);
 
   @override
   num? get rebarTons => Utils.sumOrNull([
         _reinforcedConcreteSlabShallowFoundationGroundFloor.steelTons,
-        _reinforcedConcreteColumnColumnFoundation.steelTons
+        _concreteCastingShallowFoundationGroundFloor.steelTons
       ]);
 
   @override

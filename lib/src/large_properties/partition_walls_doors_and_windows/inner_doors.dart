@@ -6,9 +6,8 @@ import 'inner_door.dart';
 
 part 'inner_doors.freezed.dart';
 
-// Sisaovet
-// Sisaltaa tiedot kaikkien sisaovien materiaalimaarista yhteensa
-
+/// Sisäovet
+/// Sisältää tiedot kaikkien sisäovien materiaalimäärista yhteensä
 @freezed
 class InnerDoors with _$InnerDoors {
   const InnerDoors._();

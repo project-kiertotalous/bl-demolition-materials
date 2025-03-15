@@ -3,8 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'outer_door.freezed.dart';
 
-//Sisaltaa tiedot yksittaisten ulko-ovityyppien maarista
-
+/// Sisältää tiedot yksittäisten ulko-ovityyppien määristä
 @freezed
 class OuterDoor with _$OuterDoor {
   const OuterDoor._();
@@ -16,4 +15,3 @@ class OuterDoor with _$OuterDoor {
 
   num? get overallOuterDoors => Utils.sumOrNull([shutDoors, glassDoors]);
 }
-
