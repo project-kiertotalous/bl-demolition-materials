@@ -375,8 +375,8 @@ class RoomSpaces with _$RoomSpaces {
       return null;
     }
     return totalChipboardArea! *
-        UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerSqm /
-        UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerCbm;
+        UpperBaseStructureAndWaterRoofWeights.chipBoard15mmKgPerSqm /
+        UpperBaseStructureAndWaterRoofWeights.chipBoard15mmKgPerCbm;
   }
 
   num? get totalCybrocMaterialVolume {
@@ -431,7 +431,7 @@ class RoomSpaces with _$RoomSpaces {
       return null;
     }
     return totalChipboardArea! *
-        UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerSqm /
+        UpperBaseStructureAndWaterRoofWeights.chipBoard15mmKgPerSqm /
         1000;
   }
 

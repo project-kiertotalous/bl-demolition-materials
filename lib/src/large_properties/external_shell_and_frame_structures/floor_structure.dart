@@ -9,7 +9,7 @@ abstract class FloorStructure with _$FloorStructure {
 
   const factory FloorStructure(
       {num? totalArea,
-      num? particleBoardingMidsolePortion,
+      num? chipBoardMidsolePortion,
       num? gypsumBoardingMidsolePortion,
       num? solidBoardingMidsolePortion,
       num? floorPanelFloorPortion,
@@ -18,7 +18,7 @@ abstract class FloorStructure with _$FloorStructure {
       num? ceramicTileFloorPortion}) = _FloorStructure;
 
   num? get midsolePortionTotal => Utils.sumOrNull([
-        particleBoardingMidsolePortion,
+        chipBoardMidsolePortion,
         gypsumBoardingMidsolePortion,
         solidBoardingMidsolePortion
       ]);

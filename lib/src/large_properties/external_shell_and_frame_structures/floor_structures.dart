@@ -31,34 +31,30 @@ abstract class FloorStructures with _$FloorStructures {
         otherSpaces?.totalArea
       ]);
 
-  num? get particleBoardingMidsoleVolume {
+  num? get chipBoardMidsoleVolume {
     final allNulls = !Utils.anyNonNull([
+      Utils.multiplyOrNull(
+          [officeSpaces?.chipBoardMidsolePortion, officeSpaces?.totalArea]),
       Utils.multiplyOrNull([
-        officeSpaces?.particleBoardingMidsolePortion,
-        officeSpaces?.totalArea
-      ]),
-      Utils.multiplyOrNull([
-        lobbiesAndOtherCommonAreas?.particleBoardingMidsolePortion,
+        lobbiesAndOtherCommonAreas?.chipBoardMidsolePortion,
         lobbiesAndOtherCommonAreas?.totalArea
       ]),
       Utils.multiplyOrNull([
-        restroomsAndWashingFacilities?.particleBoardingMidsolePortion,
+        restroomsAndWashingFacilities?.chipBoardMidsolePortion,
         restroomsAndWashingFacilities?.totalArea
       ]),
       Utils.multiplyOrNull(
-          [kitchens?.particleBoardingMidsolePortion, kitchens?.totalArea]),
+          [kitchens?.chipBoardMidsolePortion, kitchens?.totalArea]),
       Utils.multiplyOrNull([
-        teachingAndTreatmentSpaces?.particleBoardingMidsolePortion,
+        teachingAndTreatmentSpaces?.chipBoardMidsolePortion,
         teachingAndTreatmentSpaces?.totalArea
       ]),
       Utils.multiplyOrNull([
-        storageAndWorkspaces?.particleBoardingMidsolePortion,
+        storageAndWorkspaces?.chipBoardMidsolePortion,
         storageAndWorkspaces?.totalArea
       ]),
-      Utils.multiplyOrNull([
-        otherSpaces?.particleBoardingMidsolePortion,
-        otherSpaces?.totalArea
-      ]),
+      Utils.multiplyOrNull(
+          [otherSpaces?.chipBoardMidsolePortion, otherSpaces?.totalArea]),
     ]);
 
     if (allNulls) {
@@ -66,34 +62,30 @@ abstract class FloorStructures with _$FloorStructures {
     }
 
     return Utils.sumOrNull([
+          Utils.multiplyOrZero(
+              [officeSpaces?.chipBoardMidsolePortion, officeSpaces?.totalArea]),
           Utils.multiplyOrZero([
-            officeSpaces?.particleBoardingMidsolePortion,
-            officeSpaces?.totalArea
-          ]),
-          Utils.multiplyOrZero([
-            lobbiesAndOtherCommonAreas?.particleBoardingMidsolePortion,
+            lobbiesAndOtherCommonAreas?.chipBoardMidsolePortion,
             lobbiesAndOtherCommonAreas?.totalArea
           ]),
           Utils.multiplyOrZero([
-            restroomsAndWashingFacilities?.particleBoardingMidsolePortion,
+            restroomsAndWashingFacilities?.chipBoardMidsolePortion,
             restroomsAndWashingFacilities?.totalArea
           ]),
           Utils.multiplyOrZero(
-              [kitchens?.particleBoardingMidsolePortion, kitchens?.totalArea]),
+              [kitchens?.chipBoardMidsolePortion, kitchens?.totalArea]),
           Utils.multiplyOrZero([
-            teachingAndTreatmentSpaces?.particleBoardingMidsolePortion,
+            teachingAndTreatmentSpaces?.chipBoardMidsolePortion,
             teachingAndTreatmentSpaces?.totalArea
           ]),
           Utils.multiplyOrZero([
-            storageAndWorkspaces?.particleBoardingMidsolePortion,
+            storageAndWorkspaces?.chipBoardMidsolePortion,
             storageAndWorkspaces?.totalArea
           ]),
-          Utils.multiplyOrZero([
-            otherSpaces?.particleBoardingMidsolePortion,
-            otherSpaces?.totalArea
-          ]),
+          Utils.multiplyOrZero(
+              [otherSpaces?.chipBoardMidsolePortion, otherSpaces?.totalArea]),
         ])! *
-        UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerSqm /
+        UpperBaseStructureAndWaterRoofWeights.chipBoard15mmKgPerSqm /
         1000;
   }
 
@@ -223,11 +215,11 @@ abstract class FloorStructures with _$FloorStructures {
         1000;
   }
 
-  num? get particleBoardingMidsoleTons => particleBoardingMidsoleVolume == null
+  num? get chipBoardMidsoleTons => chipBoardMidsoleVolume == null
       ? null
-      : particleBoardingMidsoleVolume! /
+      : chipBoardMidsoleVolume! /
           1000 *
-          UpperBaseStructureAndWaterRoofWeights.particleBoard15mmKgPerCbm;
+          UpperBaseStructureAndWaterRoofWeights.chipBoard15mmKgPerCbm;
 
   num? get gypsumBoardingMidsoleTons => gypsumBoardingMidsoleVolume == null
       ? null

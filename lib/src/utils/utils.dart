@@ -20,12 +20,12 @@ class Utils {
   }
 
   /// Returns true if any of the values in the provided list is not null.
-  static bool anyNonNull(List<num?> values) {
+  static bool anyNonNull<T>(List<T?> values) {
     return values.any((val) => val != null);
   }
 
   /// Returns true if all of the values in the provided list are null.
-  static bool allNull(List<num?> values) {
+  static bool allNull<T>(List<T?> values) {
     return !anyNonNull(values);
   }
 

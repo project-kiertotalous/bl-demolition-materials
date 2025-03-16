@@ -204,8 +204,8 @@ class UpperBaseStructureAndWaterRoofWeights {
   static num vaporBarrierKgPerCbm = 970;
   static num plasterBoardKgPerSqm = 9;
   static num plasterBoardKgPerCbm = 900;
-  static num particleBoard15mmKgPerSqm = 10.00;
-  static num particleBoard15mmKgPerCbm = 1000;
+  static num chipBoard15mmKgPerSqm = 10.00;
+  static num chipBoard15mmKgPerCbm = 1000;
   static num windProofWool30mmKgPerSqm = 1.65;
   static num windProofWool30mmKgPerCbm = 55;
   static num woodShavings100mmKgPerSqm = 11.00;

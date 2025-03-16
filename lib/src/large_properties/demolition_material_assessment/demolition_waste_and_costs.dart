@@ -1,9 +1,17 @@
 import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/waste_cost_item.dart';
+import 'package:bl_demolition_materials/src/large_properties/hvac_electrical_and_other_equipment/fixtures_and_structures.dart';
+import 'package:bl_demolition_materials/src/large_properties/hvac_electrical_and_other_equipment/machines_and_equipments.dart';
+import 'package:bl_demolition_materials/src/large_properties/hvac_electrical_and_other_equipment/yard_and_protective_structures.dart';
+import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/fixed_furniture.dart';
+import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/outer_doors.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../hvac_electrical_and_other_equipment/hvac_and_electrical_installations.dart';
+import '../partition_walls_doors_and_windows/inner_doors.dart';
 import '../partition_walls_doors_and_windows/room_spaces.dart';
+import '../partition_walls_doors_and_windows/windows.dart';
 
 part 'demolition_waste_and_costs.freezed.dart';
 
@@ -18,7 +26,17 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       TotalIntermediateFloors? totalIntermediateFloors,
       TotalRoofs? totalRoofs,
       TotalBuildingFrame? totalBuildingFrame,
+      OuterDoors? outerDoors,
+      InnerDoors? innerDoors,
+      FixedFurniture? fixedFurniture,
+      Cellar? cellar,
+      FloorStructures? floorStructures,
       RoomSpaces? roomSpaces,
+      Windows? windows,
+      HvacAndElectricalInstallations? hvacAndElectricalInstallations,
+      MachinesAndEquipments? machinesAndEquipments,
+      FixturesAndStructures? fixturesAndStructures,
+      YardAndProtectiveStructures? yardAndProtectiveStructures,
       num? cleanSoilDemolitionCost,
       num? asphaltWasteDemolitionCost,
       num? cleanConcreteDemolitionCost,
@@ -28,9 +46,9 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       num? rebarAndSteelScrapDemolitionCost,
       num? stainlessSteelDemolitionCost,
       num? copperDemolitionCost,
-      num? aluminumDemolitionCost,
+      num? aluminiumDemolitionCost,
       num? cleanUsableWoodDemolitionCost,
-      num? burnableWoodWasteDemolitionCost,
+      num? combustibleWoodWasteDemolitionCost,
       num? glassDemolitionCost,
       num? glassAndMineralWoolDemolitionCost,
       num? fiberCementBoardsDemolitionCost,
@@ -41,59 +59,287 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       num? plasticWasteDemolitionCost,
       num? energyWasteDemolitionCost}) = _DemolitionWasteAndCosts;
 
+  // Maa-ainekset, puhdas maa
   late final cleanSoil = WasteCostItem(
       volume: excavationArea?.volumeToRemove,
       tons: excavationArea?.cleanLandTons,
       demolitionCost: cleanSoilDemolitionCost);
 
+  // Asfalttijäte
   late final asphaltWaste = WasteCostItem(
       volume: excavationArea?.asphaltVolume,
       tons: excavationArea?.asphaltTons,
       demolitionCost: asphaltWasteDemolitionCost);
 
+  // Puhdas betoni
   late final cleanConcrete = WasteCostItem(
-      volume: excavationArea?.asphaltVolume,
-      tons: excavationArea?.asphaltTons,
-      demolitionCost: asphaltWasteDemolitionCost);
+      volume: _cleanConcreteVolume,
+      tons: _cleanConcreteTons,
+      demolitionCost: cleanConcreteDemolitionCost);
 
+  // Betoniharkot
   late final concreteBlocks = WasteCostItem(
-      volume: _concreteBlocksVolume,
-      tons: _concreteBlocksTons,
+      volume: foundations?.concreteBlockVolume,
+      tons: foundations?.concreteTons,
       demolitionCost: concreteBlocksDemolitionCost);
 
-  late final wallAndRoofTiles = WasteCostItem(); // TODO
+  // Seinä- ja kattotiilet
+  late final wallAndRoofTiles = WasteCostItem(
+      volume: Utils.sumOrNull([
+        totalRoofs?.roofTileVolume,
+        totalBuildingFrame?.brickVolume,
+        totalBuildingFrame?.limeOrRedBrickVolume,
+        roomSpaces?.totalBrickWallsMaterialVolume
+      ]),
+      tons: Utils.sumOrNull([
+        totalRoofs?.roofTileTons,
+        totalBuildingFrame?.brickTons,
+        totalBuildingFrame?.limeOrRedBrickTons,
+        roomSpaces?.totalBrickWallsMaterialTons
+      ]),
+      demolitionCost: wallAndRoofTilesDemolitionCost);
 
-  late final ceramicTiles = WasteCostItem(); // TODO
+  // Kaakelilaatat ja keramiikka, ei sisällä asbestia
+  late final ceramicTiles = WasteCostItem(
+      volume: _ceramicTileVolume,
+      tons: _ceramicTileTons,
+      demolitionCost: ceramicTilesDemolitionCost);
 
-  late final rebarAndSteelScrap = WasteCostItem(); // TODO
+  // Betoniteräkset, peltikatto, ja muu teräs sekä rautaromu
+  late final rebarAndSteelScrap = WasteCostItem(
+      volume: null,
+      tons: _rebarAndSteelScrapTons,
+      demolitionCost: rebarAndSteelScrapDemolitionCost);
 
-  late final stainlessSteel = WasteCostItem(); // TODO
+  // Ruostumaton teräs
+  late final stainlessSteel = WasteCostItem(
+      volume: null,
+      tons: (fixedFurniture?.areFurnituresRecyclable ?? true)
+          ? null
+          : fixedFurniture?.stainlessSteelMaterialTons,
+      demolitionCost: stainlessSteelDemolitionCost);
 
-  late final copper = WasteCostItem(); // TODO
+  // Kupari
+  late final copper = WasteCostItem(
+      volume: null,
+      tons: Utils.sumOrNull([
+        hvacAndElectricalInstallations?.copperElectricalWires?.tons,
+        hvacAndElectricalInstallations?.copperWaterPipes?.tons
+      ]),
+      demolitionCost: copperDemolitionCost);
 
-  late final aluminum = WasteCostItem(); // TODO
+  // Alumiini
+  late final aluminium = WasteCostItem(
+      volume: null,
+      tons: Utils.sumOrNull([
+        (outerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : outerDoors?.totalAluminiumMaterialTons,
+        (windows?.areWindowsRecyclable ?? true)
+            ? null
+            : windows?.totalAluminiumMaterialTons
+      ]),
+      demolitionCost: aluminiumDemolitionCost);
 
-  late final cleanUsableWood = WasteCostItem(); // TODO
+  // Puhdas käyttökelpoinen puu
+  late final cleanUsableWood = WasteCostItem(
+      volume: Utils.sumOrNull([
+        totalIntermediateFloors?.woodFrameWoodVolume,
+        totalBuildingFrame?.woodFramePart.woodVolume,
+        roomSpaces?.totalWoodFramedWallsMaterialVolume
+      ]),
+      tons: Utils.sumOrNull([
+        totalIntermediateFloors?.woodFrameWoodTons,
+        totalBuildingFrame?.woodFramePart.woodTons,
+        roomSpaces?.totalWoodFramedWallsMaterialTons,
+        // TODO: Adding the tons of lime or red brick here seems sus, but is
+        // according to spec. This smells, very stinky.
+        totalBuildingFrame?.limeOrRedBrickTons
+      ]),
+      demolitionCost: cleanUsableWoodDemolitionCost);
 
-  late final burnableWoodWaste = WasteCostItem(); // TODO
+  // Polttokelpoinen puujäte
+  late final combustibleWoodWaste = WasteCostItem(
+      volume: _combustibleWoodWasteVolume,
+      tons: _combustibleWoodWasteTons,
+      demolitionCost: combustibleWoodWasteDemolitionCost);
 
-  late final glass = WasteCostItem(); // TODO
+  // Lasi
+  late final glass = WasteCostItem(
+      volume: Utils.sumOrNull([
+        (outerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : outerDoors?.totalGlassMaterialVolume,
+        (windows?.areWindowsRecyclable ?? true)
+            ? null
+            : windows?.totalGlassMaterialVolume,
+        (innerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : innerDoors?.totalGlassMaterialVolume,
+      ]),
+      tons: Utils.sumOrNull([
+        (outerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : outerDoors?.totalGlassMaterialTons,
+        (windows?.areWindowsRecyclable ?? true)
+            ? null
+            : windows?.totalGlassMaterialTons,
+        (innerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : innerDoors?.totalGlassMaterialTons,
+      ]),
+      demolitionCost: glassDemolitionCost);
 
-  late final glassAndMineralWool = WasteCostItem(); // TODO
+  // Lasi- ja mineraalieristevilla
+  late final glassAndMineralWool = WasteCostItem(
+      volume: Utils.sumOrNull([
+        // TODO: A loved child has many names? Would be nice to refactor the
+        // naming schemes to be consistent.
+        foundations?.mineralWoolVolume,
+        foundations?.solidBoardingAndWoodFrameVolume,
+        cellar?.glassAndMineralWoolInsulationVolume,
+        totalRoofs?.insulationVolume,
+        totalBuildingFrame?.mineralWoolInsulationVolume
+      ]),
+      tons: Utils.sumOrNull([
+        foundations?.mineralWoolTons,
+        foundations?.solidBoardingAndWoodFrameTons,
+        cellar?.glassAndMineralWoolInsulationTons,
+        totalRoofs?.insulationTons,
+        totalBuildingFrame?.mineralWoolInsulationTons
+      ]),
+      demolitionCost: glassAndMineralWoolDemolitionCost);
 
-  late final fiberCementBoards = WasteCostItem(); // TODO
+  // Mineriitti kate ja palonsuojalevyt, ei sisällä asbestia
+  late final fiberCementBoards = WasteCostItem(
+      volume: Utils.sumOrNull([
+        totalRoofs?.mineriteVolume,
+        totalBuildingFrame?.mineriteBoardVolume
+      ]),
+      tons: Utils.sumOrNull(
+          [totalRoofs?.mineriteTons, totalBuildingFrame?.mineriteBoardTons]),
+      demolitionCost: fiberCementBoardsDemolitionCost);
 
-  late final gypsumBoards = WasteCostItem(); // TODO
+  // Kipsilevyt
+  late final gypsumBoards = WasteCostItem(
+      volume: Utils.sumOrNull([
+        floorStructures?.gypsumBoardingMidsoleVolume,
+        totalBuildingFrame?.gypsumBoardVolume,
+        roomSpaces?.totalCybrocMaterialVolume
+      ]),
+      tons: Utils.sumOrNull([
+        floorStructures?.gypsumBoardingMidsoleTons,
+        totalBuildingFrame?.gypsumBoardTons,
+        roomSpaces?.totalCybrocMaterialTons
+      ]),
+      demolitionCost: gypsumBoardsDemolitionCost);
 
-  late final chipboard = WasteCostItem(); // TODO
+  // Lastulevy
+  late final chipboard = WasteCostItem(
+      volume: Utils.sumOrNull([
+        floorStructures?.chipBoardMidsoleVolume,
+        roomSpaces?.totalChipboardMaterialVolume
+      ]),
+      tons: Utils.sumOrNull([
+        floorStructures?.chipBoardMidsoleTons,
+        roomSpaces?.totalChipboardMaterialTons
+      ]),
+      demolitionCost: chipboardDemolitionCost);
 
-  late final windProtectionBoard = WasteCostItem(); // TODO
+  // Tuulensuojalevyt (bitulitti tai vastaava)
+  late final windProtectionBoard = WasteCostItem(
+      volume: totalBuildingFrame?.windProtectionBoardVolume,
+      tons: totalBuildingFrame?.windProtectionBoardTons,
+      demolitionCost: windProtectionBoardDemolitionCost);
 
-  late final eWaste = WasteCostItem(); // TODO
+  // Sähkö- ja elektroniikkarokuma
+  late final eWaste = WasteCostItem(
+      volume: null,
+      tons: Utils.sumOrNull([
+        (fixedFurniture?.areFurnituresRecyclable ?? true)
+            ? null
+            : fixedFurniture?.electricScrapMaterialTons,
+        (machinesAndEquipments?.machinesRecyclable ?? true)
+            ? null
+            : Utils.sumOrNull([
+                machinesAndEquipments?.smallElectricalAccumulators?.tons,
+                machinesAndEquipments?.largeElectricalAccumulators?.tons,
+                machinesAndEquipments?.electricRadiators?.tons,
+                machinesAndEquipments?.ventilationUnits?.tons,
+                machinesAndEquipments
+                    ?.electricalDistributionCabinetsAndMeters?.tons,
+                machinesAndEquipments?.electricMotorsAndCirculationPumps?.tons,
+                machinesAndEquipments?.roofExhaustFans?.tons
+              ])
+      ]),
+      demolitionCost: eWasteDemolitionCost);
 
-  late final plasticWaste = WasteCostItem(); // TODO
+  // Muovijäte, styrox, kosteuseriste yms.
+  late final plasticWaste = WasteCostItem(
+      volume: Utils.sumOrNull([
+        foundations?.plasticWasteVolume,
+        cellar?.plasticWasteVolume,
+        floorStructures?.vinylFlooringOrTileFloorVolume,
+        totalBuildingFrame?.styrofoamVolume,
+        hvacAndElectricalInstallations?.plasticSewagePipes?.volume,
+        hvacAndElectricalInstallations?.plasticWaterPipes?.volume,
+        roomSpaces?.totalPaintedPlasteredBrickWallMaterialVolume,
+        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
+            ? null
+            : roomSpaces?.totalPlasticCarpetMaterialVolume
+      ]),
+      tons: Utils.sumOrNull([
+        foundations?.plasticWasteTons,
+        cellar?.plasticWasteTons,
+        floorStructures?.vinylFlooringOrTileFloorTons,
+        totalBuildingFrame?.styrofoamTons,
+        hvacAndElectricalInstallations?.plasticSewagePipes?.tons,
+        hvacAndElectricalInstallations?.plasticWaterPipes?.tons,
+        roomSpaces?.totalPaintedPlasteredBrickWallMaterialTons,
+        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
+            ? null
+            : roomSpaces?.totalPlasticCarpetMaterialTons
+      ]),
+      demolitionCost: plasticWasteDemolitionCost);
 
-  late final energyWaste = WasteCostItem(); // TODO
+  // Energiajäte, maalattupuu, kattohuopa, ja aluskate
+  late final energyWaste = WasteCostItem(
+      volume: Utils.sumOrNull([
+        foundations?.combustibleWasteVolume,
+        // TODO: Floor panel is taken into consideration when calculating volume,
+        // but not when calculating tons. Smells fishy.
+        floorStructures?.floorPanelFloorVolume,
+        floorStructures?.parquetFloorVolume,
+        totalRoofs?.underlayVolume,
+        totalRoofs?.bitumenVolume,
+        totalBuildingFrame?.exteriorWoodCladdingVolume,
+        (outerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : outerDoors?.totalWoodenMaterialVolume,
+        (windows?.areWindowsRecyclable ?? true)
+            ? null
+            : windows?.totalWoodenMaterialVolume,
+        (innerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : innerDoors?.totalWoodenMaterialVolume
+      ]),
+      tons: Utils.sumOrNull([
+        foundations?.combustibleWasteTons,
+        floorStructures?.parquetFloorTons,
+        totalRoofs?.underlayTons,
+        totalRoofs?.bitumenTons,
+        totalBuildingFrame?.exteriorWoodCladdingTons,
+        (outerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : outerDoors?.totalWoodMaterialTons,
+        (windows?.areWindowsRecyclable ?? true)
+            ? null
+            : windows?.totalWoodenMaterialTons,
+        (innerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : innerDoors?.totalWoodMaterialTons
+      ]),
+      demolitionCost: energyWasteDemolitionCost);
 
   List<WasteCostItem> get all => [
         cleanSoil,
@@ -105,9 +351,9 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         rebarAndSteelScrap,
         stainlessSteel,
         copper,
-        aluminum,
+        aluminium,
         cleanUsableWood,
-        burnableWoodWaste,
+        combustibleWoodWaste,
         glass,
         glassAndMineralWool,
         fiberCementBoards,
@@ -128,15 +374,15 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
   num? get totalMaterialCost => all.fold<num>(
       0, (acc, element) => acc + (element.totalMaterialCost ?? 0));
 
-  num? get _concreteBlocksVolume => Utils.sumOrNull([
-        _foundationsConcreteVolume,
-        _intermediateFloorsConcreteVolume,
-        _roofsConcreteVolume,
+  num? get _cleanConcreteVolume => Utils.sumOrNull([
+        _foundationsCleanConcreteVolume,
+        _intermediateFloorsCleanConcreteVolume,
+        _roofsCleanConcreteVolume,
         roomSpaces?.totalConcreteElementOrCastingWallsMaterialVolume,
-        _buildingFrameConcreteVolume
+        _buildingFrameCleanConcreteVolume
       ]);
 
-  num? get _foundationsConcreteVolume {
+  num? get _foundationsCleanConcreteVolume {
     if (foundations == null) {
       return null;
     }
@@ -154,7 +400,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     ]);
   }
 
-  num? get _buildingFrameConcreteVolume {
+  num? get _buildingFrameCleanConcreteVolume {
     if (totalBuildingFrame?.buildingFrame == null) {
       return null;
     }
@@ -171,7 +417,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     ]);
   }
 
-  num? get _intermediateFloorsConcreteVolume {
+  num? get _intermediateFloorsCleanConcreteVolume {
     if (totalIntermediateFloors == null) {
       return null;
     }
@@ -187,7 +433,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     ]);
   }
 
-  num? get _roofsConcreteVolume {
+  num? get _roofsCleanConcreteVolume {
     if (totalRoofs?.roofTrussesAreRecyclable == null) {
       return null;
     }
@@ -199,15 +445,15 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     return totalRoofs?.concreteVolume;
   }
 
-  num? get _concreteBlocksTons => Utils.sumOrNull([
-        _foundationsConcreteTonsTotal,
-        _intermediateFloorsConcreteTons,
-        _roofsConcreteTons,
+  num? get _cleanConcreteTons => Utils.sumOrNull([
+        _foundationsCleanConcreteTons,
+        _intermediateFloorsCleanConcreteTons,
+        _roofsCleanConcreteTons,
         roomSpaces?.totalConcreteElementOrCastingWallsMaterialTons,
-        _buildingFrameConcreteTons
+        _buildingFrameCleanConcreteTons
       ]);
 
-  num? get _foundationsConcreteTonsTotal {
+  num? get _foundationsCleanConcreteTons {
     if (foundations == null) {
       return null;
     }
@@ -219,7 +465,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     return foundations!.concreteTons;
   }
 
-  num? get _intermediateFloorsConcreteTons {
+  num? get _intermediateFloorsCleanConcreteTons {
     if (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ==
         null) {
       return null;
@@ -235,7 +481,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     ]);
   }
 
-  num? get _roofsConcreteTons {
+  num? get _roofsCleanConcreteTons {
     if (totalRoofs?.roofTrussesAreRecyclable == null) {
       return null;
     }
@@ -247,7 +493,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     return totalRoofs!.concreteTons;
   }
 
-  num? get _buildingFrameConcreteTons {
+  num? get _buildingFrameCleanConcreteTons {
     if (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable == null) {
       return null;
     }
@@ -264,4 +510,132 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       totalBuildingFrame?.concreteVerticalColumnsPart.concreteTons
     ]);
   }
+
+  num? get _ceramicTileVolume {
+    if (Utils.allNull([floorStructures, roomSpaces])) {
+      return null;
+    }
+
+    final floorsCeramicTileVolume =
+        (floorStructures?.surfaceMaterialCoatingContainsAsbestos ?? true)
+            ? null
+            : floorStructures!.ceramicTileFloorVolume;
+
+    final wallsCeramicTileVolume =
+        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
+            ? null
+            : roomSpaces!.totalCeramicTileWallsMaterialVolume;
+
+    return Utils.sumOrNull([floorsCeramicTileVolume, wallsCeramicTileVolume]);
+  }
+
+  num? get _ceramicTileTons {
+    if (Utils.allNull([floorStructures, roomSpaces])) {
+      return null;
+    }
+
+    final floorsCeramicTileTons =
+        (floorStructures?.surfaceMaterialCoatingContainsAsbestos ?? true)
+            ? null
+            : floorStructures!.ceramicTileFloorTons;
+
+    final wallsCeramicTileTons =
+        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
+            ? null
+            : roomSpaces!.totalCeramicTileWallsMaterialTons;
+
+    return Utils.sumOrNull([floorsCeramicTileTons, wallsCeramicTileTons]);
+  }
+
+  num? get _rebarAndSteelScrapTons => Utils.sumOrNull([
+        _rebarAndSteelScrapOuterShellAndExternalStructuresTons,
+        _rebarAndSteelScrapRoomSpacesTons,
+        _rebarAndSteelScrapHvacElectricalAndOtherEquipmentTons
+      ]);
+
+  num? get _rebarAndSteelScrapOuterShellAndExternalStructuresTons =>
+      Utils.sumOrNull([
+        foundations?.rebarTons,
+        cellar?.rebarTons,
+        totalIntermediateFloors?.concreteCastingRebarTons,
+        (totalRoofs?.roofs?.roofTrussesAreRecyclable ?? true)
+            ? null
+            : totalRoofs?.rebarTons,
+        (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? true)
+            ? null
+            : totalBuildingFrame?.steelVerticalColumnsPart.steelTons
+      ]);
+
+  num? get _rebarAndSteelScrapRoomSpacesTons => Utils.sumOrNull([
+        (outerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : outerDoors?.totalSteelMaterialTons,
+        (innerDoors?.areDoorsRecyclable ?? true)
+            ? null
+            : innerDoors?.totalSteelMaterialTons,
+        (fixedFurniture?.areFurnituresRecyclable ?? true)
+            ? null
+            : fixedFurniture?.steelMaterialTons
+      ]);
+
+  num? get _rebarAndSteelScrapHvacElectricalAndOtherEquipmentTons =>
+      Utils.sumOrNull([
+        hvacAndElectricalInstallations?.centralHeatingPipes?.tons,
+        hvacAndElectricalInstallations?.castIronSewagePipes?.tons,
+        hvacAndElectricalInstallations?.steelVentilationPipes300Dn?.tons,
+        hvacAndElectricalInstallations?.steelVentilationPipes500Dn?.tons,
+        machinesAndEquipments?.waterCirculatedRadiators?.tons,
+        yardAndProtectiveStructures?.concretePavingSlabs?.tons,
+        yardAndProtectiveStructures?.dripTraysAndProtectiveMetalSheets?.tons,
+        // TODO: waterCirculatedRadiators is added twice here. This is according
+        // to spec, but very much smells.
+        (machinesAndEquipments?.machinesRecyclable ?? true)
+            ? null
+            : machinesAndEquipments?.waterCirculatedRadiators?.tons,
+        (fixturesAndStructures?.fixturesRecyclable ?? true)
+            ? null
+            : Utils.sumOrNull([
+                fixturesAndStructures?.rainGuttersAndDownSpouts?.tons,
+                fixturesAndStructures?.fireLaddersAndWalkways?.tons,
+                fixturesAndStructures?.aluminiumChainLinkFences?.tons,
+                fixturesAndStructures?.steelChainLinkFences?.tons
+              ])
+      ]);
+
+  num? get _combustibleWoodWasteVolume => Utils.sumOrNull([
+        foundations?.woodShavingsVolume,
+        (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
+                false)
+            ? null
+            : totalIntermediateFloors?.glulamBeamWoodVolume,
+        floorStructures?.solidBoardingMidsoleVolume,
+        (totalRoofs?.roofTrussesAreRecyclable ?? true)
+            ? null
+            : totalRoofs?.woodVolume,
+        totalBuildingFrame?.semiHardFiberBoardVolume,
+        (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? true)
+            ? null
+            : totalBuildingFrame?.glulamBeamsPart.woodVolume,
+        roomSpaces?.totalBoardPanelMaterialVolume
+      ]);
+
+  num? get _combustibleWoodWasteTons => Utils.sumOrNull([
+        foundations?.woodShavingsTons,
+        (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
+                false)
+            ? null
+            : totalIntermediateFloors?.glulamBeamWoodTons,
+        floorStructures?.solidBoardingMidsoleTons,
+        // TODO: While floor panel tons are added here, #_combustibleWoodWasteVolume
+        // does not add floorStructures?.floorPanelFloorVolume -> seems fishy.
+        floorStructures?.floorPanelFloorTons,
+        (totalRoofs?.roofTrussesAreRecyclable ?? true)
+            ? null
+            : totalRoofs?.woodTons,
+        (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? true)
+            ? null
+            : totalBuildingFrame?.glulamBeamsPart.woodTons,
+        totalBuildingFrame?.semiHardFiberBoardTons,
+        roomSpaces?.totalBoardPanelMaterialTons
+      ]);
 }

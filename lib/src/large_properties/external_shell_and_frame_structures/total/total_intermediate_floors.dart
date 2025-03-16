@@ -122,7 +122,7 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
           FoundationWeights.hollowSlab200mmKgPerSqm /
           1000;
 
-  num? get concreteCastingSteelTons => concreteCastingConcreteVolume == null
+  num? get concreteCastingRebarTons => concreteCastingConcreteVolume == null
       ? null
       : concreteCastingConcreteVolume! *
           FoundationWeights.reinforcedConcreteColumn250x250KgPerSqm /

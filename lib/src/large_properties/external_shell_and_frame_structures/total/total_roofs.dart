@@ -135,7 +135,7 @@ abstract class TotalRoofs with _$TotalRoofs {
         _woodenUnderPlankingWaterRoof.woodTons
       ]);
 
-  num? get steelTons => Utils.sumOrNull([
+  num? get rebarTons => Utils.sumOrNull([
         _steelTrussRidgeOrGableRoof.steelTons,
         _steelTrussFlatOrMonoPitchedRoof.steelTons,
         _roofSheetWaterRoof.steelTons

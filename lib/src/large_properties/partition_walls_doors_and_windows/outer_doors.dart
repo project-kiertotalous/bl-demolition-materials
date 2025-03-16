@@ -24,7 +24,7 @@ class OuterDoors with _$OuterDoors {
     if (allNulls) {
       return null;
     }
-    Utils.sumOrNull([
+    return Utils.sumOrNull([
       (Utils.multiplyOrNull([
             woodenDoors?.shutDoors,
             DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg
