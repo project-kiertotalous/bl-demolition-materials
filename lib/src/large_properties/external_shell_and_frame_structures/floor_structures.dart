@@ -291,32 +291,34 @@ abstract class FloorStructures with _$FloorStructures {
         1000;
   }
 
-  num? get vinylFlooringOrTileFloorVolume {
+  num? get plasticCarpetOrPlasticTileFloorVolume {
     final allNulls = !Utils.anyNonNull([
       Utils.multiplyOrNull([
-        officeSpaces?.vinylFlooringOrTileFloorPortion,
+        officeSpaces?.plasticCarpetOrPlasticTileFloorPortion,
         officeSpaces?.totalArea
       ]),
       Utils.multiplyOrNull([
-        lobbiesAndOtherCommonAreas?.vinylFlooringOrTileFloorPortion,
+        lobbiesAndOtherCommonAreas?.plasticCarpetOrPlasticTileFloorPortion,
         lobbiesAndOtherCommonAreas?.totalArea
       ]),
       Utils.multiplyOrNull([
-        restroomsAndWashingFacilities?.vinylFlooringOrTileFloorPortion,
+        restroomsAndWashingFacilities?.plasticCarpetOrPlasticTileFloorPortion,
         restroomsAndWashingFacilities?.totalArea
       ]),
-      Utils.multiplyOrNull(
-          [kitchens?.vinylFlooringOrTileFloorPortion, kitchens?.totalArea]),
       Utils.multiplyOrNull([
-        teachingAndTreatmentSpaces?.vinylFlooringOrTileFloorPortion,
+        kitchens?.plasticCarpetOrPlasticTileFloorPortion,
+        kitchens?.totalArea
+      ]),
+      Utils.multiplyOrNull([
+        teachingAndTreatmentSpaces?.plasticCarpetOrPlasticTileFloorPortion,
         teachingAndTreatmentSpaces?.totalArea
       ]),
       Utils.multiplyOrNull([
-        storageAndWorkspaces?.vinylFlooringOrTileFloorPortion,
+        storageAndWorkspaces?.plasticCarpetOrPlasticTileFloorPortion,
         storageAndWorkspaces?.totalArea
       ]),
       Utils.multiplyOrNull([
-        otherSpaces?.vinylFlooringOrTileFloorPortion,
+        otherSpaces?.plasticCarpetOrPlasticTileFloorPortion,
         otherSpaces?.totalArea
       ]),
     ]);
@@ -327,29 +329,32 @@ abstract class FloorStructures with _$FloorStructures {
 
     return Utils.sumOrNull([
           Utils.multiplyOrZero([
-            officeSpaces?.vinylFlooringOrTileFloorPortion,
+            officeSpaces?.plasticCarpetOrPlasticTileFloorPortion,
             officeSpaces?.totalArea
           ]),
           Utils.multiplyOrZero([
-            lobbiesAndOtherCommonAreas?.vinylFlooringOrTileFloorPortion,
+            lobbiesAndOtherCommonAreas?.plasticCarpetOrPlasticTileFloorPortion,
             lobbiesAndOtherCommonAreas?.totalArea
           ]),
           Utils.multiplyOrZero([
-            restroomsAndWashingFacilities?.vinylFlooringOrTileFloorPortion,
+            restroomsAndWashingFacilities
+                ?.plasticCarpetOrPlasticTileFloorPortion,
             restroomsAndWashingFacilities?.totalArea
           ]),
-          Utils.multiplyOrZero(
-              [kitchens?.vinylFlooringOrTileFloorPortion, kitchens?.totalArea]),
           Utils.multiplyOrZero([
-            teachingAndTreatmentSpaces?.vinylFlooringOrTileFloorPortion,
+            kitchens?.plasticCarpetOrPlasticTileFloorPortion,
+            kitchens?.totalArea
+          ]),
+          Utils.multiplyOrZero([
+            teachingAndTreatmentSpaces?.plasticCarpetOrPlasticTileFloorPortion,
             teachingAndTreatmentSpaces?.totalArea
           ]),
           Utils.multiplyOrZero([
-            storageAndWorkspaces?.vinylFlooringOrTileFloorPortion,
+            storageAndWorkspaces?.plasticCarpetOrPlasticTileFloorPortion,
             storageAndWorkspaces?.totalArea
           ]),
           Utils.multiplyOrZero([
-            otherSpaces?.vinylFlooringOrTileFloorPortion,
+            otherSpaces?.plasticCarpetOrPlasticTileFloorPortion,
             otherSpaces?.totalArea
           ]),
         ])! *
@@ -479,10 +484,10 @@ abstract class FloorStructures with _$FloorStructures {
           1000 *
           UpperBaseStructureAndWaterRoofWeights.underPlankingKgPerCbm;
 
-  num? get vinylFlooringOrTileFloorTons =>
-      vinylFlooringOrTileFloorVolume == null
+  num? get plasticCarpetOrPlasticTileFloorTons =>
+      plasticCarpetOrPlasticTileFloorVolume == null
           ? null
-          : vinylFlooringOrTileFloorVolume! /
+          : plasticCarpetOrPlasticTileFloorVolume! /
               1000 *
               FloorStructureAndMaterialWeights.plasticMatKgPerCbm;
 

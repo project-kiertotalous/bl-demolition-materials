@@ -279,7 +279,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       volume: Utils.sumOrNull([
         foundations?.plasticWasteVolume,
         cellar?.plasticWasteVolume,
-        floorStructures?.vinylFlooringOrTileFloorVolume,
+        floorStructures?.plasticCarpetOrPlasticTileFloorVolume,
         totalBuildingFrame?.styrofoamVolume,
         hvacAndElectricalInstallations?.plasticSewagePipes?.volume,
         hvacAndElectricalInstallations?.plasticWaterPipes?.volume,
@@ -291,7 +291,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       tons: Utils.sumOrNull([
         foundations?.plasticWasteTons,
         cellar?.plasticWasteTons,
-        floorStructures?.vinylFlooringOrTileFloorTons,
+        floorStructures?.plasticCarpetOrPlasticTileFloorTons,
         totalBuildingFrame?.styrofoamTons,
         hvacAndElectricalInstallations?.plasticSewagePipes?.tons,
         hvacAndElectricalInstallations?.plasticWaterPipes?.tons,

@@ -13,7 +13,7 @@ abstract class FloorStructure with _$FloorStructure {
       num? gypsumBoardingMidsolePortion,
       num? solidBoardingMidsolePortion,
       num? floorPanelFloorPortion,
-      num? vinylFlooringOrTileFloorPortion,
+      num? plasticCarpetOrPlasticTileFloorPortion,
       num? parquetFloorPortion,
       num? ceramicTileFloorPortion}) = _FloorStructure;
 
@@ -25,7 +25,7 @@ abstract class FloorStructure with _$FloorStructure {
 
   num? get floorPortionTotal => Utils.sumOrNull([
         floorPanelFloorPortion,
-        vinylFlooringOrTileFloorPortion,
+        plasticCarpetOrPlasticTileFloorPortion,
         parquetFloorPortion,
         ceramicTileFloorPortion
       ]);
