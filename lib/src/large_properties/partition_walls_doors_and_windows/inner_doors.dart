@@ -17,7 +17,7 @@ class InnerDoors with _$InnerDoors {
       InnerDoor? fireDoors,
       @Default(false) bool areDoorsRecyclable}) = _InnerDoors;
 
-  num? get totalWoodenMaterialVolume {
+  num? get totalWoodVolume {
     final allNulls = Utils.sumOrNull([
       slabDoors?.shutDoors,
       slabDoors?.glassDoors,
@@ -33,7 +33,7 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalGlassMaterialVolume {
+  num? get totalGlassVolume {
     final allNulls = Utils.sumOrNull([
       slabDoors?.glassDoors,
       woodenDoors?.glassDoors,
@@ -46,7 +46,7 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalWoodMaterialTons {
+  num? get totalWoodTons {
     final allNulls = Utils.sumOrNull([
       slabDoors?.shutDoors,
       slabDoors?.glassDoors,
@@ -62,7 +62,7 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalGlassMaterialTons {
+  num? get totalGlassTons {
     final allNulls = Utils.sumOrNull([
       slabDoors?.glassDoors,
       woodenDoors?.glassDoors,
@@ -76,7 +76,7 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalSteelMaterialTons {
+  num? get totalSteelTons {
     if (fireDoors?.shutDoors == null) {
       return null;
     }

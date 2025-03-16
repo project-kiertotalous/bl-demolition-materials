@@ -18,7 +18,7 @@ class OuterDoors with _$OuterDoors {
       OuterDoor? steelDoors,
       @Default(false) bool areDoorsRecyclable}) = _OuterDoors;
 
-  num? get totalWoodenMaterialVolume {
+  num? get totalWoodVolume {
     final allNulls =
         Utils.allNull([woodenDoors?.shutDoors, woodenDoors?.glassDoors]);
     if (allNulls) {
@@ -42,7 +42,7 @@ class OuterDoors with _$OuterDoors {
     ]);
   }
 
-  num? get totalGlassMaterialVolume {
+  num? get totalGlassVolume {
     final allNulls = Utils.allNull([
       woodenDoors?.glassDoors,
       aluminiumDoors?.glassDoors,
@@ -74,7 +74,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalWoodMaterialTons {
+  num? get totalWoodTons {
     final allNulls =
         Utils.allNull([woodenDoors?.shutDoors, woodenDoors?.glassDoors]);
     if (allNulls) {
@@ -95,7 +95,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalAluminiumMaterialTons {
+  num? get totalAluminiumTons {
     final allNulls =
         Utils.allNull([aluminiumDoors?.shutDoors, aluminiumDoors?.glassDoors]);
     if (allNulls) {
@@ -115,7 +115,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalSteelMaterialTons {
+  num? get totalSteelTons {
     final allNulls =
         Utils.allNull([steelDoors?.shutDoors, steelDoors?.glassDoors]);
     if (allNulls) {
@@ -137,7 +137,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalGlassMaterialTons {
+  num? get totalGlassTons {
     final allNulls = Utils.allNull([
       woodenDoors?.glassDoors,
       aluminiumDoors?.glassDoors,

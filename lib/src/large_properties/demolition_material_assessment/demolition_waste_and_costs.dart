@@ -89,13 +89,13 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalRoofs?.roofTileVolume,
         totalBuildingFrame?.brickVolume,
         totalBuildingFrame?.limeOrRedBrickVolume,
-        roomSpaces?.totalBrickWallsMaterialVolume
+        roomSpaces?.totalBrickWallsVolume
       ]),
       tons: Utils.sumOrNull([
         totalRoofs?.roofTileTons,
         totalBuildingFrame?.brickTons,
         totalBuildingFrame?.limeOrRedBrickTons,
-        roomSpaces?.totalBrickWallsMaterialTons
+        roomSpaces?.totalBrickWallsTons
       ]),
       demolitionCost: wallAndRoofTilesDemolitionCost);
 
@@ -116,7 +116,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       volume: null,
       tons: (fixedFurniture?.areFurnituresRecyclable ?? true)
           ? null
-          : fixedFurniture?.stainlessSteelMaterialTons,
+          : fixedFurniture?.stainlessSteelTons,
       demolitionCost: stainlessSteelDemolitionCost);
 
   // Kupari
@@ -134,10 +134,10 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       tons: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : outerDoors?.totalAluminiumMaterialTons,
+            : outerDoors?.totalAluminiumTons,
         (windows?.areWindowsRecyclable ?? true)
             ? null
-            : windows?.totalAluminiumMaterialTons
+            : windows?.totalAluminiumTons
       ]),
       demolitionCost: aluminiumDemolitionCost);
 
@@ -146,12 +146,12 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       volume: Utils.sumOrNull([
         totalIntermediateFloors?.woodFrameWoodVolume,
         totalBuildingFrame?.woodFramePart.woodVolume,
-        roomSpaces?.totalWoodFramedWallsMaterialVolume
+        roomSpaces?.totalWoodFramedWallsVolume
       ]),
       tons: Utils.sumOrNull([
         totalIntermediateFloors?.woodFrameWoodTons,
         totalBuildingFrame?.woodFramePart.woodTons,
-        roomSpaces?.totalWoodFramedWallsMaterialTons,
+        roomSpaces?.totalWoodFramedWallsTons,
         // TODO: Adding the tons of lime or red brick here seems sus, but is
         // according to spec. This smells, very stinky.
         totalBuildingFrame?.limeOrRedBrickTons
@@ -169,24 +169,24 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       volume: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : outerDoors?.totalGlassMaterialVolume,
+            : outerDoors?.totalGlassVolume,
         (windows?.areWindowsRecyclable ?? true)
             ? null
-            : windows?.totalGlassMaterialVolume,
+            : windows?.totalGlassVolume,
         (innerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : innerDoors?.totalGlassMaterialVolume,
+            : innerDoors?.totalGlassVolume,
       ]),
       tons: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : outerDoors?.totalGlassMaterialTons,
+            : outerDoors?.totalGlassTons,
         (windows?.areWindowsRecyclable ?? true)
             ? null
-            : windows?.totalGlassMaterialTons,
+            : windows?.totalGlassTons,
         (innerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : innerDoors?.totalGlassMaterialTons,
+            : innerDoors?.totalGlassTons,
       ]),
       demolitionCost: glassDemolitionCost);
 
@@ -225,12 +225,12 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       volume: Utils.sumOrNull([
         floorStructures?.gypsumBoardingMidsoleVolume,
         totalBuildingFrame?.gypsumBoardVolume,
-        roomSpaces?.totalCybrocMaterialVolume
+        roomSpaces?.totalCybrocVolume
       ]),
       tons: Utils.sumOrNull([
         floorStructures?.gypsumBoardingMidsoleTons,
         totalBuildingFrame?.gypsumBoardTons,
-        roomSpaces?.totalCybrocMaterialTons
+        roomSpaces?.totalCybrocTons
       ]),
       demolitionCost: gypsumBoardsDemolitionCost);
 
@@ -238,11 +238,11 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
   late final chipboard = WasteCostItem(
       volume: Utils.sumOrNull([
         floorStructures?.chipBoardMidsoleVolume,
-        roomSpaces?.totalChipboardMaterialVolume
+        roomSpaces?.totalChipboardVolume
       ]),
       tons: Utils.sumOrNull([
         floorStructures?.chipBoardMidsoleTons,
-        roomSpaces?.totalChipboardMaterialTons
+        roomSpaces?.totalChipboardTons
       ]),
       demolitionCost: chipboardDemolitionCost);
 
@@ -258,7 +258,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       tons: Utils.sumOrNull([
         (fixedFurniture?.areFurnituresRecyclable ?? true)
             ? null
-            : fixedFurniture?.electricScrapMaterialTons,
+            : fixedFurniture?.electricScrapTons,
         (machinesAndEquipments?.machinesRecyclable ?? true)
             ? null
             : Utils.sumOrNull([
@@ -283,10 +283,10 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalBuildingFrame?.styrofoamVolume,
         hvacAndElectricalInstallations?.plasticSewagePipes?.volume,
         hvacAndElectricalInstallations?.plasticWaterPipes?.volume,
-        roomSpaces?.totalPaintedPlasteredBrickWallMaterialVolume,
+        roomSpaces?.totalPaintedPlasteredBrickWallVolume,
         (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
             ? null
-            : roomSpaces?.totalPlasticCarpetMaterialVolume
+            : roomSpaces?.totalPlasticCarpetVolume
       ]),
       tons: Utils.sumOrNull([
         foundations?.plasticWasteTons,
@@ -295,10 +295,10 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalBuildingFrame?.styrofoamTons,
         hvacAndElectricalInstallations?.plasticSewagePipes?.tons,
         hvacAndElectricalInstallations?.plasticWaterPipes?.tons,
-        roomSpaces?.totalPaintedPlasteredBrickWallMaterialTons,
+        roomSpaces?.totalPaintedPlasteredBrickWallTons,
         (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
             ? null
-            : roomSpaces?.totalPlasticCarpetMaterialTons
+            : roomSpaces?.totalPlasticCarpetTons
       ]),
       demolitionCost: plasticWasteDemolitionCost);
 
@@ -315,13 +315,13 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalBuildingFrame?.exteriorWoodCladdingVolume,
         (outerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : outerDoors?.totalWoodenMaterialVolume,
+            : outerDoors?.totalWoodVolume,
         (windows?.areWindowsRecyclable ?? true)
             ? null
-            : windows?.totalWoodenMaterialVolume,
+            : windows?.totalWoodenVolume,
         (innerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : innerDoors?.totalWoodenMaterialVolume
+            : innerDoors?.totalWoodVolume
       ]),
       tons: Utils.sumOrNull([
         foundations?.combustibleWasteTons,
@@ -331,13 +331,11 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalBuildingFrame?.exteriorWoodCladdingTons,
         (outerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : outerDoors?.totalWoodMaterialTons,
-        (windows?.areWindowsRecyclable ?? true)
-            ? null
-            : windows?.totalWoodenMaterialTons,
+            : outerDoors?.totalWoodTons,
+        (windows?.areWindowsRecyclable ?? true) ? null : windows?.totalWoodTons,
         (innerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : innerDoors?.totalWoodMaterialTons
+            : innerDoors?.totalWoodTons
       ]),
       demolitionCost: energyWasteDemolitionCost);
 
@@ -378,7 +376,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         _foundationsCleanConcreteVolume,
         _intermediateFloorsCleanConcreteVolume,
         _roofsCleanConcreteVolume,
-        roomSpaces?.totalConcreteElementOrCastingWallsMaterialVolume,
+        roomSpaces?.totalConcreteElementOrCastingWallsVolume,
         _buildingFrameCleanConcreteVolume
       ]);
 
@@ -449,7 +447,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         _foundationsCleanConcreteTons,
         _intermediateFloorsCleanConcreteTons,
         _roofsCleanConcreteTons,
-        roomSpaces?.totalConcreteElementOrCastingWallsMaterialTons,
+        roomSpaces?.totalConcreteElementOrCastingWallsTons,
         _buildingFrameCleanConcreteTons
       ]);
 
@@ -524,7 +522,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     final wallsCeramicTileVolume =
         (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
             ? null
-            : roomSpaces!.totalCeramicTileWallsMaterialVolume;
+            : roomSpaces!.totalCeramicTileWallsVolume;
 
     return Utils.sumOrNull([floorsCeramicTileVolume, wallsCeramicTileVolume]);
   }
@@ -542,7 +540,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     final wallsCeramicTileTons =
         (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
             ? null
-            : roomSpaces!.totalCeramicTileWallsMaterialTons;
+            : roomSpaces!.totalCeramicTileWallsTons;
 
     return Utils.sumOrNull([floorsCeramicTileTons, wallsCeramicTileTons]);
   }
@@ -569,13 +567,13 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
   num? get _rebarAndSteelScrapRoomSpacesTons => Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : outerDoors?.totalSteelMaterialTons,
+            : outerDoors?.totalSteelTons,
         (innerDoors?.areDoorsRecyclable ?? true)
             ? null
-            : innerDoors?.totalSteelMaterialTons,
+            : innerDoors?.totalSteelTons,
         (fixedFurniture?.areFurnituresRecyclable ?? true)
             ? null
-            : fixedFurniture?.steelMaterialTons
+            : fixedFurniture?.steelTons
       ]);
 
   num? get _rebarAndSteelScrapHvacElectricalAndOtherEquipmentTons =>
@@ -616,7 +614,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? true)
             ? null
             : totalBuildingFrame?.glulamBeamsPart.woodVolume,
-        roomSpaces?.totalBoardPanelMaterialVolume
+        roomSpaces?.totalBoardPanelVolume
       ]);
 
   num? get _combustibleWoodWasteTons => Utils.sumOrNull([
@@ -636,6 +634,6 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
             ? null
             : totalBuildingFrame?.glulamBeamsPart.woodTons,
         totalBuildingFrame?.semiHardFiberBoardTons,
-        roomSpaces?.totalBoardPanelMaterialTons
+        roomSpaces?.totalBoardPanelTons
       ]);
 }

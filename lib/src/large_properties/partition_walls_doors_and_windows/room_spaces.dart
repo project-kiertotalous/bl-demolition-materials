@@ -150,7 +150,7 @@ class RoomSpaces with _$RoomSpaces {
       ]);
 
   /// Materiaalimäärä yhteensa (m3)
-  num? get totalWoodFramedWallsMaterialVolume {
+  num? get totalWoodFramedWallsVolume {
     if (totalWoodFramedWallsInSquareMeters == null) {
       return null;
     }
@@ -160,7 +160,7 @@ class RoomSpaces with _$RoomSpaces {
         WoodMaterialInfo.volumePerLinearMeter(WoodMaterialType.trunkWood50x100);
   }
 
-  num? get totalBrickWallsMaterialVolume {
+  num? get totalBrickWallsVolume {
     if (totalBrickWallsInSquareMeters == null) {
       return null;
     }
@@ -169,7 +169,7 @@ class RoomSpaces with _$RoomSpaces {
         FoundationStructureWeights.limeSandBrick130mmKgPerCbm;
   }
 
-  num? get totalConcreteElementOrCastingWallsMaterialVolume {
+  num? get totalConcreteElementOrCastingWallsVolume {
     if (totalConcreteElementOrCastingWallsInSquareMeters == null) {
       return null;
     }
@@ -179,29 +179,29 @@ class RoomSpaces with _$RoomSpaces {
   }
 
   /// Materiaalimaara yhteensa (tonnia)
-  num? get totalWoodFramedWallsMaterialTons {
-    if (totalWoodFramedWallsMaterialVolume == null) {
+  num? get totalWoodFramedWallsTons {
+    if (totalWoodFramedWallsVolume == null) {
       return null;
     }
-    return totalWoodFramedWallsMaterialVolume! *
+    return totalWoodFramedWallsVolume! *
         WoodMaterialInfo.densityKgPerCubicMeter() /
         1000;
   }
 
-  num? get totalBrickWallsMaterialTons {
-    if (totalBrickWallsMaterialVolume == null) {
+  num? get totalBrickWallsTons {
+    if (totalBrickWallsVolume == null) {
       return null;
     }
-    return totalBrickWallsMaterialVolume! *
+    return totalBrickWallsVolume! *
         FoundationStructureWeights.limeSandBrick130mmKgPerSqm /
         1000;
   }
 
-  num? get totalConcreteElementOrCastingWallsMaterialTons {
-    if (totalConcreteElementOrCastingWallsMaterialVolume == null) {
+  num? get totalConcreteElementOrCastingWallsTons {
+    if (totalConcreteElementOrCastingWallsVolume == null) {
       return null;
     }
-    return totalConcreteElementOrCastingWallsMaterialVolume! *
+    return totalConcreteElementOrCastingWallsVolume! *
         FrameBarWeights.concreteWallElement200mmThickConcreteKgPerSqm /
         1000;
   }
@@ -370,7 +370,7 @@ class RoomSpaces with _$RoomSpaces {
       ]);
 
   /// Materiaalimaara yhteensa (m3)
-  num? get totalChipboardMaterialVolume {
+  num? get totalChipboardVolume {
     if (totalChipboardArea == null) {
       return null;
     }
@@ -379,7 +379,7 @@ class RoomSpaces with _$RoomSpaces {
         UpperBaseStructureAndWaterRoofWeights.chipBoard15mmKgPerCbm;
   }
 
-  num? get totalCybrocMaterialVolume {
+  num? get totalCybrocVolume {
     if (totalCybrocArea == null) {
       return null;
     }
@@ -388,7 +388,7 @@ class RoomSpaces with _$RoomSpaces {
         UpperBaseStructureAndWaterRoofWeights.plasterBoardKgPerCbm;
   }
 
-  num? get totalBoardPanelMaterialVolume {
+  num? get totalBoardPanelVolume {
     if (totalBoardPanelArea == null) {
       return null;
     }
@@ -398,7 +398,7 @@ class RoomSpaces with _$RoomSpaces {
         WoodMaterialInfo.densityKgPerCubicMeter();
   }
 
-  num? get totalCeramicTileWallsMaterialVolume {
+  num? get totalCeramicTileWallsVolume {
     if (totalCeramicTileWallsArea == null) {
       return null;
     }
@@ -407,7 +407,7 @@ class RoomSpaces with _$RoomSpaces {
         DividingWallWeights.ceramicTileKgPerCbm;
   }
 
-  num? get totalPaintedPlasteredBrickWallMaterialVolume {
+  num? get totalPaintedPlasteredBrickWallVolume {
     if (totalPaintedPlasteredBrickWallArea == null) {
       return null;
     }
@@ -416,7 +416,7 @@ class RoomSpaces with _$RoomSpaces {
         FoundationSlabWeights.acrylicCoatingKgPerCbm;
   }
 
-  num? get totalPlasticCarpetMaterialVolume {
+  num? get totalPlasticCarpetVolume {
     if (totalPlasticCarpetArea == null) {
       return null;
     }
@@ -426,7 +426,7 @@ class RoomSpaces with _$RoomSpaces {
   }
 
   /// Materiaalimaara yhteensa (tonnia)
-  num? get totalChipboardMaterialTons {
+  num? get totalChipboardTons {
     if (totalChipboardArea == null) {
       return null;
     }
@@ -435,7 +435,7 @@ class RoomSpaces with _$RoomSpaces {
         1000;
   }
 
-  num? get totalCybrocMaterialTons {
+  num? get totalCybrocTons {
     if (totalCybrocArea == null) {
       return null;
     }
@@ -444,7 +444,7 @@ class RoomSpaces with _$RoomSpaces {
         1000;
   }
 
-  num? get totalBoardPanelMaterialTons {
+  num? get totalBoardPanelTons {
     if (totalBoardPanelArea == null) {
       return null;
     }
@@ -454,7 +454,7 @@ class RoomSpaces with _$RoomSpaces {
         1000;
   }
 
-  num? get totalCeramicTileWallsMaterialTons {
+  num? get totalCeramicTileWallsTons {
     if (totalCeramicTileWallsArea == null) {
       return null;
     }
@@ -463,7 +463,7 @@ class RoomSpaces with _$RoomSpaces {
         1000;
   }
 
-  num? get totalPaintedPlasteredBrickWallMaterialTons {
+  num? get totalPaintedPlasteredBrickWallTons {
     if (totalPaintedPlasteredBrickWallArea == null) {
       return null;
     }
@@ -472,7 +472,7 @@ class RoomSpaces with _$RoomSpaces {
         1000;
   }
 
-  num? get totalPlasticCarpetMaterialTons {
+  num? get totalPlasticCarpetTons {
     if (totalPlasticCarpetArea == null) {
       return null;
     }
