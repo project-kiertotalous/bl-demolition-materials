@@ -39,7 +39,7 @@ class RoomSpace with _$RoomSpace {
     ]);
   }
 
-  // seinien pintarakenteen osuus kaikista valiseinista (seinapinta-alasta)
+  /// Seinien pintarakenteen osuus kaikista väliseinistä (seinäpinta-alasta)
   num? get partOfAllPartitionWallsInPercents {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();

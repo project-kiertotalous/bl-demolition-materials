@@ -129,14 +129,14 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       0, (acc, element) => acc + (element.totalMaterialCost ?? 0));
 
   num? get _concreteBlocksVolume => Utils.sumOrNull([
-        _foundationsConcreteVolumeTotal,
+        _foundationsConcreteVolume,
         _intermediateFloorsConcreteVolume,
         _roofsConcreteVolume,
         roomSpaces?.totalConcreteElementOrCastingWallsMaterialVolume,
-        _buildingFrameConcreteVolumeTotal
+        _buildingFrameConcreteVolume
       ]);
 
-  num? get _foundationsConcreteVolumeTotal {
+  num? get _foundationsConcreteVolume {
     if (foundations == null) {
       return null;
     }
@@ -154,7 +154,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     ]);
   }
 
-  num? get _buildingFrameConcreteVolumeTotal {
+  num? get _buildingFrameConcreteVolume {
     if (totalBuildingFrame?.buildingFrame == null) {
       return null;
     }
@@ -202,8 +202,9 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
   num? get _concreteBlocksTons => Utils.sumOrNull([
         _foundationsConcreteTonsTotal,
         _intermediateFloorsConcreteTons,
+        _roofsConcreteTons,
         roomSpaces?.totalConcreteElementOrCastingWallsMaterialTons,
-        _buildingFrameConcreteTonsTotal
+        _buildingFrameConcreteTons
       ]);
 
   num? get _foundationsConcreteTonsTotal {
@@ -234,7 +235,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     ]);
   }
 
-  num? get _totalRoofsConcreteTons {
+  num? get _roofsConcreteTons {
     if (totalRoofs?.roofTrussesAreRecyclable == null) {
       return null;
     }
@@ -246,7 +247,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
     return totalRoofs!.concreteTons;
   }
 
-  num? get _buildingFrameConcreteTonsTotal {
+  num? get _buildingFrameConcreteTons {
     if (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable == null) {
       return null;
     }
