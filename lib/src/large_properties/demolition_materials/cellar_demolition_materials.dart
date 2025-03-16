@@ -455,13 +455,14 @@ class ConcreteCastingWalls extends DemolitionMaterials {
   }
 
   @override
-  num? get concreteTons => tons! - steelTons!;
+  num? get concreteTons => tons == null ? null : tons! - steelTons!;
 
   @override
-  num? get steelTons =>
-      volume! *
-      FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm /
-      1000;
+  num? get steelTons => volume == null
+      ? null
+      : volume! *
+          FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm /
+          1000;
 }
 
 /// Tiiliseinät
