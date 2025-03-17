@@ -363,10 +363,10 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         energyWaste
       ];
 
-  num? get volume =>
+  num? get totalVolume =>
       all.fold<num>(0, (acc, element) => acc + (element.volume ?? 0));
 
-  num? get tons =>
+  num? get totalTons =>
       all.fold<num>(0, (acc, element) => acc + (element.tons ?? 0));
 
   num? get totalMaterialCost => all.fold<num>(

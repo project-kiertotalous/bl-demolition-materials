@@ -1,0 +1,18 @@
+import 'package:bl_demolition_materials/src/utils/utils.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'recyclable_item.freezed.dart';
+
+@freezed
+class RecyclableItem with _$RecyclableItem {
+  const RecyclableItem._();
+
+  const factory RecyclableItem({
+    num? size,
+    num? volume,
+    num? tons,
+    num? unitPrice,
+  }) = _RecyclableItem;
+
+  num? get batchPrice => Utils.sumOrNull([unitPrice, tons]);
+}
