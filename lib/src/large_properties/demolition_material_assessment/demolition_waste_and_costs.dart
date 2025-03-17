@@ -107,13 +107,11 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
 
   // Betoniteräkset, peltikatto, ja muu teräs sekä rautaromu
   late final rebarAndSteelScrap = WasteCostItem(
-      volume: null,
       tons: _rebarAndSteelScrapTons,
       demolitionCost: rebarAndSteelScrapDemolitionCost);
 
   // Ruostumaton teräs
   late final stainlessSteel = WasteCostItem(
-      volume: null,
       tons: (fixedFurniture?.areFurnituresRecyclable ?? true)
           ? null
           : fixedFurniture?.stainlessSteelTons,
@@ -121,7 +119,6 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
 
   // Kupari
   late final copper = WasteCostItem(
-      volume: null,
       tons: Utils.sumOrNull([
         hvacAndElectricalInstallations?.copperElectricalWires?.tons,
         hvacAndElectricalInstallations?.copperWaterPipes?.tons
@@ -130,7 +127,6 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
 
   // Alumiini
   late final aluminium = WasteCostItem(
-      volume: null,
       tons: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? true)
             ? null
@@ -254,7 +250,6 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
 
   // Sähkö- ja elektroniikkarokuma
   late final eWaste = WasteCostItem(
-      volume: null,
       tons: Utils.sumOrNull([
         (fixedFurniture?.areFurnituresRecyclable ?? true)
             ? null

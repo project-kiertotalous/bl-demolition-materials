@@ -1,3 +1,4 @@
+import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/recyclable_item.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -6,7 +7,12 @@ part 'recyclable_components_and_furniture.freezed.dart';
 /// KIERRÄTETTÄVÄT RAKENNEOSAT JA KALUSTEET
 @freezed
 class RecyclableComponentsAndFurniture with _$RecyclableComponentsAndFurniture {
-  const factory RecyclableComponentsAndFurniture({
+  RecyclableComponentsAndFurniture._();
+
+  factory RecyclableComponentsAndFurniture({
+    TotalIntermediateFloors? totalIntermediateFloors,
+    TotalRoofs? totalRoofs,
+    TotalBuildingFrame? totalBuildingFrame,
     num? concreteFrameBeamsUnitPrice,
     num? concreteHollowSlabsUnitPrice,
     num? concreteRoofBeamsUnitPrice,
@@ -44,25 +50,75 @@ class RecyclableComponentsAndFurniture with _$RecyclableComponentsAndFurniture {
   }) = _RecyclableComponentsAndFurniture;
 
   // Betonipalkit, runko
-  late final concreteFrameBeams = RecyclableItem(); // TODO
+  late final concreteFrameBeams = RecyclableItem(
+      volume:
+          (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? false)
+              ? totalBuildingFrame?.concreteVerticalColumnsPart.concreteVolume
+              : null,
+      tons: (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? false)
+          ? totalBuildingFrame?.concreteVerticalColumnsPart.concreteTons
+          : null,
+      unitPrice: concreteFrameBeamsUnitPrice);
 
   // Betoniset ontelolaatat
-  late final concreteHollowSlabs = RecyclableItem(); // TODO
+  late final concreteHollowSlabs = RecyclableItem(
+      volume:
+          (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
+                  false)
+              ? totalIntermediateFloors?.hollowCoreSlabConcreteVolume
+              : 0,
+      tons: (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
+              false)
+          ? totalIntermediateFloors?.hollowCoreSlabConcreteTons
+          : 0,
+      unitPrice: concreteHollowSlabsUnitPrice);
 
   // Betoniset kattopalkit
-  late final concreteRoofBeams = RecyclableItem(); // TODO
+  late final concreteRoofBeams = RecyclableItem(
+      volume: (totalRoofs?.roofTrussesAreRecyclable ?? false)
+          ? totalRoofs?.concreteVolume
+          : 0,
+      tons: (totalRoofs?.roofTrussesAreRecyclable ?? false)
+          ? totalRoofs?.concreteTons
+          : 0,
+      unitPrice: concreteRoofBeamsUnitPrice);
 
   // Betoniset seinäelementit
-  late final concreteWallElements = RecyclableItem(); // TODO
+  late final concreteWallElements = RecyclableItem(
+      volume:
+          (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? false)
+              ? totalBuildingFrame
+                  ?.concreteElementWallsWithoutFrameworkPart.concreteVolume
+              : null,
+      tons: (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? false)
+          ? totalBuildingFrame
+              ?.concreteElementWallsWithoutFrameworkPart.concreteTons
+          : null,
+      unitPrice: concreteWallElementsUnitPrice);
 
   // Liimapalkit
-  late final glulamBeams = RecyclableItem(); // TODO
+  late final glulamBeams = RecyclableItem(
+      volume:
+          (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
+                  false)
+              ? totalIntermediateFloors?.glulamBeamWoodVolume
+              : 0,
+      tons: (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
+              false)
+          ? totalIntermediateFloors?.glulamBeamWoodVolume
+          : 0,
+      unitPrice: glulamBeamsUnitPrice);
 
   // Puupalkit (kantavat lattiapalkit)
-  late final floorSupportWoodenBeams = RecyclableItem(); // TODO
+  late final floorSupportWoodenBeams = RecyclableItem(
+      volume: totalBuildingFrame?.glulamBeamsPart.woodVolume,
+      tons: totalBuildingFrame?.glulamBeamsPart.woodTons,
+      unitPrice: floorSupportWoodenBeamsUnitPrice);
 
   // Teräspalkit, runkopalkit
-  late final steelFrameBeams = RecyclableItem(); // TODO
+  late final steelFrameBeams = RecyclableItem(
+      tons: totalBuildingFrame?.steelVerticalColumnsPart.steelTons,
+      unitPrice: steelFrameBeamsUnitPrice);
 
   // Sadevesikourut ja rännit (m)
   late final rainGuttersAndDownspouts = RecyclableItem(); // TODO
