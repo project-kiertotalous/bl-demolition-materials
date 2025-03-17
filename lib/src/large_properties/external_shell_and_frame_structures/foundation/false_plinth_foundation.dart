@@ -1,20 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
-import 'foundation.dart';
 
-class FalsePlinthFoundation extends Foundation {
-  @override
-  final num? area;
-  @override
-  final num? circumference;
-  @override
-  final FoundationMaterial? material;
+part 'false_plinth_foundation.freezed.dart';
 
-  FalsePlinthFoundation(
-      {this.area,
-      this.circumference,
-      this.material = FoundationMaterial.concreteCasting});
+@freezed
+class FalsePlinthFoundation extends Foundation with _$FalsePlinthFoundation {
+  FalsePlinthFoundation._();
+
+  factory FalsePlinthFoundation(
+      {num? area,
+      num? circumference,
+      @Default(FoundationMaterial.concreteCasting)
+      FoundationMaterial? material}) = _FalsePlinthFoundation;
 
   late final _reinforcedConcreteColumnFalsePlinth =
       ReinforcedConcreteColumnFalsePlinth(this);

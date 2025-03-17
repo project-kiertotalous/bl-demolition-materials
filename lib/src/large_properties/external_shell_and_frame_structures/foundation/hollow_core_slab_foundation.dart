@@ -1,20 +1,21 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
-import 'foundation.dart';
 
-class HollowCoreSlabFoundation extends Foundation {
-  @override
-  final num? area;
-  @override
-  final num? circumference;
-  @override
-  final FoundationMaterial? material;
+part 'hollow_core_slab_foundation.freezed.dart';
 
-  HollowCoreSlabFoundation(
-      {this.area,
-      this.circumference,
-      this.material = FoundationMaterial.concreteBlock});
+@freezed
+class HollowCoreSlabFoundation extends Foundation
+    with _$HollowCoreSlabFoundation {
+  HollowCoreSlabFoundation._();
+
+  factory HollowCoreSlabFoundation(
+      {num? area,
+      num? circumference,
+      @Default(FoundationMaterial.concreteCasting)
+      FoundationMaterial? material}) = _HollowCoreSlabFoundation;
 
   late final _reinforcedConcreteColumnHollowCoreSlabFoundation =
       ReinforcedConcreteColumnHollowCoreSlabFoundation(this);

@@ -1,20 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
-import 'foundation.dart';
 
-class PillarFoundation extends Foundation {
-  @override
-  final num? area;
-  @override
-  final num? circumference;
-  @override
-  final FoundationMaterial? material;
+part 'pillar_foundation.freezed.dart';
 
-  PillarFoundation(
-      {this.area,
-      this.circumference,
-      this.material = FoundationMaterial.concreteBlock});
+@freezed
+class PillarFoundation extends Foundation with _$PillarFoundation {
+  PillarFoundation._();
+
+  factory PillarFoundation(
+      {num? area,
+      num? circumference,
+      @Default(FoundationMaterial.concreteCasting)
+      FoundationMaterial? material}) = _PillarFoundation;
 
   late final _reinforcedConcreteColumnColumnFoundation =
       ReinforcedConcreteColumnColumnFoundation(this);

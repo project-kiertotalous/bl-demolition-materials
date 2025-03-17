@@ -1,14 +1,17 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
 
-class ShallowFoundation extends Foundation {
-  @override
-  final num? area;
-  @override
-  final num? circumference;
+part 'shallow_foundation.freezed.dart';
 
-  ShallowFoundation({this.area, this.circumference});
+@freezed
+class ShallowFoundation extends Foundation with _$ShallowFoundation {
+  ShallowFoundation._();
+
+  factory ShallowFoundation({num? area, num? circumference}) =
+      _ShallowFoundation;
 
   late final _frostProofStyrofoamShallowFoundation =
       FrostProofStyrofoamShallowFoundation(this);
