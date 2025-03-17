@@ -24,7 +24,7 @@ class RoomSpaces with _$RoomSpaces {
           @Default(false) bool surfaceMaterialCoatingContainsAsbestos}) =
       _RoomSpaces;
 
-/// Kaikki tilat yhteensä (m2)
+  /// Kaikki tilat yhteensä (m2)
   num? get totalWoodFramedWallsInSquareMeters {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();
@@ -369,7 +369,7 @@ class RoomSpaces with _$RoomSpaces {
         totalPlasticCarpetArea
       ]);
 
-/// Materiaalimaara yhteensa (m3)
+  /// Materiaalimaara yhteensa (m3)
   num? get totalChipboardMaterialVolume {
     if (totalChipboardArea == null) {
       return null;
@@ -425,7 +425,7 @@ class RoomSpaces with _$RoomSpaces {
         FloorStructureAndMaterialWeights.plasticMatKgPerCbm;
   }
 
-/// Materiaalimaara yhteensa (tonnia)
+  /// Materiaalimaara yhteensa (tonnia)
   num? get totalChipboardMaterialTons {
     if (totalChipboardArea == null) {
       return null;

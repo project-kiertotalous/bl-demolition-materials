@@ -1,19 +1,20 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
 
-class CrawlSpaceFoundation extends Foundation {
-  @override
-  final num? area;
-  @override
-  final num? circumference;
-  @override
-  final FoundationMaterial? material;
+part 'crawl_space_foundation.freezed.dart';
 
-  CrawlSpaceFoundation(
-      {this.area,
-      this.circumference,
-      this.material = FoundationMaterial.concreteCasting});
+@freezed
+class CrawlSpaceFoundation extends Foundation with _$CrawlSpaceFoundation {
+  CrawlSpaceFoundation._();
+
+  factory CrawlSpaceFoundation(
+      {num? area,
+      num? circumference,
+      @Default(FoundationMaterial.concreteCasting)
+      FoundationMaterial? material}) = _CrawlSpaceFoundation;
 
   late final _reinforcedConcreteSlabFalsePlinthGroundFloor =
       ReinforcedConcreteSlabFalsePlinthGroundFloor(this);

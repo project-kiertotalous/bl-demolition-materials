@@ -1,0 +1,41 @@
+import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total/building_frame_parts/building_envelope_frame_part.dart';
+
+import '../../../../../bl_demolition_materials.dart';
+import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
+
+import 'package:freezed_annotation/freezed_annotation.dart';
+
+part 'profiled_sheet_metal_frame_part.freezed.dart';
+
+@freezed
+class ProfiledSheetMetalFramePart extends BuildingEnvelopeFramePart
+    with _$ProfiledSheetMetalFramePart {
+  ProfiledSheetMetalFramePart._();
+
+  factory ProfiledSheetMetalFramePart(
+      {TotalBuildingFrame? totalBuildingFrame,
+      num? portionFractionPercentage}) = _ProfiledSheetMetalFramePart;
+
+  final windProtectionBoardFrame = WindProtectionBoardFrame();
+  final mineralWoolFrame = MineralWoolFrame();
+  final plasterBoardFrame = PlasterBoardFrame();
+  final profiledSheetMetalBoard = ProfiledSheetMetalBoard();
+
+  @override
+  num? get windProtectionBoardTons => area == null
+      ? null
+      : area! * windProtectionBoardFrame.kgPerSquareMeter / 1000;
+
+  @override
+  num? get mineralWoolInsulationTons =>
+      area == null ? null : area! * mineralWoolFrame.kgPerSquareMeter / 1000;
+
+  @override
+  num? get gypsumBoardTons =>
+      area == null ? null : area! * plasterBoardFrame.kgPerSquareMeter / 1000;
+
+  @override
+  num? get profileSteelSheetTons => area == null
+      ? null
+      : area! * profiledSheetMetalBoard.kgPerSquareMeter / 1000;
+}
