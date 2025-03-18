@@ -12,15 +12,15 @@ part 'inner_doors.freezed.dart';
 class InnerDoors with _$InnerDoors {
   const InnerDoors._();
 
-  const factory InnerDoors(InnerDoor? slabDoors,
+  const factory InnerDoors(InnerDoor? panelDoors,
       {InnerDoor? woodenDoors,
       InnerDoor? fireDoors,
       @Default(false) bool areDoorsRecyclable}) = _InnerDoors;
 
   num? get totalWoodVolume {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.shutDoors,
-      slabDoors?.glassDoors,
+      panelDoors?.shutDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.shutDoors,
       woodenDoors?.glassDoors,
     ]);
@@ -35,7 +35,7 @@ class InnerDoors with _$InnerDoors {
 
   num? get totalGlassVolume {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.glassDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.glassDoors,
     ]);
     if (allNulls == 0) {
@@ -48,8 +48,8 @@ class InnerDoors with _$InnerDoors {
 
   num? get totalWoodTons {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.shutDoors,
-      slabDoors?.glassDoors,
+      panelDoors?.shutDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.shutDoors,
       woodenDoors?.glassDoors,
     ]);
@@ -64,7 +64,7 @@ class InnerDoors with _$InnerDoors {
 
   num? get totalGlassTons {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.glassDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.glassDoors,
     ]);
     if (allNulls == 0) {

@@ -8,10 +8,7 @@ part 'outer_door.freezed.dart';
 class OuterDoor with _$OuterDoor {
   const OuterDoor._();
 
-  const factory OuterDoor(
-      {num? shutDoors,
-      num? glassDoors,
-      num? accessAndLoadingDoors}) = _OuterDoor;
+  const factory OuterDoor({num? shutDoors, num? glassDoors}) = _OuterDoor;
 
   num? get overallOuterDoors => Utils.sumOrNull([shutDoors, glassDoors]);
 }

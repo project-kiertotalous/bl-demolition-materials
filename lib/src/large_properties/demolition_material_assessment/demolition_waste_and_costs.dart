@@ -553,7 +553,7 @@ class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalIntermediateFloors?.concreteCastingRebarTons,
         (totalRoofs?.roofs?.roofTrussesAreRecyclable ?? true)
             ? null
-            : totalRoofs?.rebarTons,
+            : totalRoofs?.steelTons,
         (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? true)
             ? null
             : totalBuildingFrame?.steelVerticalColumnsPart.steelTons

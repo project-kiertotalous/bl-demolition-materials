@@ -16,6 +16,7 @@ class OuterDoors with _$OuterDoors {
       {OuterDoor? woodenDoors,
       OuterDoor? aluminiumDoors,
       OuterDoor? steelDoors,
+      num? accessAndLoadingDoors,
       @Default(false) bool areDoorsRecyclable}) = _OuterDoors;
 
   num? get totalWoodVolume {
@@ -47,7 +48,7 @@ class OuterDoors with _$OuterDoors {
       woodenDoors?.glassDoors,
       aluminiumDoors?.glassDoors,
       steelDoors?.glassDoors,
-      woodenDoors?.accessAndLoadingDoors
+      accessAndLoadingDoors
     ]);
     if (allNulls) {
       return null;
@@ -66,7 +67,7 @@ class OuterDoors with _$OuterDoors {
             DoorWeights.steelDoorWithGlass05SqmGlassKg
           ])),
           (Utils.multiplyOrNull([
-            woodenDoors?.accessAndLoadingDoors,
+            accessAndLoadingDoors,
             DoorWeights.metallicLiftDoorsAndBigPassageDoorsGlassKg
           ]))
         ])! /
@@ -129,7 +130,7 @@ class OuterDoors with _$OuterDoors {
             DoorWeights.steelDoorWithGlass05SqmGlassKg
           ])),
           (Utils.multiplyOrNull([
-            woodenDoors?.accessAndLoadingDoors,
+            accessAndLoadingDoors,
             DoorWeights.metallicLiftDoorsAndBigPassageDoorsKg
           ]))
         ])! /

@@ -8,14 +8,14 @@ part 'fixed_furniture.freezed.dart';
 class FixedFurniture with _$FixedFurniture {
   const factory FixedFurniture(
       {@Default(false) bool areFurnituresRecyclable,
-      num? toiletSeats,
+      num? porcelainToilets,
       num? porcelainSinks,
       num? steelTables,
       num? kitchenClosetsWoodOrChipboard,
-      num? dressingClosetsSteel,
+      num? steelLockerCabinets,
       num? clothingOrOtherClosetsWood,
       num? electricStoves,
-      num? electricStovesForBigKitchens,
+      num? industrialElectricStoves,
       num? coldRoomCabinets,
       num? refrigerators,
       num? saunaStoves}) = _FixedFurniture;
@@ -25,7 +25,7 @@ class FixedFurniture with _$FixedFurniture {
   num? get ceramicVolume {
     final allNulls = !Utils.anyNonNull([
       Utils.multiplyOrNull([
-        toiletSeats,
+        porcelainToilets,
         FurnitureDressingKitchenToiletSpaceWeights.toiletSeatPorcelainKgPerPcs
       ]),
       Utils.multiplyOrNull([
@@ -39,7 +39,7 @@ class FixedFurniture with _$FixedFurniture {
     }
     return Utils.sumOrNull([
           Utils.multiplyOrZero([
-            toiletSeats,
+            porcelainToilets,
             FurnitureDressingKitchenToiletSpaceWeights
                 .toiletSeatPorcelainKgPerPcs
           ]),
@@ -53,14 +53,14 @@ class FixedFurniture with _$FixedFurniture {
   }
 
   num? get ceramicTons {
-    final allNulls = !Utils.anyNonNull([toiletSeats, porcelainSinks]);
+    final allNulls = !Utils.anyNonNull([porcelainToilets, porcelainSinks]);
 
     if (allNulls) {
       return null;
     }
     return Utils.sumOrNull([
           Utils.multiplyOrZero([
-            toiletSeats,
+            porcelainToilets,
             FurnitureDressingKitchenToiletSpaceWeights
                 .toiletSeatPorcelainKgPerPcs
           ]),
@@ -84,10 +84,10 @@ class FixedFurniture with _$FixedFurniture {
   }
 
   num? get steelTons {
-    if (dressingClosetsSteel == null) {
+    if (steelLockerCabinets == null) {
       return null;
     }
-    return dressingClosetsSteel! *
+    return steelLockerCabinets! *
         FurnitureDressingKitchenToiletSpaceWeights
             .metallicDressingClosets500x1600KgPerLinearMeter /
         1000;
@@ -133,7 +133,7 @@ class FixedFurniture with _$FixedFurniture {
   num? get electricScrapTons {
     final allNulls = !Utils.anyNonNull([
       electricStoves,
-      electricStovesForBigKitchens,
+      industrialElectricStoves,
       coldRoomCabinets,
       refrigerators,
       saunaStoves,
@@ -149,7 +149,7 @@ class FixedFurniture with _$FixedFurniture {
                 .electricStovesForApartmentsKgPerPcs
           ]),
           Utils.multiplyOrZero([
-            electricStovesForBigKitchens,
+            industrialElectricStoves,
             FurnitureDressingKitchenToiletSpaceWeights
                 .foodServiceElecticStovesKgPerPcs
           ]),
