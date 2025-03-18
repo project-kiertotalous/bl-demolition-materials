@@ -27,20 +27,20 @@ abstract class DisposalMaterialsAndHazardousWaste
           num? otherAsbestosContainingMaterialDemolitionOrProcessingCost}) =
       _DisposalMaterialsAndHazardousWaste;
 
-  // Kierrätyskelvoton tiilijäte
+  /// Kierrätyskelvoton tiilijäte
   late final nonRecyclableBrickWaste = WasteDisposalItem(
       volume: cellar?.brickVolume,
       tons: cellar?.brickTons,
       demolitionOrProcessingCost:
           nonRecyclableBrickWasteDemolitionOrProcessingCost);
 
-  // Saastunut maa
+  /// Saastunut maa
   late final contaminatedSoil = WasteDisposalItem(
       volume: excavationArea?.contaminatedSoil,
       tons: excavationArea?.contaminatedLandTons,
       demolitionOrProcessingCost: contaminatedSoilDemolitionOrProcessingCost);
 
-  // Asbestia tai BCP maalia sisältävä betoni (bitumi ja akryylipinnoitettu)
+  /// Asbestia tai BCP maalia sisältävä betoni (bitumi ja akryylipinnoitettu)
   late final asbestosOrBCPConcrete = WasteDisposalItem(
       volume: Utils.sumOrNull([
         (foundations?.bituminousWaterProofing ?? false)
@@ -76,7 +76,7 @@ abstract class DisposalMaterialsAndHazardousWaste
       demolitionOrProcessingCost:
           asbestosOrBCPConcreteDemolitionOrProcessingCost);
 
-  // Bitumi
+  /// Bitumi
   late final bitumen = WasteDisposalItem(
       volume: Utils.sumOrNull([
         foundations?.hotBitumenCoatingVolume,
@@ -86,7 +86,7 @@ abstract class DisposalMaterialsAndHazardousWaste
           [foundations?.hotBitumenCoatingTons, cellar?.hotBitumenCoatingTons]),
       demolitionOrProcessingCost: bitumenDemolitionOrProcessingCost);
 
-  // Mineriitti, tiilet, tiilikate, kattohuopa, kaakelilaatat yms. sisältää asbestia
+  /// Mineriitti, tiilet, tiilikate, kattohuopa, kaakelilaatat yms. sisältää asbestia
   late final otherAsbestosContainingMaterial = WasteDisposalItem(
       volume: Utils.sumOrNull([
         (floorStructures?.surfaceMaterialCoatingContainsAsbestos ?? false)

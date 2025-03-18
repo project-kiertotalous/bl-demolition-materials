@@ -8,7 +8,7 @@ part 'electric_motors_and_circulation_pumps.freezed.dart';
 
 /// Sähkömoottorit ja kiertovesipumput
 @freezed
-class ElectricMotorsAndCirculationPumps extends MachinesOrEquipments
+abstract class ElectricMotorsAndCirculationPumps extends MachinesOrEquipments
     with _$ElectricMotorsAndCirculationPumps {
   const ElectricMotorsAndCirculationPumps._();
 

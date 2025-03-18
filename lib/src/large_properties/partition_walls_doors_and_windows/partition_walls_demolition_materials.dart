@@ -5,7 +5,7 @@ part 'partition_walls_demolition_materials.freezed.dart';
 /// Väliseinät, ikkunat ja ovet
 /// Sisäseinien rungot ja pintamateriaalit
 @freezed
-class InternalWallFramesAndSurfaceMaterial
+abstract class InternalWallFramesAndSurfaceMaterial
     with _$InternalWallFramesAndSurfaceMaterial {
   const InternalWallFramesAndSurfaceMaterial._();
 

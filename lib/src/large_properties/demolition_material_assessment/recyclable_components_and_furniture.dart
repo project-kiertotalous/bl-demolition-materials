@@ -64,7 +64,7 @@ abstract class RecyclableComponentsAndFurniture
     num? roofExhaustFansUnitPrice,
   }) = _RecyclableComponentsAndFurniture;
 
-  // Betonipalkit, runko
+  /// Betonipalkit, runko
   late final concreteFrameBeams = RecyclableItem(
       volume:
           (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? false)
@@ -75,7 +75,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: concreteFrameBeamsUnitPrice);
 
-  // Betoniset ontelolaatat
+  /// Betoniset ontelolaatat
   late final concreteHollowSlabs = RecyclableItem(
       volume:
           (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
@@ -88,7 +88,7 @@ abstract class RecyclableComponentsAndFurniture
           : 0,
       unitPrice: concreteHollowSlabsUnitPrice);
 
-  // Betoniset kattopalkit
+  /// Betoniset kattopalkit
   late final concreteRoofBeams = RecyclableItem(
       volume: (totalRoofs?.roofTrussesAreRecyclable ?? false)
           ? totalRoofs?.concreteVolume
@@ -98,7 +98,7 @@ abstract class RecyclableComponentsAndFurniture
           : 0,
       unitPrice: concreteRoofBeamsUnitPrice);
 
-  // Betoniset seinäelementit
+  /// Betoniset seinäelementit
   late final concreteWallElements = RecyclableItem(
       volume:
           (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? false)
@@ -111,7 +111,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: concreteWallElementsUnitPrice);
 
-  // Liimapalkit
+  /// Liimapalkit
   late final glulamBeams = RecyclableItem(
       volume:
           (totalIntermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable ??
@@ -124,18 +124,18 @@ abstract class RecyclableComponentsAndFurniture
           : 0,
       unitPrice: glulamBeamsUnitPrice);
 
-  // Puupalkit (kantavat lattiapalkit)
+  /// Puupalkit (kantavat lattiapalkit)
   late final floorSupportWoodenBeams = RecyclableItem(
       volume: totalBuildingFrame?.glulamBeamsPart.woodVolume,
       tons: totalBuildingFrame?.glulamBeamsPart.woodTons,
       unitPrice: floorSupportWoodenBeamsUnitPrice);
 
-  // Teräspalkit, runkopalkit
+  /// Teräspalkit, runkopalkit
   late final steelFrameBeams = RecyclableItem(
       tons: totalBuildingFrame?.steelVerticalColumnsPart.steelTons,
       unitPrice: steelFrameBeamsUnitPrice);
 
-  // Sadevesikourut ja rännit (m)
+  /// Sadevesikourut ja rännit (m)
   late final rainGuttersAndDownspouts = RecyclableItem(
       size: (fixturesAndStructures?.fixturesRecyclable ?? false)
           ? fixturesAndStructures?.rainGuttersAndDownSpouts?.meters
@@ -145,7 +145,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: rainGuttersAndDownspoutsUnitPrice);
 
-  // Palotikkaat ja kulkusillat (m)
+  /// Palotikkaat ja kulkusillat (m)
   late final fireLaddersAndWalkways = RecyclableItem(
       size: (fixturesAndStructures?.fixturesRecyclable ?? false)
           ? fixturesAndStructures?.fireLaddersAndWalkways?.meters
@@ -155,7 +155,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: fireLaddersAndWalkwaysUnitPrice);
 
-  // Puiset kattoristikot
+  /// Puiset kattoristikot
   late final woodenRoofTrusses = RecyclableItem(
       volume: (totalRoofs?.roofTrussesAreRecyclable ?? false)
           ? totalRoofs?.woodVolume
@@ -165,14 +165,14 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: woodenRoofTrussesUnitPrice);
 
-  // Teräksiset kattoristikot
+  /// Teräksiset kattoristikot
   late final steelRoofTrusses = RecyclableItem(
       tons: (totalRoofs?.roofTrussesAreRecyclable ?? false)
           ? totalRoofs?.steelTons
           : null,
       unitPrice: steelRoofTrussesUnitPrice);
 
-  // Teräsverkko aita (m)
+  /// Teräsverkko aita (m)
   late final steelChainLinkFence = RecyclableItem(
       size: (fixturesAndStructures?.fixturesRecyclable ?? false)
           ? fixturesAndStructures?.steelChainLinkFences?.meters
@@ -182,7 +182,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: steelChainLinkFenceUnitPrice);
 
-  // Alumiiniverkko aita (m)
+  /// Alumiiniverkko aita (m)
   late final aluminumChainLinkFence = RecyclableItem(
       size: (fixturesAndStructures?.fixturesRecyclable ?? false)
           ? fixturesAndStructures?.aluminiumChainLinkFences?.meters
@@ -192,7 +192,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: aluminumChainLinkFenceUnitPrice);
 
-  // Puuovet ja kuitulevyovet
+  /// Puuovet ja kuitulevyovet
   late final woodAndFiberboardDoors = RecyclableItem(
       size: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? false)
@@ -223,7 +223,7 @@ abstract class RecyclableComponentsAndFurniture
       ]),
       unitPrice: woodAndFiberboardDoorsUnitPrice);
 
-  // Alumiiniovet
+  /// Alumiiniovet
   late final aluminumDoors = RecyclableItem(
       size: (outerDoors?.areDoorsRecyclable ?? false)
           ? outerDoors?.aluminiumDoors?.overallOuterDoors
@@ -233,7 +233,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: aluminumDoorsUnitPrice);
 
-  // Teräsovet (ulko ja palo-ovet)
+  /// Teräsovet (ulko ja palo-ovet)
   late final exteriorAndFireExitSteelDoors = RecyclableItem(
       size: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? false)
@@ -253,7 +253,7 @@ abstract class RecyclableComponentsAndFurniture
       ]),
       unitPrice: exteriorAndFireExitSteelDoorsUnitPrice);
 
-  // Kaapit ja kalusteet, puu tai levy (keittiö ja sosiaalitilat)
+  /// Kaapit ja kalusteet, puu tai levy (keittiö ja sosiaalitilat)
   late final woodenOrBoardCabinetsAndFurniture = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false) &&
               fixedFurniture?.clothingOrOtherClosetsWood! != null
@@ -267,7 +267,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: woodenOrBoardCabinetsAndFurnitureUnitPrice);
 
-  // Teräksiset pukukaapit
+  /// Teräksiset pukukaapit
   late final steelLockerCabinets = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false) &&
               fixedFurniture?.steelLockerCabinets! != null
@@ -278,7 +278,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: steelLockerCabinetsUnitPrice);
 
-  // Puuiset ikkunat
+  /// Puuiset ikkunat
   late final woodenWindows = RecyclableItem(
       size:
           (windows?.areWindowsRecyclable ?? false) ? windows?.windowsPcs : null,
@@ -292,63 +292,63 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: woodenWindowsUnitPrice);
 
-  // WC-istuin, posliini
+  /// WC-istuin, posliini
   late final porcelainToilets = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.porcelainToilets
           : null,
       unitPrice: porcelainToiletsUnitPrice);
 
-  // Pesuallas, posliini
+  /// Pesuallas, posliini
   late final porcelainSinks = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.porcelainSinks
           : null,
       unitPrice: porcelainSinksUnitPrice);
 
-  // Teräsaltaat ja pöydät (ruostumaton)
+  /// Teräsaltaat ja pöydät (ruostumaton)
   late final stainlessSteelSinksAndTables = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.steelTables
           : null,
       unitPrice: stainlessSteelSinksAndTablesUnitPrice);
 
-  // Saunankiukaat
+  /// Saunankiukaat
   late final saunaStoves = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.saunaStoves
           : null,
       unitPrice: saunaStovesUnitPrice);
 
-  // Sähköliedet
+  /// Sähköliedet
   late final electricStoves = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.electricStoves
           : null,
       unitPrice: electricStovesUnitPrice);
 
-  // Suurtalous sähköliedet
+  /// Suurtalous sähköliedet
   late final industrialElectricStoves = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.industrialElectricStoves
           : null,
       unitPrice: industrialElectricStovesUnitPrice);
 
-  // Jääkaapit
+  /// Jääkaapit
   late final refrigerators = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.refrigerators
           : null,
       unitPrice: refrigeratorsUnitPrice);
 
-  // Kylmiökaapit
+  /// Kylmiökaapit
   late final coldRoomCabinets = RecyclableItem(
       size: (fixedFurniture?.areFurnituresRecyclable ?? false)
           ? fixedFurniture?.coldRoomCabinets
           : null,
       unitPrice: coldRoomCabinetsUnitPrice);
 
-  // Lämpöpatterit, sähkö
+  /// Lämpöpatterit, sähkö
   late final electricRadiators = RecyclableItem(
       size: (machinesAndEquipments?.machinesRecyclable ?? false)
           ? machinesAndEquipments?.electricRadiators?.quantity
@@ -358,7 +358,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: electricRadiatorsUnitPrice);
 
-  // Vesivaraajat, pienet
+  /// Vesivaraajat, pienet
   late final smallElectricalAccumulators = RecyclableItem(
       size: (machinesAndEquipments?.machinesRecyclable ?? false)
           ? machinesAndEquipments?.smallElectricalAccumulators?.quantity
@@ -368,7 +368,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: smallElectricalAccumulatorsUnitPrice);
 
-  // Vesivaraajat, suuret
+  /// Vesivaraajat, suuret
   late final largeElectricalAccumulators = RecyclableItem(
       size: (machinesAndEquipments?.machinesRecyclable ?? false)
           ? machinesAndEquipments?.largeElectricalAccumulators?.quantity
@@ -378,7 +378,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: largeElectricalAccumulatorsUnitPrice);
 
-  // Sähkömoottorit ja kiertovesipumput
+  /// Sähkömoottorit ja kiertovesipumput
   late final electricMotorsAndCirculationPumps = RecyclableItem(
       size: (machinesAndEquipments?.machinesRecyclable ?? false)
           ? machinesAndEquipments?.electricMotorsAndCirculationPumps?.quantity
@@ -388,7 +388,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: electricMotorsAndCirculationPumpsUnitPrice);
 
-  // Ilmanvaihtokoneet
+  /// Ilmanvaihtokoneet
   late final ventilationUnits = RecyclableItem(
       size: (machinesAndEquipments?.machinesRecyclable ?? false)
           ? machinesAndEquipments?.ventilationUnits?.quantity
@@ -398,7 +398,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: ventilationUnitsUnitPrice);
 
-  // Sähkökaapit ja mittarit
+  /// Sähkökaapit ja mittarit
   late final electricalDistributionCabinetsAndMeters = RecyclableItem(
       size: (machinesAndEquipments?.machinesRecyclable ?? false)
           ? machinesAndEquipments
@@ -409,7 +409,7 @@ abstract class RecyclableComponentsAndFurniture
           : null,
       unitPrice: electricalDistributionCabinetsAndMetersUnitPrice);
 
-  // Huippuimurit
+  /// Huippuimurit
   late final roofExhaustFans = RecyclableItem(
       size: (machinesAndEquipments?.machinesRecyclable ?? false)
           ? machinesAndEquipments?.roofExhaustFans?.quantity

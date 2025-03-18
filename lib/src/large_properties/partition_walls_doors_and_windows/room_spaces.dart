@@ -10,7 +10,7 @@ part 'room_spaces.freezed.dart';
 /// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
 /// Sisältää jokaisen huoneen ja niiden yhteislaskettavat arvot
 @freezed
-class RoomSpaces with _$RoomSpaces {
+abstract class RoomSpaces with _$RoomSpaces {
   const RoomSpaces._();
 
   const factory RoomSpaces(

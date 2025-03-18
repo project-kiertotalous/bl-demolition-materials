@@ -7,7 +7,7 @@ part 'large_electrical_water_accumulators.freezed.dart';
 
 /// Vesivaraajat, suuret (sähkö, kaukolämpö 500-1000l)
 @freezed
-class LargeElectricalWaterAccumulators extends MachinesOrEquipments
+abstract class LargeElectricalWaterAccumulators extends MachinesOrEquipments
     with _$LargeElectricalWaterAccumulators {
   const LargeElectricalWaterAccumulators._();
 

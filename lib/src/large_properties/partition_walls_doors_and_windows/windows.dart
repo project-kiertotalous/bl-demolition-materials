@@ -6,7 +6,7 @@ part 'windows.freezed.dart';
 
 /// Ikkunat
 @freezed
-class Windows with _$Windows {
+abstract class Windows with _$Windows {
   const Windows._();
 
   const factory Windows(

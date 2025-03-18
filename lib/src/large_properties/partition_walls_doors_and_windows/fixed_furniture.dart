@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'fixed_furniture.freezed.dart';
 
 @freezed
-class FixedFurniture with _$FixedFurniture {
+abstract class FixedFurniture with _$FixedFurniture {
   const factory FixedFurniture(
       {@Default(false) bool areFurnituresRecyclable,
       num? porcelainToilets,

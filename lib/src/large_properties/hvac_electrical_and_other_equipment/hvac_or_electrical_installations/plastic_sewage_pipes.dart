@@ -7,7 +7,7 @@ part 'plastic_sewage_pipes.freezed.dart';
 
 /// Viemäriputket, muovi DN 150
 @freezed
-class PlasticSewagePipes extends HvacOrElectricalInstallations
+abstract class PlasticSewagePipes extends HvacOrElectricalInstallations
     with _$PlasticSewagePipes {
   const PlasticSewagePipes._();
 

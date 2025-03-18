@@ -9,7 +9,7 @@ part 'inner_doors.freezed.dart';
 /// Sisäovet
 /// Sisältää tiedot kaikkien sisäovien materiaalimäärista yhteensä
 @freezed
-class InnerDoors with _$InnerDoors {
+abstract class InnerDoors with _$InnerDoors {
   const InnerDoors._();
 
   const factory InnerDoors(InnerDoor? panelDoors,

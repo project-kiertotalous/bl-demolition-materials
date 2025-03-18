@@ -9,7 +9,7 @@ part 'outer_doors.freezed.dart';
 /// Ulko-ovet
 /// Sisältää tiedot kaikkien ulko-ovien materiaalimääristä yhteensä
 @freezed
-class OuterDoors with _$OuterDoors {
+abstract class OuterDoors with _$OuterDoors {
   const OuterDoors._();
 
   const factory OuterDoors(

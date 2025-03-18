@@ -6,7 +6,7 @@ part 'copper_water_pipes.freezed.dart';
 
 /// Vesiputket, kupari
 @freezed
-class CopperWaterPipes extends HvacOrElectricalInstallations
+abstract class CopperWaterPipes extends HvacOrElectricalInstallations
     with _$CopperWaterPipes {
   const CopperWaterPipes._();
 

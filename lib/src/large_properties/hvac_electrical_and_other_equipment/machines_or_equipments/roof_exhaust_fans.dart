@@ -7,7 +7,7 @@ part 'roof_exhaust_fans.freezed.dart';
 
 /// Huippuimurit
 @freezed
-class RoofExhaustFans extends MachinesOrEquipments with _$RoofExhaustFans {
+abstract class RoofExhaustFans extends MachinesOrEquipments with _$RoofExhaustFans {
   const RoofExhaustFans._();
 
   const factory RoofExhaustFans({int? quantity, num? weightKgPerPiece}) =

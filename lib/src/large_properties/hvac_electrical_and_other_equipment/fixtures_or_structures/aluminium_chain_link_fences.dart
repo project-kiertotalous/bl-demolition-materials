@@ -5,7 +5,7 @@ part 'aluminium_chain_link_fences.freezed.dart';
 
 /// Panssariverkko aita, alumiini korkeus 2 m
 @freezed
-class AluminiumChainLinkFences extends FixturesOrStructures
+abstract class AluminiumChainLinkFences extends FixturesOrStructures
     with _$AluminiumChainLinkFences {
   const AluminiumChainLinkFences._();
 

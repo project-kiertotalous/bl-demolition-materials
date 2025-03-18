@@ -7,7 +7,7 @@ part 'steel_ventilation_pipes_500_dn.freezed.dart';
 
 /// Ilmastointiputket teräs DN 500
 @freezed
-class SteelVentilationPipes500Dn extends HvacOrElectricalInstallations
+abstract class SteelVentilationPipes500Dn extends HvacOrElectricalInstallations
     with _$SteelVentilationPipes500Dn {
   const SteelVentilationPipes500Dn._();
 

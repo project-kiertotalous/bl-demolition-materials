@@ -19,37 +19,37 @@ abstract class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
       TotalBuildingDimensions?
           totalBuildingDimensions}) = _DemolitionWasteAndCosts;
 
-  // Kokonaispurkujätemäärä (tilavuus)
+  /// Kokonaispurkujätemäärä (tilavuus)
   num? get totalVolume => Utils.sumOrNull([
         reusableAndRecyclableMaterials?.totalVolume,
         recyclableComponentsAndFurniture?.totalVolume,
         disposalMaterialsAndHazardousWaste?.totalVolume
       ]);
 
-  // Kokonaispurkujätemäärä (tonnit)
+  /// Kokonaispurkujätemäärä (tonnit)
   num? get totalTons => Utils.sumOrNull([
         reusableAndRecyclableMaterials?.totalTons,
         recyclableComponentsAndFurniture?.totalTons,
         disposalMaterialsAndHazardousWaste?.totalTons
       ]);
 
-  // Rakennuksen purkujätemäärä (ei sisällä poistettavaa maata) (tilavuus)
+  /// Rakennuksen purkujätemäärä (ei sisällä poistettavaa maata) (tilavuus)
   num? get totalVolumeExcludingExcavatedLand => totalVolume == null
       ? null
       : totalVolume! - (reusableAndRecyclableMaterials?.cleanSoil.volume ?? 0);
 
-  // Rakennuksen purkujätemäärä (ei sisällä poistettavaa maata) (tonnit)
+  /// Rakennuksen purkujätemäärä (ei sisällä poistettavaa maata) (tonnit)
   num? get totalTonsExcludingExcavatedLand => totalTons == null
       ? null
       : totalTons! - (reusableAndRecyclableMaterials?.cleanSoil.tons ?? 0);
 
-  // Purettavan rakennuksen kerrosala (m2)
+  /// Purettavan rakennuksen kerrosala (m2)
   num? get buildingGrossFloorArea => totalBuildingDimensions?.grossFloorArea;
 
-  // Purettavan rakennuksen tilavuus (m3)
+  /// Purettavan rakennuksen tilavuus (m3)
   num? get buildingVolume => totalBuildingDimensions?.volume;
 
-  // Purkumateriaalien mukaan laskettu purkukustannus (€/tonni)
+  /// Purkumateriaalien mukaan laskettu purkukustannus (€/tonni)
   num? get demolitionCostMaterialPerTonCalculatedFromDemolitionMaterials {
     if (Utils.anyNull([
       reusableAndRecyclableMaterials?.totalBatchPrice,
@@ -64,7 +64,7 @@ abstract class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalVolume!;
   }
 
-  // Purkukustannus arvio (€)
+  /// Purkukustannus arvio (€)
   num? get estimatedDemolitionCost {
     if (demolitionCostPerTon != null) {
       if (totalTons == null) {
@@ -83,7 +83,7 @@ abstract class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalVolume!;
   }
 
-  // Rakennuksen purkustannus (ei sisällä maanpoistoa)
+  /// Rakennuksen purkustannus (ei sisällä maanpoistoa)
   num? get estimatedDemolitionCostExcludingExcavations {
     if (demolitionCostPerTon != null) {
       if (totalTonsExcludingExcavatedLand == null) {
@@ -102,13 +102,13 @@ abstract class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
         totalVolumeExcludingExcavatedLand!;
   }
 
-  // Purkukustannus/neliö (€/m2)
+  /// Purkukustannus/neliö (€/m2)
   num? get demolitionCostPerSquareMeter =>
       estimatedDemolitionCost == null || buildingGrossFloorArea == null
           ? 0
           : estimatedDemolitionCost! / buildingGrossFloorArea!;
 
-  // Purkukustannus/neliö, ei sisällä maanpoistoa (€/m2)
+  /// Purkukustannus/neliö, ei sisällä maanpoistoa (€/m2)
   num? get demolitionCostPerSquareMeterExcludingExcavations =>
       estimatedDemolitionCostExcludingExcavations == null ||
               buildingGrossFloorArea == null
@@ -116,20 +116,20 @@ abstract class DemolitionWasteAndCosts with _$DemolitionWasteAndCosts {
           : estimatedDemolitionCostExcludingExcavations! /
               buildingGrossFloorArea!;
 
-  // Purkukustannus/rakennuskuutio (€/m3)
+  /// Purkukustannus/rakennuskuutio (€/m3)
   num? get demolitionCostPerCubicMeter =>
       estimatedDemolitionCost == null || buildingGrossFloorArea == null
           ? 0
           : estimatedDemolitionCost! / buildingVolume!;
 
-  // Purkukustannus/rakennuskuutio, ei sisällä maanpoistoa (€/m3)
+  /// Purkukustannus/rakennuskuutio, ei sisällä maanpoistoa (€/m3)
   num? get demolitionCostPerCubicMeterExcludingExcavations =>
       estimatedDemolitionCostExcludingExcavations == null ||
               buildingGrossFloorArea == null
           ? 0
           : estimatedDemolitionCostExcludingExcavations! / buildingVolume!;
 
-  // Myytävät materiaalierät (€)
+  /// Myytävät materiaalierät (€)
   num? get sellableMaterialBatchesPrice => Utils.sumOrNull([
         reusableAndRecyclableMaterials?.totalBatchPrice,
         recyclableComponentsAndFurniture?.totalBatchPrice

@@ -17,7 +17,7 @@ part 'reusable_and_recyclable_materials.freezed.dart';
 
 /// HYÖDYNTÄMISKELPOISET JA KIERRÄTETTÄVÄT MATERIAALIT
 @freezed
-class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
+abstract class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
   ReusableAndRecyclableMaterials._();
 
   factory ReusableAndRecyclableMaterials(
@@ -59,31 +59,31 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       num? plasticWasteDemolitionCost,
       num? energyWasteDemolitionCost}) = _ReusableAndRecyclableMaterials;
 
-  // Maa-ainekset, puhdas maa
+  /// Maa-ainekset, puhdas maa
   late final cleanSoil = WasteCostItem(
       volume: excavationArea?.volumeToRemove,
       tons: excavationArea?.cleanLandTons,
       demolitionCost: cleanSoilDemolitionCost);
 
-  // Asfalttijäte
+  /// Asfalttijäte
   late final asphaltWaste = WasteCostItem(
       volume: excavationArea?.asphaltVolume,
       tons: excavationArea?.asphaltTons,
       demolitionCost: asphaltWasteDemolitionCost);
 
-  // Puhdas betoni
+  /// Puhdas betoni
   late final cleanConcrete = WasteCostItem(
       volume: _cleanConcreteVolume,
       tons: _cleanConcreteTons,
       demolitionCost: cleanConcreteDemolitionCost);
 
-  // Betoniharkot
+  /// Betoniharkot
   late final concreteBlocks = WasteCostItem(
       volume: foundations?.concreteBlockVolume,
       tons: foundations?.concreteTons,
       demolitionCost: concreteBlocksDemolitionCost);
 
-  // Seinä- ja kattotiilet
+  /// Seinä- ja kattotiilet
   late final wallAndRoofTiles = WasteCostItem(
       volume: Utils.sumOrNull([
         totalRoofs?.roofTileVolume,
@@ -99,25 +99,25 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: wallAndRoofTilesDemolitionCost);
 
-  // Kaakelilaatat ja keramiikka, ei sisällä asbestia
+  /// Kaakelilaatat ja keramiikka, ei sisällä asbestia
   late final ceramicTiles = WasteCostItem(
       volume: _ceramicTileVolume,
       tons: _ceramicTileTons,
       demolitionCost: ceramicTilesDemolitionCost);
 
-  // Betoniteräkset, peltikatto, ja muu teräs sekä rautaromu
+  /// Betoniteräkset, peltikatto, ja muu teräs sekä rautaromu
   late final rebarAndSteelScrap = WasteCostItem(
       tons: _rebarAndSteelScrapTons,
       demolitionCost: rebarAndSteelScrapDemolitionCost);
 
-  // Ruostumaton teräs
+  /// Ruostumaton teräs
   late final stainlessSteel = WasteCostItem(
       tons: (fixedFurniture?.areFurnituresRecyclable ?? true)
           ? null
           : fixedFurniture?.stainlessSteelTons,
       demolitionCost: stainlessSteelDemolitionCost);
 
-  // Kupari
+  /// Kupari
   late final copper = WasteCostItem(
       tons: Utils.sumOrNull([
         hvacAndElectricalInstallations?.copperElectricalWires?.tons,
@@ -125,7 +125,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: copperDemolitionCost);
 
-  // Alumiini
+  /// Alumiini
   late final aluminium = WasteCostItem(
       tons: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? true)
@@ -137,7 +137,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: aluminiumDemolitionCost);
 
-  // Puhdas käyttökelpoinen puu
+  /// Puhdas käyttökelpoinen puu
   late final cleanUsableWood = WasteCostItem(
       volume: Utils.sumOrNull([
         totalIntermediateFloors?.woodFrameWoodVolume,
@@ -154,13 +154,13 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: cleanUsableWoodDemolitionCost);
 
-  // Polttokelpoinen puujäte
+  /// Polttokelpoinen puujäte
   late final combustibleWoodWaste = WasteCostItem(
       volume: _combustibleWoodWasteVolume,
       tons: _combustibleWoodWasteTons,
       demolitionCost: combustibleWoodWasteDemolitionCost);
 
-  // Lasi
+  /// Lasi
   late final glass = WasteCostItem(
       volume: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? true)
@@ -186,7 +186,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: glassDemolitionCost);
 
-  // Lasi- ja mineraalieristevilla
+  /// Lasi- ja mineraalieristevilla
   late final glassAndMineralWool = WasteCostItem(
       volume: Utils.sumOrNull([
         // TODO: A loved child has many names? Would be nice to refactor the
@@ -206,7 +206,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: glassAndMineralWoolDemolitionCost);
 
-  // Mineriitti kate ja palonsuojalevyt, ei sisällä asbestia
+  /// Mineriitti kate ja palonsuojalevyt, ei sisällä asbestia
   late final fiberCementBoards = WasteCostItem(
       volume: Utils.sumOrNull([
         totalRoofs?.mineriteVolume,
@@ -216,7 +216,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
           [totalRoofs?.mineriteTons, totalBuildingFrame?.mineriteBoardTons]),
       demolitionCost: fiberCementBoardsDemolitionCost);
 
-  // Kipsilevyt
+  /// Kipsilevyt
   late final gypsumBoards = WasteCostItem(
       volume: Utils.sumOrNull([
         floorStructures?.gypsumBoardingMidsoleVolume,
@@ -230,7 +230,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: gypsumBoardsDemolitionCost);
 
-  // Lastulevy
+  /// Lastulevy
   late final chipboard = WasteCostItem(
       volume: Utils.sumOrNull([
         floorStructures?.chipBoardMidsoleVolume,
@@ -242,13 +242,13 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: chipboardDemolitionCost);
 
-  // Tuulensuojalevyt (bitulitti tai vastaava)
+  /// Tuulensuojalevyt (bitulitti tai vastaava)
   late final windProtectionBoard = WasteCostItem(
       volume: totalBuildingFrame?.windProtectionBoardVolume,
       tons: totalBuildingFrame?.windProtectionBoardTons,
       demolitionCost: windProtectionBoardDemolitionCost);
 
-  // Sähkö- ja elektroniikkarokuma
+  /// Sähkö- ja elektroniikkarokuma
   late final eWaste = WasteCostItem(
       tons: Utils.sumOrNull([
         (fixedFurniture?.areFurnituresRecyclable ?? true)
@@ -269,7 +269,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: eWasteDemolitionCost);
 
-  // Muovijäte, styrox, kosteuseriste yms.
+  /// Muovijäte, styrox, kosteuseriste yms.
   late final plasticWaste = WasteCostItem(
       volume: Utils.sumOrNull([
         foundations?.plasticWasteVolume,
@@ -297,7 +297,7 @@ class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
       ]),
       demolitionCost: plasticWasteDemolitionCost);
 
-  // Energiajäte, maalattupuu, kattohuopa, ja aluskate
+  /// Energiajäte, maalattupuu, kattohuopa, ja aluskate
   late final energyWaste = WasteCostItem(
       volume: Utils.sumOrNull([
         foundations?.combustibleWasteVolume,
