@@ -7,7 +7,7 @@ import '../../demolition_materials/foundation_and_floors_demolition_materials.da
 part 'pillar_foundation.freezed.dart';
 
 @freezed
-class PillarFoundation extends Foundation with _$PillarFoundation {
+abstract class PillarFoundation extends Foundation with _$PillarFoundation {
   PillarFoundation._();
 
   factory PillarFoundation(

@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'minerite_or_other_stone_frame_part.freezed.dart';
 
 @freezed
-class MineriteOrOtherStoneFramePart extends BuildingEnvelopeFramePart
+abstract class MineriteOrOtherStoneFramePart extends BuildingEnvelopeFramePart
     with _$MineriteOrOtherStoneFramePart {
   MineriteOrOtherStoneFramePart._();
 

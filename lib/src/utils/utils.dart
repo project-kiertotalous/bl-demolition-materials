@@ -15,8 +15,18 @@ class Utils {
   /// Given a list of nullable numbers, returns null if every number is null.
   /// Otherwise, treats every null value as 0 and multiplies the result.
   static num? multiplyOrNull(List<num?> values) {
-    num sum = values.fold<num>(0, (acc, val) => acc * (val ?? 0));
-    return values.every((val) => val == null) ? null : sum;
+    if (allNull(values) || values.isEmpty) {
+      return null;
+    }
+
+    if (values.length == 1) {
+      return values.first;
+    }
+
+    final listCopy = [...values];
+    num firstValue = listCopy.removeAt(0)!;
+
+    return listCopy.fold<num>(firstValue, (acc, val) => acc * (val ?? 0));
   }
 
   /// Returns true if any of the values in the provided list is not null.

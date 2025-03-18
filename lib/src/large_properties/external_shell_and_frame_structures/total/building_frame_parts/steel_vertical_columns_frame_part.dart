@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'steel_vertical_columns_frame_part.freezed.dart';
 
 @freezed
-class SteelVerticalColumnsFramePart extends StructuralBuildingFramePart
+abstract class SteelVerticalColumnsFramePart extends StructuralBuildingFramePart
     with _$SteelVerticalColumnsFramePart {
   SteelVerticalColumnsFramePart._();
 

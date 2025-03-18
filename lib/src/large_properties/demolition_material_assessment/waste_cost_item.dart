@@ -5,7 +5,7 @@ part 'waste_cost_item.freezed.dart';
 
 /// A separate item in 'Purkujätteet ja kustannukset'
 @freezed
-class WasteCostItem with _$WasteCostItem {
+abstract class WasteCostItem with _$WasteCostItem {
   const WasteCostItem._();
 
   const factory WasteCostItem({
@@ -14,5 +14,5 @@ class WasteCostItem with _$WasteCostItem {
     num? demolitionCost,
   }) = _WasteCostItem;
 
-  num? get totalMaterialCost => Utils.multiplyOrNull([tons, demolitionCost]);
+  num? get batchPrice => Utils.multiplyOrNull([tons, demolitionCost]);
 }

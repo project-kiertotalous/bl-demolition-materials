@@ -1,12 +1,22 @@
 import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total/building_frame_parts/structural_building_frame_part.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../bl_demolition_materials.dart';
+import '../../../../utils/utils.dart';
 import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
 import 'building_envelope_frame_part.dart';
 
-class DoubleLoadBearingBrickWallFramePart extends StructuralBuildingFramePart
-    implements BuildingEnvelopeFramePart {
-  DoubleLoadBearingBrickWallFramePart(
-      {super.totalBuildingFrame, super.portionFractionPercentage});
+part 'double_load_bearing_brick_wall_frame_part.freezed.dart';
+
+@freezed
+abstract class DoubleLoadBearingBrickWallFramePart
+    with _$DoubleLoadBearingBrickWallFramePart
+    implements StructuralBuildingFramePart, BuildingEnvelopeFramePart {
+  DoubleLoadBearingBrickWallFramePart._();
+
+  factory DoubleLoadBearingBrickWallFramePart(
+      {TotalBuildingFrame? totalBuildingFrame,
+      num? portionFractionPercentage}) = _DoubleLoadBearingBrickWallFramePart;
 
   late final DoubleBrickWallFrame? doubleBrickWallFrame =
       DoubleBrickWallFrame(totalBuildingFrame);
@@ -51,4 +61,26 @@ class DoubleLoadBearingBrickWallFramePart extends StructuralBuildingFramePart
 
   @override
   num? get mineriteBoardTons => null;
+
+  @override
+  num? get concreteTons => null;
+
+  @override
+  num? get concreteVolume => null;
+
+  @override
+  num? get steelTons => null;
+
+  @override
+  num? get woodTons => null;
+
+  @override
+  num? get woodVolume => null;
+
+  @override
+  num? get area => Utils.multiplyOrNull([
+        totalBuildingFrame?.externalWallsPerimeter,
+        totalBuildingFrame?.externalWallsHeight,
+        portionFractionPercentage
+      ]);
 }

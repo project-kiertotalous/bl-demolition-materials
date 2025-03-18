@@ -7,7 +7,7 @@ import '../../demolition_materials/foundation_and_floors_demolition_materials.da
 part 'hollow_core_slab_foundation.freezed.dart';
 
 @freezed
-class HollowCoreSlabFoundation extends Foundation
+abstract class HollowCoreSlabFoundation extends Foundation
     with _$HollowCoreSlabFoundation {
   HollowCoreSlabFoundation._();
 

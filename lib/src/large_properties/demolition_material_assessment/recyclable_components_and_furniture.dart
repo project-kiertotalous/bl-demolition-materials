@@ -14,7 +14,8 @@ part 'recyclable_components_and_furniture.freezed.dart';
 
 /// KIERRÄTETTÄVÄT RAKENNEOSAT JA KALUSTEET
 @freezed
-class RecyclableComponentsAndFurniture with _$RecyclableComponentsAndFurniture {
+abstract class RecyclableComponentsAndFurniture
+    with _$RecyclableComponentsAndFurniture {
   RecyclableComponentsAndFurniture._();
 
   factory RecyclableComponentsAndFurniture({

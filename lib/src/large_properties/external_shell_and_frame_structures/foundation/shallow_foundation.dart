@@ -7,7 +7,7 @@ import '../../demolition_materials/foundation_and_floors_demolition_materials.da
 part 'shallow_foundation.freezed.dart';
 
 @freezed
-class ShallowFoundation extends Foundation with _$ShallowFoundation {
+abstract class ShallowFoundation extends Foundation with _$ShallowFoundation {
   ShallowFoundation._();
 
   factory ShallowFoundation({num? area, num? circumference}) =

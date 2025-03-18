@@ -9,7 +9,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'concrete_element_walls_without_framework_frame_part.freezed.dart';
 
 @freezed
-class ConcreteElementWallsWithoutFrameworkFramePart
+abstract class ConcreteElementWallsWithoutFrameworkFramePart
     extends BuildingEnvelopeFramePart
     with _$ConcreteElementWallsWithoutFrameworkFramePart {
   ConcreteElementWallsWithoutFrameworkFramePart._();

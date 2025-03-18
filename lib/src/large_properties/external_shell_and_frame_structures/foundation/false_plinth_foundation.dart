@@ -7,7 +7,8 @@ import '../../demolition_materials/foundation_and_floors_demolition_materials.da
 part 'false_plinth_foundation.freezed.dart';
 
 @freezed
-class FalsePlinthFoundation extends Foundation with _$FalsePlinthFoundation {
+abstract class FalsePlinthFoundation extends Foundation
+    with _$FalsePlinthFoundation {
   FalsePlinthFoundation._();
 
   factory FalsePlinthFoundation(

@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'profiled_sheet_metal_frame_part.freezed.dart';
 
 @freezed
-class ProfiledSheetMetalFramePart extends BuildingEnvelopeFramePart
+abstract class ProfiledSheetMetalFramePart extends BuildingEnvelopeFramePart
     with _$ProfiledSheetMetalFramePart {
   ProfiledSheetMetalFramePart._();
 

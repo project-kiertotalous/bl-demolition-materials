@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'recyclable_item.freezed.dart';
 
 @freezed
-class RecyclableItem with _$RecyclableItem {
+abstract class RecyclableItem with _$RecyclableItem {
   const RecyclableItem._();
 
   const factory RecyclableItem({

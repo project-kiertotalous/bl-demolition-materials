@@ -40,7 +40,7 @@ abstract class Cellar with _$Cellar {
       num? wallHeight,
       CellarExteriorMaterial? exteriorWallsMaterial}) = _Cellar;
 
-  num? get concreteDemolitionVolume => Utils.sumOrNull([
+  num? get concreteVolume => Utils.sumOrNull([
         _reinforcedConcreteSlabGroundFloor.volume,
         _concreteCastingGroundFloor.volume,
         _concreteCastingWalls.volume,
@@ -48,7 +48,7 @@ abstract class Cellar with _$Cellar {
         _plasteringInteriorAndExteriorWalls.volume
       ]);
 
-  num? get concreteDemolitionTons => Utils.sumOrNull([
+  num? get concreteTons => Utils.sumOrNull([
         _reinforcedConcreteSlabGroundFloor.concreteTons,
         _concreteCastingGroundFloor.concreteTons,
         _concreteCastingWalls.concreteTons,
