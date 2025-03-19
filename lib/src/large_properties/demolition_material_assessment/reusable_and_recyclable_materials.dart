@@ -17,7 +17,8 @@ part 'reusable_and_recyclable_materials.freezed.dart';
 
 /// HYÖDYNTÄMISKELPOISET JA KIERRÄTETTÄVÄT MATERIAALIT
 @freezed
-abstract class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMaterials {
+abstract class ReusableAndRecyclableMaterials
+    with _$ReusableAndRecyclableMaterials {
   ReusableAndRecyclableMaterials._();
 
   factory ReusableAndRecyclableMaterials(
@@ -364,8 +365,8 @@ abstract class ReusableAndRecyclableMaterials with _$ReusableAndRecyclableMateri
   num? get totalTons =>
       all.fold<num>(0, (acc, element) => acc + (element.tons ?? 0));
 
-  num? get totalBatchPrice => all.fold<num>(
-      0, (acc, element) => acc + (element.batchPrice ?? 0));
+  num? get totalBatchPrice =>
+      all.fold<num>(0, (acc, element) => acc + (element.batchPrice ?? 0));
 
   num? get _cleanConcreteVolume => Utils.sumOrNull([
         _foundationsCleanConcreteVolume,

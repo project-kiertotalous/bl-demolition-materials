@@ -6,7 +6,8 @@ part 'ventilation_units.freezed.dart';
 
 /// Ilmanvaihtokoneet
 @freezed
-abstract class VentilationUnits extends MachinesOrEquipments with _$VentilationUnits {
+abstract class VentilationUnits extends MachinesOrEquipments
+    with _$VentilationUnits {
   const VentilationUnits._();
 
   const factory VentilationUnits({int? quantity, num? weightKgPerPiece}) =

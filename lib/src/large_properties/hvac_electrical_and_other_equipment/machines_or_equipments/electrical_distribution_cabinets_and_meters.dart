@@ -7,7 +7,8 @@ part 'electrical_distribution_cabinets_and_meters.freezed.dart';
 
 /// Sähköjakokaapit ja mittarit
 @freezed
-abstract class ElectricalDistributionCabinetsAndMeters extends MachinesOrEquipments
+abstract class ElectricalDistributionCabinetsAndMeters
+    extends MachinesOrEquipments
     with _$ElectricalDistributionCabinetsAndMeters {
   const ElectricalDistributionCabinetsAndMeters._();
 
