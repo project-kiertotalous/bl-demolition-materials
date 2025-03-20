@@ -160,7 +160,6 @@ class PipesAndCablesWeights {
 }
 
 /// Perustukset
-
 class FoundationWeights {
   static num concreteKgPerCbm = 2500;
   static num concreteOrSteelBlockKgPerCbm = 100;
