@@ -19,5 +19,17 @@ void main() {
       expect(result, equals(54));
       expect(list, equals([6, 9]));
     });
+
+    test('works with first null value', () {
+      final list = [null, 9];
+      final result = Utils.multiplyOrNull(list);
+      expect(result, equals(0));
+    });
+
+    test('works with latter null value', () {
+      final list = [9, null];
+      final result = Utils.multiplyOrNull(list);
+      expect(result, equals(0));
+    });
   });
 }
