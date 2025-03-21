@@ -1,2 +1,2 @@
-// Kipsilevy, lastulevy, lautapaneeli
+/// Kipsilevy, lastulevy, lautapaneeli
 enum SurfaceMaterial { plasterBoard, chipboard, woodenPanel }
