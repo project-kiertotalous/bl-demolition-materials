@@ -6,12 +6,12 @@ import 'package:bl_demolition_materials/src/data_types/surface_material.dart';
 import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/small_properties/counting/apartmentCounter.dart';
+import 'package:bl_demolition_materials/src/small_properties/counting/apartment_counter.dart';
 import 'package:bl_demolition_materials/src/small_properties/apartments/apartment_size.dart';
 
 part 'apartment.freezed.dart';
 
-// Huoneistot
+/// Huoneistot
 @freezed
 class Apartment with _$Apartment {
   const Apartment._();
@@ -27,18 +27,18 @@ class Apartment with _$Apartment {
       BathroomWallMaterial? bathroomWallMaterial,
       BathroomFloorMaterial? bathroomFloorMaterial,
       num? kitchenWallMaterialAreaPerApartment,
-      num? kitchenClosetsinLinearMeter,
+      num? kitchenClosetsInLinearMeter,
       @Default(false) bool areKitchenClosetsRecyclable,
-      num? dressingClosetsinLinearMeter,
+      num? dressingClosetsInLinearMeter,
       @Default(false) bool areDressingClosetsRecyclable,
       num? bathroomWallAreaPerApartment,
       num? bathroomFloorAreaPerApartment,
       num? saunaPanelingAreaPerApartment,
       num? apartmentSpecificKitchenToiletOrSaunaFurniture,
-      @Default(false) areFurnituresRecyclable,
+      @Default(false) isFurnitureRecyclable,
       @Default(false) toiletSeat,
       @Default(false) ceramicSink,
-      @Default(false) refridgerator,
+      @Default(false) refrigerator,
       @Default(false) electricStove,
       @Default(false) steelTable,
       @Default(false) waterHeater,
@@ -69,7 +69,8 @@ class Apartment with _$Apartment {
   num? get surfaceMaterialPerApartmentTons {
     num? multiply = Utils.multiplyOrNull([
       ApartmentSize().totalWallArea,
-      ApartmentCounter().totalSurfaceMaterial
+      ApartmentWallMaterials(apartment: this, apartmentSize: ApartmentSize())
+          .totalSurfaceMaterial
     ]);
     if (multiply == 0) {
       return 0;
@@ -78,5 +79,7 @@ class Apartment with _$Apartment {
   }
 
   num? get floorMaterialPerApartmentTons =>
-      0; // TODO laskenta tab needs to be implemented
+      KitchenBathroomAndToiletWallsAndFloors(
+              apartment: this, apartmentSize: ApartmentSize())
+          .overallBathroomToiletFloorMaterialTons;
 }

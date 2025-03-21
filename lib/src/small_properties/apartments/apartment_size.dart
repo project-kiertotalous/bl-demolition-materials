@@ -1,4 +1,4 @@
-import 'package:bl_demolition_materials/src/small_properties/counting/apartmentCounter.dart';
+import 'package:bl_demolition_materials/src/small_properties/counting/apartment_counter.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'apartment.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -15,6 +15,13 @@ class ApartmentSize with _$ApartmentSize {
     Apartment? threeRooms,
     Apartment? fourRooms,
   }) = _ApartmentSize;
+
+  num? get totalRoomCount => Utils.sumOrNull([
+        oneRoom?.pcsPerHouse,
+        twoRooms?.pcsPerHouse,
+        threeRooms?.pcsPerHouse,
+        fourRooms?.pcsPerHouse,
+      ]);
 
   num? get totalFloorArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -95,9 +102,37 @@ class ApartmentSize with _$ApartmentSize {
         apartmentSize: this,
       ).overallKitchenWallMaterial;
 
-  num? get totalkitchenClosetTons => 0; // TODO
+  num? get totalKitchenClosetLength => Utils.sumOrNull([
+        Utils.multiplyOrNull(
+            [oneRoom?.kitchenClosetsInLinearMeter, oneRoom?.pcsPerHouse]),
+        Utils.multiplyOrNull(
+            [twoRooms?.kitchenClosetsInLinearMeter, twoRooms?.pcsPerHouse]),
+        Utils.multiplyOrNull(
+            [threeRooms?.kitchenClosetsInLinearMeter, threeRooms?.pcsPerHouse]),
+        Utils.multiplyOrNull(
+            [fourRooms?.kitchenClosetsInLinearMeter, fourRooms?.pcsPerHouse]),
+      ]);
 
-  num? get totaldressingClosetTons => 0; // TODO
+  num? get totalDressingClosetLength => Utils.sumOrNull([
+        Utils.multiplyOrNull(
+            [oneRoom?.dressingClosetsInLinearMeter, oneRoom?.pcsPerHouse]),
+        Utils.multiplyOrNull(
+            [twoRooms?.dressingClosetsInLinearMeter, twoRooms?.pcsPerHouse]),
+        Utils.multiplyOrNull([
+          threeRooms?.dressingClosetsInLinearMeter,
+          threeRooms?.pcsPerHouse
+        ]),
+        Utils.multiplyOrNull(
+            [fourRooms?.dressingClosetsInLinearMeter, fourRooms?.pcsPerHouse]),
+      ]);
+
+  num? get totalkitchenClosetTons =>
+      KitchenClosets(apartment: oneRoom, apartmentSize: this)
+          .overallKitchenClosetTons;
+
+  num? get totaldressingClosetTons =>
+      DressingClosets(apartment: oneRoom, apartmentSize: this)
+          .overallDressingClosetTons;
 
   num? get totalBathroomWallArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -112,7 +147,10 @@ class ApartmentSize with _$ApartmentSize {
             [fourRooms?.bathroomWallAreaPerApartment, fourRooms?.pcsPerHouse]),
       ]);
 
-  num? get totalBathroomWallTons => 0; // TODO
+  num? get totalBathroomWallTons => KitchenBathroomAndToiletWallsAndFloors(
+        apartment: oneRoom, // or any other Apartment? type
+        apartmentSize: this,
+      ).overallBathroomToiletWallMaterialTons;
 
   num? get totalBathroomFloorArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -127,7 +165,10 @@ class ApartmentSize with _$ApartmentSize {
             [fourRooms?.bathroomFloorAreaPerApartment, fourRooms?.pcsPerHouse]),
       ]);
 
-  num? get totalBathroomFloorTons => 0; // TODO
+  num? get totalBathroomFloorTons => KitchenBathroomAndToiletWallsAndFloors(
+        apartment: oneRoom, // or any other Apartment? type
+        apartmentSize: this,
+      ).overallBathroomToiletFloorMaterialTons;
 
   num? get totalSaunaPanelingArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -142,7 +183,12 @@ class ApartmentSize with _$ApartmentSize {
             [fourRooms?.saunaPanelingAreaPerApartment, fourRooms?.pcsPerHouse]),
       ]);
 
-  num? get totalSaunaPanelingTons => 0; // TODO
+  num? get totalSaunaPanelingTons => SaunaWallPanels(
+          apartment: oneRoom, // Or any other apartment type
+          apartmentSize: this)
+      .saunaPanelingWoodenPanelTons;
 
-  num? get totalKitchenToiletOrSaunaFurnitureTons => 0; // TODO
+  num? get totalKitchenToiletOrSaunaFurnitureTons =>
+      WaterAccumulators(apartment: oneRoom, apartmentSize: this)
+          .overallFurnitureTons;
 }
