@@ -24,7 +24,7 @@ class Utils {
     }
 
     final listCopy = [...values];
-    num firstValue = listCopy.removeAt(0)!;
+    num firstValue = listCopy.removeAt(0) ?? 0;
 
     return listCopy.fold<num>(firstValue, (acc, val) => acc * (val ?? 0));
   }
