@@ -140,7 +140,7 @@ class FurnitureDressingKitchenToiletSpaceWeights {
   static num steelSinksAndTablesRustProofKgPerPcs = 7.3;
   static num saunaStovesKgPerPcs = 12;
   static num electricStovesKgPerPcs = 40;
-  static num refridgeratorsKgPerPcs = 60;
+  static num refrigeratorsKgPerPcs = 60;
   static num waterAccumulatorsKgPerPcs = 100;
   static num centralHeatingRadiatorsWaterCirculatinKgPerPcs = 10;
   static num ventilationMachineKgPerPcs = 100;
