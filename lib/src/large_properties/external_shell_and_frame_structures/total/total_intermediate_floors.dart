@@ -125,6 +125,6 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
   num? get concreteCastingRebarTons => concreteCastingConcreteVolume == null
       ? null
       : concreteCastingConcreteVolume! *
-          FoundationWeights.reinforcedConcreteColumn250x250KgPerSqm /
+          FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm /
           1000;
 }
