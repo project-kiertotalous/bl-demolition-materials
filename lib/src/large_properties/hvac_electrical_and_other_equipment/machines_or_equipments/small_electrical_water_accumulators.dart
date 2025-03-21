@@ -7,7 +7,7 @@ part 'small_electrical_water_accumulators.freezed.dart';
 
 /// Vesivaraajat (sähkö, pienet)
 @freezed
-class SmallElectricalWaterAccumulators extends MachinesOrEquipments
+abstract class SmallElectricalWaterAccumulators extends MachinesOrEquipments
     with _$SmallElectricalWaterAccumulators {
   const SmallElectricalWaterAccumulators._();
 

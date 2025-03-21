@@ -6,7 +6,7 @@ part 'windows.freezed.dart';
 
 /// Ikkunat
 @freezed
-class Windows with _$Windows {
+abstract class Windows with _$Windows {
   const Windows._();
 
   const factory Windows(
@@ -22,7 +22,7 @@ class Windows with _$Windows {
     return windowsPcs! * windowsArea!;
   }
 
-  num? get totalWoodenMaterialVolume {
+  num? get totalWoodenVolume {
     if (totalGlassArea == null) {
       return null;
     }
@@ -32,7 +32,7 @@ class Windows with _$Windows {
         WindowWeights.lowerFramePaintedKgPerCbm;
   }
 
-  num? get totalGlassMaterialVolume {
+  num? get totalGlassVolume {
     if (Utils.allNull([totalGlassArea, glassWallArea])) {
       return null;
     }
@@ -41,7 +41,7 @@ class Windows with _$Windows {
         WindowWeights.lowerFramePaintedKgPerSqm;
   }
 
-  num? get totalWoodenMaterialTons {
+  num? get totalWoodTons {
     if (totalGlassArea == null) {
       return null;
     }
@@ -51,14 +51,14 @@ class Windows with _$Windows {
         1000;
   }
 
-  num? get totalAluminiumMaterialTons {
+  num? get totalAluminiumTons {
     if (totalGlassArea == null) {
       return null;
     }
     return totalGlassArea! * WindowWeights.outerListsAluminiumKgPerSqm / 1000;
   }
 
-  num? get totalGlassMaterialTons {
+  num? get totalGlassTons {
     if (Utils.allNull([totalGlassArea, glassWallArea])) {
       return null;
     }

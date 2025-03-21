@@ -7,7 +7,7 @@ part 'cast_iron_sewage_pipes.freezed.dart';
 
 /// Viemäriputket, valurauta DN 150
 @freezed
-class CastIronSewagePipes extends HvacOrElectricalInstallations
+abstract class CastIronSewagePipes extends HvacOrElectricalInstallations
     with _$CastIronSewagePipes {
   const CastIronSewagePipes._();
 

@@ -7,7 +7,7 @@ part 'copper_electrical_wires.freezed.dart';
 
 /// Sähköjohdot, kupari
 @freezed
-class CopperElectricalWires extends HvacOrElectricalInstallations
+abstract class CopperElectricalWires extends HvacOrElectricalInstallations
     with _$CopperElectricalWires {
   const CopperElectricalWires._();
 

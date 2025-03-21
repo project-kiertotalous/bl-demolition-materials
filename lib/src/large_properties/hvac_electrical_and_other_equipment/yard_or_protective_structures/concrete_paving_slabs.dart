@@ -7,7 +7,7 @@ part 'concrete_paving_slabs.freezed.dart';
 
 /// Tippapellit ja suojapellitykset (0,8 mm teräslevy)
 @freezed
-class ConcretePavingSlabs extends YardOrProtectiveStructures
+abstract class ConcretePavingSlabs extends YardOrProtectiveStructures
     with _$ConcretePavingSlabs {
   const ConcretePavingSlabs._();
 

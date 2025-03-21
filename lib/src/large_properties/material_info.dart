@@ -8,7 +8,7 @@ enum WoodMaterialType {
 }
 
 class WoodMaterialInfo {
-  static Map<WoodMaterialType, num> _volumes = {
+  static final Map<WoodMaterialType, num> _volumes = {
     WoodMaterialType.board20x125: 0.004,
     WoodMaterialType.trunkWood50x100: 0.005,
     WoodMaterialType.trunkWood50x150: 0.0075,
@@ -23,7 +23,7 @@ class WoodMaterialInfo {
   static num weightPerLinearMeter(WoodMaterialType materialType) =>
       _volumes[materialType]! * 500;
 
-  static Map<WoodMaterialType, num> _boardConsumption = {
+  static final Map<WoodMaterialType, num> _boardConsumption = {
     WoodMaterialType.board20x125: 8,
     WoodMaterialType.trunkWood50x100: 1.25,
     WoodMaterialType.trunkWood50x150: 1.25,
@@ -204,8 +204,8 @@ class UpperBaseStructureAndWaterRoofWeights {
   static num vaporBarrierKgPerCbm = 970;
   static num plasterBoardKgPerSqm = 9;
   static num plasterBoardKgPerCbm = 900;
-  static num particleBoard15mmKgPerSqm = 10.00;
-  static num particleBoard15mmKgPerCbm = 1000;
+  static num chipBoard15mmKgPerSqm = 10.00;
+  static num chipBoard15mmKgPerCbm = 1000;
   static num windProofWool30mmKgPerSqm = 1.65;
   static num windProofWool30mmKgPerCbm = 55;
   static num woodShavings100mmKgPerSqm = 11.00;

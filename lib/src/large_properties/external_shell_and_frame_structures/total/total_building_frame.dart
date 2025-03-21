@@ -1,3 +1,4 @@
+import 'package:bl_demolition_materials/src/large_properties/demolition_materials/outer_walls_and_frame_demolition_materials.dart';
 import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/building_frame.dart';
 import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundations.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
@@ -201,6 +202,98 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
 
   num? get mineriteBoardTons {
     return _envelopeAggregate((t) => t.mineriteBoardTons);
+  }
+
+  num? get windProtectionBoardVolume {
+    if (windProtectionBoardTons == null) {
+      return null;
+    }
+
+    return windProtectionBoardTons! /
+        1000 *
+        WindProtectionBoardFrame().kgPerCubicMeter;
+  }
+
+  num? get mineralWoolInsulationVolume {
+    if (mineralWoolInsulationTons == null) {
+      return null;
+    }
+
+    return mineralWoolInsulationTons! /
+        1000 *
+        MineralWoolFrame().kgPerCubicMeter;
+  }
+
+  num? get limeOrRedBrickVolume {
+    if (limeOrRedBrickTons == null) {
+      return null;
+    }
+
+    return limeOrRedBrickTons! / 1000 * LimeOrRedBrickFrame().kgPerCubicMeter;
+  }
+
+  num? get exteriorWoodCladdingVolume {
+    if (exteriorWoodCladdingTons == null) {
+      return null;
+    }
+
+    return exteriorWoodCladdingTons! /
+        1000 *
+        ExteriorCladdingBoardFrame().kgPerCubicMeter;
+  }
+
+  num? get gypsumBoardVolume {
+    if (gypsumBoardTons == null) {
+      return null;
+    }
+
+    return gypsumBoardTons! / 1000 * PlasterBoardFrame().kgPerCubicMeter;
+  }
+
+  num? get profileSteelSheetVolume {
+    if (profileSteelSheetTons == null) {
+      return null;
+    }
+
+    return profileSteelSheetTons! /
+        1000 *
+        ProfiledSheetMetalBoard().kgPerCubicMeter;
+  }
+
+  num? get semiHardFiberBoardVolume {
+    if (semiHardFiberBoardTons == null) {
+      return null;
+    }
+
+    return semiHardFiberBoardTons! /
+        1000 *
+        SemiHardFiberBoardFrame().kgPerCubicMeter;
+  }
+
+  num? get styrofoamVolume {
+    if (styrofoamTons == null) {
+      return null;
+    }
+
+    return styrofoamTons! / 1000 * StyrofoamFrame().kgPerCubicMeter;
+  }
+
+  num? get plasterCoatingVolume {
+    if (plasterCoatingTons == null) {
+      return null;
+    }
+
+    return plasterCoatingTons! /
+        1000 *
+        PlasteringInteriorAndExteriorWallsFrame().kgPerCubicMeter;
+  }
+
+  num? get mineriteBoardVolume {
+    if (mineriteBoardTons == null) {
+      return null;
+    }
+
+    return mineriteBoardTons! / 1000 * MineriteBoardFrame().kgPerCubicMeter;
   }
 
   num? _envelopeAggregate(num? Function(BuildingEnvelopeFramePart) function) {

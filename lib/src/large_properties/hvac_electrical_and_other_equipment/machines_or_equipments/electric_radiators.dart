@@ -7,7 +7,8 @@ part 'electric_radiators.freezed.dart';
 
 /// Lämpöpatterit, sähkö
 @freezed
-class ElectricRadiators extends MachinesOrEquipments with _$ElectricRadiators {
+abstract class ElectricRadiators extends MachinesOrEquipments
+    with _$ElectricRadiators {
   const ElectricRadiators._();
 
   const factory ElectricRadiators({int? quantity, num? weightKgPerPiece}) =

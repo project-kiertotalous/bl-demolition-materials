@@ -6,7 +6,7 @@ part 'yard_and_protective_structures.freezed.dart';
 
 /// 15. PIHA JA SUOJARAKENTEET
 @freezed
-class YardAndProtectiveStructures with _$YardAndProtectiveStructures {
+abstract class YardAndProtectiveStructures with _$YardAndProtectiveStructures {
   const factory YardAndProtectiveStructures(
       {DripTraysAndProtectiveMetalSheets? dripTraysAndProtectiveMetalSheets,
       ConcretePavingSlabs? concretePavingSlabs}) = _YardAndProtectiveStructures;

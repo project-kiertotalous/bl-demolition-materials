@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'glulam_beams_frame_part.freezed.dart';
 
 @freezed
-class GlulamBeamsFramePart extends StructuralBuildingFramePart
+abstract class GlulamBeamsFramePart extends StructuralBuildingFramePart
     with _$GlulamBeamsFramePart {
   GlulamBeamsFramePart._();
 

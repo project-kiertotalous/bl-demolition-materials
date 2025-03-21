@@ -5,7 +5,7 @@ part 'rain_gutters_and_downspouts.freezed.dart';
 
 /// Sadevesikourut ja rännit
 @freezed
-class RainGuttersAndDownspouts extends FixturesOrStructures
+abstract class RainGuttersAndDownspouts extends FixturesOrStructures
     with _$RainGuttersAndDownspouts {
   const RainGuttersAndDownspouts._();
 

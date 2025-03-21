@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'wooden_plank_wall_frame_part.freezed.dart';
 
 @freezed
-class WoodenPlankWallFramePart extends BuildingEnvelopeFramePart
+abstract class WoodenPlankWallFramePart extends BuildingEnvelopeFramePart
     with _$WoodenPlankWallFramePart {
   WoodenPlankWallFramePart._();
 

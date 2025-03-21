@@ -7,7 +7,7 @@ part 'water_circulated_radiators.freezed.dart';
 
 /// Lämpöpatterit, vesikiertoiset
 @freezed
-class WaterCirculatedRadiators extends MachinesOrEquipments
+abstract class WaterCirculatedRadiators extends MachinesOrEquipments
     with _$WaterCirculatedRadiators {
   const WaterCirculatedRadiators._();
 

@@ -7,7 +7,8 @@ part 'drip_trays_and_protective_metal_sheets.freezed.dart';
 
 /// Tippapellit ja suojapellitykset (0,8 mm teräslevy)
 @freezed
-class DripTraysAndProtectiveMetalSheets extends YardOrProtectiveStructures
+abstract class DripTraysAndProtectiveMetalSheets
+    extends YardOrProtectiveStructures
     with _$DripTraysAndProtectiveMetalSheets {
   const DripTraysAndProtectiveMetalSheets._();
 

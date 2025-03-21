@@ -8,7 +8,7 @@ part 'room_space.freezed.dart';
 /// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
 /// Sisältää jokaiselle huoneelle olevat solut ja huoneen sisaiset laskettavat arvot
 @freezed
-class RoomSpace with _$RoomSpace {
+abstract class RoomSpace with _$RoomSpace {
   const RoomSpace._();
 
   const factory RoomSpace({
@@ -39,7 +39,7 @@ class RoomSpace with _$RoomSpace {
     ]);
   }
 
-  // seinien pintarakenteen osuus kaikista valiseinista (seinapinta-alasta)
+  /// Seinien pintarakenteen osuus kaikista väliseinistä (seinäpinta-alasta)
   num? get partOfAllPartitionWallsInPercents {
     final internalWallFramesAndSurfaceMaterial =
         InternalWallFramesAndSurfaceMaterial();

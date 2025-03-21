@@ -9,18 +9,18 @@ part 'inner_doors.freezed.dart';
 /// Sisäovet
 /// Sisältää tiedot kaikkien sisäovien materiaalimäärista yhteensä
 @freezed
-class InnerDoors with _$InnerDoors {
+abstract class InnerDoors with _$InnerDoors {
   const InnerDoors._();
 
-  const factory InnerDoors(InnerDoor? slabDoors,
+  const factory InnerDoors(InnerDoor? panelDoors,
       {InnerDoor? woodenDoors,
       InnerDoor? fireDoors,
       @Default(false) bool areDoorsRecyclable}) = _InnerDoors;
 
-  num? get totalWoodenMaterialVolume {
+  num? get totalWoodVolume {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.shutDoors,
-      slabDoors?.glassDoors,
+      panelDoors?.shutDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.shutDoors,
       woodenDoors?.glassDoors,
     ]);
@@ -33,9 +33,9 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalGlassMaterialVolume {
+  num? get totalGlassVolume {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.glassDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.glassDoors,
     ]);
     if (allNulls == 0) {
@@ -46,10 +46,10 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalWoodMaterialTons {
+  num? get totalWoodTons {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.shutDoors,
-      slabDoors?.glassDoors,
+      panelDoors?.shutDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.shutDoors,
       woodenDoors?.glassDoors,
     ]);
@@ -62,9 +62,9 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalGlassMaterialTons {
+  num? get totalGlassTons {
     final allNulls = Utils.sumOrNull([
-      slabDoors?.glassDoors,
+      panelDoors?.glassDoors,
       woodenDoors?.glassDoors,
     ]);
     if (allNulls == 0) {
@@ -76,7 +76,7 @@ class InnerDoors with _$InnerDoors {
     return result;
   }
 
-  num? get totalSteelMaterialTons {
+  num? get totalSteelTons {
     if (fireDoors?.shutDoors == null) {
       return null;
     }

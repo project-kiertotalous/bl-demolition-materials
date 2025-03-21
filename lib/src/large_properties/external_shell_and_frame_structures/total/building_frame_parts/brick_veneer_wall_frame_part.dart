@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'brick_veneer_wall_frame_part.freezed.dart';
 
 @freezed
-class BrickVeneerWallFramePart extends BuildingEnvelopeFramePart
+abstract class BrickVeneerWallFramePart extends BuildingEnvelopeFramePart
     with _$BrickVeneerWallFramePart {
   BrickVeneerWallFramePart._();
 

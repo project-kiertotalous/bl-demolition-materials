@@ -9,22 +9,23 @@ part 'outer_doors.freezed.dart';
 /// Ulko-ovet
 /// Sisältää tiedot kaikkien ulko-ovien materiaalimääristä yhteensä
 @freezed
-class OuterDoors with _$OuterDoors {
+abstract class OuterDoors with _$OuterDoors {
   const OuterDoors._();
 
   const factory OuterDoors(
       {OuterDoor? woodenDoors,
       OuterDoor? aluminiumDoors,
       OuterDoor? steelDoors,
+      num? accessAndLoadingDoors,
       @Default(false) bool areDoorsRecyclable}) = _OuterDoors;
 
-  num? get totalWoodenMaterialVolume {
+  num? get totalWoodVolume {
     final allNulls =
         Utils.allNull([woodenDoors?.shutDoors, woodenDoors?.glassDoors]);
     if (allNulls) {
       return null;
     }
-    Utils.sumOrNull([
+    return Utils.sumOrNull([
       (Utils.multiplyOrNull([
             woodenDoors?.shutDoors,
             DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg
@@ -42,12 +43,12 @@ class OuterDoors with _$OuterDoors {
     ]);
   }
 
-  num? get totalGlassMaterialVolume {
+  num? get totalGlassVolume {
     final allNulls = Utils.allNull([
       woodenDoors?.glassDoors,
       aluminiumDoors?.glassDoors,
       steelDoors?.glassDoors,
-      woodenDoors?.accessAndLoadingDoors
+      accessAndLoadingDoors
     ]);
     if (allNulls) {
       return null;
@@ -66,7 +67,7 @@ class OuterDoors with _$OuterDoors {
             DoorWeights.steelDoorWithGlass05SqmGlassKg
           ])),
           (Utils.multiplyOrNull([
-            woodenDoors?.accessAndLoadingDoors,
+            accessAndLoadingDoors,
             DoorWeights.metallicLiftDoorsAndBigPassageDoorsGlassKg
           ]))
         ])! /
@@ -74,7 +75,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalWoodMaterialTons {
+  num? get totalWoodTons {
     final allNulls =
         Utils.allNull([woodenDoors?.shutDoors, woodenDoors?.glassDoors]);
     if (allNulls) {
@@ -95,7 +96,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalAluminiumMaterialTons {
+  num? get totalAluminiumTons {
     final allNulls =
         Utils.allNull([aluminiumDoors?.shutDoors, aluminiumDoors?.glassDoors]);
     if (allNulls) {
@@ -115,7 +116,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalSteelMaterialTons {
+  num? get totalSteelTons {
     final allNulls =
         Utils.allNull([steelDoors?.shutDoors, steelDoors?.glassDoors]);
     if (allNulls) {
@@ -129,7 +130,7 @@ class OuterDoors with _$OuterDoors {
             DoorWeights.steelDoorWithGlass05SqmGlassKg
           ])),
           (Utils.multiplyOrNull([
-            woodenDoors?.accessAndLoadingDoors,
+            accessAndLoadingDoors,
             DoorWeights.metallicLiftDoorsAndBigPassageDoorsKg
           ]))
         ])! /
@@ -137,7 +138,7 @@ class OuterDoors with _$OuterDoors {
     return result;
   }
 
-  num? get totalGlassMaterialTons {
+  num? get totalGlassTons {
     final allNulls = Utils.allNull([
       woodenDoors?.glassDoors,
       aluminiumDoors?.glassDoors,

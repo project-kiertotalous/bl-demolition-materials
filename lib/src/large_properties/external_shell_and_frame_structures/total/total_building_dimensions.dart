@@ -14,7 +14,7 @@ abstract class TotalBuildingDimensions with _$TotalBuildingDimensions {
   const factory TotalBuildingDimensions(
       {BuildingDimensions? buildingDimensions,
       Cellar? cellar,
-      Foundations? totalFoundations,
+      Foundations? foundations,
       BuildingFrame? buildingFrame}) = _TotalBuildingDimensions;
 
   num? get grossFloorArea => buildingDimensions?.grossFloorArea;
@@ -59,12 +59,12 @@ abstract class TotalBuildingDimensions with _$TotalBuildingDimensions {
 
     if (cellar?.floorArea == null &&
         cellar?.wallHeight == null &&
-        totalFoundations?.area == null &&
+        foundations?.area == null &&
         buildingFrame?.externalWallsAverageHeight == null) {
       return null;
     }
 
-    return ((totalFoundations?.area ?? 0) *
+    return ((foundations?.area ?? 0) *
             (buildingFrame?.externalWallsAverageHeight ?? 0)) +
         ((cellar?.floorArea ?? 0) * (cellar?.wallHeight ?? 0));
   }

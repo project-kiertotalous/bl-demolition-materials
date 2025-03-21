@@ -7,7 +7,7 @@ part 'central_heating_pipes.freezed.dart';
 
 /// Keskusämmitysputket, vesikiertoinen lämmitys (teräs)
 @freezed
-class CentralHeatingPipes extends HvacOrElectricalInstallations
+abstract class CentralHeatingPipes extends HvacOrElectricalInstallations
     with _$CentralHeatingPipes {
   const CentralHeatingPipes._();
 

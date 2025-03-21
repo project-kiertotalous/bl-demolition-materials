@@ -1,17 +1,16 @@
 import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/total/building_frame_parts/structural_building_frame_part.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../bl_demolition_materials.dart';
 import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
 import 'building_envelope_frame_part.dart';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'concrete_element_walls_without_framework_frame_part.freezed.dart';
 
 @freezed
-class ConcreteElementWallsWithoutFrameworkFramePart
-    extends BuildingEnvelopeFramePart
-    with _$ConcreteElementWallsWithoutFrameworkFramePart {
+abstract class ConcreteElementWallsWithoutFrameworkFramePart
+    with _$ConcreteElementWallsWithoutFrameworkFramePart
+    implements StructuralBuildingFramePart, BuildingEnvelopeFramePart {
   ConcreteElementWallsWithoutFrameworkFramePart._();
 
   factory ConcreteElementWallsWithoutFrameworkFramePart(
@@ -65,4 +64,22 @@ class ConcreteElementWallsWithoutFrameworkFramePart
 
   @override
   num? get mineriteBoardTons => null;
+
+  @override
+  num? get area => null;
+
+  @override
+  num? get brickTons => null;
+
+  @override
+  num? get brickVolume => null;
+
+  @override
+  num? get steelTons => null;
+
+  @override
+  num? get woodTons => null;
+
+  @override
+  num? get woodVolume => null;
 }

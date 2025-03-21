@@ -5,7 +5,7 @@ part 'fire_ladders_and_walkways.freezed.dart';
 
 /// Palotikkaat ja kulkusillat
 @freezed
-class FireLaddersAndWalkways extends FixturesOrStructures
+abstract class FireLaddersAndWalkways extends FixturesOrStructures
     with _$FireLaddersAndWalkways {
   const FireLaddersAndWalkways._();
 

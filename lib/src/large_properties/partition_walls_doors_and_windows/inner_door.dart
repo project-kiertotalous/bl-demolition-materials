@@ -5,7 +5,7 @@ part 'inner_door.freezed.dart';
 
 /// Sisältää tiedot yksittäisten sisäovityyppien määristä
 @freezed
-class InnerDoor with _$InnerDoor {
+abstract class InnerDoor with _$InnerDoor {
   const InnerDoor._();
 
   const factory InnerDoor({

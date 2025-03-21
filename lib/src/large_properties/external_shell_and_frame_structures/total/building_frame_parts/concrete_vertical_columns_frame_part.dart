@@ -8,7 +8,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'concrete_vertical_columns_frame_part.freezed.dart';
 
 @freezed
-class ConcreteVerticalColumnsFramePart extends StructuralBuildingFramePart
+abstract class ConcreteVerticalColumnsFramePart
+    extends StructuralBuildingFramePart
     with _$ConcreteVerticalColumnsFramePart {
   ConcreteVerticalColumnsFramePart._();
 

@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'steel_sandwich_panel_frame_part.freezed.dart';
 
 @freezed
-class SteelSandwichPanelFramePart extends BuildingEnvelopeFramePart
+abstract class SteelSandwichPanelFramePart extends BuildingEnvelopeFramePart
     with _$SteelSandwichPanelFramePart {
   SteelSandwichPanelFramePart._();
 

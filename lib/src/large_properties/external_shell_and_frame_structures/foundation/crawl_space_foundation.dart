@@ -7,7 +7,8 @@ import '../../demolition_materials/foundation_and_floors_demolition_materials.da
 part 'crawl_space_foundation.freezed.dart';
 
 @freezed
-class CrawlSpaceFoundation extends Foundation with _$CrawlSpaceFoundation {
+abstract class CrawlSpaceFoundation extends Foundation
+    with _$CrawlSpaceFoundation {
   CrawlSpaceFoundation._();
 
   factory CrawlSpaceFoundation(

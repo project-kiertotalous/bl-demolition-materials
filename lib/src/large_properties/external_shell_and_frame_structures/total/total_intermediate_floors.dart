@@ -14,7 +14,7 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
   const factory TotalIntermediateFloors(
       {IntermediateFloors? intermediateFloors,
       TotalBuildingDimensions? totalBuildingDimensions,
-      Foundations? totalFoundation}) = _TotalIntermediateFloors;
+      Foundations? foundations}) = _TotalIntermediateFloors;
 
   num? get woodFramePercentageFraction =>
       intermediateFloors?.woodFramePercentageFraction;
@@ -67,13 +67,13 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
           DividingWallWeights.woodenTrunkKgPerCbm;
 
   num? get glulamBeamWoodVolume {
-    if (glulamBeamFloorArea == null || totalFoundation == null) {
+    if (glulamBeamFloorArea == null || foundations == null) {
       return null;
     }
 
     return glulamBeamFloorArea! *
-        totalFoundation!.glulamBeamsIntermediateFloorFrames.kgPerSquareMeter /
-        totalFoundation!.glulamBeamsIntermediateFloorFrames.kgPerCubicMeter;
+        foundations!.glulamBeamsIntermediateFloorFrames.kgPerSquareMeter /
+        foundations!.glulamBeamsIntermediateFloorFrames.kgPerCubicMeter;
   }
 
   num? get woodFrameWoodTons => woodFrameFloorArea == null
@@ -81,24 +81,23 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
       : woodFrameFloorArea! * DividingWallWeights.woodenTrunkKgPerSqm / 1000;
 
   num? get glulamBeamWoodTons {
-    if (glulamBeamFloorArea == null || totalFoundation == null) {
+    if (glulamBeamFloorArea == null || foundations == null) {
       return null;
     }
 
     return glulamBeamFloorArea! *
-        totalFoundation!.glulamBeamsIntermediateFloorFrames.kgPerSquareMeter /
+        foundations!.glulamBeamsIntermediateFloorFrames.kgPerSquareMeter /
         1000;
   }
 
   num? get concreteCastingConcreteVolume {
-    if (concreteCastingFloorArea == null || totalFoundation == null) {
+    if (concreteCastingFloorArea == null || foundations == null) {
       return null;
     }
 
     return concreteCastingFloorArea! *
-        totalFoundation!
-            .concreteCastingIntermediateFloorFrames.kgPerSquareMeter /
-        totalFoundation!.concreteCastingIntermediateFloorFrames.kgPerCubicMeter;
+        foundations!.concreteCastingIntermediateFloorFrames.kgPerSquareMeter /
+        foundations!.concreteCastingIntermediateFloorFrames.kgPerCubicMeter;
   }
 
   num? get hollowCoreSlabConcreteVolume => hollowCoreSlabFloorArea == null
@@ -108,13 +107,12 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
           FoundationWeights.hollowSlab200mmKgPerCbm;
 
   num? get concreteCastingConcreteTons {
-    if (concreteCastingFloorArea == null || totalFoundation == null) {
+    if (concreteCastingFloorArea == null || foundations == null) {
       return null;
     }
 
     return concreteCastingFloorArea! *
-        totalFoundation!
-            .concreteCastingIntermediateFloorFrames.kgPerSquareMeter /
+        foundations!.concreteCastingIntermediateFloorFrames.kgPerSquareMeter /
         1000;
   }
 
@@ -124,7 +122,7 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
           FoundationWeights.hollowSlab200mmKgPerSqm /
           1000;
 
-  num? get concreteCastingSteelTons => concreteCastingConcreteVolume == null
+  num? get concreteCastingRebarTons => concreteCastingConcreteVolume == null
       ? null
       : concreteCastingConcreteVolume! *
           FoundationWeights.reinforcedConcreteColumn250x250KgPerSqm /

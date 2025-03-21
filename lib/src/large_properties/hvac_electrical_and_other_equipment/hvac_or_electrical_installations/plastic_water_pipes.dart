@@ -7,7 +7,7 @@ part 'plastic_water_pipes.freezed.dart';
 
 /// Vesiputket, muovi
 @freezed
-class PlasticWaterPipes extends HvacOrElectricalInstallations
+abstract class PlasticWaterPipes extends HvacOrElectricalInstallations
     with _$PlasticWaterPipes {
   const PlasticWaterPipes._();
 
