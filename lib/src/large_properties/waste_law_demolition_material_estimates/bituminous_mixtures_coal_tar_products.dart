@@ -1,7 +1,7 @@
 import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/demolition_waste_and_costs.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'exports.dart';
+import 'waste_law_demolition_material_estimate_entry.dart';
 
 part 'bituminous_mixtures_coal_tar_products.freezed.dart';
 
