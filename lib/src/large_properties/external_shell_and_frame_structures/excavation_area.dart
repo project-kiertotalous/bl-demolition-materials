@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../bl_demolition_materials.dart';
 
 part 'excavation_area.freezed.dart';
+part 'excavation_area.g.dart';
 
 @freezed
 abstract class ExcavationArea with _$ExcavationArea {
@@ -13,6 +14,9 @@ abstract class ExcavationArea with _$ExcavationArea {
       num? areaToRemoveDepth,
       num? asphaltArea,
       @Default(1) num cleanSoilPortionPercentageFraction}) = _ExcavationArea;
+
+  factory ExcavationArea.fromJson(Map<String, dynamic> json) =>
+      _$ExcavationAreaFromJson(json);
 
   num? get volumeToRemove {
     if (areaToRemoveSize == null || areaToRemoveDepth == null) {

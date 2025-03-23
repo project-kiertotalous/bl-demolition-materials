@@ -4,6 +4,7 @@ import 'machines_or_equipments.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'roof_exhaust_fans.freezed.dart';
+part 'roof_exhaust_fans.g.dart';
 
 /// Huippuimurit
 @freezed
@@ -13,6 +14,8 @@ abstract class RoofExhaustFans extends MachinesOrEquipments
 
   const factory RoofExhaustFans({int? quantity, num? weightKgPerPiece}) =
       _RoofExhaustFans;
+  factory RoofExhaustFans.fromJson(Map<String, dynamic> json) =>
+      _$RoofExhaustFansFromJson(json);
 
   @override
   num get defaultWeightKgPerPiece =>

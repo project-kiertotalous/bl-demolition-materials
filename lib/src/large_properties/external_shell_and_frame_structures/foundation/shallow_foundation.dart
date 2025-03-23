@@ -5,6 +5,7 @@ import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
 
 part 'shallow_foundation.freezed.dart';
+part 'shallow_foundation.g.dart';
 
 @freezed
 abstract class ShallowFoundation extends Foundation with _$ShallowFoundation {
@@ -12,6 +13,8 @@ abstract class ShallowFoundation extends Foundation with _$ShallowFoundation {
 
   factory ShallowFoundation({num? area, num? circumference}) =
       _ShallowFoundation;
+  factory ShallowFoundation.fromJson(Map<String, dynamic> json) =>
+      _$ShallowFoundationFromJson(json);
 
   late final _frostProofStyrofoamShallowFoundation =
       FrostProofStyrofoamShallowFoundation(this);

@@ -5,6 +5,7 @@ import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
 
 part 'pillar_foundation.freezed.dart';
+part 'pillar_foundation.g.dart';
 
 @freezed
 abstract class PillarFoundation extends Foundation with _$PillarFoundation {
@@ -15,6 +16,9 @@ abstract class PillarFoundation extends Foundation with _$PillarFoundation {
       num? circumference,
       @Default(FoundationMaterial.concreteCasting)
       FoundationMaterial? material}) = _PillarFoundation;
+
+  factory PillarFoundation.fromJson(Map<String, dynamic> json) =>
+      _$PillarFoundationFromJson(json);
 
   late final _reinforcedConcreteColumnColumnFoundation =
       ReinforcedConcreteColumnColumnFoundation(this);

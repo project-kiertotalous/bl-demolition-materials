@@ -1,56 +1,20 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../utils/utils.dart';
-import '../demolition_material_assessment/demolition_waste_and_costs.dart';
-import 'exports.dart';
-
 part 'wood_glass_plastics.freezed.dart';
+part 'wood_glass_plastics.g.dart';
 
 /// puu, lasi ja muovit
 @freezed
 abstract class WoodGlassPlastics with _$WoodGlassPlastics {
   WoodGlassPlastics._();
 
-  factory WoodGlassPlastics(
-      {String? woodNotes,
-      String? glassNotes,
-      String? plasticNotes,
-      String? otherDangerousOrContaminatedMaterialsNotes,
-      DemolitionWasteAndCosts? demolitionWasteAndCosts}) = _WoodGlassPlastics;
+  factory WoodGlassPlastics({
+    String? woodNotes,
+    String? glassNotes,
+    String? plasticNotes,
+    String? otherDangerousOrContaminatedMaterialsNotes,
+  }) = _WoodGlassPlastics;
 
-  late final wood = WasteLawDemolitionMaterialEstimateEntry(
-      volume: Utils.sumOrNull([
-        demolitionWasteAndCosts
-            ?.reusableAndRecyclableMaterials?.cleanUsableWood.volume,
-        demolitionWasteAndCosts
-            ?.reusableAndRecyclableMaterials?.combustibleWoodWaste.volume,
-      ]),
-      tons: Utils.sumOrNull([
-        demolitionWasteAndCosts
-            ?.reusableAndRecyclableMaterials?.cleanUsableWood.tons,
-        demolitionWasteAndCosts
-            ?.reusableAndRecyclableMaterials?.combustibleWoodWaste.tons,
-      ]),
-      notes: woodNotes);
-
-  late final glass = WasteLawDemolitionMaterialEstimateEntry(
-      volume:
-          demolitionWasteAndCosts?.reusableAndRecyclableMaterials?.glass.volume,
-      tons: demolitionWasteAndCosts?.reusableAndRecyclableMaterials?.glass.tons,
-      notes: glassNotes);
-
-  late final plastic = WasteLawDemolitionMaterialEstimateEntry(
-      volume: demolitionWasteAndCosts
-          ?.reusableAndRecyclableMaterials?.plasticWaste.volume,
-      tons: demolitionWasteAndCosts
-          ?.reusableAndRecyclableMaterials?.plasticWaste.tons,
-      notes: plasticNotes);
-
-  late final otherDangerousOrContaminatedMaterial =
-      WasteLawDemolitionMaterialEstimateEntry(
-          volume: demolitionWasteAndCosts?.disposalMaterialsAndHazardousWaste
-              ?.asbestosOrBCPConcrete.volume,
-          tons: demolitionWasteAndCosts
-              ?.disposalMaterialsAndHazardousWaste?.asbestosOrBCPConcrete.tons,
-          notes: otherDangerousOrContaminatedMaterialsNotes);
+  factory WoodGlassPlastics.fromJson(Map<String, dynamic> json) =>
+      _$WoodGlassPlasticsFromJson(json);
 }

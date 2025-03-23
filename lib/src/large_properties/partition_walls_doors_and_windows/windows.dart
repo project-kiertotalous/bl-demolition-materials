@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'windows.freezed.dart';
+part 'windows.g.dart';
 
 /// Ikkunat
 @freezed
@@ -15,6 +16,9 @@ abstract class Windows with _$Windows {
       num? windowsArea,
       num? glassWallArea,
       @Default(false) bool areWindowsRecyclable}) = _Windows;
+
+  factory Windows.fromJson(Map<String, dynamic> json) =>
+      _$WindowsFromJson(json);
 
   num? get totalGlassArea {
     if (Utils.anyNull([windowsPcs, windowsArea])) {

@@ -5,6 +5,7 @@ import '../material_info.dart';
 import 'inner_door.dart';
 
 part 'inner_doors.freezed.dart';
+part 'inner_doors.g.dart';
 
 /// Sisäovet
 /// Sisältää tiedot kaikkien sisäovien materiaalimäärista yhteensä
@@ -16,6 +17,9 @@ abstract class InnerDoors with _$InnerDoors {
       {InnerDoor? woodenDoors,
       InnerDoor? fireDoors,
       @Default(false) bool areDoorsRecyclable}) = _InnerDoors;
+
+  factory InnerDoors.fromJson(Map<String, dynamic> json) =>
+      _$InnerDoorsFromJson(json);
 
   num? get totalWoodVolume {
     final allNulls = Utils.sumOrNull([
