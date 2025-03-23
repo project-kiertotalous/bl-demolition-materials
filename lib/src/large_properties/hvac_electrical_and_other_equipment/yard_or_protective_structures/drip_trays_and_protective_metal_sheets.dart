@@ -1,7 +1,7 @@
-import 'package:bl_demolition_materials/src/large_properties/hvac_electrical_and_other_equipment/yard_or_protective_structures/yard_or_protective_structures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../bl_demolition_materials.dart';
+import 'yard_or_protective_structures.dart';
 
 part 'drip_trays_and_protective_metal_sheets.freezed.dart';
 

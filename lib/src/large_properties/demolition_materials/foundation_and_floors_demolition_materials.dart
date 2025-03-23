@@ -1,7 +1,5 @@
-import 'package:bl_demolition_materials/src/large_properties/demolition_materials/demolition_materials.dart';
-import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
-
-import '../external_shell_and_frame_structures/foundation/foundation.dart';
+import '../../../bl_demolition_materials.dart';
+import 'demolition_materials.dart';
 
 /// Valesokkeli
 /// teräsbetonipaalu, metriä/neliö (m/m2)

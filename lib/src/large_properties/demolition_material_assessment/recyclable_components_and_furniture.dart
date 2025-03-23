@@ -1,14 +1,10 @@
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
-import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/recyclable_item.dart';
-import 'package:bl_demolition_materials/src/large_properties/hvac_electrical_and_other_equipment/fixtures_and_structures.dart';
-import 'package:bl_demolition_materials/src/large_properties/hvac_electrical_and_other_equipment/machines_and_equipments.dart';
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/fixed_furniture.dart';
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/inner_doors.dart';
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/outer_doors.dart';
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/windows.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
+import '../hvac_electrical_and_other_equipment/exports.dart';
+import '../partition_walls_doors_and_windows/exports.dart';
+import 'exports.dart';
 
 part 'recyclable_components_and_furniture.freezed.dart';
 

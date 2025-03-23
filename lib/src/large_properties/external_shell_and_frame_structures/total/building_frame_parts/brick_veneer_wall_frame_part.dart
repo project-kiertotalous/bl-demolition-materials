@@ -1,9 +1,8 @@
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../../bl_demolition_materials.dart';
 import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
 import 'building_envelope_frame_part.dart';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'brick_veneer_wall_frame_part.freezed.dart';
 

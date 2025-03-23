@@ -1,8 +1,8 @@
-import 'package:bl_demolition_materials/src/large_properties/demolition_materials/cellar_demolition_materials.dart';
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../data_types/cellar_exterior_material.dart';
+import '../../utils/utils.dart';
+import '../demolition_materials/cellar_demolition_materials.dart';
 
 part 'cellar.freezed.dart';
 

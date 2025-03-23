@@ -1,10 +1,7 @@
-import 'package:bl_demolition_materials/src/data_types/roof_type.dart';
-import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/foundations.dart';
-import 'package:bl_demolition_materials/src/large_properties/external_shell_and_frame_structures/roofs.dart';
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../../bl_demolition_materials.dart';
+import '../../../utils/utils.dart';
 import '../../demolition_materials/roofs_demolition_materials.dart';
 
 part 'total_roofs.freezed.dart';

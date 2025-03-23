@@ -1,5 +1,6 @@
-import 'package:bl_demolition_materials/src/large_properties/hvac_electrical_and_other_equipment/fixtures_or_structures/exports.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'fixtures_or_structures/exports.dart';
 
 part 'fixtures_and_structures.freezed.dart';
 

@@ -1,6 +1,7 @@
-import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/demolition_waste_and_costs.dart';
-import 'package:bl_demolition_materials/src/large_properties/waste_law_demolition_material_estimates/exports.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../demolition_material_assessment/demolition_waste_and_costs.dart';
+import 'exports.dart';
 
 part 'soil_aggregates_dredging_materials.freezed.dart';
 

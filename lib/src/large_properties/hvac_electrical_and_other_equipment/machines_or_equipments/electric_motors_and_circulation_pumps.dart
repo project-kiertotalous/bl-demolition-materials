@@ -1,8 +1,7 @@
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
-
-import 'machines_or_equipments.dart';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../../bl_demolition_materials.dart';
+import 'machines_or_equipments.dart';
 
 part 'electric_motors_and_circulation_pumps.freezed.dart';
 

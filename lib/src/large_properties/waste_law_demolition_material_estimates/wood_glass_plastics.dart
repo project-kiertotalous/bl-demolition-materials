@@ -1,7 +1,7 @@
-import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/exports.dart';
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../utils/utils.dart';
+import '../demolition_material_assessment/demolition_waste_and_costs.dart';
 import 'exports.dart';
 
 part 'wood_glass_plastics.freezed.dart';

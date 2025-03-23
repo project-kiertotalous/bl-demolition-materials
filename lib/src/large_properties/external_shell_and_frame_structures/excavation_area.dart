@@ -1,5 +1,6 @@
-import 'package:bl_demolition_materials/src/large_properties/material_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../bl_demolition_materials.dart';
 
 part 'excavation_area.freezed.dart';
 

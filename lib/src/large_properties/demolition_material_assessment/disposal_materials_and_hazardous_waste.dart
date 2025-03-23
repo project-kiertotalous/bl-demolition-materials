@@ -1,9 +1,9 @@
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
-import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/waste_disposal_item.dart';
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/fixed_furniture.dart';
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/room_spaces.dart';
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../../bl_demolition_materials.dart';
+import '../../utils/utils.dart';
+import '../partition_walls_doors_and_windows/exports.dart';
+import 'exports.dart';
 
 part 'disposal_materials_and_hazardous_waste.freezed.dart';
 

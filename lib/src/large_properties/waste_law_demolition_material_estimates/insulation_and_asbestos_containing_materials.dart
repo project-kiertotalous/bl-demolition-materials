@@ -1,5 +1,6 @@
-import 'package:bl_demolition_materials/src/large_properties/waste_law_demolition_material_estimates/exports.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'exports.dart';
 
 part 'insulation_and_asbestos_containing_materials.freezed.dart';
 
