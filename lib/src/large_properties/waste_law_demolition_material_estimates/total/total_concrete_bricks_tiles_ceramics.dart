@@ -82,7 +82,7 @@ abstract class TotalConcreteBricksTilesCeramics
         totalIntermediateFloors?.concreteCastingConcreteVolume;
     var roofsConcreteVolume = (totalRoofs?.roofTrussesAreRecyclable ?? false)
         ? null
-        : totalRoofs!.concreteVolume;
+        : totalRoofs?.concreteVolume;
     var buildingFrameConcreteVolume = totalBuildingFrame?.plasterCoatingVolume;
 
     if ((foundations?.bituminousWaterProofing ?? false) == false) {
@@ -129,7 +129,7 @@ abstract class TotalConcreteBricksTilesCeramics
         totalIntermediateFloors?.concreteCastingConcreteTons;
     var roofsConcreteTons = (totalRoofs?.roofTrussesAreRecyclable ?? false)
         ? null
-        : totalRoofs!.concreteTons;
+        : totalRoofs?.concreteTons;
     var buildingFrameConcreteTons = totalBuildingFrame?.plasterCoatingTons;
 
     if ((foundations?.bituminousWaterProofing ?? false) == false) {
