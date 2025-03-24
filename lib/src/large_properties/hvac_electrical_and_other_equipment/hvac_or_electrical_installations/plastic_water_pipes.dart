@@ -1,9 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import 'hvac_or_electrical_installations.dart';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'plastic_water_pipes.freezed.dart';
+part 'plastic_water_pipes.g.dart';
 
 /// Vesiputket, muovi
 @freezed
@@ -13,6 +14,9 @@ abstract class PlasticWaterPipes extends HvacOrElectricalInstallations
 
   const factory PlasticWaterPipes({num? meters, num? weightKgPerMeter}) =
       _PlasticWaterPipes;
+
+  factory PlasticWaterPipes.fromJson(Map<String, dynamic> json) =>
+      _$PlasticWaterPipesFromJson(json);
 
   @override
   num get defaultWeightKgPerMeter =>

@@ -4,6 +4,7 @@ import '../../utils/utils.dart';
 import 'partition_walls_demolition_materials.dart';
 
 part 'room_space.freezed.dart';
+part 'room_space.g.dart';
 
 /// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
 /// Sisältää jokaiselle huoneelle olevat solut ja huoneen sisaiset laskettavat arvot
@@ -23,6 +24,9 @@ abstract class RoomSpace with _$RoomSpace {
     num? paintedPlasteredBrickWall,
     num? plasticCarpet,
   }) = _RoomSpace;
+
+  factory RoomSpace.fromJson(Map<String, dynamic> json) =>
+      _$RoomSpaceFromJson(json);
 
   num? get overallWallLengthLinearMeters => Utils.sumOrNull([
         woodFramedWallsLinearMeters,

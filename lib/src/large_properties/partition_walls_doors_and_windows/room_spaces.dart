@@ -6,6 +6,7 @@ import 'partition_walls_demolition_materials.dart';
 import 'room_space.dart';
 
 part 'room_spaces.freezed.dart';
+part 'room_spaces.g.dart';
 
 /// Toimisto, aula, luokka, asumis, yms. tavanomaiset huonetilat
 /// Sisältää jokaisen huoneen ja niiden yhteislaskettavat arvot
@@ -23,6 +24,9 @@ abstract class RoomSpaces with _$RoomSpaces {
           RoomSpace? otherSpaces,
           @Default(false) bool surfaceMaterialCoatingContainsAsbestos}) =
       _RoomSpaces;
+
+  factory RoomSpaces.fromJson(Map<String, dynamic> json) =>
+      _$RoomSpacesFromJson(json);
 
   /// Kaikki tilat yhteensä (m2)
   num? get totalWoodFramedWallsInSquareMeters {

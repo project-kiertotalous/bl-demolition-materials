@@ -5,6 +5,7 @@ import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
 
 part 'crawl_space_foundation.freezed.dart';
+part 'crawl_space_foundation.g.dart';
 
 @freezed
 abstract class CrawlSpaceFoundation extends Foundation
@@ -16,6 +17,8 @@ abstract class CrawlSpaceFoundation extends Foundation
       num? circumference,
       @Default(FoundationMaterial.concreteCasting)
       FoundationMaterial? material}) = _CrawlSpaceFoundation;
+  factory CrawlSpaceFoundation.fromJson(Map<String, dynamic> json) =>
+      _$CrawlSpaceFoundationFromJson(json);
 
   late final _reinforcedConcreteSlabFalsePlinthGroundFloor =
       ReinforcedConcreteSlabFalsePlinthGroundFloor(this);

@@ -3,6 +3,7 @@ import 'machines_or_equipments.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'ventilation_units.freezed.dart';
+part 'ventilation_units.g.dart';
 
 /// Ilmanvaihtokoneet
 @freezed
@@ -12,6 +13,8 @@ abstract class VentilationUnits extends MachinesOrEquipments
 
   const factory VentilationUnits({int? quantity, num? weightKgPerPiece}) =
       _VentilationUnits;
+  factory VentilationUnits.fromJson(Map<String, dynamic> json) =>
+      _$VentilationUnitsFromJson(json);
 
   @override
   num get defaultWeightKgPerPiece =>

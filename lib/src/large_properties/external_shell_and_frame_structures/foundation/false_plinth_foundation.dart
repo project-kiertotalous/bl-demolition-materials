@@ -5,6 +5,7 @@ import '../../../utils/utils.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
 
 part 'false_plinth_foundation.freezed.dart';
+part 'false_plinth_foundation.g.dart';
 
 @freezed
 abstract class FalsePlinthFoundation extends Foundation
@@ -16,6 +17,8 @@ abstract class FalsePlinthFoundation extends Foundation
       num? circumference,
       @Default(FoundationMaterial.concreteCasting)
       FoundationMaterial? material}) = _FalsePlinthFoundation;
+  factory FalsePlinthFoundation.fromJson(Map<String, dynamic> json) =>
+      _$FalsePlinthFoundationFromJson(json);
 
   late final _reinforcedConcreteColumnFalsePlinth =
       ReinforcedConcreteColumnFalsePlinth(this);

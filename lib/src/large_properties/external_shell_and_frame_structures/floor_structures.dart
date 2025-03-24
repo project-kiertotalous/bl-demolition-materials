@@ -5,6 +5,7 @@ import '../material_info.dart';
 import 'floor_structure.dart';
 
 part 'floor_structures.freezed.dart';
+part 'floor_structures.g.dart';
 
 @freezed
 abstract class FloorStructures with _$FloorStructures {
@@ -20,6 +21,9 @@ abstract class FloorStructures with _$FloorStructures {
           FloorStructure? otherSpaces,
           @Default(false) bool surfaceMaterialCoatingContainsAsbestos}) =
       _FloorStructures;
+
+  factory FloorStructures.fromJson(Map<String, dynamic> json) =>
+      _$FloorStructuresFromJson(json);
 
   num? get totalArea => Utils.sumOrNull([
         officeSpaces?.totalArea,

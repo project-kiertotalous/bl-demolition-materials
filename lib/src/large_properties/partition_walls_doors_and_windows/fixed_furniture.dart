@@ -4,11 +4,12 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'fixed_furniture.freezed.dart';
+part 'fixed_furniture.g.dart';
 
 @freezed
 abstract class FixedFurniture with _$FixedFurniture {
   const factory FixedFurniture(
-      {@Default(false) bool areFurnituresRecyclable,
+      {@Default(false) bool isFurnitureRecyclable,
       num? porcelainToilets,
       num? porcelainSinks,
       num? steelTables,
@@ -20,6 +21,9 @@ abstract class FixedFurniture with _$FixedFurniture {
       num? coldRoomCabinets,
       num? refrigerators,
       num? saunaStoves}) = _FixedFurniture;
+
+  factory FixedFurniture.fromJson(Map<String, dynamic> json) =>
+      _$FixedFurnitureFromJson(json);
 
   const FixedFurniture._();
 

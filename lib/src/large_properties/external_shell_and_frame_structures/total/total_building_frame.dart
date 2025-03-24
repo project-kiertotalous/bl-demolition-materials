@@ -13,7 +13,7 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
 
   factory TotalBuildingFrame(
       {BuildingFrame? buildingFrame,
-      Foundations? totalFoundations}) = _TotalBuildingFrame;
+      Foundations? foundations}) = _TotalBuildingFrame;
 
   num? get externalWallsHeight => buildingFrame?.externalWallsAverageHeight;
 
@@ -23,7 +23,7 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
     }
 
     if (buildingFrame!.useFoundationCircumference == true) {
-      return totalFoundations?.circumference;
+      return foundations?.circumference;
     }
 
     return buildingFrame?.externalWallsPerimeter;

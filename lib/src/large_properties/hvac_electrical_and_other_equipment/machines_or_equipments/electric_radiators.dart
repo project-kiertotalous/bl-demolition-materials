@@ -1,9 +1,10 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import 'machines_or_equipments.dart';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'electric_radiators.freezed.dart';
+part 'electric_radiators.g.dart';
 
 /// Lämpöpatterit, sähkö
 @freezed
@@ -13,6 +14,9 @@ abstract class ElectricRadiators extends MachinesOrEquipments
 
   const factory ElectricRadiators({int? quantity, num? weightKgPerPiece}) =
       _ElectricRadiators;
+
+  factory ElectricRadiators.fromJson(Map<String, dynamic> json) =>
+      _$ElectricRadiatorsFromJson(json);
 
   @override
   num get defaultWeightKgPerPiece =>

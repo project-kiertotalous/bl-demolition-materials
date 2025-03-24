@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'building_frame.freezed.dart';
+part 'building_frame.g.dart';
 
 @freezed
 abstract class BuildingFrame with _$BuildingFrame {
@@ -23,4 +24,7 @@ abstract class BuildingFrame with _$BuildingFrame {
           num? steelProfileSandwichStructurePortionFractionPercentage,
           num? mineriteOrOtherStoneBoardPortionFractionPercentage}) =
       _BuildingFrame;
+
+  factory BuildingFrame.fromJson(Map<String, dynamic> json) =>
+      _$BuildingFrameFromJson(json);
 }

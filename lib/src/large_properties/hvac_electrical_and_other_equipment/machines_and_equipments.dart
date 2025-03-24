@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'machines_or_equipments/exports.dart';
 
 part 'machines_and_equipments.freezed.dart';
+part 'machines_and_equipments.g.dart';
 
 /// 13. KONEET JA LAITTEET
 @freezed
@@ -18,4 +19,7 @@ abstract class MachinesAndEquipments with _$MachinesAndEquipments {
       ElectricMotorsAndCirculationPumps? electricMotorsAndCirculationPumps,
       RoofExhaustFans? roofExhaustFans,
       @Default(false) bool machinesRecyclable}) = _MachinesAndEquipments;
+
+  factory MachinesAndEquipments.fromJson(Map<String, dynamic> json) =>
+      _$MachinesAndEquipmentsFromJson(json);
 }

@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../demolition_material_assessment/demolition_waste_and_costs.dart';
 import 'waste_law_demolition_material_estimate_entry.dart';
 
 part 'bituminous_mixtures_coal_tar_products.freezed.dart';
+part 'bituminous_mixtures_coal_tar_products.g.dart';
 
 /// bitumiseokset, kivihiiliterva ja -tervatuotteet
 @freezed
@@ -14,15 +14,10 @@ abstract class BituminousMixturesCoalTarProducts
   factory BituminousMixturesCoalTarProducts(
           {String? coalTarContainingBituminousMixturesNotes,
           WasteLawDemolitionMaterialEstimateEntry? otherBituminousMixtures,
-          WasteLawDemolitionMaterialEstimateEntry? coalTarAndTarProducts,
-          DemolitionWasteAndCosts? demolitionWasteAndCosts}) =
+          WasteLawDemolitionMaterialEstimateEntry? coalTarAndTarProducts}) =
       _BituminousMixturesCoalTarProducts;
 
-  late final coalTarContainingBituminousMixtures =
-      WasteLawDemolitionMaterialEstimateEntry(
-          volume: demolitionWasteAndCosts
-              ?.disposalMaterialsAndHazardousWaste?.bitumen.volume,
-          tons: demolitionWasteAndCosts
-              ?.disposalMaterialsAndHazardousWaste?.bitumen.tons,
-          notes: coalTarContainingBituminousMixturesNotes);
+  factory BituminousMixturesCoalTarProducts.fromJson(
+          Map<String, dynamic> json) =>
+      _$BituminousMixturesCoalTarProductsFromJson(json);
 }

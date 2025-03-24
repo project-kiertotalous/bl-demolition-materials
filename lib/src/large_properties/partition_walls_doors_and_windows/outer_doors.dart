@@ -5,6 +5,7 @@ import '../material_info.dart';
 import 'outer_door.dart';
 
 part 'outer_doors.freezed.dart';
+part 'outer_doors.g.dart';
 
 /// Ulko-ovet
 /// Sisältää tiedot kaikkien ulko-ovien materiaalimääristä yhteensä
@@ -18,6 +19,9 @@ abstract class OuterDoors with _$OuterDoors {
       OuterDoor? steelDoors,
       num? accessAndLoadingDoors,
       @Default(false) bool areDoorsRecyclable}) = _OuterDoors;
+
+  factory OuterDoors.fromJson(Map<String, dynamic> json) =>
+      _$OuterDoorsFromJson(json);
 
   num? get totalWoodVolume {
     final allNulls =

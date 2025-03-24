@@ -4,6 +4,7 @@ import '../demolition_material_assessment/demolition_waste_and_costs.dart';
 import 'exports.dart';
 
 part 'soil_aggregates_dredging_materials.freezed.dart';
+part 'soil_aggregates_dredging_materials.g.dart';
 
 /// maa-ainekset (pilaantuneilta alueilta kaivetut
 /// maa-ainekset mukaan luettuina), kiviainekset ja ruoppausmassat
@@ -18,14 +19,9 @@ abstract class SoilAggregatesDredgingMaterials
           WasteLawDemolitionMaterialEstimateEntry? hazardousDredgingSpoil,
           WasteLawDemolitionMaterialEstimateEntry? dredgingSoil,
           WasteLawDemolitionMaterialEstimateEntry? hazardousRailwayBallast,
-          WasteLawDemolitionMaterialEstimateEntry? railwayBallast,
-          DemolitionWasteAndCosts? demolitionWasteAndCosts}) =
+          WasteLawDemolitionMaterialEstimateEntry? railwayBallast}) =
       _SoilAggregatesDredgingMaterials;
 
-  late final hazardousSoilAndRock = WasteLawDemolitionMaterialEstimateEntry(
-      volume: demolitionWasteAndCosts
-          ?.disposalMaterialsAndHazardousWaste?.contaminatedSoil.volume,
-      tons: demolitionWasteAndCosts
-          ?.disposalMaterialsAndHazardousWaste?.contaminatedSoil.tons,
-      notes: hazardousSoilAndRockNotes);
+  factory SoilAggregatesDredgingMaterials.fromJson(Map<String, dynamic> json) =>
+      _$SoilAggregatesDredgingMaterialsFromJson(json);
 }

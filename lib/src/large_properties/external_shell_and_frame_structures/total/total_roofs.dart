@@ -30,18 +30,17 @@ abstract class TotalRoofs with _$TotalRoofs {
   late final _mineriteCoveringWaterRoof = MineriteCoveringWaterRoof(this);
   late final _roofTileWaterRoof = RoofTileWaterRoof(this);
 
-  factory TotalRoofs({Foundations? totalFoundations, Roofs? roofs}) =
-      _TotalRoofs;
+  factory TotalRoofs({Foundations? foundations, Roofs? roofs}) = _TotalRoofs;
 
   num? get calculatedCeilingArea {
     if (useDefaultDimensions == null &&
-        totalFoundations?.area == null &&
+        foundations?.area == null &&
         ceilingArea == null) {
       return null;
     }
 
-    if (useDefaultDimensions == true && totalFoundations?.area != null) {
-      return totalFoundations!.area;
+    if (useDefaultDimensions == true && foundations?.area != null) {
+      return foundations!.area;
     }
 
     return ceilingArea;
@@ -56,8 +55,8 @@ abstract class TotalRoofs with _$TotalRoofs {
 
     late final num targetArea;
 
-    if (calculatedCeilingArea == totalFoundations?.area) {
-      targetArea = totalFoundations!.area! *
+    if (calculatedCeilingArea == foundations?.area) {
+      targetArea = foundations!.area! *
           (roofs!.ridgeOrGableRoofSlopeRatioFactorFractionPercentage + 1);
     } else {
       targetArea = calculatedCeilingArea!;
@@ -75,8 +74,8 @@ abstract class TotalRoofs with _$TotalRoofs {
 
     late final num targetArea;
 
-    if (calculatedCeilingArea == totalFoundations?.area) {
-      targetArea = totalFoundations!.area! *
+    if (calculatedCeilingArea == foundations?.area) {
+      targetArea = foundations!.area! *
           (roofs!.flatOrMonoPitchedRoofEaveOverhangAddition + 1);
     } else {
       targetArea = calculatedCeilingArea!;
@@ -85,7 +84,7 @@ abstract class TotalRoofs with _$TotalRoofs {
     return targetArea * flatOrMonoPitchedRoofPortion!;
   }
 
-  num? get roofBaseArea => totalFoundations?.area;
+  num? get roofBaseArea => foundations?.area;
 
   RoofType? get ridgeOrGableRoofType => roofs?.ridgeOrGableRoofType;
 

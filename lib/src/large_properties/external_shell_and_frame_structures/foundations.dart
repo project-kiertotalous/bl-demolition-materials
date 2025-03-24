@@ -5,6 +5,7 @@ import '../../utils/utils.dart';
 import '../demolition_materials/foundation_and_floors_demolition_materials.dart';
 
 part 'foundations.freezed.dart';
+part 'foundations.g.dart';
 
 @freezed
 abstract class Foundations with _$Foundations implements Foundation {
@@ -17,6 +18,9 @@ abstract class Foundations with _$Foundations implements Foundation {
       PillarFoundation? pillar,
       HollowCoreSlabFoundation? hollowCoreSlab,
       @Default(false) bool bituminousWaterProofing}) = _Foundations;
+
+  factory Foundations.fromJson(Map<String, dynamic> json) =>
+      _$FoundationsFromJson(json);
 
   @override
   num? get area => Utils.sumOrNull([

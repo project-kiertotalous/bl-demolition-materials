@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'large_property_evaluation_info.freezed.dart';
+part 'large_property_evaluation_info.g.dart';
 
 @freezed
 abstract class LargePropertyEvaluationInfo with _$LargePropertyEvaluationInfo {
@@ -13,4 +14,7 @@ abstract class LargePropertyEvaluationInfo with _$LargePropertyEvaluationInfo {
       DateTime? date,
       DateTime? version,
       String? description}) = _LargePropertyEvaluationInfo;
+
+  factory LargePropertyEvaluationInfo.fromJson(Map<String, dynamic> json) =>
+      _$LargePropertyEvaluationInfoFromJson(json);
 }

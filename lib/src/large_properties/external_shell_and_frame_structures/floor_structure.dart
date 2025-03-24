@@ -4,6 +4,8 @@ import '../../utils/utils.dart';
 
 part 'floor_structure.freezed.dart';
 
+part 'floor_structure.g.dart';
+
 @freezed
 abstract class FloorStructure with _$FloorStructure {
   const FloorStructure._();
@@ -17,6 +19,9 @@ abstract class FloorStructure with _$FloorStructure {
       num? plasticCarpetOrPlasticTileFloorPortion,
       num? parquetFloorPortion,
       num? ceramicTileFloorPortion}) = _FloorStructure;
+
+  factory FloorStructure.fromJson(Map<String, dynamic> json) =>
+      _$FloorStructureFromJson(json);
 
   num? get midsolePortionTotal => Utils.sumOrNull([
         chipBoardMidsolePortion,

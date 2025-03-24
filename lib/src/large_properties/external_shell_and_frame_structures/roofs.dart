@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../bl_demolition_materials.dart';
 
 part 'roofs.freezed.dart';
+part 'roofs.g.dart';
 
 @freezed
 abstract class Roofs with _$Roofs {
@@ -18,7 +19,9 @@ abstract class Roofs with _$Roofs {
       @Default(true) bool? useDefaultDimensions,
       @Default(false) bool? roofTrussesAreRecyclable,
       @Default(0.25) num ridgeOrGableRoofSlopeRatioFactorFractionPercentage,
-      @Default(0.10) flatOrMonoPitchedRoofEaveOverhangAddition}) = _Roofs;
+      @Default(0.10) num flatOrMonoPitchedRoofEaveOverhangAddition}) = _Roofs;
+
+  factory Roofs.fromJson(Map<String, dynamic> json) => _$RoofsFromJson(json);
 
   num? get flatOrMonoPitchedRoofPortion =>
       ridgeOrGableRoofPortion == null ? null : 1 - ridgeOrGableRoofPortion!;

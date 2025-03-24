@@ -5,6 +5,7 @@ import '../../utils/utils.dart';
 import '../demolition_materials/cellar_demolition_materials.dart';
 
 part 'cellar.freezed.dart';
+part 'cellar.g.dart';
 
 @freezed
 abstract class Cellar with _$Cellar {
@@ -39,6 +40,8 @@ abstract class Cellar with _$Cellar {
       num? exteriorWallsPerimeter,
       num? wallHeight,
       CellarExteriorMaterial? exteriorWallsMaterial}) = _Cellar;
+
+  factory Cellar.fromJson(Map<String, dynamic> json) => _$CellarFromJson(json);
 
   num? get concreteVolume => Utils.sumOrNull([
         _reinforcedConcreteSlabGroundFloor.volume,
