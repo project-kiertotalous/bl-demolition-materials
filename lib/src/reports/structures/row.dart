@@ -11,6 +11,6 @@ part 'row.freezed.dart';
 abstract class Row with _$Row {
   const factory Row(
       {@Default(RowStyles.styleSolidBorders) List<LineStyle> borderStyle,
-        double? height,
+      double? height,
       required List<Cell> cells}) = _Row;
 }

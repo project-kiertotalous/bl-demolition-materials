@@ -14,6 +14,7 @@ abstract class BituminousMixturesCoalTarProducts
   factory BituminousMixturesCoalTarProducts(
           {String? coalTarContainingBituminousMixturesNotes,
           WasteLawDemolitionMaterialEstimateEntry? otherBituminousMixtures,
+          WasteLawDemolitionMaterialEstimateEntry? unnamed,
           WasteLawDemolitionMaterialEstimateEntry? coalTarAndTarProducts}) =
       _BituminousMixturesCoalTarProducts;
 

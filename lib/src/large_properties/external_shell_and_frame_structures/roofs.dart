@@ -10,12 +10,12 @@ abstract class Roofs with _$Roofs {
   const Roofs._();
 
   const factory Roofs(
-      {required num? ceilingArea,
-      required num? ridgeOrGableRoofPortion,
-      required RoofType? ridgeOrGableRoofType,
-      required WaterRoofType? ridgeOrGableWaterRoofType,
-      required RoofType? flatOrMonoPitchedRoofType,
-      required WaterRoofType? flatOrMonoPitchedWaterRoofType,
+      {num? ceilingArea,
+      num? ridgeOrGableRoofPortion,
+      RoofType? ridgeOrGableRoofType,
+      WaterRoofType? ridgeOrGableWaterRoofType,
+      RoofType? flatOrMonoPitchedRoofType,
+      WaterRoofType? flatOrMonoPitchedWaterRoofType,
       @Default(true) bool? useDefaultDimensions,
       @Default(false) bool? roofTrussesAreRecyclable,
       @Default(0.25) num ridgeOrGableRoofSlopeRatioFactorFractionPercentage,

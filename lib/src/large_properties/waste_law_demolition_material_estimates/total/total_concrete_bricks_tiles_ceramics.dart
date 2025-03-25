@@ -76,6 +76,9 @@ abstract class TotalConcreteBricksTilesCeramics
           notes: concreteBricksTilesCeramics
               ?.hazardousConcreteBrickTileCeramicMixturesNotes);
 
+  WasteLawDemolitionMaterialEstimateEntry? get otherMaterials =>
+      concreteBricksTilesCeramics?.otherMaterials;
+
   num? get _concreteVolume {
     num? foundationsConcreteVolume;
     var intermediateFloorsConcreteVolume =

@@ -6,16 +6,19 @@ import '../structures/exports.dart';
 import '../structures/styles/exports.dart';
 
 class ReportUtils {
-  static Excel reportToExcel(Report report, String sheetName) {
+  static Excel reportToExcel(
+      {required Report report,
+      required String sheetName,
+      List<double>? columnWidths}) {
     final excel = Excel.createExcel();
     excel.rename('Sheet1', sheetName);
     final sheet = excel.sheets[sheetName]!;
     var rowIndex = 0;
     var columnIndex = 0;
 
-    if (report.columnWidths != null) {
-      for (int i = 0; i < report.columnWidths!.length; i++) {
-        sheet.setColumnWidth(i, report.columnWidths![i]);
+    if (columnWidths != null) {
+      for (int i = 0; i < columnWidths.length; i++) {
+        sheet.setColumnWidth(i, columnWidths[i]);
       }
     }
 
@@ -25,7 +28,7 @@ class ReportUtils {
           final excelCell = sheet.cell(CellIndex.indexByColumnRow(
               columnIndex: columnIndex, rowIndex: rowIndex));
 
-          excelCell.value = TextCellValue(cell.text);
+          excelCell.value = cell.valueAsExcelValue;
           excelCell.cellStyle = CellStyle(
               bold: cell.textStyle == TextStyle.bold,
               horizontalAlign: cell.horizontalAlign.toExcelHorizontalAlign,
@@ -37,7 +40,8 @@ class ReportUtils {
               bottomBorder: row.borderStyle[2].toExcelBorder,
               leftBorder: row.borderStyle[3].toExcelBorder,
               fontSize: cell.fontSize,
-              fontFamily: cell.fontFamily);
+              fontFamily: cell.fontFamily,
+              numberFormat: cell.excelFormat);
 
           columnIndex += 1;
         }
@@ -50,7 +54,7 @@ class ReportUtils {
         columnIndex = 0;
       }
 
-      rowIndex += 2;
+      rowIndex += 1;
     }
     return excel;
   }
