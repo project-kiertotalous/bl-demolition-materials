@@ -1,6 +1,5 @@
-import 'package:bl_demolition_materials/src/reports/structures/styles/exports.dart';
-import 'package:bl_demolition_materials/src/reports/structures/styles/line_style.dart';
-import 'package:excel/excel.dart';
+import 'styles/exports.dart';
+import 'styles/line_style.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'exports.dart';

@@ -1,9 +1,11 @@
-import 'package:bl_demolition_materials/src/reports/structures/styles/line_style.dart';
-import 'package:bl_demolition_materials/src/reports/structures/styles/text_align.dart';
 import 'package:excel/excel.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 import '../structures/exports.dart';
 import '../structures/styles/exports.dart';
+import '../structures/styles/line_style.dart';
+import '../structures/styles/text_align.dart';
 
 class ReportUtils {
   static Excel reportToExcel(
@@ -39,7 +41,7 @@ class ReportUtils {
               rightBorder: row.borderStyle[1].toExcelBorder,
               bottomBorder: row.borderStyle[2].toExcelBorder,
               leftBorder: row.borderStyle[3].toExcelBorder,
-              fontSize: cell.fontSize,
+              fontSize: cell.fontSize.toInt(),
               fontFamily: cell.fontFamily,
               numberFormat: cell.excelFormat);
 
@@ -57,5 +59,58 @@ class ReportUtils {
       rowIndex += 1;
     }
     return excel;
+  }
+
+  static pw.Document reportToPdf(
+      {required Report report,
+      num fontScale = 0.7,
+      double tableVerticalMargin = 12,
+      List<double>? columnWidths}) {
+    final pdf = pw.Document();
+    final List<pw.Widget> widgets = [];
+
+    final Map<int, pw.TableColumnWidth> pdfColumnWidths = {};
+
+    if (columnWidths != null) {
+      for(int i = 0; i < columnWidths.length; i++) {
+        pdfColumnWidths[i] = pw.FixedColumnWidth(columnWidths[i]);
+      }
+    }
+
+    for (final table in report.tables) {
+      widgets.add(pw.Table(
+          border: table.hasBorders
+              ? pw.TableBorder.all()
+              : pw.TableBorder.all(style: pw.BorderStyle.none),
+          columnWidths: pdfColumnWidths,
+          children: [
+            for (final row in table.rows)
+              pw.TableRow(
+                  // decoration: pw.BoxDecoration(border: pw.Border.all(width: 1)),
+                  children: [
+                    for (final cell in row.cells)
+                      pw.Padding(
+                          padding: pw.EdgeInsets.all(2),
+                          child: pw.Text(cell.valueString,
+                              style: pw.TextStyle(
+                                  fontSize: cell.fontSize * fontScale,
+                                  fontWeight: cell.textStyle == TextStyle.bold
+                                      ? pw.FontWeight.bold
+                                      : pw.FontWeight.normal)))
+                  ])
+          ]));
+
+      widgets.add(pw.SizedBox(height: tableVerticalMargin));
+    }
+
+    final page = pw.MultiPage(
+        pageFormat: PdfPageFormat.a4,
+        build: (pw.Context context) {
+          return widgets;
+        });
+
+    pdf.addPage(page);
+
+    return pdf;
   }
 }

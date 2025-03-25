@@ -1,8 +1,8 @@
-import 'package:bl_demolition_materials/src/reports/structures/styles/text_align.dart';
 import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'styles/exports.dart';
+import 'styles/text_align.dart';
 
 part 'cell.freezed.dart';
 
@@ -12,7 +12,7 @@ abstract class Cell with _$Cell {
 
   factory Cell(
       {@Default('') dynamic value,
-      @Default(11) int fontSize,
+      @Default(11) double fontSize,
       @Default('Calibri') String fontFamily,
       @Default(true) bool wrapText,
       @Default(TextStyle.regular) TextStyle textStyle,
@@ -28,6 +28,18 @@ abstract class Cell with _$Cell {
     }
 
     return TextCellValue(value == null ? '' : value.toString());
+  }
+
+  String get valueString {
+    if (value == null) {
+      return '';
+    } else if (value is int) {
+      return value.toString();
+    } else if (value is double) {
+      return value.toStringAsFixed(2);
+    }
+
+    return value.toString();
   }
 
   NumFormat get excelFormat {

@@ -1,9 +1,9 @@
-import 'package:bl_demolition_materials/src/large_properties/demolition_material_assessment/disposal_materials_and_hazardous_waste.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
 import '../../partition_walls_doors_and_windows/exports.dart';
+import '../disposal_materials_and_hazardous_waste.dart';
 import '../items/exports.dart';
 
 part 'total_disposal_materials_and_hazardous_waste.freezed.dart';

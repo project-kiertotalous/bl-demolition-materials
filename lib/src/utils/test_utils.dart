@@ -1,6 +1,3 @@
-import 'package:bl_demolition_materials/src/large_properties/large_properties_repository.dart';
-import 'package:bl_demolition_materials/src/reports/waste_law_report_exporter.dart';
-
 import '../../bl_demolition_materials.dart';
 import '../large_properties/demolition_material_assessment/exports.dart';
 import '../large_properties/hvac_electrical_and_other_equipment/exports.dart';
@@ -8,8 +5,10 @@ import '../large_properties/hvac_electrical_and_other_equipment/fixtures_or_stru
 import '../large_properties/hvac_electrical_and_other_equipment/hvac_or_electrical_installations/exports.dart';
 import '../large_properties/hvac_electrical_and_other_equipment/machines_or_equipments/exports.dart';
 import '../large_properties/hvac_electrical_and_other_equipment/yard_or_protective_structures/exports.dart';
+import '../large_properties/large_properties_repository.dart';
 import '../large_properties/partition_walls_doors_and_windows/exports.dart';
 import '../large_properties/waste_law_demolition_material_estimates/exports.dart';
+import '../reports/waste_law_report_exporter.dart';
 
 /// An utility class for all things related to testing
 class TestUtils {
@@ -100,6 +99,9 @@ class TestUtils {
     final concreteBricksTilesCeramics = ConcreteBricksTilesCeramics(
         concreteNotes: 'nice concrete',
         ceramicTilesNotes: 'ceramic tiles are so shiny i want to lick them',
+        brickNotes: 'dont smash this brick thru the window',
+        hazardousConcreteBrickTileCeramicMixturesNotes:
+            'mix match of weird structures',
         otherMaterials: WasteLawDemolitionMaterialEstimateEntry(
             volume: 300,
             tons: 5123,
@@ -482,6 +484,7 @@ class TestUtils {
             volume: 50, tons: 2, notes: 'stinky sock in the corner'));
 
     return LargePropertiesRepository(
+        excavationArea: excavationArea,
         buildingFrame: buildingFrame,
         buildingDimensions: buildingDimensions,
         cellar: cellar,

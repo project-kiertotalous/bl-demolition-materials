@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:bl_demolition_materials/src/reports/structures/styles/text_align.dart';
-import 'package:bl_demolition_materials/src/utils/test_utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../large_properties/waste_law_demolition_material_estimates/exports.dart';
 import '../large_properties/waste_law_demolition_material_estimates/total/exports.dart';
+import '../utils/test_utils.dart';
 import 'report_exporter.dart';
 import 'structures/exports.dart';
 import 'structures/styles/exports.dart';
+import 'structures/styles/text_align.dart';
 import 'utils/report_utils.dart';
 
 part 'waste_law_report_exporter.freezed.dart';
@@ -42,7 +42,9 @@ class WasteLawReportExporter extends ReportExporter
 
   @override
   void writeAsPdfSync(File file) {
-    throw UnimplementedError();
+    final pdf = ReportUtils.reportToPdf(
+        report: _report, columnWidths: [17, 50, 10, 10, 45]);
+    pdf.save().then((val) => file.writeAsBytesSync(val));
   }
 
   Report get _report {
