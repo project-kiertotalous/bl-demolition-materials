@@ -6,7 +6,6 @@ import 'package:bl_demolition_materials/src/data_types/surface_material.dart';
 import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/small_properties/counting/apartment_counter.dart';
 import 'package:bl_demolition_materials/src/small_properties/apartments/apartment_size.dart';
 
 part 'apartment.freezed.dart';
@@ -35,14 +34,14 @@ class Apartment with _$Apartment {
       num? bathroomFloorAreaPerApartment,
       num? saunaPanelingAreaPerApartment,
       num? apartmentSpecificKitchenToiletOrSaunaFurniture,
-      @Default(false) isFurnitureRecyclable,
-      @Default(false) toiletSeat,
-      @Default(false) ceramicSink,
-      @Default(false) refrigerator,
-      @Default(false) electricStove,
-      @Default(false) steelTable,
-      @Default(false) waterHeater,
-      @Default(false) saunaStove}) = _Apartment;
+      @Default(false) bool isFurnitureRecyclable,
+      @Default(false) bool toiletSeat,
+      @Default(false) bool ceramicSink,
+      @Default(false) bool refrigerator,
+      @Default(false) bool electricStove,
+      @Default(false) bool steelTable,
+      @Default(false) bool waterHeater,
+      @Default(false) bool saunaStove}) = _Apartment;
 
   num? get wallAreaPerApartment =>
       Utils.multiplyOrNull([innerWallsPerApartmentLinearMeters, wallHeight]);
