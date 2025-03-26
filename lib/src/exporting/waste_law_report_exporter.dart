@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:bl_demolition_materials/src/exporting/report_exporters/excel_report_exporter.dart';
-import 'package:bl_demolition_materials/src/exporting/report_exporters/pdf_report_exporter.dart';
+import 'report_exporters/excel_report_exporter.dart';
+import 'report_exporters/pdf_report_exporter.dart';
 import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
