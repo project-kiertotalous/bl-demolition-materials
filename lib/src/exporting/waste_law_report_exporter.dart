@@ -1,20 +1,20 @@
 import 'dart:io';
 
+import 'package:bl_demolition_materials/src/exporting/report_exporters/excel_report_exporter.dart';
+import 'package:bl_demolition_materials/src/exporting/report_exporters/pdf_report_exporter.dart';
+import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../large_properties/waste_law_demolition_material_estimates/exports.dart';
 import '../large_properties/waste_law_demolition_material_estimates/total/exports.dart';
-import '../utils/test_utils.dart';
-import 'exporter.dart';
 import 'structures/exports.dart';
 import 'structures/styles/exports.dart';
-import 'utils/exporting_utils.dart';
 
 part 'waste_law_report_exporter.freezed.dart';
 
-/// 'Jätelain mukainen taulukko' ReportTable according to waste law
+/// 'Jätelain mukainen taulukko' report table according to waste law
 @freezed
-class WasteLawReportExporter extends Exporter with _$WasteLawReportExporter {
+class WasteLawReportExporter with _$WasteLawReportExporter {
   WasteLawReportExporter._();
 
   factory WasteLawReportExporter(
@@ -30,26 +30,39 @@ class WasteLawReportExporter extends Exporter with _$WasteLawReportExporter {
       GypsumBasedBuildingMaterials? gypsumBasedBuildingMaterials,
       TotalOtherMaterials? totalOtherMaterials}) = _WasteLawReportExporter;
 
-  @override
   void writeAsExcelSync(File file) {
-    final excel = ReportUtils.reportToExcel(
-        report: _report,
+    final exporter = ExcelReportExporter(_report,
         sheetName: 'Jätelain mukainen taulukko',
-        columnWidths: [17, 50, 10, 10, 45]).encode()!;
-    file.writeAsBytesSync(excel);
+        columnWidths: [
+          17,
+          50,
+          10,
+          10,
+          45
+        ],
+        cellMerges: [
+          (
+            CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 0),
+            CellIndex.indexByColumnRow(columnIndex: 3, rowIndex: 0)
+          ),
+          (
+            CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 2),
+            CellIndex.indexByColumnRow(columnIndex: 3, rowIndex: 2)
+          )
+        ]);
+    file.writeAsBytesSync(exporter.export().encode()!);
   }
 
-  @override
   void writeAsPdfSync(File file) {
-    final pdf = ReportUtils.reportToPdf(
-        report: _report, columnWidths: [17, 50, 10, 10, 45]);
-    pdf.save().then((val) => file.writeAsBytesSync(val));
+    final exporter =
+        PDFReportExporter(_report, columnWidths: [17, 50, 10, 10, 45]);
+    exporter.export().save().then((val) => file.writeAsBytesSync(val));
   }
 
   ExportableReport get _report {
     return ExportableReport(tables: [
-      ReportTable(rows: [
-        ReportTableRow(borders: false, cells: [
+      ReportTable(hint: Hint.title, rows: [
+        ReportTableRow(borders: false, height: 26, cells: [
           ReportCell(),
           ReportCell(
               value: 'Purkumateriaalien määrä arvio',
@@ -86,7 +99,9 @@ class WasteLawReportExporter extends Exporter with _$WasteLawReportExporter {
           ReportCell(value: 'Määrä-arvio (tonnia)', textStyle: TextStyle.bold),
           ReportCell(
               value: 'Huomautuksia ja lisätietoja', textStyle: TextStyle.bold)
-        ], height: 45),
+        ], height: 45)
+      ]),
+      ReportTable(rows: [
         ReportTableRow(
             borders: false,
             cells: [
@@ -609,14 +624,4 @@ class WasteLawReportExporter extends Exporter with _$WasteLawReportExporter {
       ]),
     ]);
   }
-}
-
-void main() {
-  /*final File file = File('C:\\Users\\Hannu Korvala\\test.xlsx');
-  file.createSync();
-  TestUtils.sampleWasteLawReportExporter.writeAsExcelSync(file);*/
-
-  final File file = File('C:\\Users\\Hannu Korvala\\test.pdf');
-  file.createSync();
-  TestUtils.sampleWasteLawReportExporter.writeAsPdfSync(file);
 }
