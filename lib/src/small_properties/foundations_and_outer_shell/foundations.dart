@@ -94,10 +94,6 @@ class Foundation with _$Foundation {
     }
     return multiply! / 1000;
   }
-
-  //bool get containsAsbestos => false;
-
-  //bool get containsPcbPaints => false;
 }
 
 /// Ulko- ja kantavien väliseinien materiaalit
