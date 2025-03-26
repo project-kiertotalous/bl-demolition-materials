@@ -29,10 +29,10 @@ abstract class InnerDoors with _$InnerDoors {
       woodenDoors?.shutDoors,
       woodenDoors?.glassDoors,
     ]);
-    if (allNulls == 0) {
+    if (allNulls == null) {
       return null;
     }
-    final result = allNulls! *
+    final result = allNulls *
         DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg /
         DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKgPerCbm;
     return result;
@@ -43,11 +43,11 @@ abstract class InnerDoors with _$InnerDoors {
       panelDoors?.glassDoors,
       woodenDoors?.glassDoors,
     ]);
-    if (allNulls == 0) {
+    if (allNulls == null) {
       return null;
     }
     final result =
-        allNulls! * DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg / 1000;
+        allNulls * DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg / 1000;
     return result;
   }
 
@@ -58,10 +58,10 @@ abstract class InnerDoors with _$InnerDoors {
       woodenDoors?.shutDoors,
       woodenDoors?.glassDoors,
     ]);
-    if (allNulls == 0) {
+    if (allNulls == null) {
       return null;
     }
-    final result = allNulls! *
+    final result = allNulls *
         DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg /
         1000;
     return result;
@@ -72,10 +72,10 @@ abstract class InnerDoors with _$InnerDoors {
       panelDoors?.glassDoors,
       woodenDoors?.glassDoors,
     ]);
-    if (allNulls == 0) {
+    if (allNulls == null) {
       return null;
     }
-    final result = allNulls! *
+    final result = allNulls *
         DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg /
         DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKgPerCbm;
     return result;
