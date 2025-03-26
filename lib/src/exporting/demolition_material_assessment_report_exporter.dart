@@ -25,8 +25,7 @@ class DemolitionMaterialAssessmentReportExporter
 
   void writeAsExcelSync(File file) {
     final exporter = ExcelReportExporter(_report,
-        sheetName: 'Purkumateriaalien arviointilaskelma',
-        columnWidths: [50, 9, 9, 9, 9, 9]);
+        sheetName: 'Arviointilaskelma', columnWidths: [50, 9, 9, 9, 9, 9]);
     file.writeAsBytesSync(exporter.export().encode()!);
   }
 
@@ -430,7 +429,7 @@ class DemolitionMaterialAssessmentReportExporter
 }
 
 void main() {
-  final File file = File('C:\\Users\\Hannu Korvala\\test.xlsx');
+  final file = File('C:\\Users\\Hannu Korvala\\demo-assessment.xlsx');
   file.createSync();
   DemolitionMaterialAssessmentReportExporter(
           totalDemolitionWasteAndCosts: TestUtils
@@ -439,7 +438,7 @@ void main() {
               .sampleLargePropertiesRepository.largePropertyEvaluationInfo!)
       .writeAsExcelSync(file);
 
-  final File file2 = File('C:\\Users\\Hannu Korvala\\test.pdf');
+  final file2 = File('C:\\Users\\Hannu Korvala\\demo-assessment.pdf');
   file2.createSync();
   DemolitionMaterialAssessmentReportExporter(
           totalDemolitionWasteAndCosts: TestUtils
@@ -447,4 +446,12 @@ void main() {
           largePropertyEvaluationInfo: TestUtils
               .sampleLargePropertiesRepository.largePropertyEvaluationInfo!)
       .writeAsPdfSync(file2);
+
+  final file3 = File('C:\\Users\\Hannu Korvala\\waste-law.pdf');
+  file3.createSync();
+  TestUtils.sampleWasteLawReportExporter.writeAsPdfSync(file3);
+
+  final file4 = File('C:\\Users\\Hannu Korvala\\waste-law.xlsx');
+  file4.createSync();
+  TestUtils.sampleWasteLawReportExporter.writeAsExcelSync(file4);
 }

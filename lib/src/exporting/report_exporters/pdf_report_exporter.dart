@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:isolate';
+
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
@@ -11,6 +14,32 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
   final double tableVerticalMargin;
   final double cellPadding;
   final List<double>? columnWidths;
+
+  static pw.Font get font {
+    final packageUri = Uri.parse('package:bl_demolition_materials/');
+    final uri = Isolate.resolvePackageUriSync(packageUri);
+    final fontUri = uri!.resolve('../assets/Carlito-Regular.ttf');
+    final file = File.fromUri(fontUri);
+
+    if (!file.existsSync()) {
+      return pw.Font.helvetica();
+    }
+
+    return pw.Font.ttf(file.readAsBytesSync().buffer.asByteData());
+  }
+
+  static pw.Font get fontBold {
+    final packageUri = Uri.parse('package:bl_demolition_materials/');
+    final uri = Isolate.resolvePackageUriSync(packageUri);
+    final fontUri = uri!.resolve('../assets/Carlito-Bold.ttf');
+    final file = File.fromUri(fontUri);
+
+    if (!file.existsSync()) {
+      return pw.Font.helvetica();
+    }
+
+    return pw.Font.ttf(file.readAsBytesSync().buffer.asByteData());
+  }
 
   const PDFReportExporter(super.report,
       {this.fontScale = 0.7,
@@ -51,6 +80,8 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
                                 height: row.height * sizeScale,
                                 child: pw.Text(cell.valueString,
                                     style: pw.TextStyle(
+                                        font: font,
+                                        fontBold: fontBold,
                                         fontSize: cell.fontSize * fontScale,
                                         fontWeight: getCellFontWeight(cell)))))
                     ])
@@ -60,6 +91,8 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
           for (final cell in row.cells) {
             widgets.add(pw.Text(cell.valueString,
                 style: pw.TextStyle(
+                    font: font,
+                    fontBold: fontBold,
                     fontSize: cell.fontSize * fontScale,
                     fontWeight: getCellFontWeight(cell))));
           }
