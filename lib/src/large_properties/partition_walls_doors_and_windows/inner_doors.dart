@@ -13,8 +13,9 @@ part 'inner_doors.g.dart';
 abstract class InnerDoors with _$InnerDoors {
   const InnerDoors._();
 
-  const factory InnerDoors(InnerDoor? panelDoors,
-      {InnerDoor? woodenDoors,
+  const factory InnerDoors(
+      {InnerDoor? panelDoors,
+      InnerDoor? woodenDoors,
       InnerDoor? fireDoors,
       @Default(false) bool areDoorsRecyclable}) = _InnerDoors;
 
