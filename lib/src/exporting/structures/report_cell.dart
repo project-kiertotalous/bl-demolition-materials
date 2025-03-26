@@ -2,15 +2,14 @@ import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'styles/exports.dart';
-import 'styles/text_align.dart';
 
-part 'cell.freezed.dart';
+part 'report_cell.freezed.dart';
 
 @freezed
-abstract class Cell with _$Cell {
-  Cell._();
+abstract class ReportCell with _$ReportCell {
+  ReportCell._();
 
-  factory Cell(
+  factory ReportCell(
       {@Default('') dynamic value,
       @Default(11) double fontSize,
       @Default('Calibri') String fontFamily,
@@ -18,7 +17,7 @@ abstract class Cell with _$Cell {
       @Default(TextStyle.regular) TextStyle textStyle,
       @Default(TextHorizontalAlign.left) TextHorizontalAlign horizontalAlign,
       @Default(TextVerticalAlign.bottom)
-      TextVerticalAlign verticalAlign}) = _Cell;
+      TextVerticalAlign verticalAlign}) = _ReportCell;
 
   CellValue get valueAsExcelValue {
     if (value is int) {

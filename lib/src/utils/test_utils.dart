@@ -8,7 +8,7 @@ import '../large_properties/hvac_electrical_and_other_equipment/yard_or_protecti
 import '../large_properties/large_properties_repository.dart';
 import '../large_properties/partition_walls_doors_and_windows/exports.dart';
 import '../large_properties/waste_law_demolition_material_estimates/exports.dart';
-import '../reports/waste_law_report_exporter.dart';
+import '../exporting/waste_law_report_exporter.dart';
 
 /// An utility class for all things related to testing
 class TestUtils {

@@ -4,12 +4,40 @@ import 'package:pdf/widgets.dart' as pw;
 
 import '../structures/exports.dart';
 import '../structures/styles/exports.dart';
-import '../structures/styles/line_style.dart';
-import '../structures/styles/text_align.dart';
 
+/// An utility class that can be used to convert instances of ExportableReport
+/// into Excel or pw.Document instances.
 class ReportUtils {
+  static Border getRowBorderStyle(ReportTableRow row) {
+    return row.borders
+        ? Border(borderStyle: BorderStyle.Thin)
+        : Border(borderStyle: BorderStyle.None);
+  }
+
+  static HorizontalAlign horizontalAlignToExcel(TextHorizontalAlign align) {
+    switch (align) {
+      case TextHorizontalAlign.left:
+        return HorizontalAlign.Left;
+      case TextHorizontalAlign.right:
+        return HorizontalAlign.Right;
+      case TextHorizontalAlign.center:
+        return HorizontalAlign.Center;
+    }
+  }
+
+  static VerticalAlign verticalAlignToExcel(TextVerticalAlign align) {
+    switch (align) {
+      case TextVerticalAlign.top:
+        return VerticalAlign.Top;
+      case TextVerticalAlign.center:
+        return VerticalAlign.Center;
+      case TextVerticalAlign.bottom:
+        return VerticalAlign.Bottom;
+    }
+  }
+
   static Excel reportToExcel(
-      {required Report report,
+      {required ExportableReport report,
       required String sheetName,
       List<double>? columnWidths}) {
     final excel = Excel.createExcel();
@@ -33,14 +61,14 @@ class ReportUtils {
           excelCell.value = cell.valueAsExcelValue;
           excelCell.cellStyle = CellStyle(
               bold: cell.textStyle == TextStyle.bold,
-              horizontalAlign: cell.horizontalAlign.toExcelHorizontalAlign,
-              verticalAlign: cell.verticalAlign.toExcelVerticalAlign,
+              horizontalAlign: horizontalAlignToExcel(cell.horizontalAlign),
+              verticalAlign: verticalAlignToExcel(cell.verticalAlign),
               textWrapping:
                   cell.wrapText ? TextWrapping.WrapText : TextWrapping.Clip,
-              topBorder: row.borderStyle[0].toExcelBorder,
-              rightBorder: row.borderStyle[1].toExcelBorder,
-              bottomBorder: row.borderStyle[2].toExcelBorder,
-              leftBorder: row.borderStyle[3].toExcelBorder,
+              topBorder: getRowBorderStyle(row),
+              rightBorder: getRowBorderStyle(row),
+              bottomBorder: getRowBorderStyle(row),
+              leftBorder: getRowBorderStyle(row),
               fontSize: cell.fontSize.toInt(),
               fontFamily: cell.fontFamily,
               numberFormat: cell.excelFormat);
@@ -62,7 +90,7 @@ class ReportUtils {
   }
 
   static pw.Document reportToPdf(
-      {required Report report,
+      {required ExportableReport report,
       num fontScale = 0.7,
       double tableVerticalMargin = 12,
       List<double>? columnWidths}) {
@@ -72,7 +100,7 @@ class ReportUtils {
     final Map<int, pw.TableColumnWidth> pdfColumnWidths = {};
 
     if (columnWidths != null) {
-      for(int i = 0; i < columnWidths.length; i++) {
+      for (int i = 0; i < columnWidths.length; i++) {
         pdfColumnWidths[i] = pw.FixedColumnWidth(columnWidths[i]);
       }
     }
