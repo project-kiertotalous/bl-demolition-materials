@@ -29,22 +29,24 @@ abstract class OuterDoors with _$OuterDoors {
     if (allNulls) {
       return null;
     }
-    return Utils.sumOrNull([
-      (Utils.multiplyOrNull([
-            woodenDoors?.shutDoors,
-            DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg
-          ]) ??
-          0 /
-              DoorWeights
-                  .woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKgPerCbm),
-      (Utils.multiplyOrNull([
-            woodenDoors?.glassDoors,
-            DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg
-          ]) ??
-          0 /
-              DoorWeights
-                  .woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKgPerCbm)
-    ]);
+
+    var shutWoodenDoorsVolume = 0.0;
+
+    if (woodenDoors?.shutDoors != null) {
+      shutWoodenDoorsVolume = woodenDoors!.shutDoors! *
+          DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg /
+          DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKgPerCbm;
+    }
+
+    var glassWoodenDoorsVolume = 0.0;
+
+    if (woodenDoors?.glassDoors != null) {
+      glassWoodenDoorsVolume = woodenDoors!.glassDoors! *
+          DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg /
+          DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKgPerCbm;
+    }
+
+    return shutWoodenDoorsVolume + glassWoodenDoorsVolume;
   }
 
   num? get totalGlassVolume {
@@ -54,28 +56,31 @@ abstract class OuterDoors with _$OuterDoors {
       steelDoors?.glassDoors,
       accessAndLoadingDoors
     ]);
+
     if (allNulls) {
       return null;
     }
+
     final result = Utils.sumOrNull([
-          (Utils.multiplyOrNull([
+          Utils.multiplyOrNull([
             woodenDoors?.glassDoors,
             DoorWeights.woodenInnerDoorWithGlass05SqmGlassKg
-          ])),
-          (Utils.multiplyOrNull([
+          ]),
+          Utils.multiplyOrNull([
             aluminiumDoors?.glassDoors,
             DoorWeights.aluminiumDoorWithGlassGlassKg
-          ])),
-          (Utils.multiplyOrNull([
+          ]),
+          Utils.multiplyOrNull([
             steelDoors?.glassDoors,
             DoorWeights.steelDoorWithGlass05SqmGlassKg
-          ])),
-          (Utils.multiplyOrNull([
+          ]),
+          Utils.multiplyOrNull([
             accessAndLoadingDoors,
             DoorWeights.metallicLiftDoorsAndBigPassageDoorsGlassKg
-          ]))
+          ])
         ])! /
         DoorWeights.woodenOuterDoor210x80WithGlass05SqmGlassKgPerCbm;
+
     return result;
   }
 
@@ -85,18 +90,24 @@ abstract class OuterDoors with _$OuterDoors {
     if (allNulls) {
       return null;
     }
-    final result = Utils.sumOrNull([
-      (Utils.multiplyOrNull([
-            woodenDoors?.shutDoors,
-            DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg
-          ]) ??
-          0 / 1000),
-      (Utils.multiplyOrNull([
-            woodenDoors?.glassDoors,
-            DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg
-          ]) ??
-          0 / 1000)
-    ]);
+
+    var shutWoodenDoorsTons = 0.0;
+
+    if (woodenDoors?.shutDoors != null) {
+      shutWoodenDoorsTons = woodenDoors!.shutDoors! *
+          DoorWeights.woodenOuterDoor210x80WithGlass05SqmTrunkAndSlabKg /
+          1000;
+    }
+
+    var glassWoodenDoorsTons = 0.0;
+
+    if (woodenDoors?.glassDoors != null) {
+      glassWoodenDoorsTons = woodenDoors!.glassDoors! *
+          DoorWeights.woodenInnerDoorWithGlass05SqmTrunkAndSlabKg /
+          1000;
+    }
+
+    final result = shutWoodenDoorsTons + glassWoodenDoorsTons;
     return result;
   }
 
@@ -109,11 +120,11 @@ abstract class OuterDoors with _$OuterDoors {
     final result = Utils.sumOrNull([
           (Utils.multiplyOrNull([
             aluminiumDoors?.shutDoors,
-            DoorWeights.aluminiumDoorWithGlassGlassKg
+            DoorWeights.aluminiumDoorWithGlassTrunkAndSlabKg
           ])),
           (Utils.multiplyOrNull([
             aluminiumDoors?.glassDoors,
-            DoorWeights.aluminiumDoorWithGlassGlassKg
+            DoorWeights.aluminiumDoorWithGlassTrunkAndSlabKg
           ]))
         ])! /
         1000;
@@ -131,7 +142,7 @@ abstract class OuterDoors with _$OuterDoors {
               [steelDoors?.shutDoors, DoorWeights.steelDoorClosedFireDoorKg])),
           (Utils.multiplyOrNull([
             steelDoors?.glassDoors,
-            DoorWeights.steelDoorWithGlass05SqmGlassKg
+            DoorWeights.steelDoorWithGlass05SqmTrunkAndSlabKg
           ])),
           (Utils.multiplyOrNull([
             accessAndLoadingDoors,
