@@ -12,12 +12,4 @@ abstract class ReportTable with _$ReportTable {
   const factory ReportTable(
       {required List<ReportTableRow> rows,
       @Default(Hint.none) Hint hint}) = _ReportTable;
-
-  bool get hasBorders {
-    if (rows.isEmpty) {
-      return false;
-    }
-
-    return rows.any((row) => row.borders);
-  }
 }
