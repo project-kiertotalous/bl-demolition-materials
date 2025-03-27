@@ -1,7 +1,7 @@
 import 'package:excel/excel.dart';
 
 import '../structures/exports.dart';
-import '../structures/styles/exports.dart';
+import '../structures/text_align.dart';
 import 'report_exporter.dart';
 
 class ExcelReportExporter extends ReportExporter<Excel> {
@@ -34,7 +34,7 @@ class ExcelReportExporter extends ReportExporter<Excel> {
 
           excelCell.value = cell.valueAsExcelValue;
           excelCell.cellStyle = CellStyle(
-              bold: cell.textStyle == TextStyle.bold,
+              bold: cell.bold,
               horizontalAlign: getCellHorizontalAlign(cell),
               verticalAlign: getCellVerticalAlign(cell),
               textWrapping:

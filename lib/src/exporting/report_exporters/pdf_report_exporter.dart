@@ -5,7 +5,6 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
 import '../structures/exports.dart';
-import '../structures/styles/exports.dart';
 import 'report_exporter.dart';
 
 class PDFReportExporter extends ReportExporter<pw.Document> {
@@ -118,9 +117,7 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
   }
 
   static pw.FontWeight getCellFontWeight(ReportCell cell) {
-    return cell.textStyle == TextStyle.bold
-        ? pw.FontWeight.bold
-        : pw.FontWeight.normal;
+    return cell.bold ? pw.FontWeight.bold : pw.FontWeight.normal;
   }
 
   static pw.BoxDecoration getRowBoxDecoration(ReportTableRow row) {

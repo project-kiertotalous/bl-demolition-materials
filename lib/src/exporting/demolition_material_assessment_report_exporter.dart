@@ -10,7 +10,6 @@ import '../utils/test_utils.dart';
 import 'report_exporters/excel_report_exporter.dart';
 import 'report_exporters/pdf_report_exporter.dart';
 import 'structures/exports.dart';
-import 'structures/styles/exports.dart';
 
 part 'demolition_material_assessment_report_exporter.freezed.dart';
 
@@ -80,20 +79,19 @@ class DemolitionMaterialAssessmentReportExporter
       ReportTable(rows: [
         ReportTableRow(cells: [
           ReportCell(
-              value: largePropertyEvaluationInfo.propertyName,
-              textStyle: TextStyle.bold),
+              value: largePropertyEvaluationInfo.propertyName, bold: true),
           ReportCell(
               value: largePropertyEvaluationInfo.author,
-              textStyle: TextStyle.bold,
+              bold: true,
               fontSize: 10),
           ReportCell(hint: Hint.ghost),
           ReportCell(
               value: largePropertyEvaluationInfo.date,
-              textStyle: TextStyle.bold,
+              bold: true,
               fontSize: 10),
           ReportCell(
               value: largePropertyEvaluationInfo.version,
-              textStyle: TextStyle.bold,
+              bold: true,
               fontSize: 10)
         ], borders: false),
         ReportTableRow(cells: [
@@ -105,24 +103,20 @@ class DemolitionMaterialAssessmentReportExporter
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(
-              value: largePropertyEvaluationInfo.buildingType,
-              textStyle: TextStyle.bold),
+              value: largePropertyEvaluationInfo.buildingType, bold: true),
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(value: 'Rakennustyyppi'),
         ], borders: false),
         ReportTableRow(cells: [
-          ReportCell(
-              value: largePropertyEvaluationInfo.address,
-              textStyle: TextStyle.bold),
+          ReportCell(value: largePropertyEvaluationInfo.address, bold: true),
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(value: 'Osoite'),
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(
-              value: largePropertyEvaluationInfo.municipality,
-              textStyle: TextStyle.bold),
+              value: largePropertyEvaluationInfo.municipality, bold: true),
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(value: 'Kunta'),
@@ -132,14 +126,11 @@ class DemolitionMaterialAssessmentReportExporter
         ReportTableRow(height: 57, cells: [
           ReportCell(
               value: 'HYÖDYNTÄMISKELPOISET JA KIERRÄTETTÄVÄT MATERIAALIT',
-              textStyle: TextStyle.bold),
-          ReportCell(value: 'Tilavuus (m3)', textStyle: TextStyle.bold),
-          ReportCell(value: 'Määrä-arvio (tonnia)', textStyle: TextStyle.bold),
-          ReportCell(
-              value: 'Purkukustannus (€/kpl tai €/tonni)',
-              textStyle: TextStyle.bold),
-          ReportCell(
-              value: 'Materiaalierän hinta (€)', textStyle: TextStyle.bold),
+              bold: true),
+          ReportCell(value: 'Tilavuus (m3)', bold: true),
+          ReportCell(value: 'Määrä-arvio (tonnia)', bold: true),
+          ReportCell(value: 'Purkukustannus (€/kpl tai €/tonni)', bold: true),
+          ReportCell(value: 'Materiaalierän hinta (€)', bold: true),
         ]),
         ReportTableRow(
             cells: _wasteCostItemToCells(
@@ -206,17 +197,12 @@ class DemolitionMaterialAssessmentReportExporter
       ReportTable(rows: [
         ReportTableRow(height: 57, cells: [
           ReportCell(
-              value: 'KIERRÄTETTÄVÄT RAKENNEOSAT JA KALUSTEET',
-              textStyle: TextStyle.bold),
-          ReportCell(
-              value: 'määrä (kpl, m, tai m2)', textStyle: TextStyle.bold),
-          ReportCell(value: 'Tilavuus (m3)', textStyle: TextStyle.bold),
-          ReportCell(value: 'yhteis-paino (tonnia)', textStyle: TextStyle.bold),
-          ReportCell(
-              value: 'Myynti-hinta (€/kpl tai €/tonni)',
-              textStyle: TextStyle.bold),
-          ReportCell(
-              value: 'Materiaalierän hinta (€)', textStyle: TextStyle.bold),
+              value: 'KIERRÄTETTÄVÄT RAKENNEOSAT JA KALUSTEET', bold: true),
+          ReportCell(value: 'määrä (kpl, m, tai m2)', bold: true),
+          ReportCell(value: 'Tilavuus (m3)', bold: true),
+          ReportCell(value: 'yhteis-paino (tonnia)', bold: true),
+          ReportCell(value: 'Myynti-hinta (€/kpl tai €/tonni)', bold: true),
+          ReportCell(value: 'Materiaalierän hinta (€)', bold: true),
         ]),
         ReportTableRow(
             cells: _recyclableItemToCells(
@@ -331,14 +317,12 @@ class DemolitionMaterialAssessmentReportExporter
         ReportTableRow(height: 57, cells: [
           ReportCell(
               value: 'Loppusijoitettavat materiaalit ja ongelmajätteet',
-              textStyle: TextStyle.bold),
-          ReportCell(value: 'Tilavuus (m3)', textStyle: TextStyle.bold),
-          ReportCell(value: 'Määrä-arvio (tonnia)', textStyle: TextStyle.bold),
+              bold: true),
+          ReportCell(value: 'Tilavuus (m3)', bold: true),
+          ReportCell(value: 'Määrä-arvio (tonnia)', bold: true),
           ReportCell(
-              value: 'Purku- ja käsittelykustannus (€/tonni)',
-              textStyle: TextStyle.bold),
-          ReportCell(
-              value: 'Materiaalierän hinta (€)', textStyle: TextStyle.bold),
+              value: 'Purku- ja käsittelykustannus (€/tonni)', bold: true),
+          ReportCell(value: 'Materiaalierän hinta (€)', bold: true),
         ]),
         ReportTableRow(
             cells: _wasteItemToCells(
@@ -364,10 +348,9 @@ class DemolitionMaterialAssessmentReportExporter
       ]),
       ReportTable(rows: [
         ReportTableRow(height: 57, cells: [
-          ReportCell(
-              value: 'Purkujätteet ja kustannukset', textStyle: TextStyle.bold),
-          ReportCell(value: 'Tilavuus (m3)', textStyle: TextStyle.bold),
-          ReportCell(value: 'Määrä-arvio (tonnia)', textStyle: TextStyle.bold),
+          ReportCell(value: 'Purkujätteet ja kustannukset', bold: true),
+          ReportCell(value: 'Tilavuus (m3)', bold: true),
+          ReportCell(value: 'Määrä-arvio (tonnia)', bold: true),
         ]),
         ReportTableRow(cells: [
           ReportCell(value: 'Kokonaispurkujätemäärä'),

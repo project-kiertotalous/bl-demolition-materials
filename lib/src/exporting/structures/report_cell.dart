@@ -1,7 +1,8 @@
 import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'styles/exports.dart';
+import 'hint.dart';
+import 'text_align.dart';
 
 part 'report_cell.freezed.dart';
 
@@ -14,7 +15,7 @@ abstract class ReportCell with _$ReportCell {
       @Default(11) double fontSize,
       @Default('Calibri') String fontFamily,
       @Default(true) bool wrapText,
-      @Default(TextStyle.regular) TextStyle textStyle,
+      @Default(false) bool bold,
       @Default(TextHorizontalAlign.left) TextHorizontalAlign horizontalAlign,
       @Default(TextVerticalAlign.bottom) TextVerticalAlign verticalAlign,
       @Default(Hint.none) Hint hint}) = _ReportCell;

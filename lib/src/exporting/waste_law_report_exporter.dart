@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'report_exporters/excel_report_exporter.dart';
-import 'report_exporters/pdf_report_exporter.dart';
 import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../large_properties/waste_law_demolition_material_estimates/exports.dart';
 import '../large_properties/waste_law_demolition_material_estimates/total/exports.dart';
+import 'report_exporters/excel_report_exporter.dart';
+import 'report_exporters/pdf_report_exporter.dart';
 import 'structures/exports.dart';
-import 'structures/styles/exports.dart';
+import 'structures/text_align.dart';
 
 part 'waste_law_report_exporter.freezed.dart';
 
@@ -90,25 +90,23 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
       ]),
       ReportTable(rows: [
         ReportTableRow(cells: [
-          ReportCell(value: 'Jätekoodi', textStyle: TextStyle.bold),
+          ReportCell(value: 'Jätekoodi', bold: true),
           ReportCell(
               value:
                   'Jätejakeen nimitys, jätelain mukainen pääluokka ja tarkennus',
-              textStyle: TextStyle.bold),
-          ReportCell(value: 'Tilavuus (m3)', textStyle: TextStyle.bold),
-          ReportCell(value: 'Määrä-arvio (tonnia)', textStyle: TextStyle.bold),
-          ReportCell(
-              value: 'Huomautuksia ja lisätietoja', textStyle: TextStyle.bold)
+              bold: true),
+          ReportCell(value: 'Tilavuus (m3)', bold: true),
+          ReportCell(value: 'Määrä-arvio (tonnia)', bold: true),
+          ReportCell(value: 'Huomautuksia ja lisätietoja', bold: true)
         ], height: 45)
       ]),
       ReportTable(rows: [
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 01', textStyle: TextStyle.bold),
+              ReportCell(value: '17 01', bold: true),
               ReportCell(
-                  value: 'betoni, tiilet, laatat ja keramiikka',
-                  textStyle: TextStyle.bold),
+                  value: 'betoni, tiilet, laatat ja keramiikka', bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [
@@ -167,9 +165,8 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 02', textStyle: TextStyle.bold),
-              ReportCell(
-                  value: 'puu, lasi ja muovit', textStyle: TextStyle.bold),
+              ReportCell(value: '17 02', bold: true),
+              ReportCell(value: 'puu, lasi ja muovit', bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [
@@ -213,10 +210,10 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 03', textStyle: TextStyle.bold),
+              ReportCell(value: '17 03', bold: true),
               ReportCell(
                   value: 'bitumiseokset, kivihiiliterva ja -tervatuotteet',
-                  textStyle: TextStyle.bold),
+                  bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [
@@ -274,11 +271,11 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 04', textStyle: TextStyle.bold),
+              ReportCell(value: '17 04', bold: true),
               ReportCell(
                   value:
                       'metallit, niiden seokset (lejeeringit) mukaan luettuina',
-                  textStyle: TextStyle.bold),
+                  bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [
@@ -365,11 +362,11 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 05', textStyle: TextStyle.bold),
+              ReportCell(value: '17 05', bold: true),
               ReportCell(
                   value:
                       'maa-ainekset (pilaantuneilta alueilta kaivetut maa-ainekset mukaan luettuina), kiviainekset ja ruoppausmassat',
-                  textStyle: TextStyle.bold),
+                  bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [
@@ -461,10 +458,10 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 06', textStyle: TextStyle.bold),
+              ReportCell(value: '17 06', bold: true),
               ReportCell(
                   value: 'eristysaineet ja asbestia sisältävät rakennusaineet',
-                  textStyle: TextStyle.bold),
+                  bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [
@@ -528,10 +525,8 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 08', textStyle: TextStyle.bold),
-              ReportCell(
-                  value: 'kipsipohjaiset rakennusaineet',
-                  textStyle: TextStyle.bold),
+              ReportCell(value: '17 08', bold: true),
+              ReportCell(value: 'kipsipohjaiset rakennusaineet', bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [
@@ -569,10 +564,10 @@ class WasteLawReportExporter with _$WasteLawReportExporter {
         ReportTableRow(
             borders: false,
             cells: [
-              ReportCell(value: '17 09', textStyle: TextStyle.bold),
+              ReportCell(value: '17 09', bold: true),
               ReportCell(
                   value: 'muut rakentamisessa ja purkamisessa syntyvät jätteet',
-                  textStyle: TextStyle.bold),
+                  bold: true),
             ],
             height: 15),
         ReportTableRow(cells: [

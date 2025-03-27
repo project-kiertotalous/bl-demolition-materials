@@ -1,1 +1,0 @@
-enum TextStyle { bold, regular }
