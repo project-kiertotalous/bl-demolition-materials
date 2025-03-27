@@ -67,7 +67,7 @@ class BuildingBoardsAndInsulationMaterialWeights {
 class DoorsAndWindowsWeights {
   static num woodenOutdoors210x180Glass05sqmFrameKg = 51;
   static num woodenOutdoors210x180Glass05GlassKg = 0.5 * 10;
-  static num woodenOutdoor210x180ClosedKg = 42;
+  static num woodenOutdoor210x180ClosedKg = 47;
   static num woodenInnerDoorsGlass05sqmFrameKg = 21;
   static num woodenInnerDoorsGlass05sqmGlassKg = 0.5 * 10;
   static num fiberDoorsGlass05sqmFrameKg = 14;
