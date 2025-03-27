@@ -144,7 +144,7 @@ class FurnitureDressingKitchenToiletSpaceWeights {
   static num waterAccumulatorsKgPerPcs = 100;
   static num centralHeatingRadiatorsWaterCirculatinKgPerPcs = 10;
   static num ventilationMachineKgPerPcs = 100;
-  static num electicCentralKgPerPcs = 20;
+  static num electricCentralKgPerPcs = 20;
   static num electricEngineKgPerPcs = 10;
 }
 
