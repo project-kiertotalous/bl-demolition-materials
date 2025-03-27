@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../bl_demolition_materials.dart';
 import '../large_properties/demolition_material_assessment/items/exports.dart';
 import '../large_properties/demolition_material_assessment/total/exports.dart';
-import '../utils/test_utils.dart';
 import 'report_exporters/excel_report_exporter.dart';
 import 'report_exporters/pdf_report_exporter.dart';
 import 'structures/exports.dart';
@@ -467,32 +466,4 @@ class DemolitionMaterialAssessmentReportExporter
       ReportCell(value: item?.batchPrice),
     ];
   }
-}
-
-void main() {
-  final file = File('C:\\Users\\Hannu Korvala\\demo-assessment.xlsx');
-  file.createSync();
-  DemolitionMaterialAssessmentReportExporter(
-          totalDemolitionWasteAndCosts: TestUtils
-              .sampleLargePropertiesRepository.totalDemolitionWasteAndCosts,
-          largePropertyEvaluationInfo: TestUtils
-              .sampleLargePropertiesRepository.largePropertyEvaluationInfo!)
-      .writeAsExcelSync(file);
-
-  final file2 = File('C:\\Users\\Hannu Korvala\\demo-assessment.pdf');
-  file2.createSync();
-  DemolitionMaterialAssessmentReportExporter(
-          totalDemolitionWasteAndCosts: TestUtils
-              .sampleLargePropertiesRepository.totalDemolitionWasteAndCosts,
-          largePropertyEvaluationInfo: TestUtils
-              .sampleLargePropertiesRepository.largePropertyEvaluationInfo!)
-      .writeAsPdfSync(file2);
-
-  final file3 = File('C:\\Users\\Hannu Korvala\\waste-law.pdf');
-  file3.createSync();
-  TestUtils.sampleWasteLawReportExporter.writeAsPdfSync(file3);
-
-  final file4 = File('C:\\Users\\Hannu Korvala\\waste-law.xlsx');
-  file4.createSync();
-  TestUtils.sampleWasteLawReportExporter.writeAsExcelSync(file4);
 }
