@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../bl_demolition_materials.dart';
@@ -25,13 +26,35 @@ class DemolitionMaterialAssessmentReportExporter
 
   void writeAsExcelSync(File file) {
     final exporter = ExcelReportExporter(_report,
-        sheetName: 'Arviointilaskelma', columnWidths: [50, 9, 9, 9, 9, 9]);
+        sheetName: 'Arviointilaskelma',
+        columnWidths: [
+          50,
+          11,
+          11,
+          11,
+          11,
+          11
+        ],
+        cellMerges: [
+          (
+            CellIndex.indexByColumnRow(columnIndex: 0, rowIndex: 0),
+            CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 0)
+          ),
+          (
+            CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 2),
+            CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: 2)
+          ),
+          (
+            CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: 3),
+            CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: 3)
+          )
+        ]);
     file.writeAsBytesSync(exporter.export().encode()!);
   }
 
   void writeAsPdfSync(File file) {
     final exporter =
-        PDFReportExporter(_report, columnWidths: [50, 9, 9, 9, 9, 9]);
+        PDFReportExporter(_report, columnWidths: [50, 11, 11, 11, 11, 11]);
     exporter.export().save().then((val) => file.writeAsBytesSync(val));
   }
 
@@ -46,38 +69,60 @@ class DemolitionMaterialAssessmentReportExporter
 
     return ExportableReport(tables: [
       ReportTable(rows: [
-        ReportTableRow(cells: [
-          ReportCell(),
-          ReportCell(value: 'Purkumateriaalien arviointilaskelma')
+        ReportTableRow(height: 26, borders: false, cells: [
+          ReportCell(
+              value: 'Purkumateriaalien arviointilaskelma',
+              fontSize: 20,
+              wrapText: false),
+          ReportCell()
         ])
       ]),
       ReportTable(rows: [
         ReportTableRow(cells: [
-          ReportCell(value: largePropertyEvaluationInfo.propertyName),
-          ReportCell(value: largePropertyEvaluationInfo.author),
-          ReportCell(value: largePropertyEvaluationInfo.date),
-          ReportCell(value: largePropertyEvaluationInfo.version)
+          ReportCell(
+              value: largePropertyEvaluationInfo.propertyName,
+              textStyle: TextStyle.bold),
+          ReportCell(
+              value: largePropertyEvaluationInfo.author,
+              textStyle: TextStyle.bold,
+              fontSize: 10),
+          ReportCell(hint: Hint.ghost),
+          ReportCell(
+              value: largePropertyEvaluationInfo.date,
+              textStyle: TextStyle.bold,
+              fontSize: 10),
+          ReportCell(
+              value: largePropertyEvaluationInfo.version,
+              textStyle: TextStyle.bold,
+              fontSize: 10)
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(value: 'Kiinteistön nimi'),
           ReportCell(value: 'Laskelman laatija:'),
+          ReportCell(hint: Hint.ghost),
           ReportCell(value: 'päivä:'),
-          ReportCell(value: 'version:')
+          ReportCell(value: 'versio:')
         ], borders: false),
         ReportTableRow(cells: [
-          ReportCell(value: largePropertyEvaluationInfo.buildingType),
+          ReportCell(
+              value: largePropertyEvaluationInfo.buildingType,
+              textStyle: TextStyle.bold),
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(value: 'Rakennustyyppi'),
         ], borders: false),
         ReportTableRow(cells: [
-          ReportCell(value: largePropertyEvaluationInfo.address),
+          ReportCell(
+              value: largePropertyEvaluationInfo.address,
+              textStyle: TextStyle.bold),
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(value: 'Osoite'),
         ], borders: false),
         ReportTableRow(cells: [
-          ReportCell(value: largePropertyEvaluationInfo.municipality),
+          ReportCell(
+              value: largePropertyEvaluationInfo.municipality,
+              textStyle: TextStyle.bold),
         ], borders: false),
         ReportTableRow(cells: [
           ReportCell(value: 'Kunta'),
@@ -301,10 +346,12 @@ class DemolitionMaterialAssessmentReportExporter
         ReportTableRow(
             cells: _wasteItemToCells(diHa?.contaminatedSoil, 'Saastunut maa')),
         ReportTableRow(
+            height: 30,
             cells: _wasteItemToCells(diHa?.asbestosOrBCPConcrete,
                 'Asbestia tai BCP maalia sisältävä betoni (bitumi ja akryylipinnoitettu)')),
         ReportTableRow(cells: _wasteItemToCells(diHa?.bitumen, 'Bitumi')),
         ReportTableRow(
+            height: 30,
             cells: _wasteItemToCells(diHa?.otherAsbestosContainingMaterial,
                 'Mineriitti, tiilet, tiilikate, kattohuopa, kaakelilaatat yms. sisältää asbestia')),
         ReportTableRow(cells: [
@@ -327,7 +374,7 @@ class DemolitionMaterialAssessmentReportExporter
           ReportCell(value: deWa.totalVolume),
           ReportCell(value: deWa.totalTons)
         ]),
-        ReportTableRow(cells: [
+        ReportTableRow(height: 30, cells: [
           ReportCell(
               value:
                   'Rakennuksen purkujätemäärä (ei sisällä poistettavaa maata)'),
@@ -335,62 +382,73 @@ class DemolitionMaterialAssessmentReportExporter
           ReportCell(value: deWa.totalTonsExcludingExcavatedLand)
         ]),
       ]),
-      ReportTable(rows: [
+      ReportTable(hint: Hint.slim, rows: [
         ReportTableRow(borders: false, cells: [
           ReportCell(value: 'Purettavan rakennuksen kerrosala (m2)'),
           ReportCell(value: deWa.buildingGrossFloorArea),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(value: 'Purettavan rakennuksen tilavuus (m3)'),
           ReportCell(value: deWa.buildingVolume),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(value: 'Purkukustanuksen hinta (€/tonni)'),
           ReportCell(
               value: deWa
                   .demolitionCostMaterialPerTonCalculatedFromDemolitionMaterials),
+          ReportCell()
         ]),
-        ReportTableRow(borders: false, cells: [
+        ReportTableRow(borders: false, height: 30, cells: [
           ReportCell(
               value:
                   'Purkumateriaalien mukaan laskettu purkukustannus (€/tonni)'),
           ReportCell(
               value: deWa
                   .demolitionCostMaterialPerTonCalculatedFromDemolitionMaterials),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(value: 'Purkukustanus arvio (€)'),
           ReportCell(value: deWa.estimatedDemolitionCost),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(
               value: 'Rakennuksen purkustannus (ei sisällä maanpoistoa)'),
           ReportCell(value: deWa.estimatedDemolitionCostExcludingExcavations),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(value: 'Purkukustannus/neliö (€/m2)'),
           ReportCell(value: deWa.demolitionCostPerSquareMeter),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(
               value: 'Purkukustannus/neliö, ei sisällä maanpoistoa (€/m2)'),
           ReportCell(
               value: deWa.demolitionCostPerSquareMeterExcludingExcavations),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(value: 'Purkukustannus/rakennuskuutio (€/m3)'),
           ReportCell(value: deWa.demolitionCostPerCubicMeter),
+          ReportCell()
         ]),
-        ReportTableRow(borders: false, cells: [
+        ReportTableRow(borders: false, height: 30, cells: [
           ReportCell(
               value:
                   'Purkukustannus/rakennuskuutio, ei sisällä maanpoistoa (€/m3)'),
           ReportCell(
               value: deWa.demolitionCostPerCubicMeterExcludingExcavations),
+          ReportCell()
         ]),
         ReportTableRow(borders: false, cells: [
           ReportCell(value: 'Myytävät materiaalierät (€)'),
           ReportCell(value: deWa.sellableMaterialBatchesPrice),
+          ReportCell()
         ]),
       ])
     ]);

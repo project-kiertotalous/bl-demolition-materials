@@ -1,4 +1,5 @@
 import '../../bl_demolition_materials.dart';
+import '../exporting/waste_law_report_exporter.dart';
 import '../large_properties/demolition_material_assessment/exports.dart';
 import '../large_properties/hvac_electrical_and_other_equipment/exports.dart';
 import '../large_properties/hvac_electrical_and_other_equipment/fixtures_or_structures/exports.dart';
@@ -8,7 +9,6 @@ import '../large_properties/hvac_electrical_and_other_equipment/yard_or_protecti
 import '../large_properties/large_properties_repository.dart';
 import '../large_properties/partition_walls_doors_and_windows/exports.dart';
 import '../large_properties/waste_law_demolition_material_estimates/exports.dart';
-import '../exporting/waste_law_report_exporter.dart';
 
 /// An utility class for all things related to testing
 class TestUtils {
@@ -88,10 +88,11 @@ class TestUtils {
         cleanSoilPortionPercentageFraction: 0.851);
 
     final largePropertyEvaluationInfo = LargePropertyEvaluationInfo(
-        buildingType: 'A very large one',
+        propertyName: 'Sandyville',
+        buildingType: 'Kerrostalo',
         address: 'Santamalakatu 6 A 20',
         municipality: 'Viikanteri',
-        author: 'Gustav Von Hanselmo',
+        author: 'Matti H',
         date: DateTime.now(),
         version: DateTime.utc(2013, 12, 17),
         description: 'Some sample evaluation info');

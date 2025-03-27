@@ -20,12 +20,6 @@ class ExcelReportExporter extends ReportExporter<Excel> {
     var rowIndex = 0;
     var columnIndex = 0;
 
-    if (cellMerges != null) {
-      for (var cellMerge in cellMerges!) {
-        sheet.merge(cellMerge.$1, cellMerge.$2);
-      }
-    }
-
     if (columnWidths != null) {
       for (int i = 0; i < columnWidths!.length; i++) {
         sheet.setColumnWidth(i, columnWidths![i]);
@@ -64,6 +58,13 @@ class ExcelReportExporter extends ReportExporter<Excel> {
 
       rowIndex += 1;
     }
+
+    if (cellMerges != null) {
+      for (var cellMerge in cellMerges!) {
+        sheet.merge(cellMerge.$1, cellMerge.$2);
+      }
+    }
+
     return excel;
   }
 

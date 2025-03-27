@@ -4,4 +4,4 @@
 ///
 /// For example, the 'title' hint tells the pdf exporting method to render the
 /// table in a special way.
-enum Hint { title, none }
+enum Hint { title, ghost, slim, none }

@@ -16,14 +16,18 @@ abstract class ReportCell with _$ReportCell {
       @Default(true) bool wrapText,
       @Default(TextStyle.regular) TextStyle textStyle,
       @Default(TextHorizontalAlign.left) TextHorizontalAlign horizontalAlign,
-      @Default(TextVerticalAlign.bottom)
-      TextVerticalAlign verticalAlign}) = _ReportCell;
+      @Default(TextVerticalAlign.bottom) TextVerticalAlign verticalAlign,
+      @Default(Hint.none) Hint hint}) = _ReportCell;
 
   CellValue get valueAsExcelValue {
     if (value is int) {
       return IntCellValue(value);
     } else if (value is double) {
       return DoubleCellValue(value);
+    } else if (value is DateTime) {
+      final dateValue = value as DateTime;
+      return DateCellValue(
+          year: dateValue.year, month: dateValue.month, day: dateValue.day);
     }
 
     return TextCellValue(value == null ? '' : value.toString());
@@ -36,6 +40,9 @@ abstract class ReportCell with _$ReportCell {
       return value.toString();
     } else if (value is double) {
       return value.toStringAsFixed(2);
+    } else if (value is DateTime) {
+      final valueDate = value as DateTime;
+      return "${valueDate.day}/${valueDate.month}/${valueDate.year}";
     }
 
     return value.toString();
@@ -44,6 +51,8 @@ abstract class ReportCell with _$ReportCell {
   NumFormat get excelFormat {
     if (value is num) {
       return NumFormat.standard_2;
+    } else if (value is DateTime) {
+      return NumFormat.defaultDate;
     }
 
     return NumFormat.standard_0;

@@ -62,31 +62,7 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
     }
 
     for (final table in report.tables) {
-      if (table.hint == Hint.none) {
-        widgets.add(pw.Table(
-            columnWidths: pdfColumnWidths,
-            border: pw.TableBorder.all(style: pw.BorderStyle.none),
-            children: [
-              for (final row in table.rows)
-                pw.TableRow(
-                    decoration: getRowBoxDecoration(row),
-                    // decoration: pw.BoxDecoration(border: pw.Border.all(width: 1)),
-                    children: [
-                      for (final cell in row.cells)
-                        pw.Container(
-                            decoration: getRowBoxDecoration(row),
-                            padding: pw.EdgeInsets.all(cellPadding),
-                            child: pw.SizedBox(
-                                height: row.height * sizeScale,
-                                child: pw.Text(cell.valueString,
-                                    style: pw.TextStyle(
-                                        font: font,
-                                        fontBold: fontBold,
-                                        fontSize: cell.fontSize * fontScale,
-                                        fontWeight: getCellFontWeight(cell)))))
-                    ])
-            ]));
-      } else {
+      if (table.hint == Hint.title) {
         for (final row in table.rows) {
           for (final cell in row.cells) {
             widgets.add(pw.Text(cell.valueString,
@@ -97,6 +73,34 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
                     fontWeight: getCellFontWeight(cell))));
           }
         }
+      } else {
+        widgets.add(pw.Container(
+            child: pw.Table(
+                columnWidths: pdfColumnWidths,
+                border: pw.TableBorder.all(style: pw.BorderStyle.none),
+                children: [
+              for (final row in table.rows)
+                pw.TableRow(
+                    decoration: getRowBoxDecoration(row),
+                    // decoration: pw.BoxDecoration(border: pw.Border.all(width: 1)),
+                    children: [
+                      for (final cell
+                          in row.cells.where((cell) => cell.hint != Hint.ghost))
+                        pw.Container(
+                            decoration: getRowBoxDecoration(row),
+                            padding: pw.EdgeInsets.all(cellPadding),
+                            child: pw.SizedBox(
+                                height: table.hint == Hint.slim
+                                    ? null
+                                    : row.height * sizeScale,
+                                child: pw.Text(cell.valueString,
+                                    style: pw.TextStyle(
+                                        font: font,
+                                        fontBold: fontBold,
+                                        fontSize: cell.fontSize * fontScale,
+                                        fontWeight: getCellFontWeight(cell)))))
+                    ])
+            ])));
       }
 
       widgets.add(pw.SizedBox(height: tableVerticalMargin));
