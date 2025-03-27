@@ -1,9 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
-import 'package:bl_demolition_materials/src/data_types/wall_material.dart';
-import 'package:bl_demolition_materials/src/data_types/insulation_material_thickness.dart';
-import 'package:bl_demolition_materials/src/data_types/outer_wall_surface_material.dart';
 
 part 'foundations.freezed.dart';
 
