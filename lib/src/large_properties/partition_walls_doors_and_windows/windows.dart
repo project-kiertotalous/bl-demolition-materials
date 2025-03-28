@@ -43,7 +43,7 @@ abstract class Windows with _$Windows {
     }
     return Utils.sumOrNull([totalGlassArea, glassWallArea])! *
         WindowWeights.threeTimesClosedGlassKgPerSqm /
-        WindowWeights.lowerFramePaintedKgPerSqm;
+        WindowWeights.threeTimesClosedGlassKgPerCbm;
   }
 
   num? get totalWoodTons {
