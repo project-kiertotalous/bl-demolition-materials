@@ -76,13 +76,16 @@ abstract class TotalConcreteBricksTilesCeramics
           notes: concreteBricksTilesCeramics
               ?.hazardousConcreteBrickTileCeramicMixturesNotes);
 
+  WasteLawDemolitionMaterialEstimateEntry? get otherMaterials =>
+      concreteBricksTilesCeramics?.otherMaterials;
+
   num? get _concreteVolume {
     num? foundationsConcreteVolume;
     var intermediateFloorsConcreteVolume =
         totalIntermediateFloors?.concreteCastingConcreteVolume;
     var roofsConcreteVolume = (totalRoofs?.roofTrussesAreRecyclable ?? false)
         ? null
-        : totalRoofs!.concreteVolume;
+        : totalRoofs?.concreteVolume;
     var buildingFrameConcreteVolume = totalBuildingFrame?.plasterCoatingVolume;
 
     if ((foundations?.bituminousWaterProofing ?? false) == false) {
@@ -129,7 +132,7 @@ abstract class TotalConcreteBricksTilesCeramics
         totalIntermediateFloors?.concreteCastingConcreteTons;
     var roofsConcreteTons = (totalRoofs?.roofTrussesAreRecyclable ?? false)
         ? null
-        : totalRoofs!.concreteTons;
+        : totalRoofs?.concreteTons;
     var buildingFrameConcreteTons = totalBuildingFrame?.plasterCoatingTons;
 
     if ((foundations?.bituminousWaterProofing ?? false) == false) {

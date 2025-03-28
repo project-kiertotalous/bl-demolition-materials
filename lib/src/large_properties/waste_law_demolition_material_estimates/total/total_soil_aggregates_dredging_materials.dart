@@ -23,4 +23,19 @@ abstract class TotalSoilAggregatesDredgingMaterials
       tons: totalDemolitionWasteAndCosts
           ?.totalDisposalMaterialsAndHazardousWaste?.contaminatedSoil.tons,
       notes: soilAggregatesDredgingMaterials?.hazardousSoilAndRockNotes);
+
+  WasteLawDemolitionMaterialEstimateEntry? get soilAndRock =>
+      soilAggregatesDredgingMaterials?.soilAndRock;
+
+  WasteLawDemolitionMaterialEstimateEntry? get hazardousDredgingSpoil =>
+      soilAggregatesDredgingMaterials?.hazardousDredgingSpoil;
+
+  WasteLawDemolitionMaterialEstimateEntry? get dredgingSpoil =>
+      soilAggregatesDredgingMaterials?.dredgingSpoil;
+
+  WasteLawDemolitionMaterialEstimateEntry? get hazardousRailwayBallast =>
+      soilAggregatesDredgingMaterials?.hazardousRailwayBallast;
+
+  WasteLawDemolitionMaterialEstimateEntry? get railwayBallast =>
+      soilAggregatesDredgingMaterials?.railwayBallast;
 }

@@ -39,4 +39,19 @@ abstract class TotalMetalsAndAlloys with _$TotalMetalsAndAlloys {
             ?.totalReusableAndRecyclableMaterials?.stainlessSteel.tons
       ]),
       notes: metalAndAlloys?.mixedMetalsNotes);
+
+  WasteLawDemolitionMaterialEstimateEntry? get lead => metalAndAlloys?.lead;
+
+  WasteLawDemolitionMaterialEstimateEntry? get zinc => metalAndAlloys?.zinc;
+
+  WasteLawDemolitionMaterialEstimateEntry? get tin => metalAndAlloys?.tin;
+
+  WasteLawDemolitionMaterialEstimateEntry? get contaminatedMetalWaste =>
+      metalAndAlloys?.contaminatedMetalWaste;
+
+  WasteLawDemolitionMaterialEstimateEntry? get hazardousOilAndTarCables =>
+      metalAndAlloys?.hazardousOilAndTarCables;
+
+  WasteLawDemolitionMaterialEstimateEntry? get otherCables =>
+      metalAndAlloys?.otherCables;
 }

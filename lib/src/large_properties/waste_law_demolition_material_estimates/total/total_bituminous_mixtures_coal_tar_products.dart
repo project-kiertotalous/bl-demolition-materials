@@ -24,4 +24,11 @@ abstract class TotalBituminousMixturesCoalTarProducts
               ?.totalDisposalMaterialsAndHazardousWaste?.bitumen.tons,
           notes: bituminousMixturesCoalTarProducts
               ?.coalTarContainingBituminousMixturesNotes);
+
+  WasteLawDemolitionMaterialEstimateEntry? get otherBituminousMixtures =>
+      bituminousMixturesCoalTarProducts?.otherBituminousMixtures;
+  WasteLawDemolitionMaterialEstimateEntry? get unnamed =>
+      bituminousMixturesCoalTarProducts?.unnamed;
+  WasteLawDemolitionMaterialEstimateEntry? get coalTarAndTarProducts =>
+      bituminousMixturesCoalTarProducts?.coalTarAndTarProducts;
 }

@@ -15,9 +15,9 @@ abstract class SoilAggregatesDredgingMaterials
 
   factory SoilAggregatesDredgingMaterials(
           {String? hazardousSoilAndRockNotes,
-          WasteLawDemolitionMaterialEstimateEntry? soilAndRockNotes,
+          WasteLawDemolitionMaterialEstimateEntry? soilAndRock,
           WasteLawDemolitionMaterialEstimateEntry? hazardousDredgingSpoil,
-          WasteLawDemolitionMaterialEstimateEntry? dredgingSoil,
+          WasteLawDemolitionMaterialEstimateEntry? dredgingSpoil,
           WasteLawDemolitionMaterialEstimateEntry? hazardousRailwayBallast,
           WasteLawDemolitionMaterialEstimateEntry? railwayBallast}) =
       _SoilAggregatesDredgingMaterials;

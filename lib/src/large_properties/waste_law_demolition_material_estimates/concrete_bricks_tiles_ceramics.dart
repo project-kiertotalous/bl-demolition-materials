@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'exports.dart';
+
 part 'concrete_bricks_tiles_ceramics.freezed.dart';
 part 'concrete_bricks_tiles_ceramics.g.dart';
 
@@ -12,7 +14,8 @@ abstract class ConcreteBricksTilesCeramics with _$ConcreteBricksTilesCeramics {
           {String? concreteNotes,
           String? brickNotes,
           String? ceramicTilesNotes,
-          String? hazardousConcreteBrickTileCeramicMixturesNotes}) =
+          String? hazardousConcreteBrickTileCeramicMixturesNotes,
+          WasteLawDemolitionMaterialEstimateEntry? otherMaterials}) =
       _ConcreteBricksTilesCeramics;
 
   factory ConcreteBricksTilesCeramics.fromJson(Map<String, dynamic> json) =>

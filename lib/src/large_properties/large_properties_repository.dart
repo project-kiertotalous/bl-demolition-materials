@@ -11,8 +11,8 @@ import 'partition_walls_doors_and_windows/exports.dart';
 import 'waste_law_demolition_material_estimates/exports.dart';
 import 'waste_law_demolition_material_estimates/total/exports.dart';
 
-part 'large_properties_json_repository.freezed.dart';
-part 'large_properties_json_repository.g.dart';
+part 'large_properties_repository.freezed.dart';
+part 'large_properties_repository.g.dart';
 
 /// The purpose of this class is to provide the capability of writing the
 /// large properties user-filled data into disk, and reading a the user-filled
@@ -22,10 +22,10 @@ part 'large_properties_json_repository.g.dart';
 /// This class additionally offers capabilities of restructuring the totals if
 /// needed be.
 @freezed
-class LargePropertiesJsonRepository with _$LargePropertiesJsonRepository {
-  LargePropertiesJsonRepository._();
+class LargePropertiesRepository with _$LargePropertiesRepository {
+  LargePropertiesRepository._();
 
-  factory LargePropertiesJsonRepository(
+  factory LargePropertiesRepository(
       {BuildingDimensions? buildingDimensions,
       BuildingFrame? buildingFrame,
       Cellar? cellar,
@@ -56,10 +56,10 @@ class LargePropertiesJsonRepository with _$LargePropertiesJsonRepository {
       InsulationAndAsbestosContainingMaterials?
           insulationAndAsbestosContainingMaterials,
       GypsumBasedBuildingMaterials? gypsumBasedBuildingMaterials,
-      OtherMaterials? otherMaterials}) = _LargePropertiesJsonRepository;
+      OtherMaterials? otherMaterials}) = _LargePropertiesRepository;
 
-  factory LargePropertiesJsonRepository.fromJson(Map<String, dynamic> json) =>
-      _$LargePropertiesJsonRepositoryFromJson(json);
+  factory LargePropertiesRepository.fromJson(Map<String, dynamic> json) =>
+      _$LargePropertiesRepositoryFromJson(json);
 
   TotalBuildingDimensions get totalBuildingDimensions =>
       TotalBuildingDimensions(
@@ -176,9 +176,9 @@ class LargePropertiesJsonRepository with _$LargePropertiesJsonRepository {
     file.writeAsStringSync(jsonEncode(toJson()));
   }
 
-  static LargePropertiesJsonRepository readFromFileSync(File file) {
+  static LargePropertiesRepository readFromFileSync(File file) {
     final fileString = file.readAsStringSync();
     final json = jsonDecode(fileString);
-    return LargePropertiesJsonRepository.fromJson(json);
+    return LargePropertiesRepository.fromJson(json);
   }
 }
