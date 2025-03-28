@@ -20,22 +20,24 @@ class Roof with _$Roof {
   factory Roof({
     @Default(false) bool containsRecyclableWood,
     @Default(false) bool coveringMaterialContainsAsbestos,
-    num? lapelLengthInMeters,
-    num? lapelWidthInMeters,
+    num? slopeLengthInMeters,
+    num? slopeWidthInMeters,
     RoofTypeSmallProperties? roofType,
     WaterRoofType? waterRoofType,
   }) = _Roof;
 
   /// Kattopinta-ala (m2)
   num? get roofArea {
-    if (roofType == RoofTypeSmallProperties.gableRoof) {
-      return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters, 2]);
-    } else if (roofType == RoofTypeSmallProperties.flatRoof) {
-      return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters]);
-    } else if (roofType == RoofTypeSmallProperties.pentRoof) {
-      return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters]);
+    switch (roofType) {
+      case RoofTypeSmallProperties.gableRoof:
+        return Utils.multiplyOrNull(
+            [slopeLengthInMeters, slopeWidthInMeters, 2]);
+      case RoofTypeSmallProperties.flatRoof:
+      case RoofTypeSmallProperties.pentRoof:
+        return Utils.multiplyOrNull([slopeLengthInMeters, slopeWidthInMeters]);
+      default:
+        return 0;
     }
-    return 0;
   }
 
   /// Puisen ristikkorakenteen paino (tonnia)
