@@ -1,6 +1,2 @@
 /// Lauta-aita, teräsverkko, alumiiniverkko
-enum FencesBetweenApartmentsInLinearMeters {
-  woodenFence,
-  steelMeshFence,
-  aluminiumMeshFence
-}
+enum FencesBetweenApartments { woodenFence, steelMeshFence, aluminiumMeshFence }

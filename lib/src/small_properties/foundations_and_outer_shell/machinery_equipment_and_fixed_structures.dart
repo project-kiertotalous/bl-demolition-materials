@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
+import '../../data_types/fences_between_apartments.dart';
+import '../material_weight.dart';
 import '../../utils/utils.dart';
-import 'package:bl_demolition_materials/src/data_types/fences_between_apartments.dart';
 
 part 'machinery_equipment_and_fixed_structures.freezed.dart';
 
@@ -19,7 +19,7 @@ class MachineryEquipmentAndFixedStructures
     num? electricalDistributionMachinesAndMeters,
     num? waterCirculationRadiators,
     @Default(false) bool areConcreteYardTilesAndWallStonesRecyclable,
-    FencesBetweenApartmentsInLinearMeters? fencesBetweenApartments,
+    FencesBetweenApartments? fencesBetweenApartments,
     num? concreteYardTilesAndStonesInSquareMeters,
     num? fencesBetweenApartmentsInMeters,
   }) = _MachineryEquipmentAndFixedStructures;
@@ -65,8 +65,7 @@ class MachineryEquipmentAndFixedStructures
 
   /// Huoneistojen väliset aidat (tonnia)
   num? get fencesBetweenApartmentsWeightTons {
-    if (fencesBetweenApartments ==
-        FencesBetweenApartmentsInLinearMeters.woodenFence) {
+    if (fencesBetweenApartments == FencesBetweenApartments.woodenFence) {
       num? multiply = Utils.multiplyOrNull([
         fencesBetweenApartmentsInMeters,
         YardStructureWeights.woodenFencesHeight1_2mKgPerM
@@ -76,7 +75,7 @@ class MachineryEquipmentAndFixedStructures
       }
       return multiply / 1000;
     } else if (fencesBetweenApartments ==
-        FencesBetweenApartmentsInLinearMeters.steelMeshFence) {
+        FencesBetweenApartments.steelMeshFence) {
       num? multiply = Utils.multiplyOrNull([
         fencesBetweenApartmentsInMeters,
         YardStructureWeights.steelMeshFencesHeight1_2mKgPerM
@@ -86,7 +85,7 @@ class MachineryEquipmentAndFixedStructures
       }
       return multiply / 1000;
     } else if (fencesBetweenApartments ==
-        FencesBetweenApartmentsInLinearMeters.aluminiumMeshFence) {
+        FencesBetweenApartments.aluminiumMeshFence) {
       num? multiply = Utils.multiplyOrNull([
         fencesBetweenApartmentsInMeters,
         YardStructureWeights.aluminiumMeshFencesHeight1_2mKgPerM
