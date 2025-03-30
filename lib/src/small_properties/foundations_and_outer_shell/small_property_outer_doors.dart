@@ -4,20 +4,20 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
-part 'outer_doors.freezed.dart';
+part 'small_property_outer_doors.freezed.dart';
 
 /// Ulko-ovet
 /// Sisältää tiedot kaikkien ulko-ovien materiaalimäärista yhteensä
 @freezed
-abstract class OuterDoors with _$OuterDoors {
-  const OuterDoors._();
+abstract class SmallPropertyOuterDoors with _$SmallPropertyOuterDoors {
+  const SmallPropertyOuterDoors._();
 
-  const factory OuterDoors({
+  const factory SmallPropertyOuterDoors({
     DoorsInfo? woodenDoor,
     DoorsInfo? aluminiumDoor,
     DoorsInfo? steelDoor,
     @Default(false) bool areDoorsRecyclable,
-  }) = _OuterDoors;
+  }) = _SmallPropertyOuterDoors;
 
   num? get woodenDoorTons {
     num? sum = Utils.sumOrNull([
