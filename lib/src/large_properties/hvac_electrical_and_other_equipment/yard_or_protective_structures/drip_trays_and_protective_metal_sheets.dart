@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../bl_demolition_materials.dart';
-import '../../material_info.dart';
 import 'yard_or_protective_structures.dart';
 
 part 'drip_trays_and_protective_metal_sheets.freezed.dart';

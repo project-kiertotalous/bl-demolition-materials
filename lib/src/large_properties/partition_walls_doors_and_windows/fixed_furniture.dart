@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
-import '../material_info.dart';
 
 part 'fixed_furniture.freezed.dart';
 part 'fixed_furniture.g.dart';
@@ -156,7 +156,7 @@ abstract class FixedFurniture with _$FixedFurniture {
           Utils.multiplyOrZero([
             industrialElectricStoves,
             FurnitureDressingKitchenToiletSpaceWeights
-                .foodServiceElecticStovesKgPerPcs
+                .foodServiceElectricStovesKgPerPcs
           ]),
           Utils.multiplyOrZero([
             coldRoomCabinets,
@@ -164,7 +164,7 @@ abstract class FixedFurniture with _$FixedFurniture {
           ]),
           Utils.multiplyOrZero([
             refrigerators,
-            FurnitureDressingKitchenToiletSpaceWeights.fridgesKgPerPcs
+            FurnitureDressingKitchenToiletSpaceWeights.refrigeratorsKgPerPcs
           ]),
           Utils.multiplyOrZero([
             saunaStoves,

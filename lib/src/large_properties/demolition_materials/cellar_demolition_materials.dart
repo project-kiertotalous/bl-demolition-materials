@@ -1,6 +1,6 @@
+import '../../../bl_demolition_materials.dart';
 import '../data_types/cellar_exterior_material.dart';
 import '../external_shell_and_frame_structures/cellar.dart';
-import '../material_info.dart';
 import 'demolition_materials.dart';
 
 /// Maanvarainen lattia

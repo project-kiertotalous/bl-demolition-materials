@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 import '../apartments/apartment_size.dart';
 import '../data_types/exports.dart';
-import '../material_info.dart';
 
 part 'apartment.freezed.dart';
 

@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 import '../data_types/exports.dart';
-import '../material_info.dart';
 
 part 'walls.freezed.dart';
 

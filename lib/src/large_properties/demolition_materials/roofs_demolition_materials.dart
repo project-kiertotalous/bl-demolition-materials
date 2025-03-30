@@ -1,8 +1,4 @@
-import '../../shared/water_roof_type.dart';
-import '../data_types/exports.dart';
-import '../external_shell_and_frame_structures/total/exports.dart';
-import '../material_info.dart';
-import 'demolition_materials.dart';
+import '../../../bl_demolition_materials.dart';
 
 /// Kattotyypit
 ///Harja- ja aumakattorunko

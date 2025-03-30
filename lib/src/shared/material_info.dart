@@ -62,6 +62,10 @@ class FoundationWeights {
   static num styrofoam150mmKgPerCbm = 18;
   static num finnFoam50mmKgPerSqm = 1.6;
   static num finnFoam50mmKgPerCbm = 32;
+  static num concreteKgPerCbm = 2500;
+  static num concreteOrSteelBlockKgPerCbm = 100;
+  static num removableSoilKgPerCbm = 1500;
+  static num asphaltKgPerSqm = 100;
 }
 
 class FoundationSlabWeights {
@@ -109,29 +113,6 @@ class FoundationStructureWeights {
   static num mineralWool150mmKgPerCbm = 55;
   static num vapourBarrierPlasticAndBuildingPaperKgPerSqm = 0.21;
   static num vapourBarrierPlasticAndBuildingPaperKgPerCbm = 970;
-}
-
-class FrameBarWeights {
-  static num concreteVerticalBars300x300KgPerM = 225;
-  static num concreteVerticalBars300x300KgPerCbm = 2500;
-  static num concreteVerticalBars300x300SteelKgPerCbm = 100;
-  static num concreteRoofBars500x500KgPerM = 375;
-  static num concreteRoofBars500x500KgPerCbm = 2500;
-  static num concreteRoofBars500x500SteelKgPerCbm = 100;
-  static num steelVerticalBarsIProfile200hx100bKgPerM = 22.4;
-  static num steelVerticalBarsIProfile200hx100bKgPerCbm = 7000;
-  static num steelVerticalBarsPipeProfile250x250KgPerM = 45.2;
-  static num steelVerticalBarsPipeProfile250x250KgPerCbm = 7000;
-  static num glulamBeamsVerticalVolume004CbmPerLinearMeterKgPerM = 20;
-  static num glulamBeamsVerticalVolume004CbmPerLinearMeterKgPerCbm = 500;
-  static num glulamBeamsRoofVolume005CbmPerLinearMeterKgPerM = 25;
-  static num glulamBeamsRoofVolume005CbmPerLinearMeterKgPerCbm = 500;
-  static num concreteWallElement200mmThickConcreteKgPerSqm = 260;
-  static num concreteWallElement200mmThickConcreteKgPerCbm = 1300;
-  static num glassWallFrameSteelRhs100x100x5KgPerM = 14.2;
-  static num glassWallFrameSteelRhs100x100x5KgPerSqm = 24.14;
-  static num aluminiumFrameRectangle150x200x5KgPerM = 9.22;
-  static num aluminiumFrameRectangle150x200x5KgPerSqm = 15.674;
 }
 
 class ExteriorWallWeights {
@@ -210,15 +191,6 @@ class UpperBaseStructureAndWaterRoofWeights {
   static num windProofWool30mmKgPerCbm = 55;
   static num woodShavings100mmKgPerSqm = 11.00;
   static num woodShavings100mmKgPerCbm = 100;
-}
-
-class YardStructureWeights {
-  static num concreteYardTilesKgPerPcs = 15;
-  static num concreteYardTilesKgPerSqm = 120;
-  static num concreteYardTilesKgPerCbm = 2500;
-  static num soilToRemoveDensityKgPerCbm = 1500;
-  static num asphaltWeightKgPerSqm = 100;
-  static num asphaltDensityKgPerCbm = 2500;
 }
 
 class CellarStructureWeights {
@@ -328,26 +300,6 @@ class HvacAndElectricalInstallationsWeights {
   static num roofExhaustFansKgPerPcs = 15;
 }
 
-class FurnitureDressingKitchenToiletSpaceWeights {
-  static num toiletSeatPorcelainKgPerPcs = 25.8;
-  static num toiletSeatPorcelainKgPerCbm = 2500;
-  static num toiletSinkPorcelainKgPerPcs = 13.0;
-  static num toiletSinkPorcelainKgPerCbm = 2500;
-  static num metallicDressingClosets500x1600KgPerLinearMeter = 50;
-  static num metallicDressingClosets500x1600KgPerPcs = 25;
-  static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter = 25;
-  static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerPcs = 15;
-  static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerCbm = 500;
-  static num steelSinksAndTablesRustProofKgPerPcs = 7.3;
-  static num rustProofTablesFoodServiceFurnitureKgPerPcs = 15;
-  static num rustProofLegsFoodServiceFurnitureKgPerPcs = 8;
-  static num saunaStovesKgPerPcs = 12;
-  static num electricStovesForApartmentsKgPerPcs = 40;
-  static num fridgesKgPerPcs = 60;
-  static num foodServiceElecticStovesKgPerPcs = 60;
-  static num coldRoomCabinetsKgPerPcs = 100;
-}
-
 class FixturesAndStructuresWeights {
   static num rainGuttersKgPerM = 2;
   static num dripTraysAndProtectiveSheeting08mmSteelDiskKgPerSqm = 8;
@@ -361,4 +313,171 @@ class DrainPipeWeights {
   static num clayBrickPipeKgPerCbm = 1500;
   static num holePipePlasticKgPerM = 1;
   static num holePipePlasticKgPerCbm = 970;
+}
+
+/// 5. Rakenteiden materiaali painot
+
+/// Rakennuslevyt- ja eristemateriaali ja paksuus (mm)
+class BuildingBoardsAndInsulationMaterialWeights {
+  static num plasterBoard15mmKgPerSqm = 9;
+  static num chipBoard11mmKgPerSqm = 7.5;
+  static num windProtectionBoardKgPerSqm = 7;
+  static num steelBoardCladding06mmKgPerSqm = 4.2;
+  static num roofSheet06mmKgPerSqm = 4.2;
+  static num mineriteBoardKgPerSqm = 15;
+  static num roofingFeltKgPerSqm = 8;
+  static num roofBrickKgPerSqm = 39;
+  static num underlaymentKgPerSqm = 0.21;
+  static num insulationWool100mmKgPerSqm = 5.5;
+}
+
+/// Ovet ja ikkunat
+///Runko ja levy (kg), lasi (kg)
+class DoorsAndWindowsWeights {
+  static num woodenOutdoors210x180Glass05sqmFrameKg = 51;
+  static num woodenOutdoors210x180Glass05GlassKg = 0.5 * 10;
+  static num woodenOutdoor210x180ClosedKg = 47;
+  static num woodenInnerDoorsGlass05sqmFrameKg = 21;
+  static num woodenInnerDoorsGlass05sqmGlassKg = 0.5 * 10;
+  static num fiberDoorsGlass05sqmFrameKg = 14;
+  static num fiberDoorsGlass05sqmGlassKg = 0.5 * 10;
+  static num steelDoorsGlass05sqmFrameKg = 80;
+  static num steelDoorsGlass05sqmGlassKg = 0.5 * 10;
+  static num steelDoorsClosedKg = 50;
+  static num aluminiumDoorsWithGlassFrameKg = 40;
+  static num aluminiumDoorsWithGlassGlassKg = 5;
+  static num metallicLiftAndPassageDoorsFrameKg = 100;
+  static num metallicLiftAndPassageDoorsGlassKg = 2 * 10;
+  static num woodenWindows140x140glass2x1_5sqmFrameKg = 25;
+  static num woodenWindows140x140glass2x1_5sqmGlassKg = 3 * 10;
+  static num aluminiumFramedWindows140x140glass2x1_5sqmFrameKg = 40;
+  static num aluminiumFramedWindows140x140glass2x1_5sqmGlassKg = 3 * 10;
+  static num steelFramedWindows140x140glass2x1_5sqmFrameKg = 50;
+  static num steelFramedWindows140x140glass2x1_5sqmGlassKg = 3 * 10;
+}
+
+/// Lattiarakenteet ja materiaalit
+class FloorStructuresAndMaterialsWeights {
+  static num parquetKgPerSqm = 0.2;
+  static num plasticCarpetKgPerSqm = 0.2;
+  static num ceramicTilesKgPerSqm = 16;
+  static num treeTrunks50x100mm600mmDivision1_6LmPerSqmKgPerSqm = 1.6 *
+      WoodMaterialInfo.weightPerLinearMeter(WoodMaterialType.trunkWood50x100);
+  static num concreteCasting100mmKgPerSqm = 0.1 * 2500;
+}
+
+/// Puiset kattorakenteet, ristikot, aluslaudoitus yms.
+class WoodenRoofStructuresWeights {
+  static num gableRoofWithLattice800mmKgPerSqm = 20;
+  static num flatRoofWithLattice800mmKgPerSqm = 15;
+  static num cofferedCeilingWithLattice800mmKgPerSqm = 15;
+}
+
+/// Teraksiset kattorakenteet, ristikor yms.
+class SteelRoofStructuresWeights {
+  static num gableRoofKgPerSqm = 50;
+  static num flatRoofKgPerSqm = 40;
+  static num cofferedCeilingKgPerSqm = 40;
+}
+
+/// Kivi ja keraamiset materiaalit yms.
+class StoneAndCeramicMaterialsWeights {
+  static num brickWallsAndMortarKgPerSqm = 150;
+  static num ceramicTilesKgPerSqm = 16;
+  static num concreteWallElements100mmKgPerSqm = 0.1 * 2500;
+  static num yardTilesKgPerSqm = 135;
+}
+
+/// Runkopalkit ja niiden mitat (mm)
+class FrameBarWeights {
+  static num concreteVerticalBars300x300KgPerM = 225;
+  static num concreteVerticalBars300x300KgPerCbm = 2500;
+  static num concreteVerticalBars300x300SteelKgPerCbm = 100;
+  static num concreteRoofBars500x300KgPerM = 375;
+  static num concreteRoofBars500x500KgPerM = 375;
+  static num concreteRoofBars500x500KgPerCbm = 2500;
+  static num concreteRoofBars500x500SteelKgPerCbm = 100;
+  static num steelVerticalBarsIProfile200hx100bKgPerM = 22.4;
+  static num steelVerticalBarsIProfile200hx100bKgPerCbm = 7000;
+  static num steelVerticalBarsPipeProfile250x250KgPerM = 45.2;
+  static num steelVerticalBarsPipeProfile250x250KgPerCbm = 7000;
+  static num glulamBeamsVerticalVolume004CbmPerLinearMeterKgPerM = 20;
+  static num glulamBeamsVerticalVolume004CbmPerLinearMeterKgPerCbm = 500;
+  static num glulamBeamsRoofVolume005CbmPerLinearMeterKgPerM = 25;
+  static num glulamBeamsRoofVolume005CbmPerLinearMeterKgPerCbm = 500;
+  static num glulamBeamsVolume004SqmPerLinearMeterKgPerM = 0.04 * 500;
+  static num glulamBeamsRoofVolume005SqmPerLinearMeterKgPerM = 0.05 * 500;
+  static num concreteWallElement200mmThickConcreteKgPerSqm = 260;
+  static num concreteWallElement200mmThickConcreteKgPerCbm = 1300;
+  static num glassWallFrameSteelRhs100x100x5KgPerM = 14.2;
+  static num glassWallFrameSteelRhs100x100x5KgPerSqm = 24.14;
+  static num aluminiumFrameRectangle150x200x5KgPerM = 9.22;
+  static num aluminiumFrameRectangle150x200x5KgPerSqm = 15.674;
+}
+
+/// Kalusteet puku, keittio ja WC-tilat
+class FurnitureDressingKitchenToiletSpaceWeights {
+  static num toiletSeatPorcelainKgPerCbm = 2500;
+  static num toiletSinkPorcelainKgPerPcs = 13.0;
+  static num toiletSinkPorcelainKgPerCbm = 2500;
+  static num metallicDressingClosets500x1600KgPerLinearMeter = 50;
+  static num metallicDressingClosets500x1600KgPerPcs = 25;
+  static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerLinearMeter = 25;
+  static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerPcs = 15;
+  static num woodBasedClosetsAndOtherFurnitureWidth06MKgPerCbm = 500;
+  static num steelSinksAndTablesRustProofKgPerPcs = 7.3;
+  static num rustProofTablesFoodServiceFurnitureKgPerPcs = 15;
+  static num rustProofLegsFoodServiceFurnitureKgPerPcs = 8;
+  static num saunaStovesKgPerPcs = 12;
+  static num electricStovesForApartmentsKgPerPcs = 40;
+  static num foodServiceElectricStovesKgPerPcs = 60;
+  static num coldRoomCabinetsKgPerPcs = 100;
+  static num toiletSeatPorcelainKgPerPcs = 25.8;
+  static num washingSinkPorcelainKgPerPcs = 13;
+  static num metallicDressingClosetsKgPerPcs = 25;
+  static num electricStovesKgPerPcs = 40;
+  static num refrigeratorsKgPerPcs = 60;
+  static num waterAccumulatorsKgPerPcs = 100;
+  static num centralHeatingRadiatorsWaterCirculatinKgPerPcs = 10;
+  static num ventilationMachineKgPerPcs = 100;
+  static num electricCentralKgPerPcs = 20;
+  static num electricEngineKgPerPcs = 10;
+}
+
+/// Putket ja johdot
+class PipesAndCablesWeights {
+  static num waterPipesCopperKgPerM = 0.207;
+  static num waterPipesPlasticKgPerM = 0.12;
+  static num sewerPipesCastIronDn150KGPerM = 141;
+  static num sewerPipesPlasticDn150KgPerM = 22;
+  static num centralHeatingPipesKgPerM = 4.3;
+  static num steelVentilationPipes300DnKgPerM = 52;
+  static num electricalWiresCopperKgPerM = 0.13;
+}
+
+/// Piharakenteet, varastot ja muut varusteet
+class YardStructureWeights {
+  static num concreteYardTilesAndStonesKgPerSqm = 120;
+  static num waterGuttersKgPerSqm = 20;
+  static num woodenFencesHeight1_2mKgPerM = 2;
+  static num steelMeshFencesHeight1_2mKgPerM = 2.5;
+  static num aluminiumMeshFencesHeight1_2mKgPerM = 2;
+  static num concreteBarsKgPerPcs = 35;
+  static num steelLiftDoorsAndBigPassageDoors3x5mKg = 100;
+  static num aluminiumLiftDoorsAndBigPassageDoors3x5mKg = 80;
+  static num woodenLiftDoorsAndBigPassageDoors3x5mKg = 70;
+  static num concreteYardTilesKgPerPcs = 15;
+  static num concreteYardTilesKgPerSqm = 120;
+  static num concreteYardTilesKgPerCbm = 2500;
+  static num soilToRemoveDensityKgPerCbm = 1500;
+  static num asphaltWeightKgPerSqm = 100;
+  static num asphaltDensityKgPerCbm = 2500;
+}
+
+/// Lampokeskukset, keskuslammitys putket ja patterit
+class CentralHeatingWeights {
+  static num woodChipBoilerKg = 800;
+  static num electricBoilerKg = 500;
+  static num remoteHeatChangerKg = 300;
+  static num waterHeaterKg = 500;
 }

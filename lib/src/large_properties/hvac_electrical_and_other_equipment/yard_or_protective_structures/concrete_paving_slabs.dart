@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../material_info.dart';
+import '../../../../bl_demolition_materials.dart';
 import 'yard_or_protective_structures.dart';
 
 part 'concrete_paving_slabs.freezed.dart';

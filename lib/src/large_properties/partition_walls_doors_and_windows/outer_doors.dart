@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../shared/doors_info.dart';
 import '../../utils/utils.dart';
-import '../material_info.dart';
 
 part 'outer_doors.freezed.dart';
 part 'outer_doors.g.dart';

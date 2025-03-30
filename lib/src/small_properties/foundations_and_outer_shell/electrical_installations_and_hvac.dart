@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../small_properties/material_info.dart';
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'electrical_installations_and_hvac.freezed.dart';
