@@ -21,8 +21,8 @@ abstract class CarportOrGarage with _$CarportOrGarage {
       @Default(false) bool coveringMaterialContainsAsbestos,
       GarageWallMaterial? garageWallMaterial,
       InsulationMaterialThickness? insulationMaterialThickness,
-      num? wallAverageHeightInMeters,
-      num? buildingWallLengthTotalInLinearMeters}) = _CarportOrGarage;
+      num? wallAverageHeight,
+      num? buildingWallLengthTotal}) = _CarportOrGarage;
 
   /// Asfaltti (tonnia)
   num? get asphaltTons {
@@ -67,8 +67,8 @@ abstract class CarportOrGarage with _$CarportOrGarage {
 
   /// Katoksen/tallin seinät
   /// Pinta-ala (m2)
-  num? get wallArea => Utils.multiplyOrNull(
-      [buildingWallLengthTotalInLinearMeters, wallAverageHeightInMeters]);
+  num? get wallArea =>
+      Utils.multiplyOrNull([buildingWallLengthTotal, wallAverageHeight]);
 
   /// Seinämateriaali (tonnia)
   num? get wallMaterialTons {

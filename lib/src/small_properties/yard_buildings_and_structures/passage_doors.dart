@@ -15,7 +15,7 @@ abstract class PassageDoors with _$PassageDoors {
     PassageDoor? woodenDoor,
     PassageDoor? aluminiumDoor,
     PassageDoor? steelDoor,
-    @Default(false) bool arePassageDoorsRecyclable,
+    @Default(false) bool doorsRecyclable,
   }) = _PassageDoors;
 
   /// Puuovi (tonnia)

@@ -15,18 +15,19 @@ abstract class Roof with _$Roof {
   const Roof._();
 
   const factory Roof(
-      {RoofTypeSmallProperties? roofType,
+      {RoofType? roofType,
       WaterRoofType? waterRoofType,
       num? lapelLengthInMeters,
-      num? lapelWidthInMeters}) = _Roof;
+      num? lapelWidthInMeters,
+      required CarportOrGarage carportOrGarage}) = _Roof;
 
   /// Kattopinta-ala (m2)
   num? get roofArea {
-    if (roofType == RoofTypeSmallProperties.gableRoof) {
+    if (roofType == RoofType.gableRoof) {
       return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters, 2]);
-    } else if (roofType == RoofTypeSmallProperties.flatRoof) {
+    } else if (roofType == RoofType.flatRoof) {
       return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters]);
-    } else if (roofType == RoofTypeSmallProperties.pentRoof) {
+    } else if (roofType == RoofType.pentRoof) {
       return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters]);
     }
     return null;
@@ -34,19 +35,19 @@ abstract class Roof with _$Roof {
 
   /// Puisen ristikkorakenteen paino (tonnia)
   num? get woodenRoofLatticeWeightTons {
-    if (roofType == RoofTypeSmallProperties.gableRoof) {
+    if (roofType == RoofType.gableRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.gableRoofWithLattice800mmKgPerSqm
       ]);
       return multiply != null ? multiply / 1000 : null;
-    } else if (roofType == RoofTypeSmallProperties.flatRoof) {
+    } else if (roofType == RoofType.flatRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.flatRoofWithLattice800mmKgPerSqm
       ]);
       return multiply != null ? multiply / 1000 : null;
-    } else if (roofType == RoofTypeSmallProperties.pentRoof) {
+    } else if (roofType == RoofType.pentRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.cofferedCeilingWithLattice800mmKgPerSqm
@@ -121,7 +122,7 @@ abstract class Roof with _$Roof {
   /// Huopa, asbestia
   num? get roofingFeltAsbestosWeightTons {
     if (waterRoofType == WaterRoofType.roofingFelt &&
-        CarportOrGarage().coveringMaterialContainsAsbestos == true) {
+        carportOrGarage.coveringMaterialContainsAsbestos == true) {
       return waterRoofWeightTons;
     }
     return null;
@@ -154,7 +155,7 @@ abstract class Roof with _$Roof {
   /// Tiili, asbestia
   num? get roofBrickAsbestosWeightTons {
     if (waterRoofType == WaterRoofType.tiledRoof &&
-        CarportOrGarage().coveringMaterialContainsAsbestos == true) {
+        carportOrGarage.coveringMaterialContainsAsbestos == true) {
       return waterRoofWeightTons;
     }
     return null;

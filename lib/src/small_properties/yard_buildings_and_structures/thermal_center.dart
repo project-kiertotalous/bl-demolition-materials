@@ -16,13 +16,13 @@ abstract class ThermalCenter with _$ThermalCenter {
   const ThermalCenter._();
 
   const factory ThermalCenter(
-      {@Default(false) propertyIsOnDistrictHeatingOrDirectElectricHeating,
+      {@Default(false) onDisctrictOrDirectHeating,
       num? concreteLengthInMeters,
       num? concreteWidthInMeters,
       num? plinthHeightInMeters,
       num? wallHeightInMeters,
       GarageWallMaterial? garageWallMaterial,
-      RoofTypeSmallProperties? roofType,
+      RoofType? roofType,
       WaterRoofType? waterRoofType,
       num? roofLengthInMeters,
       num? roofFlatInMeters,
@@ -36,7 +36,7 @@ abstract class ThermalCenter with _$ThermalCenter {
 
   /// Seinäpinta-ala (m2)
   num? get wallArea {
-    if (propertyIsOnDistrictHeatingOrDirectElectricHeating == true) {
+    if (onDisctrictOrDirectHeating == true) {
       return null;
     }
     return Utils.multiplyOrNull([
@@ -114,7 +114,7 @@ abstract class ThermalCenter with _$ThermalCenter {
 
   /// Betoni (tonnia)
   num? get concreteTons {
-    if (propertyIsOnDistrictHeatingOrDirectElectricHeating == true) {
+    if (onDisctrictOrDirectHeating == true) {
       return null;
     }
     num? sum = Utils.sumOrNull([plinthConcreteTons, concreteTilesTons]);
@@ -123,7 +123,7 @@ abstract class ThermalCenter with _$ThermalCenter {
 
   /// Betoni teräs (tonnia)
   num? get reingforcedConcreteTons {
-    if (propertyIsOnDistrictHeatingOrDirectElectricHeating == true) {
+    if (onDisctrictOrDirectHeating == true) {
       return null;
     }
     return reinforcedConcrete != null ? reinforcedConcrete! / 1000 : null;
@@ -133,14 +133,14 @@ abstract class ThermalCenter with _$ThermalCenter {
 
   /// Pinta-ala
   num? get roofArea {
-    if (propertyIsOnDistrictHeatingOrDirectElectricHeating == true) {
+    if (onDisctrictOrDirectHeating == true) {
       return null;
     }
     switch (roofType) {
-      case RoofTypeSmallProperties.gableRoof:
+      case RoofType.gableRoof:
         return Utils.multiplyOrNull([roofLengthInMeters, roofFlatInMeters, 2]);
-      case RoofTypeSmallProperties.flatRoof:
-      case RoofTypeSmallProperties.pentRoof:
+      case RoofType.flatRoof:
+      case RoofType.pentRoof:
         return Utils.multiplyOrNull([roofLengthInMeters, roofFlatInMeters]);
       default:
         return null;
@@ -150,19 +150,19 @@ abstract class ThermalCenter with _$ThermalCenter {
   /// Puisen ristikkorakenteen paino (tonnia)
   num? get woodenRoofLatticeWeightTons {
     switch (roofType) {
-      case RoofTypeSmallProperties.gableRoof:
+      case RoofType.gableRoof:
         num? multiply = Utils.multiplyOrNull([
           roofArea,
           WoodenRoofStructuresWeights.gableRoofWithLattice800mmKgPerSqm
         ]);
         return multiply != null ? multiply / 1000 : null;
-      case RoofTypeSmallProperties.flatRoof:
+      case RoofType.flatRoof:
         num? multiply = Utils.multiplyOrNull([
           roofArea,
           WoodenRoofStructuresWeights.flatRoofWithLattice800mmKgPerSqm
         ]);
         return multiply != null ? multiply / 1000 : null;
-      case RoofTypeSmallProperties.pentRoof:
+      case RoofType.pentRoof:
         num? multiply = Utils.multiplyOrNull([
           roofArea,
           WoodenRoofStructuresWeights.cofferedCeilingWithLattice800mmKgPerSqm
