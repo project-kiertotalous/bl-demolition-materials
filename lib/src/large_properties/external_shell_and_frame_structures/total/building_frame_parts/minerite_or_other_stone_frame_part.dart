@@ -13,7 +13,7 @@ abstract class MineriteOrOtherStoneFramePart extends BuildingEnvelopeFramePart
 
   factory MineriteOrOtherStoneFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _MineriteOrOtherStoneFramePart;
+      num? portionPercentage}) = _MineriteOrOtherStoneFramePart;
 
   final mineralWoolFrame = MineralWoolFrame();
   final semiHardFiberBoardFrame = SemiHardFiberBoardFrame();

@@ -14,7 +14,7 @@ abstract class ConcreteVerticalColumnsFramePart
 
   factory ConcreteVerticalColumnsFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _ConcreteVerticalColumnsFramePart;
+      num? portionPercentage}) = _ConcreteVerticalColumnsFramePart;
 
   late final VerticalConcreteColumnsFrame? verticalConcreteColumnsFrame =
       VerticalConcreteColumnsFrame(totalBuildingFrame);

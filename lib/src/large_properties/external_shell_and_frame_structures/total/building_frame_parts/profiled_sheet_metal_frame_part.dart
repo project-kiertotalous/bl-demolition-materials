@@ -13,7 +13,7 @@ abstract class ProfiledSheetMetalFramePart extends BuildingEnvelopeFramePart
 
   factory ProfiledSheetMetalFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _ProfiledSheetMetalFramePart;
+      num? portionPercentage}) = _ProfiledSheetMetalFramePart;
 
   final windProtectionBoardFrame = WindProtectionBoardFrame();
   final mineralWoolFrame = MineralWoolFrame();

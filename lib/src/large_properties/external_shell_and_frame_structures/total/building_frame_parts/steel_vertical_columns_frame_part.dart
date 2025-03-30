@@ -13,7 +13,7 @@ abstract class SteelVerticalColumnsFramePart extends StructuralBuildingFramePart
 
   factory SteelVerticalColumnsFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _SteelVerticalColumnsFramePart;
+      num? portionPercentage}) = _SteelVerticalColumnsFramePart;
 
   late final VerticalSteelColumnsFrame? verticalSteelColumnsFrame =
       VerticalSteelColumnsFrame(totalBuildingFrame);

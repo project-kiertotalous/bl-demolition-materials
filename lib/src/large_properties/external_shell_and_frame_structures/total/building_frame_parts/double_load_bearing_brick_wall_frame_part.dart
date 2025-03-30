@@ -15,7 +15,7 @@ abstract class DoubleLoadBearingBrickWallFramePart
 
   factory DoubleLoadBearingBrickWallFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _DoubleLoadBearingBrickWallFramePart;
+      num? portionPercentage}) = _DoubleLoadBearingBrickWallFramePart;
 
   late final DoubleBrickWallFrame? doubleBrickWallFrame =
       DoubleBrickWallFrame(totalBuildingFrame);
@@ -80,6 +80,6 @@ abstract class DoubleLoadBearingBrickWallFramePart
   num? get area => Utils.multiplyOrNull([
         totalBuildingFrame?.externalWallsPerimeter,
         totalBuildingFrame?.externalWallsHeight,
-        portionFractionPercentage
+        Utils.percentageToFraction(portionPercentage)
       ]);
 }

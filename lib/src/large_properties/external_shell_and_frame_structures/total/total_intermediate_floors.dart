@@ -14,40 +14,38 @@ abstract class TotalIntermediateFloors with _$TotalIntermediateFloors {
       TotalBuildingDimensions? totalBuildingDimensions,
       Foundations? foundations}) = _TotalIntermediateFloors;
 
-  num? get woodFramePercentageFraction =>
-      intermediateFloors?.woodFramePercentageFraction;
+  num? get woodFramePercentage => intermediateFloors?.woodFramePercentage;
 
-  num? get concreteCastingPercentageFraction =>
-      intermediateFloors?.concreteCastingPercentageFraction;
+  num? get concreteCastingPercentage =>
+      intermediateFloors?.concreteCastingPercentage;
 
-  num? get hollowCoreSlabPercentageFraction =>
-      intermediateFloors?.hollowCoreSlabPercentageFraction;
+  num? get hollowCoreSlabPercentage =>
+      intermediateFloors?.hollowCoreSlabPercentage;
 
-  num? get glulamBeamPercentageFraction =>
-      intermediateFloors?.glulamBeamPercentageFraction;
+  num? get glulamBeamPercentage => intermediateFloors?.glulamBeamPercentage;
 
   bool? get hollowCoreSlabsAndGlulamBeamRecyclable =>
       intermediateFloors?.hollowCoreSlabsAndGlulamBeamRecyclable;
 
-  num? get totalFraction => intermediateFloors?.totalFraction;
+  num? get totalPercentage => intermediateFloors?.totalPercentage;
 
   num? get woodFrameFloorArea => Utils.multiplyOrNull([
-        woodFramePercentageFraction,
+        Utils.percentageToFraction(woodFramePercentage),
         totalBuildingDimensions?.grossFloorAreaExcludingCellars
       ]);
 
   num? get concreteCastingFloorArea => Utils.multiplyOrNull([
-        concreteCastingPercentageFraction,
+        Utils.percentageToFraction(concreteCastingPercentage),
         totalBuildingDimensions?.grossFloorAreaExcludingCellars
       ]);
 
   num? get hollowCoreSlabFloorArea => Utils.multiplyOrNull([
-        hollowCoreSlabPercentageFraction,
+        Utils.percentageToFraction(hollowCoreSlabPercentage),
         totalBuildingDimensions?.grossFloorAreaExcludingCellars
       ]);
 
   num? get glulamBeamFloorArea => Utils.multiplyOrNull([
-        glulamBeamPercentageFraction,
+        Utils.percentageToFraction(glulamBeamPercentage),
         totalBuildingDimensions?.grossFloorAreaExcludingCellars
       ]);
 

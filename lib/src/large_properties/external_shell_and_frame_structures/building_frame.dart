@@ -8,22 +8,21 @@ abstract class BuildingFrame with _$BuildingFrame {
   const BuildingFrame._();
 
   const factory BuildingFrame(
-          {@Default(false) bool useFoundationCircumference,
-          num? externalWallsPerimeter,
-          num? externalWallsAverageHeight,
-          @Default(false) bool areMaterialsRecyclable,
-          num? woodPortionFractionPercentage,
-          num? glulamVerticalColumnsPortionFractionPercentage,
-          num? concreteVerticalColumnsPortionFractionPercentage,
-          num? steelVerticalColumnsPortionFractionPercentage,
-          num? doubleLoadBearingBrickWallPortionFractionPercentage,
-          num? concreteElementWallsWithoutFrameworkPortionFractionPercentage,
-          num? brickCladWallPortionFractionPercentage,
-          num? boardWallPortionFractionPercentage,
-          num? profiledSheetMetalPortionFractionPercentage,
-          num? steelProfileSandwichStructurePortionFractionPercentage,
-          num? mineriteOrOtherStoneBoardPortionFractionPercentage}) =
-      _BuildingFrame;
+      {@Default(false) bool useFoundationCircumference,
+      num? externalWallsPerimeter,
+      num? externalWallsAverageHeight,
+      @Default(false) bool areMaterialsRecyclable,
+      num? woodPortionPercentage,
+      num? glulamVerticalColumnsPortionPercentage,
+      num? concreteVerticalColumnsPortionPercentage,
+      num? steelVerticalColumnsPortionPercentage,
+      num? doubleLoadBearingBrickWallPortionPercentage,
+      num? concreteElementWallsWithoutFrameworkPortionPercentage,
+      num? brickCladWallPortionPercentage,
+      num? boardWallPortionPercentage,
+      num? profiledSheetMetalPortionPercentage,
+      num? steelProfileSandwichStructurePortionPercentage,
+      num? mineriteOrOtherStoneBoardPortionPercentage}) = _BuildingFrame;
 
   factory BuildingFrame.fromJson(Map<String, dynamic> json) =>
       _$BuildingFrameFromJson(json);

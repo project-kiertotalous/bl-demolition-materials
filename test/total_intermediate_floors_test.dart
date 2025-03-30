@@ -7,10 +7,10 @@ void main() {
     setUp(() {
       tif = TotalIntermediateFloors(
         intermediateFloors: IntermediateFloors(
-          woodFramePercentageFraction: 0.10,
-          concreteCastingPercentageFraction: 0.10,
-          hollowCoreSlabPercentageFraction: 0.10,
-          glulamBeamPercentageFraction: 0.70,
+          woodFramePercentage: 10,
+          concreteCastingPercentage: 10,
+          hollowCoreSlabPercentage: 10,
+          glulamBeamPercentage: 70,
         ),
         totalBuildingDimensions: TotalBuildingDimensions(
           buildingDimensions: BuildingDimensions(

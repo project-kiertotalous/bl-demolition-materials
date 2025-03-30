@@ -13,9 +13,8 @@ abstract class ConcreteElementWallsWithoutFrameworkFramePart
   ConcreteElementWallsWithoutFrameworkFramePart._();
 
   factory ConcreteElementWallsWithoutFrameworkFramePart(
-          {TotalBuildingFrame? totalBuildingFrame,
-          num? portionFractionPercentage}) =
-      _ConcreteElementWallsWithoutFrameworkFramePart;
+      {TotalBuildingFrame? totalBuildingFrame,
+      num? portionPercentage}) = _ConcreteElementWallsWithoutFrameworkFramePart;
 
   late final ConcreteWallElementFrame? concreteWallElementFrame =
       ConcreteWallElementFrame(totalBuildingFrame);

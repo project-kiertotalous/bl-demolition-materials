@@ -39,7 +39,7 @@ class VerticalGlulamBeamsFrame extends DemolitionMaterials {
     if (Utils.anyNull([
       totalBuildingFrame?.externalWallsHeight,
       totalBuildingFrame?.externalWallsPerimeter,
-      totalBuildingFrame?.glulamBeamsPart.portionFractionPercentage
+      totalBuildingFrame?.glulamBeamsPart.portionPercentage
     ])) {
       return null;
     }
@@ -47,7 +47,8 @@ class VerticalGlulamBeamsFrame extends DemolitionMaterials {
     return totalBuildingFrame!.externalWallsPerimeter! /
         sizing *
         totalBuildingFrame!.externalWallsHeight! *
-        totalBuildingFrame!.glulamBeamsPart.portionFractionPercentage!;
+        Utils.percentageToFraction(
+            totalBuildingFrame!.glulamBeamsPart.portionPercentage)!;
   }
 
   @override
@@ -80,7 +81,7 @@ class VerticalConcreteColumnsFrame extends DemolitionMaterials {
       totalBuildingFrame?.externalWallsHeight,
       totalBuildingFrame?.externalWallsPerimeter,
       totalBuildingFrame
-          ?.concreteElementWallsWithoutFrameworkPart.portionFractionPercentage
+          ?.concreteElementWallsWithoutFrameworkPart.portionPercentage
     ])) {
       return null;
     }
@@ -88,8 +89,8 @@ class VerticalConcreteColumnsFrame extends DemolitionMaterials {
     return totalBuildingFrame!.externalWallsPerimeter! /
         sizing *
         totalBuildingFrame!.externalWallsHeight! *
-        totalBuildingFrame!.concreteElementWallsWithoutFrameworkPart
-            .portionFractionPercentage!;
+        Utils.percentageToFraction(totalBuildingFrame!
+            .concreteElementWallsWithoutFrameworkPart.portionPercentage)!;
   }
 
   @override
@@ -120,7 +121,7 @@ class VerticalSteelColumnsFrame extends DemolitionMaterials {
     if (Utils.anyNull([
       totalBuildingFrame?.externalWallsPerimeter,
       totalBuildingFrame?.externalWallsHeight,
-      totalBuildingFrame?.steelVerticalColumnsPart.portionFractionPercentage,
+      totalBuildingFrame?.steelVerticalColumnsPart.portionPercentage,
     ])) {
       return null;
     }
@@ -128,7 +129,8 @@ class VerticalSteelColumnsFrame extends DemolitionMaterials {
     return totalBuildingFrame!.externalWallsPerimeter! /
         sizing *
         totalBuildingFrame!.externalWallsHeight! *
-        totalBuildingFrame!.steelVerticalColumnsPart.portionFractionPercentage!;
+        Utils.percentageToFraction(
+            totalBuildingFrame!.steelVerticalColumnsPart.portionPercentage)!;
   }
 
   @override
