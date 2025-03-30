@@ -8,19 +8,19 @@ abstract class IntermediateFloors with _$IntermediateFloors {
   const IntermediateFloors._();
 
   const factory IntermediateFloors(
-          {num? woodFramePercentageFraction,
-          num? concreteCastingPercentageFraction,
-          num? hollowCoreSlabPercentageFraction,
-          num? glulamBeamPercentageFraction,
+          {num? woodFramePercentage,
+          num? concreteCastingPercentage,
+          num? hollowCoreSlabPercentage,
+          num? glulamBeamPercentage,
           @Default(false) bool hollowCoreSlabsAndGlulamBeamRecyclable}) =
       _IntermediateFloors;
 
   factory IntermediateFloors.fromJson(Map<String, dynamic> json) =>
       _$IntermediateFloorsFromJson(json);
 
-  num get totalFraction =>
-      (woodFramePercentageFraction ?? 0) +
-      (concreteCastingPercentageFraction ?? 0) +
-      (hollowCoreSlabPercentageFraction ?? 0) +
-      (glulamBeamPercentageFraction ?? 0);
+  num get totalPercentage =>
+      (woodFramePercentage ?? 0) +
+      (concreteCastingPercentage ?? 0) +
+      (hollowCoreSlabPercentage ?? 0) +
+      (glulamBeamPercentage ?? 0);
 }

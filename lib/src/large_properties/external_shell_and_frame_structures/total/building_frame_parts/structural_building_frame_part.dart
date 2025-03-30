@@ -2,7 +2,7 @@ import 'building_frame_part.dart';
 
 abstract class StructuralBuildingFramePart extends BuildingFramePart {
   StructuralBuildingFramePart(
-      {super.totalBuildingFrame, super.portionFractionPercentage});
+      {super.totalBuildingFrame, super.portionPercentage});
 
   num? get woodVolume => null;
 

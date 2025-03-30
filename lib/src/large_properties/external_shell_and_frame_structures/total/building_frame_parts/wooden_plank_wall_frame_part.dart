@@ -13,7 +13,7 @@ abstract class WoodenPlankWallFramePart extends BuildingEnvelopeFramePart
 
   factory WoodenPlankWallFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _WoodenPlankWallFramePart;
+      num? portionPercentage}) = _WoodenPlankWallFramePart;
 
   final windProtectionBoardFrame = WindProtectionBoardFrame();
   final mineralWoolFrame = MineralWoolFrame();

@@ -13,7 +13,7 @@ abstract class SteelSandwichPanelFramePart extends BuildingEnvelopeFramePart
 
   factory SteelSandwichPanelFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _SteelSandwichPanelFramePart;
+      num? portionPercentage}) = _SteelSandwichPanelFramePart;
 
   final mineralWoolFrame = MineralWoolFrame();
   final plasterBoardFrame = PlasterBoardFrame();

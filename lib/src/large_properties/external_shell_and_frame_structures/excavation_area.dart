@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../bl_demolition_materials.dart';
+import '../../utils/utils.dart';
 
 part 'excavation_area.freezed.dart';
 part 'excavation_area.g.dart';
@@ -13,7 +14,7 @@ abstract class ExcavationArea with _$ExcavationArea {
       {num? areaToRemoveSize,
       num? areaToRemoveDepth,
       num? asphaltArea,
-      @Default(1) num cleanSoilPortionPercentageFraction}) = _ExcavationArea;
+      @Default(100) num cleanSoilPortionPercentage}) = _ExcavationArea;
 
   factory ExcavationArea.fromJson(Map<String, dynamic> json) =>
       _$ExcavationAreaFromJson(json);
@@ -31,7 +32,8 @@ abstract class ExcavationArea with _$ExcavationArea {
       return null;
     }
 
-    return (1 - cleanSoilPortionPercentageFraction) * volumeToRemove!;
+    return (1 - Utils.percentageToFraction(cleanSoilPortionPercentage)!) *
+        volumeToRemove!;
   }
 
   num? get cleanLandTons {
@@ -40,7 +42,7 @@ abstract class ExcavationArea with _$ExcavationArea {
     }
 
     return volumeToRemove! *
-        cleanSoilPortionPercentageFraction *
+        Utils.percentageToFraction(cleanSoilPortionPercentage)! *
         YardStructureWeights.soilToRemoveDensityKgPerCbm /
         1000;
   }
@@ -50,7 +52,7 @@ abstract class ExcavationArea with _$ExcavationArea {
       return null;
     }
 
-    return (1 - cleanSoilPortionPercentageFraction) *
+    return (1 - Utils.percentageToFraction(cleanSoilPortionPercentage)!) *
         volumeToRemove! *
         YardStructureWeights.soilToRemoveDensityKgPerCbm;
   }

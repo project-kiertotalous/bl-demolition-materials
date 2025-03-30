@@ -13,7 +13,7 @@ abstract class WoodFramePart extends StructuralBuildingFramePart
 
   factory WoodFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _WoodFramePart;
+      num? portionPercentage}) = _WoodFramePart;
 
   late final WoodFrame? woodFrame = WoodFrame();
 

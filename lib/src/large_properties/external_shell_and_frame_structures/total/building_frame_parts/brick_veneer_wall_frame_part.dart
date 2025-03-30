@@ -13,7 +13,7 @@ abstract class BrickVeneerWallFramePart extends BuildingEnvelopeFramePart
 
   factory BrickVeneerWallFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _BrickVeneerWallFramePart;
+      num? portionPercentage}) = _BrickVeneerWallFramePart;
 
   final windProtectionBoardFrame = WindProtectionBoardFrame();
   final mineralWoolFrame = MineralWoolFrame();

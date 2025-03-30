@@ -57,7 +57,9 @@ abstract class TotalRoofs with _$TotalRoofs {
 
     if (calculatedCeilingArea == foundations?.area) {
       targetArea = foundations!.area! *
-          (roofs!.ridgeOrGableRoofSlopeRatioFactorFractionPercentage + 1);
+          (Utils.percentageToFraction(
+                  roofs!.ridgeOrGableRoofSlopeRatioFactorPercentage)! +
+              1);
     } else {
       targetArea = calculatedCeilingArea!;
     }

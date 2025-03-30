@@ -18,7 +18,7 @@ abstract class Roofs with _$Roofs {
       WaterRoofType? flatOrMonoPitchedWaterRoofType,
       @Default(true) bool? useDefaultDimensions,
       @Default(false) bool? roofTrussesAreRecyclable,
-      @Default(0.25) num ridgeOrGableRoofSlopeRatioFactorFractionPercentage,
+      @Default(25) num ridgeOrGableRoofSlopeRatioFactorPercentage,
       @Default(0.10) num flatOrMonoPitchedRoofEaveOverhangAddition}) = _Roofs;
 
   factory Roofs.fromJson(Map<String, dynamic> json) => _$RoofsFromJson(json);

@@ -31,75 +31,77 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
 
   late final StructuralBuildingFramePart woodFramePart = WoodFramePart(
       totalBuildingFrame: this,
-      portionFractionPercentage: buildingFrame?.woodPortionFractionPercentage);
+      portionPercentage: buildingFrame?.woodPortionPercentage);
 
   late final StructuralBuildingFramePart glulamBeamsPart = GlulamBeamsFramePart(
       totalBuildingFrame: this,
-      portionFractionPercentage:
-          buildingFrame?.glulamVerticalColumnsPortionFractionPercentage);
+      portionPercentage: buildingFrame?.glulamVerticalColumnsPortionPercentage);
 
   late final StructuralBuildingFramePart concreteVerticalColumnsPart =
       ConcreteVerticalColumnsFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage:
-              buildingFrame?.concreteVerticalColumnsPortionFractionPercentage);
+          portionPercentage:
+              buildingFrame?.concreteVerticalColumnsPortionPercentage);
 
   late final StructuralBuildingFramePart steelVerticalColumnsPart =
       SteelVerticalColumnsFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage:
-              buildingFrame?.steelVerticalColumnsPortionFractionPercentage);
+          portionPercentage:
+              buildingFrame?.steelVerticalColumnsPortionPercentage);
 
   late final DoubleLoadBearingBrickWallFramePart
       doubleLoadBearingBrickWallPart = DoubleLoadBearingBrickWallFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage: buildingFrame
-              ?.doubleLoadBearingBrickWallPortionFractionPercentage);
+          portionPercentage:
+              buildingFrame?.doubleLoadBearingBrickWallPortionPercentage);
 
   late final ConcreteElementWallsWithoutFrameworkFramePart
       concreteElementWallsWithoutFrameworkPart =
       ConcreteElementWallsWithoutFrameworkFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage);
+          portionPercentage: buildingFrame
+              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
 
   late final BuildingEnvelopeFramePart brickVeneerWallFramePart =
       BrickVeneerWallFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage);
+          portionPercentage: buildingFrame
+              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
 
   late final BuildingEnvelopeFramePart woodenPlankWallFramePart =
       WoodenPlankWallFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage);
+          portionPercentage: buildingFrame
+              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
 
   late final BuildingEnvelopeFramePart profiledSheetMetalFramePart =
       ProfiledSheetMetalFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage);
+          portionPercentage: buildingFrame
+              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
 
   late final BuildingEnvelopeFramePart steelSandwichPanelFramePart =
       SteelSandwichPanelFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage);
+          portionPercentage: buildingFrame
+              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
 
   late final BuildingEnvelopeFramePart mineriteOrOtherStoneFramePart =
       MineriteOrOtherStoneFramePart(
           totalBuildingFrame: this,
-          portionFractionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionFractionPercentage);
+          portionPercentage: buildingFrame
+              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
 
-  num? get totalStructuralPartsPortionFractionPercentage => Utils.sumOrNull([
-        woodFramePart.portionFractionPercentage,
-        glulamBeamsPart.portionFractionPercentage,
-        concreteVerticalColumnsPart.portionFractionPercentage,
-        steelVerticalColumnsPart.portionFractionPercentage,
-        doubleLoadBearingBrickWallPart.portionFractionPercentage,
-        concreteVerticalColumnsPart.portionFractionPercentage
+  num? get totalStructuralPartsPortionPercentage => Utils.sumOrNull([
+        Utils.percentageToFraction(woodFramePart.portionPercentage),
+        Utils.percentageToFraction(glulamBeamsPart.portionPercentage),
+        Utils.percentageToFraction(
+            concreteVerticalColumnsPart.portionPercentage),
+        Utils.percentageToFraction(steelVerticalColumnsPart.portionPercentage),
+        Utils.percentageToFraction(
+            doubleLoadBearingBrickWallPart.portionPercentage),
+        Utils.percentageToFraction(
+            concreteVerticalColumnsPart.portionPercentage)
       ]);
 
   num? get totalStructuralPartsArea => Utils.sumOrNull([
@@ -121,19 +123,19 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
     concreteElementWallsWithoutFrameworkPart
   ];
 
-  num? get totalEnvelopePartsPortionFractionPercentage {
+  num? get totalEnvelopePartsPortionPercentage {
     if (!Utils.anyNonNull(
-        allEnvelopeParts.map((t) => t.portionFractionPercentage).toList())) {
+        allEnvelopeParts.map((t) => t.portionPercentage).toList())) {
       return null;
     }
 
-    return allEnvelopeParts.fold<num>(0,
-        (total, element) => total + (element.portionFractionPercentage ?? 0));
+    return allEnvelopeParts.fold<num>(
+        0, (total, element) => total + (element.portionPercentage ?? 0));
   }
 
   num? get totalEnvelopePartsArea {
     if (!Utils.anyNonNull(
-        allEnvelopeParts.map((t) => t.portionFractionPercentage).toList())) {
+        allEnvelopeParts.map((t) => t.portionPercentage).toList())) {
       return null;
     }
 

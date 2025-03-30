@@ -2,7 +2,7 @@ import 'building_frame_part.dart';
 
 abstract class BuildingEnvelopeFramePart extends BuildingFramePart {
   BuildingEnvelopeFramePart(
-      {super.totalBuildingFrame, super.portionFractionPercentage});
+      {super.totalBuildingFrame, super.portionPercentage});
 
   num? get windProtectionBoardTons => null;
 

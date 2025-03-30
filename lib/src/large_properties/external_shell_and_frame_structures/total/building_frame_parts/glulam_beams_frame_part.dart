@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../bl_demolition_materials.dart';
+import '../../../../utils/utils.dart';
 import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
 import 'structural_building_frame_part.dart';
 
@@ -13,28 +14,28 @@ abstract class GlulamBeamsFramePart extends StructuralBuildingFramePart
 
   factory GlulamBeamsFramePart(
       {TotalBuildingFrame? totalBuildingFrame,
-      num? portionFractionPercentage}) = _GlulamBeamsFramePart;
+      num? portionPercentage}) = _GlulamBeamsFramePart;
 
   late final VerticalGlulamBeamsFrame? glulamBeamsFrame =
       VerticalGlulamBeamsFrame(totalBuildingFrame);
 
   @override
   num? get woodVolume {
-    if (portionFractionPercentage == null ||
-        glulamBeamsFrame?.woodVolume == null) {
+    if (portionPercentage == null || glulamBeamsFrame?.woodVolume == null) {
       return null;
     }
 
-    return portionFractionPercentage! * glulamBeamsFrame!.woodVolume!;
+    return Utils.percentageToFraction(portionPercentage)! *
+        glulamBeamsFrame!.woodVolume!;
   }
 
   @override
   num? get woodTons {
-    if (portionFractionPercentage == null ||
-        glulamBeamsFrame?.woodVolume == null) {
+    if (portionPercentage == null || glulamBeamsFrame?.woodVolume == null) {
       return null;
     }
 
-    return portionFractionPercentage! * glulamBeamsFrame!.woodTons!;
+    return Utils.percentageToFraction(portionPercentage)! *
+        glulamBeamsFrame!.woodTons!;
   }
 }

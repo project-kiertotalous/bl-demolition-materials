@@ -109,4 +109,10 @@ class Utils {
 
     return fromJSON(readJSON);
   }
+
+  /// Given a num that represents a percentage, returns it as a fraction. If the
+  /// provided value is null, returns null.
+  static num? percentageToFraction(num? percentage) {
+    return percentage == null ? null : percentage / 100;
+  }
 }

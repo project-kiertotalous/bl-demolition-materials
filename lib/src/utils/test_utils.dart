@@ -41,10 +41,10 @@ class TestUtils {
     );
 
     final intermediateFloors = IntermediateFloors(
-        woodFramePercentageFraction: 0.25,
-        concreteCastingPercentageFraction: 0.25,
-        hollowCoreSlabPercentageFraction: 0.1,
-        glulamBeamPercentageFraction: 0.4);
+        woodFramePercentage: 25,
+        concreteCastingPercentage: 25,
+        hollowCoreSlabPercentage: 10,
+        glulamBeamPercentage: 40);
 
     final roofs = Roofs(
         ceilingArea: 1024,
@@ -57,17 +57,17 @@ class TestUtils {
     final buildingFrame = BuildingFrame(
         externalWallsPerimeter: 5123,
         externalWallsAverageHeight: 233,
-        woodPortionFractionPercentage: 0.2,
-        glulamVerticalColumnsPortionFractionPercentage: 0.2,
-        concreteElementWallsWithoutFrameworkPortionFractionPercentage: 0.1,
-        steelProfileSandwichStructurePortionFractionPercentage: 0.1,
-        doubleLoadBearingBrickWallPortionFractionPercentage: 0.05,
-        concreteVerticalColumnsPortionFractionPercentage: 0.1,
-        brickCladWallPortionFractionPercentage: 0.05,
-        boardWallPortionFractionPercentage: 0.1,
-        profiledSheetMetalPortionFractionPercentage: 0.05,
-        steelVerticalColumnsPortionFractionPercentage: 0.025,
-        mineriteOrOtherStoneBoardPortionFractionPercentage: 0.025);
+        woodPortionPercentage: 20,
+        glulamVerticalColumnsPortionPercentage: 20,
+        concreteElementWallsWithoutFrameworkPortionPercentage: 10,
+        steelProfileSandwichStructurePortionPercentage: 10,
+        doubleLoadBearingBrickWallPortionPercentage: 5,
+        concreteVerticalColumnsPortionPercentage: 10,
+        brickCladWallPortionPercentage: 5,
+        boardWallPortionPercentage: 10,
+        profiledSheetMetalPortionPercentage: 5,
+        steelVerticalColumnsPortionPercentage: 2.5,
+        mineriteOrOtherStoneBoardPortionPercentage: 2.5);
 
     final buildingDimensions = BuildingDimensions(
         grossFloorArea: 8945,
@@ -85,7 +85,7 @@ class TestUtils {
         areaToRemoveSize: 51,
         areaToRemoveDepth: 25,
         asphaltArea: 16,
-        cleanSoilPortionPercentageFraction: 0.851);
+        cleanSoilPortionPercentage: 85.1);
 
     final largePropertyEvaluationInfo = LargePropertyEvaluationInfo(
         propertyName: 'Sandyville',
