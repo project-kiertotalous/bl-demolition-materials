@@ -1,9 +1,9 @@
-import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
-import 'package:bl_demolition_materials/src/data_types/garage_wall_material.dart';
-import 'package:bl_demolition_materials/src/data_types/roof_type_small_properties.dart';
-import 'package:bl_demolition_materials/src/data_types/heating_type.dart';
+import '../../data_types/water_roof_type.dart';
+import '../../small_properties/material_weight.dart';
+import '../../data_types/garage_wall_material.dart';
+import '../../data_types/roof_type_small_properties.dart';
+import '../../data_types/heating_type.dart';
 import 'carport_or_garage.dart';
 import '../../utils/utils.dart';
 
