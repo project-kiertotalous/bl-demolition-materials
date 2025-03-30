@@ -1,8 +1,8 @@
+import 'package:bl_demolition_materials/src/shared/doors_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../utils/utils.dart';
 import '../material_info.dart';
-import 'inner_door.dart';
 
 part 'inner_doors.freezed.dart';
 
@@ -13,8 +13,8 @@ abstract class InnerDoors with _$InnerDoors {
   const InnerDoors._();
 
   const factory InnerDoors({
-    InnerDoor? woodenDoor,
-    InnerDoor? panelDoor,
+    DoorsInfo? woodenDoor,
+    DoorsInfo? panelDoor,
     @Default(false) bool areDoorsRecyclable,
   }) = _InnerDoors;
 

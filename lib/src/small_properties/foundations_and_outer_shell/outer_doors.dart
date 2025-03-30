@@ -1,8 +1,8 @@
+import 'package:bl_demolition_materials/src/shared/doors_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../material_info.dart';
 
 import '../../utils/utils.dart';
-import 'outer_door.dart';
+import '../material_info.dart';
 
 part 'outer_doors.freezed.dart';
 
@@ -13,11 +13,11 @@ abstract class OuterDoors with _$OuterDoors {
   const OuterDoors._();
 
   const factory OuterDoors({
-    OuterDoor? woodenDoor,
-    OuterDoor? aluminiumDoor,
-    OuterDoor? steelDoor,
+    DoorsInfo? woodenDoor,
+    DoorsInfo? aluminiumDoor,
+    DoorsInfo? steelDoor,
     @Default(false) bool areDoorsRecyclable,
-  }) = _InnerDoors;
+  }) = _OuterDoors;
 
   num? get woodenDoorTons {
     num? sum = Utils.sumOrNull([
