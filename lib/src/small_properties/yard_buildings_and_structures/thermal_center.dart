@@ -1,12 +1,10 @@
 import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
-import 'package:bl_demolition_materials/src/data_types/foundation_type.dart';
 import 'package:bl_demolition_materials/src/data_types/garage_wall_material.dart';
-import 'package:bl_demolition_materials/src/data_types/insulation_material_thickness.dart';
 import 'package:bl_demolition_materials/src/data_types/roof_type_small_properties.dart';
 import 'package:bl_demolition_materials/src/data_types/heating_type.dart';
-import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
+import 'carport_or_garage.dart';
 import '../../utils/utils.dart';
 
 part 'thermal_center.freezed.dart';
@@ -254,5 +252,107 @@ abstract class ThermalCenter with _$ThermalCenter {
   num? get waterHeaterWeightTons {
     return Utils.multiplyOrNull(
         [(CentralHeatingWeights.waterHeaterKg / 1000), waterHeatersPcs]);
+  }
+
+  /// Laskenta
+  /// Lämpökeskus
+
+  ///Betoniperustus ja seinät, betoni, puhdas
+  num? get concreteClean => concreteTons;
+
+  /// Betoniperustus ja seinät, betoni, asbestia
+  num? get concreteAsbestos {
+    if (CarportOrGarage()
+            .buildingFoundationAndWallsContainAsbestosOrPcbPaints ==
+        true) {
+      return concreteTons;
+    }
+    return null;
+  }
+
+  /// Betoniteräs, puhdas
+  num? get reinforcedConcreteClean => reingforcedConcreteTons;
+
+  /// Lautaverhous, puhdas
+  num? get boardCladding {
+    if (garageWallMaterial == GarageWallMaterial.board) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Tiili, puhdas
+  num? get brickWallMaterial {
+    if (garageWallMaterial == GarageWallMaterial.brick) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Tiili, asbestia
+  num? get brickWallMaterialAsbestos {
+    if (garageWallMaterial == GarageWallMaterial.brick &&
+        CarportOrGarage()
+                .buildingFoundationAndWallsContainAsbestosOrPcbPaints ==
+            true) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Teräslevy, puhdas
+  num? get steelSheetCladding {
+    if (garageWallMaterial == GarageWallMaterial.steelSheet) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Betoni, puhdas
+  num? get concreteWallMaterial {
+    if (garageWallMaterial == GarageWallMaterial.concrete) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Betoni, asbestia
+  num? get concreteWallMaterialAsbestos {
+    if (garageWallMaterial == GarageWallMaterial.concrete &&
+        CarportOrGarage()
+                .buildingFoundationAndWallsContainAsbestosOrPcbPaints ==
+            true) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Mineriitti, asbestia
+  num? get mineriteWallMaterialAsbestos {
+    if (garageWallMaterial == GarageWallMaterial.minerite) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Lämpökeskukset, keskuslämmitysputket ja patterit
+
+  /// Lämpökeskukset, kpl
+  num? get boilersPcs => heatingMachinesPcs;
+
+  /// Lämpökeskukset, kierrätettävät
+  num? get boilersRecyclable {
+    if (areRecyclable == true) {
+      return heatingMachinesPcs;
+    }
+    return null;
+  }
+
+  /// Vesivaraajat, kierrätettävät
+  num? get waterHeaterPcsRecyclable {
+    if (areRecyclable == true) {
+      return waterHeatersPcs;
+    }
+    return null;
   }
 }

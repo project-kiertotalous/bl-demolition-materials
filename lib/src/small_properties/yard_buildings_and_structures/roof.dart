@@ -1,5 +1,6 @@
 import 'package:bl_demolition_materials/src/data_types/roof_type_small_properties.dart';
 import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
+import 'package:bl_demolition_materials/src/small_properties/yard_buildings_and_structures/carport_or_garage.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
@@ -101,5 +102,61 @@ abstract class Roof with _$Roof {
       BuildingBoardsAndInsulationMaterialWeights.underlaymentKgPerSqm
     ]);
     return multiply != null ? multiply / 1000 : null;
+  }
+
+  /// Laskenta
+  /// Katto
+
+  /// Ristikkojako 800mm, tonnia
+  num? get woodenRoofLattice800mmWeightTons => woodenRoofLatticeWeightTons;
+
+  /// Huopa, tonnia
+  num? get roofingFeltWeightTons {
+    if (waterRoofType == WaterRoofType.roofingFelt) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Huopa, asbestia
+  num? get roofingFeltAsbestosWeightTons {
+    if (waterRoofType == WaterRoofType.roofingFelt &&
+        CarportOrGarage().coveringMaterialContainsAsbestos == true) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Teräs, tonnia
+  num? get steelSheetWeightTons {
+    if (waterRoofType == WaterRoofType.metalRoof) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Mineriitti, tonnia
+  num? get mineriteBoardWeightTons {
+    if (waterRoofType == WaterRoofType.mineriteRoof) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Tiili, tonnia
+  num? get roofBrickWeightTons {
+    if (waterRoofType == WaterRoofType.tiledRoof) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Tiili, asbestia
+  num? get roofBrickAsbestosWeightTons {
+    if (waterRoofType == WaterRoofType.tiledRoof &&
+        CarportOrGarage().coveringMaterialContainsAsbestos == true) {
+      return waterRoofWeightTons;
+    }
+    return null;
   }
 }
