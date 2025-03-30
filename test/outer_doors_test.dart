@@ -1,4 +1,4 @@
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/exports.dart';
+import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:test/test.dart';
 
 num twoDecimals(num? value) {

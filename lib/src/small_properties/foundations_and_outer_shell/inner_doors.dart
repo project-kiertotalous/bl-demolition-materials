@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
 
 import '../../utils/utils.dart';
+import '../material_info.dart';
 import 'inner_door.dart';
 
 part 'inner_doors.freezed.dart';

@@ -1,8 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/data_types/roof_type_small_properties.dart';
-import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
+
+import '../../shared/water_roof_type.dart';
 import '../../utils/utils.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
+import '../data_types/exports.dart';
+import '../material_info.dart';
 
 part 'roof.freezed.dart';
 

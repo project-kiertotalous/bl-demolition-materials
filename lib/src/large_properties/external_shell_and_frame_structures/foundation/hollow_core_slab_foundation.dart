@@ -1,8 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
+import '../../data_types/exports.dart';
 import '../../demolition_materials/foundation_and_floors_demolition_materials.dart';
+import 'foundation.dart';
 
 part 'hollow_core_slab_foundation.freezed.dart';
 part 'hollow_core_slab_foundation.g.dart';
@@ -17,6 +18,7 @@ abstract class HollowCoreSlabFoundation extends Foundation
       num? circumference,
       @Default(FoundationMaterial.concreteCasting)
       FoundationMaterial? material}) = _HollowCoreSlabFoundation;
+
   factory HollowCoreSlabFoundation.fromJson(Map<String, dynamic> json) =>
       _$HollowCoreSlabFoundationFromJson(json);
 

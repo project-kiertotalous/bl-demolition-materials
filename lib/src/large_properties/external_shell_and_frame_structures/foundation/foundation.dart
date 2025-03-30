@@ -1,4 +1,4 @@
-import '../../../../bl_demolition_materials.dart';
+import '../../data_types/exports.dart';
 
 abstract class Foundation {
   num? get concreteVolume;

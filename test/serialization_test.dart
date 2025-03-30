@@ -1,4 +1,5 @@
 import 'package:bl_demolition_materials/bl_demolition_materials.dart';
+import 'package:bl_demolition_materials/src/large_properties/data_types/cellar_exterior_material.dart';
 import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:test/test.dart';
 

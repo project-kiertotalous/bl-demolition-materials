@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../bl_demolition_materials.dart';
+import '../../material_info.dart';
 import 'hvac_or_electrical_installations.dart';
 
 part 'steel_ventilation_pipes_300_dn.freezed.dart';

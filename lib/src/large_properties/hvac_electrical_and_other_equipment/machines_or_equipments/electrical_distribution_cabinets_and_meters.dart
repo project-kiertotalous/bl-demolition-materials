@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../bl_demolition_materials.dart';
+import '../../material_info.dart';
 import 'machines_or_equipments.dart';
 
 part 'electrical_distribution_cabinets_and_meters.freezed.dart';

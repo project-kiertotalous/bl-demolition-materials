@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../data_types/fences_between_apartments.dart';
-import '../material_weight.dart';
+import '../data_types/fences_between_apartments.dart';
+import '../material_info.dart';
 import '../../utils/utils.dart';
 
 part 'machinery_equipment_and_fixed_structures.freezed.dart';

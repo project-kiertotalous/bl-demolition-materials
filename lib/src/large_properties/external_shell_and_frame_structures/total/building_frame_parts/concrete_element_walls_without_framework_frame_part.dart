@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../../bl_demolition_materials.dart';
 import '../../../../utils/utils.dart';
 import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
+import '../exports.dart';
 import 'exports.dart';
 
 part 'concrete_element_walls_without_framework_frame_part.freezed.dart';

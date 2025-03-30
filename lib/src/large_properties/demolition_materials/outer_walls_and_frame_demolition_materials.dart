@@ -1,5 +1,6 @@
-import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
+import '../external_shell_and_frame_structures/total/exports.dart';
+import '../material_info.dart';
 import 'demolition_materials.dart';
 
 /// Ulkoseinat ja runko

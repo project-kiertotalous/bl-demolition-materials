@@ -46,6 +46,8 @@ class WoodMaterialInfo {
   static num woodWeightPerSquareMeter(WoodMaterialType materialType) =>
       getBoardConsumptionPerSquareMeter(materialType) *
       weightPerLinearMeter(materialType);
+
+  static num densityKgPerCubicMeter() => 500;
 }
 
 /// Rakennuslevyt- ja eristemateriaali ja paksuus (mm)
