@@ -26,7 +26,8 @@ abstract class TotalReusableAndRecyclableMaterials
           FixedFurniture? fixedFurniture,
           Cellar? cellar,
           FloorStructures? floorStructures,
-          RoomSpaces? roomSpaces,
+          InternalWallFramesAndSurfaceMaterial?
+              internalWallFramesAndSurfaceMaterial,
           Windows? windows,
           HvacAndElectricalInstallations? hvacAndElectricalInstallations,
           MachinesAndEquipments? machinesAndEquipments,
@@ -68,13 +69,13 @@ abstract class TotalReusableAndRecyclableMaterials
         totalRoofs?.roofTileVolume,
         totalBuildingFrame?.brickVolume,
         totalBuildingFrame?.limeOrRedBrickVolume,
-        roomSpaces?.totalBrickWallsVolume
+        internalWallFramesAndSurfaceMaterial?.totalBrickWallsVolume
       ]),
       tons: Utils.sumOrNull([
         totalRoofs?.roofTileTons,
         totalBuildingFrame?.brickTons,
         totalBuildingFrame?.limeOrRedBrickTons,
-        roomSpaces?.totalBrickWallsTons
+        internalWallFramesAndSurfaceMaterial?.totalBrickWallsTons
       ]),
       demolitionCost:
           reusableAndRecyclableMaterials?.wallAndRoofTilesDemolitionCost);
@@ -125,12 +126,12 @@ abstract class TotalReusableAndRecyclableMaterials
       volume: Utils.sumOrNull([
         totalIntermediateFloors?.woodFrameWoodVolume,
         totalBuildingFrame?.woodFramePart.woodVolume,
-        roomSpaces?.totalWoodFramedWallsVolume
+        internalWallFramesAndSurfaceMaterial?.totalWoodFramedWallsVolume
       ]),
       tons: Utils.sumOrNull([
         totalIntermediateFloors?.woodFrameWoodTons,
         totalBuildingFrame?.woodFramePart.woodTons,
-        roomSpaces?.totalWoodFramedWallsTons,
+        internalWallFramesAndSurfaceMaterial?.totalWoodFramedWallsTons,
         // TODO: Adding the tons of lime or red brick here seems sus, but is
         // according to spec. This smells, very stinky.
         totalBuildingFrame?.limeOrRedBrickTons
@@ -208,12 +209,12 @@ abstract class TotalReusableAndRecyclableMaterials
       volume: Utils.sumOrNull([
         floorStructures?.gypsumBoardingMidsoleVolume,
         totalBuildingFrame?.gypsumBoardVolume,
-        roomSpaces?.totalCybrocVolume
+        internalWallFramesAndSurfaceMaterial?.totalCybrocVolume
       ]),
       tons: Utils.sumOrNull([
         floorStructures?.gypsumBoardingMidsoleTons,
         totalBuildingFrame?.gypsumBoardTons,
-        roomSpaces?.totalCybrocTons
+        internalWallFramesAndSurfaceMaterial?.totalCybrocTons
       ]),
       demolitionCost:
           reusableAndRecyclableMaterials?.gypsumBoardsDemolitionCost);
@@ -222,11 +223,11 @@ abstract class TotalReusableAndRecyclableMaterials
   late final chipboard = WasteCostItem(
       volume: Utils.sumOrNull([
         floorStructures?.chipBoardMidsoleVolume,
-        roomSpaces?.totalChipboardVolume
+        internalWallFramesAndSurfaceMaterial?.totalChipboardVolume
       ]),
       tons: Utils.sumOrNull([
         floorStructures?.chipBoardMidsoleTons,
-        roomSpaces?.totalChipboardTons
+        internalWallFramesAndSurfaceMaterial?.totalChipboardTons
       ]),
       demolitionCost: reusableAndRecyclableMaterials?.chipboardDemolitionCost);
 
@@ -267,10 +268,13 @@ abstract class TotalReusableAndRecyclableMaterials
         totalBuildingFrame?.styrofoamVolume,
         hvacAndElectricalInstallations?.plasticSewagePipes?.volume,
         hvacAndElectricalInstallations?.plasticWaterPipes?.volume,
-        roomSpaces?.totalPaintedPlasteredBrickWallVolume,
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
+        internalWallFramesAndSurfaceMaterial
+            ?.totalPaintedPlasteredBrickWallVolume,
+        (internalWallFramesAndSurfaceMaterial
+                    ?.surfaceMaterialCoatingContainsAsbestos ??
+                true)
             ? null
-            : roomSpaces?.totalPlasticCarpetVolume
+            : internalWallFramesAndSurfaceMaterial?.totalPlasticCarpetVolume
       ]),
       tons: Utils.sumOrNull([
         foundations?.plasticWasteTons,
@@ -279,10 +283,13 @@ abstract class TotalReusableAndRecyclableMaterials
         totalBuildingFrame?.styrofoamTons,
         hvacAndElectricalInstallations?.plasticSewagePipes?.tons,
         hvacAndElectricalInstallations?.plasticWaterPipes?.tons,
-        roomSpaces?.totalPaintedPlasteredBrickWallTons,
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
+        internalWallFramesAndSurfaceMaterial
+            ?.totalPaintedPlasteredBrickWallTons,
+        (internalWallFramesAndSurfaceMaterial
+                    ?.surfaceMaterialCoatingContainsAsbestos ??
+                true)
             ? null
-            : roomSpaces?.totalPlasticCarpetTons
+            : internalWallFramesAndSurfaceMaterial?.totalPlasticCarpetTons
       ]),
       demolitionCost:
           reusableAndRecyclableMaterials?.plasticWasteDemolitionCost);
@@ -362,7 +369,8 @@ abstract class TotalReusableAndRecyclableMaterials
         _foundationsCleanConcreteVolume,
         _intermediateFloorsCleanConcreteVolume,
         _roofsCleanConcreteVolume,
-        roomSpaces?.totalConcreteElementOrCastingWallsVolume,
+        internalWallFramesAndSurfaceMaterial
+            ?.totalConcreteElementOrCastingWallsVolume,
         _buildingFrameCleanConcreteVolume
       ]);
 
@@ -433,7 +441,8 @@ abstract class TotalReusableAndRecyclableMaterials
         _foundationsCleanConcreteTons,
         _intermediateFloorsCleanConcreteTons,
         _roofsCleanConcreteTons,
-        roomSpaces?.totalConcreteElementOrCastingWallsTons,
+        internalWallFramesAndSurfaceMaterial
+            ?.totalConcreteElementOrCastingWallsTons,
         _buildingFrameCleanConcreteTons
       ]);
 
@@ -496,7 +505,8 @@ abstract class TotalReusableAndRecyclableMaterials
   }
 
   num? get _ceramicTileVolume {
-    if (Utils.allNull([floorStructures, roomSpaces])) {
+    if (Utils.allNull(
+        [floorStructures, internalWallFramesAndSurfaceMaterial])) {
       return null;
     }
 
@@ -505,16 +515,18 @@ abstract class TotalReusableAndRecyclableMaterials
             ? null
             : floorStructures!.ceramicTileFloorVolume;
 
-    final wallsCeramicTileVolume =
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
-            ? null
-            : roomSpaces!.totalCeramicTileWallsVolume;
+    final wallsCeramicTileVolume = (internalWallFramesAndSurfaceMaterial
+                ?.surfaceMaterialCoatingContainsAsbestos ??
+            true)
+        ? null
+        : internalWallFramesAndSurfaceMaterial!.totalCeramicTileWallsVolume;
 
     return Utils.sumOrNull([floorsCeramicTileVolume, wallsCeramicTileVolume]);
   }
 
   num? get _ceramicTileTons {
-    if (Utils.allNull([floorStructures, roomSpaces])) {
+    if (Utils.allNull(
+        [floorStructures, internalWallFramesAndSurfaceMaterial])) {
       return null;
     }
 
@@ -523,10 +535,11 @@ abstract class TotalReusableAndRecyclableMaterials
             ? null
             : floorStructures!.ceramicTileFloorTons;
 
-    final wallsCeramicTileTons =
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? true)
-            ? null
-            : roomSpaces!.totalCeramicTileWallsTons;
+    final wallsCeramicTileTons = (internalWallFramesAndSurfaceMaterial
+                ?.surfaceMaterialCoatingContainsAsbestos ??
+            true)
+        ? null
+        : internalWallFramesAndSurfaceMaterial!.totalCeramicTileWallsTons;
 
     return Utils.sumOrNull([floorsCeramicTileTons, wallsCeramicTileTons]);
   }
@@ -600,7 +613,7 @@ abstract class TotalReusableAndRecyclableMaterials
         (totalBuildingFrame?.buildingFrame?.areMaterialsRecyclable ?? true)
             ? null
             : totalBuildingFrame?.glulamBeamsPart.woodVolume,
-        roomSpaces?.totalBoardPanelVolume
+        internalWallFramesAndSurfaceMaterial?.totalBoardPanelVolume
       ]);
 
   num? get _combustibleWoodWasteTons => Utils.sumOrNull([
@@ -620,6 +633,6 @@ abstract class TotalReusableAndRecyclableMaterials
             ? null
             : totalBuildingFrame?.glulamBeamsPart.woodTons,
         totalBuildingFrame?.semiHardFiberBoardTons,
-        roomSpaces?.totalBoardPanelTons
+        internalWallFramesAndSurfaceMaterial?.totalBoardPanelTons
       ]);
 }

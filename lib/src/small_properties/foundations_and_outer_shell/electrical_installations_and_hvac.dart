@@ -6,7 +6,7 @@ part 'electrical_installations_and_hvac.freezed.dart';
 
 /// Sähköasennukset ja LVI
 @freezed
-class Hvac with _$Hvac {
+abstract class Hvac with _$Hvac {
   const Hvac._();
 
   const factory Hvac({

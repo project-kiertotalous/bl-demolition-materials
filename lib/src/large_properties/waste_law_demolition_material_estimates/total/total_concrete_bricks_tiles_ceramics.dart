@@ -20,7 +20,8 @@ abstract class TotalConcreteBricksTilesCeramics
           TotalIntermediateFloors? totalIntermediateFloors,
           TotalRoofs? totalRoofs,
           TotalBuildingFrame? totalBuildingFrame,
-          RoomSpaces? roomSpaces,
+          InternalWallFramesAndSurfaceMaterial?
+              internalWallFramesAndSurfaceMaterial,
           TotalDemolitionWasteAndCosts? totalDemolitionWasteAndCosts}) =
       _TotalConcreteBricksTilesCeramics;
 
@@ -34,13 +35,13 @@ abstract class TotalConcreteBricksTilesCeramics
         totalRoofs?.roofTileVolume,
         totalBuildingFrame?.brickVolume,
         totalBuildingFrame?.limeOrRedBrickVolume,
-        roomSpaces?.totalBrickWallsVolume
+        internalWallFramesAndSurfaceMaterial?.totalBrickWallsVolume
       ]),
       tons: Utils.sumOrNull([
         totalRoofs?.roofTileTons,
         totalBuildingFrame?.brickTons,
         totalBuildingFrame?.limeOrRedBrickTons,
-        roomSpaces?.totalBrickWallsTons
+        internalWallFramesAndSurfaceMaterial?.totalBrickWallsTons
       ]),
       notes: concreteBricksTilesCeramics?.brickNotes);
 
@@ -122,7 +123,8 @@ abstract class TotalConcreteBricksTilesCeramics
       intermediateFloorsConcreteVolume,
       roofsConcreteVolume,
       buildingFrameConcreteVolume,
-      roomSpaces?.totalConcreteElementOrCastingWallsVolume
+      internalWallFramesAndSurfaceMaterial
+          ?.totalConcreteElementOrCastingWallsVolume
     ]);
   }
 
@@ -169,7 +171,8 @@ abstract class TotalConcreteBricksTilesCeramics
       intermediateFloorsConcreteTons,
       roofsConcreteTons,
       buildingFrameConcreteTons,
-      roomSpaces?.totalConcreteElementOrCastingWallsTons
+      internalWallFramesAndSurfaceMaterial
+          ?.totalConcreteElementOrCastingWallsTons
     ]);
   }
 }
