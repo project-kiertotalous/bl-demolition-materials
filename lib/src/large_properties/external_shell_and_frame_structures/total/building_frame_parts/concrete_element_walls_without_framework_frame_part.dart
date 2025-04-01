@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../bl_demolition_materials.dart';
+import '../../../../utils/utils.dart';
 import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
 import 'exports.dart';
 
@@ -64,7 +65,11 @@ abstract class ConcreteElementWallsWithoutFrameworkFramePart
   num? get mineriteBoardTons => null;
 
   @override
-  num? get area => null;
+  num? get area => Utils.multiplyOrNull([
+        totalBuildingFrame?.externalWallsPerimeter,
+        totalBuildingFrame?.externalWallsHeight,
+        Utils.percentageToFraction(portionPercentage)
+      ]);
 
   @override
   num? get brickTons => null;

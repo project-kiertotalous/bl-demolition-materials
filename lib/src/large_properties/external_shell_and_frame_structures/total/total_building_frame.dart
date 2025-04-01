@@ -65,43 +65,38 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
   late final BuildingEnvelopeFramePart brickVeneerWallFramePart =
       BrickVeneerWallFramePart(
           totalBuildingFrame: this,
-          portionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
+          portionPercentage: buildingFrame?.brickCladWallPortionPercentage);
 
   late final BuildingEnvelopeFramePart woodenPlankWallFramePart =
       WoodenPlankWallFramePart(
           totalBuildingFrame: this,
-          portionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
+          portionPercentage: buildingFrame?.boardWallPortionPercentage);
 
   late final BuildingEnvelopeFramePart profiledSheetMetalFramePart =
       ProfiledSheetMetalFramePart(
           totalBuildingFrame: this,
-          portionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
+          portionPercentage:
+              buildingFrame?.profiledSheetMetalPortionPercentage);
 
   late final BuildingEnvelopeFramePart steelSandwichPanelFramePart =
       SteelSandwichPanelFramePart(
           totalBuildingFrame: this,
-          portionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
+          portionPercentage:
+              buildingFrame?.steelProfileSandwichStructurePortionPercentage);
 
   late final BuildingEnvelopeFramePart mineriteOrOtherStoneFramePart =
       MineriteOrOtherStoneFramePart(
           totalBuildingFrame: this,
-          portionPercentage: buildingFrame
-              ?.concreteElementWallsWithoutFrameworkPortionPercentage);
+          portionPercentage:
+              buildingFrame?.mineriteOrOtherStoneBoardPortionPercentage);
 
   num? get totalStructuralPartsPortionPercentage => Utils.sumOrNull([
-        Utils.percentageToFraction(woodFramePart.portionPercentage),
-        Utils.percentageToFraction(glulamBeamsPart.portionPercentage),
-        Utils.percentageToFraction(
-            concreteVerticalColumnsPart.portionPercentage),
-        Utils.percentageToFraction(steelVerticalColumnsPart.portionPercentage),
-        Utils.percentageToFraction(
-            doubleLoadBearingBrickWallPart.portionPercentage),
-        Utils.percentageToFraction(
-            concreteVerticalColumnsPart.portionPercentage)
+        woodFramePart.portionPercentage,
+        glulamBeamsPart.portionPercentage,
+        concreteVerticalColumnsPart.portionPercentage,
+        steelVerticalColumnsPart.portionPercentage,
+        doubleLoadBearingBrickWallPart.portionPercentage,
+        concreteElementWallsWithoutFrameworkPart.portionPercentage
       ]);
 
   num? get totalStructuralPartsArea => Utils.sumOrNull([
