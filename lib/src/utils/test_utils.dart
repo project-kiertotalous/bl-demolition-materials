@@ -48,7 +48,7 @@ class TestUtils {
 
     final roofs = Roofs(
         ceilingArea: 1024,
-        ridgeOrGableRoofPortion: 0.4,
+        ridgeOrGableRoofPortionPercentage: 40,
         ridgeOrGableRoofType: RoofType.woodenTruss,
         ridgeOrGableWaterRoofType: WaterRoofType.mineriteRoof,
         flatOrMonoPitchedRoofType: RoofType.steelTruss,

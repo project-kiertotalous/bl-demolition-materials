@@ -47,7 +47,7 @@ abstract class TotalRoofs with _$TotalRoofs {
   }
 
   num? get defaultRidgeOrGableRoofCeilingArea {
-    if (ridgeOrGableRoofPortion == null ||
+    if (ridgeOrGableRoofPortionPercentage == null ||
         calculatedCeilingArea == null ||
         roofs == null) {
       return null;
@@ -64,11 +64,12 @@ abstract class TotalRoofs with _$TotalRoofs {
       targetArea = calculatedCeilingArea!;
     }
 
-    return targetArea * ridgeOrGableRoofPortion!;
+    return targetArea *
+        Utils.percentageToFraction(ridgeOrGableRoofPortionPercentage)!;
   }
 
   num? get defaultFlatOrMonoPitchedRoofCeilingArea {
-    if (flatOrMonoPitchedRoofPortion == null ||
+    if (flatOrMonoPitchedRoofPortionPercentage == null ||
         calculatedCeilingArea == null ||
         roofs == null) {
       return null;
@@ -83,7 +84,8 @@ abstract class TotalRoofs with _$TotalRoofs {
       targetArea = calculatedCeilingArea!;
     }
 
-    return targetArea * flatOrMonoPitchedRoofPortion!;
+    return targetArea *
+        Utils.percentageToFraction(flatOrMonoPitchedRoofPortionPercentage)!;
   }
 
   num? get roofBaseArea => foundations?.area;
@@ -100,9 +102,11 @@ abstract class TotalRoofs with _$TotalRoofs {
 
   num? get ceilingArea => roofs?.ceilingArea;
 
-  num? get ridgeOrGableRoofPortion => roofs?.ridgeOrGableRoofPortion;
+  num? get ridgeOrGableRoofPortionPercentage =>
+      roofs?.ridgeOrGableRoofPortionPercentage;
 
-  num? get flatOrMonoPitchedRoofPortion => roofs?.flatOrMonoPitchedRoofPortion;
+  num? get flatOrMonoPitchedRoofPortionPercentage =>
+      roofs?.flatOrMonoPitchedRoofPortionPercentage;
 
   bool? get useDefaultDimensions => roofs?.useDefaultDimensions;
 
@@ -113,11 +117,15 @@ abstract class TotalRoofs with _$TotalRoofs {
         defaultFlatOrMonoPitchedRoofCeilingArea
       ]);
 
-  num? get ridgeOrGableRoofArea =>
-      Utils.multiplyOrNull([totalArea, ridgeOrGableRoofPortion]);
+  num? get ridgeOrGableRoofArea => Utils.multiplyOrNull([
+        totalArea,
+        Utils.percentageToFraction(ridgeOrGableRoofPortionPercentage)
+      ]);
 
-  num? get flatOrMonoPitchedRoofArea =>
-      Utils.multiplyOrNull([totalArea, flatOrMonoPitchedRoofPortion]);
+  num? get flatOrMonoPitchedRoofArea => Utils.multiplyOrNull([
+        totalArea,
+        Utils.percentageToFraction(flatOrMonoPitchedRoofPortionPercentage)
+      ]);
 
   num? get woodVolume => Utils.sumOrNull([
         _woodenTrussRidgeOrGableRoof.woodVolume,
