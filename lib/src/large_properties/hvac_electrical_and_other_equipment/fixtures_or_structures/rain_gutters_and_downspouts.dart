@@ -18,5 +18,5 @@ abstract class RainGuttersAndDownspouts extends FixturesOrStructures
       _$RainGuttersAndDownspoutsFromJson(json);
 
   @override
-  num get defaultWeightKgPerMeter => 5;
+  num get defaultWeightKgPerMeter => 2;
 }
