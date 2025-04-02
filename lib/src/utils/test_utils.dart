@@ -83,8 +83,8 @@ class TestUtils {
         address: 'Santamalakatu 6 A 20',
         municipality: 'Viikanteri',
         author: 'Matti H',
-        date: DateTime.now(),
-        version: DateTime.utc(2013, 12, 17),
+        date: DateTime.now().toString(),
+        version: DateTime.utc(2013, 12, 17).toString(),
         description: 'Some sample evaluation info');
 
     final concreteBricksTilesCeramics = ConcreteBricksTilesCeramics(
