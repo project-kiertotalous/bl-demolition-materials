@@ -28,5 +28,5 @@ abstract class Roofs with _$Roofs {
   num? get flatOrMonoPitchedRoofPortionPercentage =>
       ridgeOrGableRoofPortionPercentage == null
           ? null
-          : 1 - Utils.percentageToFraction(ridgeOrGableRoofPortionPercentage)!;
+          : 100 - ridgeOrGableRoofPortionPercentage!;
 }

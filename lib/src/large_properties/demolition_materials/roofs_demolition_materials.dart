@@ -443,7 +443,7 @@ class WindProofWoolWaterRoof extends DemolitionMaterials {
     return kgPerSquareMeter *
         (totalRoofs!.defaultFlatOrMonoPitchedRoofCeilingArea! +
             totalRoofs!.defaultRidgeOrGableRoofCeilingArea!) /
-        kgPerCubicMeter;
+        1000;
   }
 }
 
