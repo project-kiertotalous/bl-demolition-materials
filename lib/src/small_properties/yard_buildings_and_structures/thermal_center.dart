@@ -1,11 +1,11 @@
+import 'package:bl_demolition_materials/src/small_properties/data_types/exports.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../data_types/water_roof_type.dart';
-import '../../small_properties/material_weight.dart';
-import '../../data_types/garage_wall_material.dart';
-import '../../data_types/roof_type_small_properties.dart';
-import '../../data_types/heating_type.dart';
-import 'carport_or_garage.dart';
+
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
+import '../data_types/garage_wall_material.dart';
+import '../data_types/heating_type.dart';
+import 'carport_or_garage.dart';
 
 part 'thermal_center.freezed.dart';
 
@@ -22,7 +22,7 @@ abstract class ThermalCenter with _$ThermalCenter {
       num? plinthHeightInMeters,
       num? wallHeightInMeters,
       GarageWallMaterial? garageWallMaterial,
-      RoofType? roofType,
+      SmallPropertyRoofType? roofType,
       WaterRoofType? waterRoofType,
       num? roofLengthInMeters,
       num? roofFlatInMeters,
@@ -137,10 +137,10 @@ abstract class ThermalCenter with _$ThermalCenter {
       return null;
     }
     switch (roofType) {
-      case RoofType.gableRoof:
+      case SmallPropertyRoofType.gableRoof:
         return Utils.multiplyOrZero([roofLengthInMeters, roofFlatInMeters, 2]);
-      case RoofType.flatRoof:
-      case RoofType.pentRoof:
+      case SmallPropertyRoofType.flatRoof:
+      case SmallPropertyRoofType.pentRoof:
         return Utils.multiplyOrNull([roofLengthInMeters, roofFlatInMeters]);
       default:
         return null;
@@ -150,19 +150,19 @@ abstract class ThermalCenter with _$ThermalCenter {
   /// Puisen ristikkorakenteen paino (tonnia)
   num? get woodenRoofLatticeWeightTons {
     switch (roofType) {
-      case RoofType.gableRoof:
+      case SmallPropertyRoofType.gableRoof:
         num? multiply = Utils.multiplyOrNull([
           roofArea,
           WoodenRoofStructuresWeights.gableRoofWithLattice800mmKgPerSqm
         ]);
         return multiply != null ? multiply / 1000 : null;
-      case RoofType.flatRoof:
+      case SmallPropertyRoofType.flatRoof:
         num? multiply = Utils.multiplyOrNull([
           roofArea,
           WoodenRoofStructuresWeights.flatRoofWithLattice800mmKgPerSqm
         ]);
         return multiply != null ? multiply / 1000 : null;
-      case RoofType.pentRoof:
+      case SmallPropertyRoofType.pentRoof:
         num? multiply = Utils.multiplyOrNull([
           roofArea,
           WoodenRoofStructuresWeights.cofferedCeilingWithLattice800mmKgPerSqm

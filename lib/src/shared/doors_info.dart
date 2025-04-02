@@ -17,5 +17,5 @@ abstract class DoorsInfo with _$DoorsInfo {
   factory DoorsInfo.fromJson(Map<String, dynamic> json) =>
       _$DoorsInfoFromJson(json);
 
-  num? get overallOuterDoors => Utils.sumOrNull([shutDoors, glassDoors]);
+  num? get doorCount => Utils.sumOrNull([shutDoors, glassDoors]);
 }

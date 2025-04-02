@@ -167,12 +167,12 @@ abstract class TotalRecyclableComponentsAndFurniture
   late final woodAndFiberboardDoors = RecyclableItem(
       size: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? false)
-            ? outerDoors?.woodenDoors?.overallOuterDoors
+            ? outerDoors?.woodenDoors?.doorCount
             : null,
         (innerDoors?.areDoorsRecyclable ?? false)
             ? Utils.sumOrNull([
-                innerDoors?.woodenDoors?.overallOuterDoors,
-                innerDoors?.panelDoors?.overallOuterDoors
+                innerDoors?.woodenDoors?.doorCount,
+                innerDoors?.panelDoors?.doorCount
               ])
             : null,
       ]),
@@ -198,7 +198,7 @@ abstract class TotalRecyclableComponentsAndFurniture
   /// Alumiiniovet
   late final aluminumDoors = RecyclableItem(
       size: (outerDoors?.areDoorsRecyclable ?? false)
-          ? outerDoors?.aluminiumDoors?.overallOuterDoors
+          ? outerDoors?.aluminiumDoors?.doorCount
           : null,
       tons: (outerDoors?.areDoorsRecyclable ?? false)
           ? outerDoors?.totalAluminiumTons
@@ -210,11 +210,11 @@ abstract class TotalRecyclableComponentsAndFurniture
       size: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? false)
             ? Utils.sumOrNull([
-                outerDoors?.steelDoors?.overallOuterDoors,
+                outerDoors?.steelDoors?.doorCount,
                 outerDoors?.accessAndLoadingDoors
               ])
             : null,
-        innerDoors?.fireDoors?.overallOuterDoors
+        innerDoors?.fireDoors?.doorCount
       ]),
       volume: Utils.sumOrNull([
         (outerDoors?.areDoorsRecyclable ?? false)

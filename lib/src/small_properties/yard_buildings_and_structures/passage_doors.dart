@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../small_properties/material_weight.dart';
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
-import 'passage_door.dart';
 
 part 'passage_doors.freezed.dart';
 
@@ -12,9 +11,9 @@ abstract class PassageDoors with _$PassageDoors {
   const PassageDoors._();
 
   const factory PassageDoors({
-    PassageDoor? woodenDoor,
-    PassageDoor? aluminiumDoor,
-    PassageDoor? steelDoor,
+    DoorsInfo? woodenDoor,
+    DoorsInfo? aluminiumDoor,
+    DoorsInfo? steelDoor,
     @Default(false) bool doorsRecyclable,
   }) = _PassageDoors;
 

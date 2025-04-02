@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../small_properties/material_weight.dart';
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'hall_doors.freezed.dart';

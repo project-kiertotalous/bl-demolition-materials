@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../data_types/roof_type_small_properties.dart';
-import '../../data_types/water_roof_type.dart';
+
+import '../../../bl_demolition_materials.dart';
 import '../../small_properties/yard_buildings_and_structures/carport_or_garage.dart';
-import '../../small_properties/material_weight.dart';
 import '../../utils/utils.dart';
+import '../data_types/exports.dart';
 
 part 'roof.freezed.dart';
 
@@ -15,7 +15,7 @@ abstract class Roof with _$Roof {
   const Roof._();
 
   const factory Roof(
-      {RoofType? roofType,
+      {SmallPropertyRoofType? roofType,
       WaterRoofType? waterRoofType,
       num? lapelLengthInMeters,
       num? lapelWidthInMeters,
@@ -23,11 +23,11 @@ abstract class Roof with _$Roof {
 
   /// Kattopinta-ala (m2)
   num? get roofArea {
-    if (roofType == RoofType.gableRoof) {
+    if (roofType == SmallPropertyRoofType.gableRoof) {
       return Utils.multiplyOrZero([lapelLengthInMeters, lapelWidthInMeters, 2]);
-    } else if (roofType == RoofType.flatRoof) {
+    } else if (roofType == SmallPropertyRoofType.flatRoof) {
       return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters]);
-    } else if (roofType == RoofType.pentRoof) {
+    } else if (roofType == SmallPropertyRoofType.pentRoof) {
       return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters]);
     }
     return null;
@@ -35,19 +35,19 @@ abstract class Roof with _$Roof {
 
   /// Puisen ristikkorakenteen paino (tonnia)
   num? get woodenRoofLatticeWeightTons {
-    if (roofType == RoofType.gableRoof) {
+    if (roofType == SmallPropertyRoofType.gableRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.gableRoofWithLattice800mmKgPerSqm
       ]);
       return multiply != null ? multiply / 1000 : null;
-    } else if (roofType == RoofType.flatRoof) {
+    } else if (roofType == SmallPropertyRoofType.flatRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.flatRoofWithLattice800mmKgPerSqm
       ]);
       return multiply != null ? multiply / 1000 : null;
-    } else if (roofType == RoofType.pentRoof) {
+    } else if (roofType == SmallPropertyRoofType.pentRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.cofferedCeilingWithLattice800mmKgPerSqm

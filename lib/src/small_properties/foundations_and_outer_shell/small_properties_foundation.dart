@@ -7,8 +7,8 @@ part 'small_properties_foundation.freezed.dart';
 
 /// Perustus
 @freezed
-abstract class Foundation with _$Foundation {
-  Foundation._();
+abstract class SmallPropertiesFoundation with _$SmallPropertiesFoundation {
+  SmallPropertiesFoundation._();
 
   factory SmallPropertiesFoundation({
     @Default(false) bool containsAsbestos,
