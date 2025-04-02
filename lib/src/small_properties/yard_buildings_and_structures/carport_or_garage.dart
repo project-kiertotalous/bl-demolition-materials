@@ -29,14 +29,14 @@ abstract class CarportOrGarage with _$CarportOrGarage {
     if (foundationType == FoundationType.concreteSlab) {
       return null;
     }
-    num? multiply = Utils.multiplyOrNull([
+    num? multiply = Utils.multiplyOrZero([
       Utils.sumOrNull([buildingLengthInMeters, buildingWidthInMeters]),
       2
     ]);
-    if (multiply == null) {
+    if (multiply == 0) {
       return null;
     }
-    return multiply * YardStructureWeights.concreteBarsKgPerPcs / 1000;
+    return multiply! * YardStructureWeights.concreteBarsKgPerPcs / 1000;
   }
 
   /// Betoni (tonnia)
@@ -103,23 +103,22 @@ abstract class CarportOrGarage with _$CarportOrGarage {
 
   /// Eriste (tonnia)
   num? get insulationThicknessTons {
-    if (insulationMaterialThickness ==
-        InsulationMaterialThickness.thickness100mm) {
+    if (insulationMaterialThickness == InsulationMaterialThickness.mm100) {
       num? multiply = Utils.multiplyOrNull([
         wallArea,
         BuildingBoardsAndInsulationMaterialWeights.insulationWool100mmKgPerSqm
       ]);
       return multiply != null ? multiply / 1000 : null;
     } else if (insulationMaterialThickness ==
-        InsulationMaterialThickness.thickness200mm) {
-      num? multiply = Utils.multiplyOrNull([
+        InsulationMaterialThickness.mm200) {
+      num? multiply = Utils.multiplyOrZero([
         wallArea,
         BuildingBoardsAndInsulationMaterialWeights.insulationWool100mmKgPerSqm,
         2
       ]);
-      return multiply != null ? multiply / 1000 : null;
+      return multiply != 0 ? multiply! / 1000 : null;
     } else if (insulationMaterialThickness ==
-        InsulationMaterialThickness.thickness300mm) {
+        InsulationMaterialThickness.mm300) {
       num? multiply = Utils.multiplyOrNull([
         wallArea,
         BuildingBoardsAndInsulationMaterialWeights.insulationWool100mmKgPerSqm,

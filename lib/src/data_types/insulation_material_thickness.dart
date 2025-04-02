@@ -1,5 +1,1 @@
-enum InsulationMaterialThickness {
-  thickness100mm,
-  thickness200mm,
-  thickness300mm
-}
+enum InsulationMaterialThickness { mm100, mm200, mm300 }
