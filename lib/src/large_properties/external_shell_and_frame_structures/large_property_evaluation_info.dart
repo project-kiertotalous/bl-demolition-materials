@@ -11,8 +11,8 @@ abstract class LargePropertyEvaluationInfo with _$LargePropertyEvaluationInfo {
       String? address,
       String? municipality,
       String? author,
-      DateTime? date,
-      DateTime? version,
+      String? date,
+      String? version,
       String? description}) = _LargePropertyEvaluationInfo;
 
   factory LargePropertyEvaluationInfo.fromJson(Map<String, dynamic> json) =>
