@@ -1,9 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../small_properties/material_weight.dart';
-import '../../data_types/foundation_type.dart';
-import '../../data_types/garage_wall_material.dart';
-import '../../data_types/insulation_material_thickness.dart';
+
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
+import '../data_types/exports.dart';
+import '../data_types/foundation_type.dart';
+import '../data_types/garage_wall_material.dart';
 
 part 'carport_or_garage.freezed.dart';
 

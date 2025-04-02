@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
+import '../exports.dart';
+import 'exports.dart';
 
 part 'total_intermediate_floors.freezed.dart';
 

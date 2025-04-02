@@ -5,5 +5,6 @@ export 'insulation_and_asbestos_containing_materials.dart';
 export 'metals_and_alloys.dart';
 export 'other_materials.dart';
 export 'soil_aggregates_dredging_materials.dart';
+export 'total/exports.dart';
 export 'waste_law_demolition_material_estimate_entry.dart';
 export 'wood_glass_plastics.dart';

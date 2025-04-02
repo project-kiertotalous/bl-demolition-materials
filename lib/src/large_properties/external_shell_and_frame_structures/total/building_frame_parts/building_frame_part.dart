@@ -1,5 +1,6 @@
 import '../../../../../bl_demolition_materials.dart';
 import '../../../../utils/utils.dart';
+import '../exports.dart';
 
 abstract class BuildingFramePart {
   final num? portionPercentage;

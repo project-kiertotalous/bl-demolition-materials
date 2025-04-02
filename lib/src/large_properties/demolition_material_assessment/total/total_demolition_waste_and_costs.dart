@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../bl_demolition_materials.dart';
 import '../../../utils/utils.dart';
+import '../../external_shell_and_frame_structures/total/exports.dart';
 import '../demolition_waste_and_costs.dart';
 import 'exports.dart';
 

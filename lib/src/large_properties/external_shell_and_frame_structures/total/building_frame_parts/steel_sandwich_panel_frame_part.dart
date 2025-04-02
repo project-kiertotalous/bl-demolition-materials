@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../bl_demolition_materials.dart';
 import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
+import '../exports.dart';
 import 'building_envelope_frame_part.dart';
 
 part 'steel_sandwich_panel_frame_part.freezed.dart';

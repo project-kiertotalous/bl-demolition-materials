@@ -1,22 +1,22 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
-part 'windows.freezed.dart';
+part 'small_property_windows.freezed.dart';
 
 /// Ikkunat
 /// Sisältää tiedot kaikkien ikkunoiden kappalemääristä ja materiaalimääristä yhteensä
 @freezed
-abstract class Windows with _$Windows {
-  const Windows._();
+abstract class SmallPropertyWindows with _$SmallPropertyWindows {
+  const SmallPropertyWindows._();
 
-  const factory Windows({
+  const factory SmallPropertyWindows({
     num? woodenFramePcs,
     num? steelPcs,
     num? aluminiumPcs,
     @Default(false) bool areWindowsRecyclable,
-  }) = _Windows;
+  }) = _SmallPropertyWindows;
 
   num? get woodenFrameWindowWoodTons {
     num? multiply = Utils.multiplyOrNull([

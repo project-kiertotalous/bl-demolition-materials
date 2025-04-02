@@ -1,58 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/utils/utils.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
 
-part 'foundations.freezed.dart';
+import '../../../bl_demolition_materials.dart';
+import '../..//utils/utils.dart';
 
-/// Poistettavat maa-ainekset, poistettava alue ja määrä
-@freezed
-abstract class ExcavationAreaSmallProperties
-    with _$ExcavationAreaSmallProperties {
-  ExcavationAreaSmallProperties._();
-
-  factory ExcavationAreaSmallProperties({
-    num? areOfTheRemovableSoil,
-    num? depthInMeters,
-    num? asphaltAreaInSquareMeters,
-  }) = _ExcavationAreaSmallProperties;
-
-  /// Poistettava määrä (m3)
-  num? get soilToBeRemovedVolume =>
-      Utils.multiplyOrNull([areOfTheRemovableSoil, depthInMeters]);
-
-  /// Poistettava maa (yhteensä, tonnia)
-  num? get soilToBeRemovedTons {
-    num? multiply = Utils.multiplyOrNull(
-        [soilToBeRemovedVolume, FoundationWeights.removableSoilKgPerCbm]);
-    if (multiply == 0) {
-      return 0;
-    }
-    return multiply! / 1000;
-  }
-
-  /// Poistettava puhdas maa (%)
-  num? get removableCleanSoilPercentage => 1;
-
-  /// Poistettavasta maasta saastunutta (%)
-  num? get contaminatedSoil => 1 - removableCleanSoilPercentage!;
-
-  // Asfaltti (tonnia)
-  num? get asphaltTons {
-    num? multiply = Utils.multiplyOrNull(
-        [asphaltAreaInSquareMeters, FoundationWeights.asphaltKgPerSqm]);
-    if (multiply == 0) {
-      return 0;
-    }
-    return multiply! / 1000;
-  }
-}
+part 'small_properties_foundation.freezed.dart';
 
 /// Perustus
 @freezed
-abstract class Foundation with _$Foundation {
-  Foundation._();
+abstract class SmallPropertiesFoundation with _$SmallPropertiesFoundation {
+  SmallPropertiesFoundation._();
 
-  factory Foundation({
+  factory SmallPropertiesFoundation({
     @Default(false) bool containsAsbestos,
     @Default(false) bool containsPcbPaints,
     num? plinthLengthInLinearMeters,
@@ -60,7 +18,7 @@ abstract class Foundation with _$Foundation {
     num? concreteSlabAreaInSquareMeters,
     num? plinthHeightInMeters,
     num? concreteSlabThicknessInMeters,
-  }) = _Foundation;
+  }) = _SmallPropertiesFoundation;
 
   /// Betoni (m3)
   num? get concreteVolume => Utils.sumOrNull([

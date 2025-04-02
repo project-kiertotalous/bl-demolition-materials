@@ -1,8 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
+import '../data_types/exports.dart';
 import '../demolition_materials/foundation_and_floors_demolition_materials.dart';
+import 'foundation/exports.dart';
 
 part 'foundations.freezed.dart';
 part 'foundations.g.dart';

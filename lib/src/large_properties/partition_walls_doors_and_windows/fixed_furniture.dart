@@ -156,7 +156,7 @@ abstract class FixedFurniture with _$FixedFurniture {
           Utils.multiplyOrZero([
             industrialElectricStoves,
             FurnitureDressingKitchenToiletSpaceWeights
-                .foodServiceElecticStovesKgPerPcs
+                .foodServiceElectricStovesKgPerPcs
           ]),
           Utils.multiplyOrZero([
             coldRoomCabinets,
@@ -164,7 +164,7 @@ abstract class FixedFurniture with _$FixedFurniture {
           ]),
           Utils.multiplyOrZero([
             refrigerators,
-            FurnitureDressingKitchenToiletSpaceWeights.fridgesKgPerPcs
+            FurnitureDressingKitchenToiletSpaceWeights.refrigeratorsKgPerPcs
           ]),
           Utils.multiplyOrZero([
             saunaStoves,

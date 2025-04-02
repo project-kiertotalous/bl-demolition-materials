@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../bl_demolition_materials.dart';
+import '../../../shared/water_roof_type.dart';
 import '../../../utils/utils.dart';
-import '../../demolition_materials/roofs_demolition_materials.dart';
 
 part 'total_roofs.freezed.dart';
 

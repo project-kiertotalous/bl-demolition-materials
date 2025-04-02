@@ -1,5 +1,4 @@
 import '../../../bl_demolition_materials.dart';
-import 'demolition_materials.dart';
 
 /// Kattotyypit
 ///Harja- ja aumakattorunko

@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
-import '../material_info.dart';
 import 'floor_structure.dart';
 
 part 'floor_structures.freezed.dart';

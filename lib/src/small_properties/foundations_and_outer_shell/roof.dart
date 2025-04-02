@@ -1,8 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/data_types/roof_type_small_properties.dart';
-import 'package:bl_demolition_materials/src/data_types/water_roof_type.dart';
+
+import '../../../bl_demolition_materials.dart';
+import '../../shared/water_roof_type.dart';
 import '../../utils/utils.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
+import '../data_types/exports.dart';
+import '../data_types/small_property_roof_type.dart';
 
 part 'roof.freezed.dart';
 
@@ -22,18 +24,18 @@ abstract class Roof with _$Roof {
     @Default(false) bool coveringMaterialContainsAsbestos,
     num? slopeLengthInMeters,
     num? slopeWidthInMeters,
-    RoofType? roofType,
+    SmallPropertyRoofType? roofType,
     WaterRoofType? waterRoofType,
   }) = _Roof;
 
   /// Kattopinta-ala (m2)
   num? get roofArea {
     switch (roofType) {
-      case RoofType.gableRoof:
+      case SmallPropertyRoofType.gableRoof:
         return Utils.multiplyOrNull(
             [slopeLengthInMeters, slopeWidthInMeters, 2]);
-      case RoofType.flatRoof:
-      case RoofType.pentRoof:
+      case SmallPropertyRoofType.flatRoof:
+      case SmallPropertyRoofType.pentRoof:
         return Utils.multiplyOrNull([slopeLengthInMeters, slopeWidthInMeters]);
       default:
         return 0;
@@ -42,7 +44,7 @@ abstract class Roof with _$Roof {
 
   /// Puisen ristikkorakenteen paino (tonnia)
   num? get woodenRoofLatticeWeightTons {
-    if (roofType == RoofType.gableRoof) {
+    if (roofType == SmallPropertyRoofType.gableRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.gableRoofWithLattice800mmKgPerSqm
@@ -51,7 +53,7 @@ abstract class Roof with _$Roof {
         return multiply;
       }
       return multiply! / 1000;
-    } else if (roofType == RoofType.flatRoof) {
+    } else if (roofType == SmallPropertyRoofType.flatRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.flatRoofWithLattice800mmKgPerSqm
@@ -60,7 +62,7 @@ abstract class Roof with _$Roof {
         return multiply;
       }
       return multiply! / 1000;
-    } else if (roofType == RoofType.pentRoof) {
+    } else if (roofType == SmallPropertyRoofType.pentRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         WoodenRoofStructuresWeights.cofferedCeilingWithLattice800mmKgPerSqm
@@ -134,17 +136,17 @@ abstract class Roof with _$Roof {
 
   /// Laskenta, aluslaudoituksen paino (tonnia)
   num? get underBoardingWeightTons {
-    if (roofType == RoofType.gableRoof) {
+    if (roofType == SmallPropertyRoofType.gableRoof) {
       return Utils.multiplyOrNull([
         (roofArea ?? 0 / 1000),
         WoodMaterialInfo.woodWeightPerSquareMeter(WoodMaterialType.board20x125)
       ]);
-    } else if (roofType == RoofType.flatRoof) {
+    } else if (roofType == SmallPropertyRoofType.flatRoof) {
       return Utils.multiplyOrNull([
         woodenRoofLatticeWeightTons,
         WoodMaterialInfo.woodWeightPerSquareMeter(WoodMaterialType.board20x125)
       ]);
-    } else if (roofType == RoofType.pentRoof) {
+    } else if (roofType == SmallPropertyRoofType.pentRoof) {
       return Utils.multiplyOrNull([
         woodenRoofLatticeWeightTons,
         WoodMaterialInfo.woodWeightPerSquareMeter(WoodMaterialType.board20x125)
@@ -156,7 +158,8 @@ abstract class Roof with _$Roof {
   /// Laskenta, kierrätettävä puu
   num? get recyclableWood {
     if (containsRecyclableWood == true) {
-      if (roofType == RoofType.flatRoof || roofType == RoofType.pentRoof) {
+      if (roofType == SmallPropertyRoofType.flatRoof ||
+          roofType == SmallPropertyRoofType.pentRoof) {
         return woodenRoofLatticeWeightTons;
       }
       return 0;

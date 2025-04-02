@@ -1,14 +1,4 @@
 import '../../bl_demolition_materials.dart';
-import '../exporting/waste_law_report_exporter.dart';
-import '../large_properties/demolition_material_assessment/exports.dart';
-import '../large_properties/hvac_electrical_and_other_equipment/exports.dart';
-import '../large_properties/hvac_electrical_and_other_equipment/fixtures_or_structures/exports.dart';
-import '../large_properties/hvac_electrical_and_other_equipment/hvac_or_electrical_installations/exports.dart';
-import '../large_properties/hvac_electrical_and_other_equipment/machines_or_equipments/exports.dart';
-import '../large_properties/hvac_electrical_and_other_equipment/yard_or_protective_structures/exports.dart';
-import '../large_properties/large_properties_repository.dart';
-import '../large_properties/partition_walls_doors_and_windows/exports.dart';
-import '../large_properties/waste_law_demolition_material_estimates/exports.dart';
 
 /// An utility class for all things related to testing
 class TestUtils {
@@ -252,14 +242,14 @@ class TestUtils {
 
     final outerDoors = OuterDoors(
         accessAndLoadingDoors: 8,
-        woodenDoors: OuterDoor(shutDoors: 4, glassDoors: 1),
-        aluminiumDoors: OuterDoor(shutDoors: 12, glassDoors: 2),
-        steelDoors: OuterDoor(shutDoors: 8, glassDoors: 0));
+        woodenDoors: DoorsInfo(shutDoors: 4, glassDoors: 1),
+        aluminiumDoors: DoorsInfo(shutDoors: 12, glassDoors: 2),
+        steelDoors: DoorsInfo(shutDoors: 8, glassDoors: 0));
 
     final innerDoors = InnerDoors(
-      panelDoors: InnerDoor(shutDoors: 8, glassDoors: 4),
-      fireDoors: InnerDoor(shutDoors: 2, glassDoors: 2),
-      woodenDoors: InnerDoor(shutDoors: 5, glassDoors: 0),
+      panelDoors: DoorsInfo(shutDoors: 8, glassDoors: 4),
+      fireDoors: DoorsInfo(shutDoors: 2, glassDoors: 2),
+      woodenDoors: DoorsInfo(shutDoors: 5, glassDoors: 0),
     );
 
     final fixedFurniture = FixedFurniture(

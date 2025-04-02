@@ -1,8 +1,8 @@
 import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/total_room_space.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
-import '../material_info.dart';
 import 'room_space.dart';
 
 part 'internal_wall_frames_and_surface_materials.freezed.dart';

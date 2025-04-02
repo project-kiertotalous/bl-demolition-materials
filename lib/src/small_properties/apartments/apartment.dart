@@ -1,12 +1,9 @@
-import 'package:bl_demolition_materials/src/data_types/bathroom_floor_material.dart';
-import 'package:bl_demolition_materials/src/data_types/bathroom_wall_material.dart';
-import 'package:bl_demolition_materials/src/data_types/floor_material.dart';
-import 'package:bl_demolition_materials/src/data_types/kitchen_wall_material.dart';
-import 'package:bl_demolition_materials/src/data_types/surface_material.dart';
-import 'package:bl_demolition_materials/src/small_properties/material_weight.dart';
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:bl_demolition_materials/src/small_properties/apartments/apartment_size.dart';
+
+import '../../../bl_demolition_materials.dart';
+import '../../utils/utils.dart';
+import '../apartments/apartment_size.dart';
+import '../data_types/exports.dart';
 
 part 'apartment.freezed.dart';
 
