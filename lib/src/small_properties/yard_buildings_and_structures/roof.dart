@@ -24,7 +24,7 @@ abstract class Roof with _$Roof {
   /// Kattopinta-ala (m2)
   num? get roofArea {
     if (roofType == RoofType.gableRoof) {
-      return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters, 2]);
+      return Utils.multiplyOrZero([lapelLengthInMeters, lapelWidthInMeters, 2]);
     } else if (roofType == RoofType.flatRoof) {
       return Utils.multiplyOrNull([lapelLengthInMeters, lapelWidthInMeters]);
     } else if (roofType == RoofType.pentRoof) {

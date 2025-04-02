@@ -39,7 +39,7 @@ abstract class ThermalCenter with _$ThermalCenter {
     if (onDisctrictOrDirectHeating == true) {
       return null;
     }
-    return Utils.multiplyOrNull([
+    return Utils.multiplyOrZero([
       Utils.sumOrNull([concreteLengthInMeters, concreteWidthInMeters]),
       2,
       wallHeightInMeters,
@@ -87,7 +87,7 @@ abstract class ThermalCenter with _$ThermalCenter {
   }
 
   /// Sokkeli, betoni, tonnia
-  num? get plinthConcreteTons => Utils.multiplyOrNull([
+  num? get plinthConcreteTons => Utils.multiplyOrZero([
         Utils.sumOrNull([concreteLengthInMeters, concreteWidthInMeters]),
         2,
         plinthHeightInMeters,
@@ -138,7 +138,7 @@ abstract class ThermalCenter with _$ThermalCenter {
     }
     switch (roofType) {
       case RoofType.gableRoof:
-        return Utils.multiplyOrNull([roofLengthInMeters, roofFlatInMeters, 2]);
+        return Utils.multiplyOrZero([roofLengthInMeters, roofFlatInMeters, 2]);
       case RoofType.flatRoof:
       case RoofType.pentRoof:
         return Utils.multiplyOrNull([roofLengthInMeters, roofFlatInMeters]);
