@@ -12,7 +12,7 @@ part 'apartment.freezed.dart';
 
 /// Huoneistot
 @freezed
-class Apartment with _$Apartment {
+abstract class Apartment with _$Apartment {
   const Apartment._();
 
   const factory Apartment(

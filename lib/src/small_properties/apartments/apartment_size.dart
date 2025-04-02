@@ -11,7 +11,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'apartment_size.freezed.dart';
 
 @freezed
-class ApartmentSize with _$ApartmentSize {
+abstract class ApartmentSize with _$ApartmentSize {
   const ApartmentSize._();
 
   const factory ApartmentSize({
@@ -202,7 +202,7 @@ class ApartmentSize with _$ApartmentSize {
 /// Laskenta, huoneistot
 /// Sisäseinät
 @freezed
-class ApartmentWallMaterials with _$ApartmentWallMaterials {
+abstract class ApartmentWallMaterials with _$ApartmentWallMaterials {
   const ApartmentWallMaterials._();
 
   const factory ApartmentWallMaterials({
@@ -243,7 +243,7 @@ class ApartmentWallMaterials with _$ApartmentWallMaterials {
 
 /// Huoneistojen sisälattiat, materiaali
 @freezed
-class ApartmentFloorMaterials with _$ApartmentFloorMaterials {
+abstract class ApartmentFloorMaterials with _$ApartmentFloorMaterials {
   const ApartmentFloorMaterials._();
 
   const factory ApartmentFloorMaterials({
@@ -281,7 +281,7 @@ class ApartmentFloorMaterials with _$ApartmentFloorMaterials {
 
 /// Keittiö, pesutila ja WC seinät ja lattiat
 @freezed
-class KitchenBathroomAndToiletWallsAndFloors
+abstract class KitchenBathroomAndToiletWallsAndFloors
     with _$KitchenBathroomAndToiletWallsAndFloors {
   const KitchenBathroomAndToiletWallsAndFloors._();
 
@@ -370,7 +370,7 @@ class KitchenBathroomAndToiletWallsAndFloors
 
 /// Saunan seinäpaneelit
 @freezed
-class SaunaWallPanels with _$SaunaWallPanels {
+abstract class SaunaWallPanels with _$SaunaWallPanels {
   const SaunaWallPanels._();
 
   const factory SaunaWallPanels({
@@ -395,7 +395,7 @@ class SaunaWallPanels with _$SaunaWallPanels {
 /// Kalusteet (tonnia)
 /// Keittiön kaapit
 @freezed
-class KitchenClosets with _$KitchenClosets {
+abstract class KitchenClosets with _$KitchenClosets {
   const KitchenClosets._();
 
   const factory KitchenClosets({
@@ -436,7 +436,7 @@ class KitchenClosets with _$KitchenClosets {
 
 /// Vaatekomerot
 @freezed
-class DressingClosets with _$DressingClosets {
+abstract class DressingClosets with _$DressingClosets {
   const DressingClosets._();
 
   const factory DressingClosets({
@@ -477,7 +477,7 @@ class DressingClosets with _$DressingClosets {
 
 /// WC-istuin, posliini
 @freezed
-class PorcelainSeats with _$PorcelainSeats {
+abstract class PorcelainSeats with _$PorcelainSeats {
   const PorcelainSeats._();
 
   const factory PorcelainSeats({
@@ -527,7 +527,7 @@ class PorcelainSeats with _$PorcelainSeats {
 
 /// Pesuallas, posliini
 @freezed
-class WashingSinks with _$WashingSinks {
+abstract class WashingSinks with _$WashingSinks {
   const WashingSinks._();
 
   const factory WashingSinks({
@@ -577,7 +577,7 @@ class WashingSinks with _$WashingSinks {
 
 /// Teräsaltaat ja pöydät
 @freezed
-class SteelTableAndSinks with _$SteelTableAndSinks {
+abstract class SteelTableAndSinks with _$SteelTableAndSinks {
   const SteelTableAndSinks._();
 
   const factory SteelTableAndSinks({
@@ -629,7 +629,7 @@ class SteelTableAndSinks with _$SteelTableAndSinks {
 
 /// Saunankiukaat
 @freezed
-class SaunaStoves with _$SaunaStoves {
+abstract class SaunaStoves with _$SaunaStoves {
   const SaunaStoves._();
 
   const factory SaunaStoves({
@@ -679,7 +679,7 @@ class SaunaStoves with _$SaunaStoves {
 
 /// Sähköliedet
 @freezed
-class ElectricStoves with _$ElectricStoves {
+abstract class ElectricStoves with _$ElectricStoves {
   const ElectricStoves._();
 
   const factory ElectricStoves({
@@ -729,7 +729,7 @@ class ElectricStoves with _$ElectricStoves {
 
 /// Jääkaapit
 @freezed
-class Refrigerators with _$Refrigerators {
+abstract class Refrigerators with _$Refrigerators {
   const Refrigerators._();
 
   const factory Refrigerators({
@@ -779,7 +779,7 @@ class Refrigerators with _$Refrigerators {
 
 /// Vesivaraajat
 @freezed
-class WaterAccumulators with _$WaterAccumulators {
+abstract class WaterAccumulators with _$WaterAccumulators {
   const WaterAccumulators._();
 
   const factory WaterAccumulators({

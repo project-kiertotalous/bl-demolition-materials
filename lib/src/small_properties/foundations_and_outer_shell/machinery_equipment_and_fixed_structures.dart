@@ -7,7 +7,7 @@ part 'machinery_equipment_and_fixed_structures.freezed.dart';
 
 /// Koneet, laitteet ja kiinteät rakenteet
 @freezed
-class MachineryEquipmentAndFixedStructures
+abstract class MachineryEquipmentAndFixedStructures
     with _$MachineryEquipmentAndFixedStructures {
   const MachineryEquipmentAndFixedStructures._();
 

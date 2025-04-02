@@ -9,7 +9,7 @@ part 'exportable_report.freezed.dart';
 /// However, it acts as a bridge that allows easily exporting to both excel
 /// and pdf files. In the future, more capabilities may be added.
 @freezed
-class ExportableReport with _$ExportableReport {
+abstract class ExportableReport with _$ExportableReport {
   const factory ExportableReport({required List<ReportTable> tables}) =
       _ExportableReport;
 }

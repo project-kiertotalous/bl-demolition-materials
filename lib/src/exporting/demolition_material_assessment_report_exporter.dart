@@ -13,7 +13,7 @@ import 'structures/exports.dart';
 part 'demolition_material_assessment_report_exporter.freezed.dart';
 
 @freezed
-class DemolitionMaterialAssessmentReportExporter
+abstract class DemolitionMaterialAssessmentReportExporter
     with _$DemolitionMaterialAssessmentReportExporter {
   DemolitionMaterialAssessmentReportExporter._();
 

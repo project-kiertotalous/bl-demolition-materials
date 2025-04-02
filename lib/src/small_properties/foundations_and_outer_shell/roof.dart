@@ -14,7 +14,7 @@ part 'roof.freezed.dart';
 /// Perustukset ja ulkovaippa, katto
 
 @freezed
-class Roof with _$Roof {
+abstract class Roof with _$Roof {
   Roof._();
 
   factory Roof({

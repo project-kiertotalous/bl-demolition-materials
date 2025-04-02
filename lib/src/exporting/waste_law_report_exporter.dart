@@ -14,7 +14,7 @@ part 'waste_law_report_exporter.freezed.dart';
 
 /// 'Jätelain mukainen taulukko' report table according to waste law
 @freezed
-class WasteLawReportExporter with _$WasteLawReportExporter {
+abstract class WasteLawReportExporter with _$WasteLawReportExporter {
   WasteLawReportExporter._();
 
   factory WasteLawReportExporter(

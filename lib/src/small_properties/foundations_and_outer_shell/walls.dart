@@ -9,7 +9,7 @@ part 'walls.freezed.dart';
 
 /// Ulko- ja kantavien väliseinien materiaalit
 @freezed
-class Walls with _$Walls {
+abstract class Walls with _$Walls {
   Walls._();
 
   factory Walls({

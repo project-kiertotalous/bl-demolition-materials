@@ -6,7 +6,8 @@ part 'foundations.freezed.dart';
 
 /// Poistettavat maa-ainekset, poistettava alue ja määrä
 @freezed
-class ExcavationAreaSmallProperties with _$ExcavationAreaSmallProperties {
+abstract class ExcavationAreaSmallProperties
+    with _$ExcavationAreaSmallProperties {
   ExcavationAreaSmallProperties._();
 
   factory ExcavationAreaSmallProperties({
@@ -30,10 +31,10 @@ class ExcavationAreaSmallProperties with _$ExcavationAreaSmallProperties {
   }
 
   /// Poistettava puhdas maa (%)
-  num? get removableCleanSoilInPercents => 1;
+  num? get removableCleanSoilPercentage => 1;
 
   /// Poistettavasta maasta saastunutta (%)
-  num? get contaminatedSoil => 1 - removableCleanSoilInPercents!;
+  num? get contaminatedSoil => 1 - removableCleanSoilPercentage!;
 
   // Asfaltti (tonnia)
   num? get asphaltTons {
@@ -48,7 +49,7 @@ class ExcavationAreaSmallProperties with _$ExcavationAreaSmallProperties {
 
 /// Perustus
 @freezed
-class Foundation with _$Foundation {
+abstract class Foundation with _$Foundation {
   Foundation._();
 
   factory Foundation({

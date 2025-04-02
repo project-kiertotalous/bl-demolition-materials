@@ -1,3 +1,4 @@
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../bl_demolition_materials.dart';
@@ -11,7 +12,7 @@ abstract class Roofs with _$Roofs {
 
   const factory Roofs(
       {num? ceilingArea,
-      num? ridgeOrGableRoofPortion,
+      num? ridgeOrGableRoofPortionPercentage,
       RoofType? ridgeOrGableRoofType,
       WaterRoofType? ridgeOrGableWaterRoofType,
       RoofType? flatOrMonoPitchedRoofType,
@@ -23,6 +24,8 @@ abstract class Roofs with _$Roofs {
 
   factory Roofs.fromJson(Map<String, dynamic> json) => _$RoofsFromJson(json);
 
-  num? get flatOrMonoPitchedRoofPortion =>
-      ridgeOrGableRoofPortion == null ? null : 1 - ridgeOrGableRoofPortion!;
+  num? get flatOrMonoPitchedRoofPortionPercentage =>
+      ridgeOrGableRoofPortionPercentage == null
+          ? null
+          : 1 - Utils.percentageToFraction(ridgeOrGableRoofPortionPercentage)!;
 }

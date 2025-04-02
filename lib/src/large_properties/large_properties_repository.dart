@@ -22,7 +22,7 @@ part 'large_properties_repository.g.dart';
 /// This class additionally offers capabilities of restructuring the totals if
 /// needed be.
 @freezed
-class LargePropertiesRepository with _$LargePropertiesRepository {
+abstract class LargePropertiesRepository with _$LargePropertiesRepository {
   LargePropertiesRepository._();
 
   factory LargePropertiesRepository(
@@ -35,7 +35,8 @@ class LargePropertiesRepository with _$LargePropertiesRepository {
       IntermediateFloors? intermediateFloors,
       LargePropertyEvaluationInfo? largePropertyEvaluationInfo,
       Roofs? roofs,
-      RoomSpaces? roomSpaces,
+      InternalWallFramesAndSurfaceMaterial?
+          internalWallFramesAndSurfaceMaterial,
       Windows? windows,
       OuterDoors? outerDoors,
       InnerDoors? innerDoors,
@@ -101,7 +102,8 @@ class LargePropertiesRepository with _$LargePropertiesRepository {
               fixedFurniture: fixedFurniture,
               floorStructures: floorStructures,
               foundations: foundations,
-              roomSpaces: roomSpaces);
+              internalWallFramesAndSurfaceMaterial:
+                  internalWallFramesAndSurfaceMaterial);
 
   TotalRecyclableComponentsAndFurniture
       get totalRecyclableComponentsAndFurniture =>
@@ -129,7 +131,8 @@ class LargePropertiesRepository with _$LargePropertiesRepository {
           fixedFurniture: fixedFurniture,
           cellar: cellar,
           floorStructures: floorStructures,
-          roomSpaces: roomSpaces,
+          internalWallFramesAndSurfaceMaterial:
+              internalWallFramesAndSurfaceMaterial,
           windows: windows,
           hvacAndElectricalInstallations: hvacAndElectricalInstallations,
           machinesAndEquipments: machinesAndEquipments,
@@ -151,7 +154,8 @@ class LargePropertiesRepository with _$LargePropertiesRepository {
           totalIntermediateFloors: totalIntermediateFloors,
           totalRoofs: totalRoofs,
           totalBuildingFrame: totalBuildingFrame,
-          roomSpaces: roomSpaces,
+          internalWallFramesAndSurfaceMaterial:
+              internalWallFramesAndSurfaceMaterial,
           totalDemolitionWasteAndCosts: totalDemolitionWasteAndCosts);
 
   TotalMetalsAndAlloys get totalMetalsAndAlloys => TotalMetalsAndAlloys(

@@ -15,13 +15,15 @@ abstract class TotalDisposalMaterialsAndHazardousWaste
   TotalDisposalMaterialsAndHazardousWaste._();
 
   factory TotalDisposalMaterialsAndHazardousWaste(
-      {DisposalMaterialsAndHazardousWaste? disposalMaterialsAndHazardousWaste,
-      ExcavationArea? excavationArea,
-      Cellar? cellar,
-      FixedFurniture? fixedFurniture,
-      FloorStructures? floorStructures,
-      Foundations? foundations,
-      RoomSpaces? roomSpaces}) = _TotalDisposalMaterialsAndHazardousWaste;
+          {DisposalMaterialsAndHazardousWaste? disposalMaterialsAndHazardousWaste,
+          ExcavationArea? excavationArea,
+          Cellar? cellar,
+          FixedFurniture? fixedFurniture,
+          FloorStructures? floorStructures,
+          Foundations? foundations,
+          InternalWallFramesAndSurfaceMaterial?
+              internalWallFramesAndSurfaceMaterial}) =
+      _TotalDisposalMaterialsAndHazardousWaste;
 
   /// Kierrätyskelvoton tiilijäte
   late final nonRecyclableBrickWaste = WasteDisposalItem(
@@ -53,8 +55,10 @@ abstract class TotalDisposalMaterialsAndHazardousWaste
             : null,
         cellar?.concreteVolume,
         cellar?.brickVolume,
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? false)
-            ? roomSpaces?.totalPlasticCarpetVolume
+        (internalWallFramesAndSurfaceMaterial
+                    ?.surfaceMaterialCoatingContainsAsbestos ??
+                false)
+            ? internalWallFramesAndSurfaceMaterial?.totalPlasticCarpetVolume
             : null
       ]),
       tons: Utils.sumOrNull([
@@ -66,8 +70,10 @@ abstract class TotalDisposalMaterialsAndHazardousWaste
             : null,
         cellar?.concreteTons,
         cellar?.brickTons,
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? false)
-            ? roomSpaces?.totalPlasticCarpetTons
+        (internalWallFramesAndSurfaceMaterial
+                    ?.surfaceMaterialCoatingContainsAsbestos ??
+                false)
+            ? internalWallFramesAndSurfaceMaterial?.totalPlasticCarpetTons
             : null
       ]),
       demolitionOrProcessingCost: disposalMaterialsAndHazardousWaste
@@ -90,8 +96,10 @@ abstract class TotalDisposalMaterialsAndHazardousWaste
         (floorStructures?.surfaceMaterialCoatingContainsAsbestos ?? false)
             ? floorStructures?.ceramicTileFloorVolume
             : null,
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? false)
-            ? roomSpaces?.totalCeramicTileWallsVolume
+        (internalWallFramesAndSurfaceMaterial
+                    ?.surfaceMaterialCoatingContainsAsbestos ??
+                false)
+            ? internalWallFramesAndSurfaceMaterial?.totalCeramicTileWallsVolume
             : null,
         (fixedFurniture?.isFurnitureRecyclable ?? false)
             ? fixedFurniture?.ceramicVolume
@@ -101,8 +109,10 @@ abstract class TotalDisposalMaterialsAndHazardousWaste
         (floorStructures?.surfaceMaterialCoatingContainsAsbestos ?? false)
             ? floorStructures?.ceramicTileFloorTons
             : null,
-        (roomSpaces?.surfaceMaterialCoatingContainsAsbestos ?? false)
-            ? roomSpaces?.totalCeramicTileWallsTons
+        (internalWallFramesAndSurfaceMaterial
+                    ?.surfaceMaterialCoatingContainsAsbestos ??
+                false)
+            ? internalWallFramesAndSurfaceMaterial?.totalCeramicTileWallsTons
             : null,
         (fixedFurniture?.isFurnitureRecyclable ?? false)
             ? fixedFurniture?.ceramicTons
