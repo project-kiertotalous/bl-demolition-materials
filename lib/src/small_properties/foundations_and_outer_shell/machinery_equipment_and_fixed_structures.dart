@@ -44,6 +44,13 @@ class MachineryEquipmentAndFixedStructures
         FurnitureDressingKitchenToiletSpaceWeights.electricCentralKgPerPcs
       ]);
 
+  /// Materiaalimäärätaulukkoon luettava arvo, sähköjakokaapit ja mittarit (tonnia)
+  num? get electricalDistributionMachinesAndMetersWeighTons {
+    return electricalDistributionMachinesAndMetersWeightKg != null
+        ? electricalDistributionMachinesAndMetersWeightKg! / 1000
+        : null;
+  }
+
   /// Vesikiertoiset lämpöpatterit (kg)
   num? get waterCirculationRadiatorsWeightKg => Utils.multiplyOrNull([
         waterCirculationRadiators,
@@ -61,6 +68,14 @@ class MachineryEquipmentAndFixedStructures
       return null;
     }
     return multiply / 1000;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävät pihalaatoitukset ja muurikivet (tonnia)
+  num? get recyclableConcreteYardTilesAndStonesWeightTons {
+    if (areConcreteYardTilesAndWallStonesRecyclable) {
+      return concreteYardTilesAndStonesWeightTons;
+    }
+    return null;
   }
 
   /// Huoneistojen väliset aidat (tonnia)
@@ -98,7 +113,38 @@ class MachineryEquipmentAndFixedStructures
     return null;
   }
 
+  /// Materiaalimäärätaulukkooon luettava arvo, polttokelpoinen puujäte
+  num? get burnableWoodTons {
+    if (fencesBetweenApartments == FencesBetweenApartments.woodenFence) {
+      return fencesBetweenApartmentsWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, alumiini
+  num? get aluminiumFence {
+    if (fencesBetweenApartments == FencesBetweenApartments.aluminiumMeshFence) {
+      return fencesBetweenApartmentsWeightTons;
+    }
+    return null;
+  }
+
   /// Next calculations are from Laskenta tab
+
+  /// Teräsverkko, tonnia
+  num? get steelMeshWeightTons {
+    if (fencesBetweenApartments == FencesBetweenApartments.steelMeshFence) {
+      num? multiply = Utils.multiplyOrNull([
+        fencesBetweenApartmentsInMeters,
+        YardStructureWeights.steelMeshFencesHeight1_2mKgPerM
+      ]);
+      if (multiply == null) {
+        return null;
+      }
+      return multiply / 1000;
+    }
+    return null;
+  }
 
   /// Sähkömoottorit (tonnia)
   /// This calculation counts counts wrong, it multiplies the number of electric motors with the weight of electric motors which has already been multiplied
@@ -111,6 +157,22 @@ class MachineryEquipmentAndFixedStructures
     return multiply / 1000;
   }
 
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrättämätön sähkömoottori
+  num? get notRecyclableElectricMotorsWeightTons {
+    if (areElectricMotorsRecyclable == false) {
+      return electricMotorsWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävä sähkömoottori
+  num? get recyclableElectricMotorsWeightTons {
+    if (areElectricMotorsRecyclable == true) {
+      return electricMotorsWeightTons;
+    }
+    return null;
+  }
+
   /// Ilmanvaihtokoneet (tonnia)
   /// Same problem here
   num? get ventilationMachinesWeightTons {
@@ -120,6 +182,22 @@ class MachineryEquipmentAndFixedStructures
       return null;
     }
     return multiply / 1000;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrättämätön ilmanvaihtokone (tonnia)
+  num? get notRecyclableVentilationMachinesWeightTons {
+    if (areVentilationMachinesRecyclable == false) {
+      return ventilationMachinesWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävä ilmanvaihtokone (tonnia)
+  num? get recyclableVentilationMachinesWeightTons {
+    if (areVentilationMachinesRecyclable == true) {
+      return ventilationMachinesWeightTons;
+    }
+    return null;
   }
 
   /// Lämpöpatterit vesikiertoiset (tonnia)

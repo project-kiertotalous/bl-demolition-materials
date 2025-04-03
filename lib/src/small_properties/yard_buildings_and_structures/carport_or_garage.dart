@@ -65,6 +65,22 @@ abstract class CarportOrGarage with _$CarportOrGarage {
     return null;
   }
 
+  /// Materiiaalimäärätaulukkoon luettava määrä, puhdas betoni (tonnia), autotalli/katos
+  num? get cleanConcreteTons {
+    if (buildingFoundationAndWallsContainAsbestosOrPcbPaints == false) {
+      return concreteTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, asbestia sisältävä betoni (tonnia), autotalli/katos
+  num? get concreteWithAsbestosTons {
+    if (buildingFoundationAndWallsContainAsbestosOrPcbPaints == true) {
+      return concreteTons;
+    }
+    return null;
+  }
+
   /// Katoksen/tallin seinät
   /// Pinta-ala (m2)
   num? get wallArea =>
@@ -101,6 +117,79 @@ abstract class CarportOrGarage with _$CarportOrGarage {
     return null;
   }
 
+  /// Materiaalimäärätaulukkoon luettava määrä, polttokelpoinen puujäte
+  num? get burnableWoodTons {
+    if (garageWallMaterial == GarageWallMaterial.board) {
+      return wallMaterialTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, betoniteräkset, peltikatto ja muu teräsromu
+  num? get steelSheetTons {
+    if (garageWallMaterial == GarageWallMaterial.steelSheet) {
+      num? multiply = Utils.multiplyOrNull([
+        wallArea,
+        BuildingBoardsAndInsulationMaterialWeights
+            .steelBoardCladding06mmKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, puhdas betoni (tonnia), autotallin/katoksen seinät
+  num? get cleanWallConcreteTons {
+    if (buildingFoundationAndWallsContainAsbestosOrPcbPaints == false &&
+        garageWallMaterial == GarageWallMaterial.concrete) {
+      num? multiply = Utils.multiplyOrNull([
+        wallArea,
+        StoneAndCeramicMaterialsWeights.concreteWallElements100mmKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, seinä- ja kattotiilet
+  num? get recyclableBrickTons {
+    if (buildingFoundationAndWallsContainAsbestosOrPcbPaints == false &&
+        garageWallMaterial == GarageWallMaterial.brick) {
+      num? multiply = Utils.multiplyOrNull([
+        wallArea,
+        StoneAndCeramicMaterialsWeights.brickWallsAndMortarKgPerSqm
+      ]);
+      return multiply;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätyskelvoton tiilijäte
+  num? get nonRecyclableInnerWallBrickWasteTons {
+    if (buildingFoundationAndWallsContainAsbestosOrPcbPaints == true &&
+        garageWallMaterial == GarageWallMaterial.brick) {
+      num? multiply = Utils.multiplyOrNull([
+        wallArea,
+        StoneAndCeramicMaterialsWeights.brickWallsAndMortarKgPerSqm
+      ]);
+      return multiply;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, asbestia sisältävä betoni (tonnia), autotallin/katoksen seinät
+  num? get concreteWallMaterialWithAsbestosTons {
+    if (buildingFoundationAndWallsContainAsbestosOrPcbPaints == true &&
+        garageWallMaterial == GarageWallMaterial.concrete) {
+      num? multiply = Utils.multiplyOrNull([
+        wallArea,
+        StoneAndCeramicMaterialsWeights.concreteWallElements100mmKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    }
+    return null;
+  }
+
   /// Eriste (tonnia)
   num? get insulationThicknessTons {
     if (insulationMaterialThickness == InsulationMaterialThickness.mm100) {
@@ -125,6 +214,22 @@ abstract class CarportOrGarage with _$CarportOrGarage {
         3
       ]);
       return multiply != null ? multiply / 1000 : null;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, betoniteräkset, peltikatto ja muu teräsromu
+  num? get steelTons {
+    if (foundationType == FoundationType.concreteSlab) {
+      num? multiply = Utils.multiplyOrZero([
+        buildingLengthInMeters,
+        0.3,
+        FoundationWeights.concreteOrSteelBlockKgPerCbm
+      ]);
+      if (multiply == null) {
+        return null;
+      }
+      return multiply / 1000;
     }
     return null;
   }

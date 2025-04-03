@@ -26,6 +26,22 @@ abstract class HallDoors with _$HallDoors {
     return multiply != null ? multiply / 1000 : null;
   }
 
+  /// Materiaalimääärätaulukkoon luettava arvo, puuovet
+  num? get recyclableWoodenDoorTons {
+    if (areHallDoorsRecyclable == true) {
+      return woodenDoorTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimääärätaulukkoon luettava arvo, polttokelpoinen puujäte
+  num? get burnableWoodTons {
+    if (areHallDoorsRecyclable == false) {
+      return woodenDoorTons;
+    }
+    return null;
+  }
+
   /// Alumiiniovi (tonnia)
   num? get aluminiumDoorTons {
     num? multiply = Utils.multiplyOrNull([
@@ -35,6 +51,22 @@ abstract class HallDoors with _$HallDoors {
     return multiply != null ? multiply / 1000 : null;
   }
 
+  /// Materliaalimäärätaulukkoon luettava arvo, alumiiniovet
+  num? get recyclableAluminiumDoorTons {
+    if (areHallDoorsRecyclable == true) {
+      return aluminiumDoorTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimääärätaulukkoon luettava arvo, alumiini
+  num? get aluminiumTons {
+    if (areHallDoorsRecyclable == false) {
+      return aluminiumDoorTons;
+    }
+    return null;
+  }
+
   /// Teräsovi (tonnia)
   num? get steelDoorTons {
     num? multiply = Utils.multiplyOrNull([
@@ -42,5 +74,13 @@ abstract class HallDoors with _$HallDoors {
       YardStructureWeights.steelLiftDoorsAndBigPassageDoors3x5mKg
     ]);
     return multiply != null ? multiply / 1000 : null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, teräsovet
+  num? get recyclableSteelDoorTons {
+    if (areHallDoorsRecyclable == true) {
+      return steelDoorTons;
+    }
+    return null;
   }
 }

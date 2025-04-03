@@ -95,6 +95,14 @@ class Walls with _$Walls {
     return partitionWallsBricksTons;
   }
 
+  /// Kierrätyskelvoton tiilijäte
+  num? get nonRecyclableBrickWasteTons {
+    if (!isAggregateRecyclable) {
+      return partitionWallsBricksTons;
+    }
+    return 0;
+  }
+
   /// Väliseinät (tonnia), betoni
   num? get partitionWallsConcreteTons {
     if (wallMaterial == WallMaterial.brick) {
@@ -222,6 +230,34 @@ class Walls with _$Walls {
     return multiply / 1000;
   }
 
+  /// Materiaalimäärätaulukkoon laskettava arvo, puhdas käyttökelpoinen puu
+  num? get cleanWoodTons {
+    if (!isTrunkWoodRecyclable) {
+      return null;
+    }
+    return Utils.sumOrNull([
+      trunkWood50x100Tons,
+      trunkWood50x150Tons,
+      trunkWood50x200Tons,
+      trunkWood100x100Tons,
+      trunkWood150x150Tons,
+    ]);
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, polttokelpoinen puujäte
+  num? get burnableWoodTons {
+    if (isTrunkWoodRecyclable) {
+      return null;
+    }
+    return Utils.sumOrNull([
+      trunkWood50x100Tons,
+      trunkWood50x150Tons,
+      trunkWood50x200Tons,
+      trunkWood100x100Tons,
+      trunkWood150x150Tons,
+    ]);
+  }
+
   /// Eristevilla, paino
   /// In excel the same number is returned no matter the thickness of the wool, so made only one function
   num? get insulationWoolTons {
@@ -263,6 +299,22 @@ class Walls with _$Walls {
       return null;
     }
     return multiply / 1000;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, seinä- ja kattotiilet
+  num? get recyclableBrickTons {
+    if (!isAggregateRecyclable) {
+      return 0;
+    }
+    return brickTons;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätyskelvoton tiilijäte
+  num? get nonRecyclableInnerWallBrickWasteTons {
+    if (!isAggregateRecyclable) {
+      return brickTons;
+    }
+    return 0;
   }
 
   /// mineriittilevy, tonnia
