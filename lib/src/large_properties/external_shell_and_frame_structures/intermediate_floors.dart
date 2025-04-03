@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../utils/utils.dart';
+
 part 'intermediate_floors.freezed.dart';
 part 'intermediate_floors.g.dart';
 
@@ -18,9 +20,10 @@ abstract class IntermediateFloors with _$IntermediateFloors {
   factory IntermediateFloors.fromJson(Map<String, dynamic> json) =>
       _$IntermediateFloorsFromJson(json);
 
-  num get totalPercentage =>
-      (woodFramePercentage ?? 0) +
-      (concreteCastingPercentage ?? 0) +
-      (hollowCoreSlabPercentage ?? 0) +
-      (glulamBeamPercentage ?? 0);
+  num? get totalPercentage => Utils.sumOrNull([
+        woodFramePercentage,
+        concreteCastingPercentage,
+        hollowCoreSlabPercentage,
+        glulamBeamPercentage
+      ]);
 }
