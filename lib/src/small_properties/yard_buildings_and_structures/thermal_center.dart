@@ -30,7 +30,8 @@ abstract class ThermalCenter with _$ThermalCenter {
       HeatingType? heatingType,
       num? powerInKiloWatts,
       num? heatingMachinesPcs,
-      num? waterHeatersPcs}) = _ThermalCenter;
+      num? waterHeatersPcs,
+      CarportOrGarage? carportOrGarage}) = _ThermalCenter;
 
   /// Betoniperustus ja seinät
 
@@ -86,6 +87,23 @@ abstract class ThermalCenter with _$ThermalCenter {
     }
   }
 
+  /// Materiaalimäärätaulukkoon luettava arvo, mineriitti- tai huopakate, sisältää asbestia
+  num? get outerWallMineriteAsbestosTons {
+    if (garageWallMaterial == GarageWallMaterial.minerite &&
+        carportOrGarage?.coveringMaterialContainsAsbestos == true) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, puhdas käyttökelpoinen puu
+  num? get cleanWoodTons {
+    if (garageWallMaterial == GarageWallMaterial.board) {
+      return outerWallSurfaceMaterial;
+    }
+    return null;
+  }
+
   /// Sokkeli, betoni, tonnia
   num? get plinthConcreteTons => Utils.multiplyOrZero([
         Utils.sumOrNull([concreteLengthInMeters, concreteWidthInMeters]),
@@ -122,7 +140,7 @@ abstract class ThermalCenter with _$ThermalCenter {
   }
 
   /// Betoni teräs (tonnia)
-  num? get reingforcedConcreteTons {
+  num? get reinforcedConcreteTons {
     if (onDisctrictOrDirectHeating == true) {
       return null;
     }
@@ -214,6 +232,58 @@ abstract class ThermalCenter with _$ThermalCenter {
     }
   }
 
+  /// Materiaalimäärään luettava arvo, seinä- ja kattotiilet
+  num? get recyclableBrickTons {
+    if (garageWallMaterial == GarageWallMaterial.brick &&
+        carportOrGarage?.coveringMaterialContainsAsbestos == false) {
+      num? multiply = Utils.multiplyOrNull([
+        wallArea,
+        StoneAndCeramicMaterialsWeights.brickWallsAndMortarKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätyskelvoton tiilijäte
+  num? get nonRecyclableInnerWallBrickWasteTons {
+    if (garageWallMaterial == GarageWallMaterial.brick &&
+        carportOrGarage?.coveringMaterialContainsAsbestos == true) {
+      num? multiply = Utils.multiplyOrNull([
+        wallArea,
+        StoneAndCeramicMaterialsWeights.brickWallsAndMortarKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, energiajäte, maalattupuu, kattohuopa ja aluskate
+  num? get roofingFeltNoAsbestosWeightTons {
+    if (waterRoofType == WaterRoofType.roofingFelt &&
+        carportOrGarage?.coveringMaterialContainsAsbestos == false) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, Mineriitti- tai huopakate, sisältää asbestia huopa, asbestia
+  num? get waterRoofFeltAsbestosTons {
+    if (waterRoofType == WaterRoofType.roofingFelt &&
+        carportOrGarage?.coveringMaterialContainsAsbestos == true) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, Mineriitti- tai huopakate, sisältää asbestia mineriitti, asbestia
+  num? get waterRoofMineriteAsbestosTons {
+    if (waterRoofType == WaterRoofType.mineriteRoof) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
   /// Aluskate (tonnia)
   num? get underLaymentWeightTons {
     num? multiply = Utils.multiplyOrNull([
@@ -248,22 +318,84 @@ abstract class ThermalCenter with _$ThermalCenter {
     }
   }
 
+  /// Materiaalimäärätaulukkoon luettava arvo, Muu metalliromu, sähkökaapit, liedet, jääkaapit yms.
+  num? get notRecyclablePelletBoilerTons {
+    if (heatingType == HeatingType.pelletBoiler && areRecyclable == false) {
+      return boilerOrHeatExchangerWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävä pellettikattila
+  num? get recyclablePelletBoilerTons {
+    if (heatingType == HeatingType.pelletBoiler && areRecyclable) {
+      return boilerOrHeatExchangerWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, Muu metalliromu, sähkökaapit, liedet, jääkaapit yms.
+  num? get notRecyclableElectricBoilerTons {
+    if (heatingType == HeatingType.electricBoiler && areRecyclable == false) {
+      return boilerOrHeatExchangerWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävä sähkökattila
+  num? get recyclableElectricBoilerTons {
+    if (heatingType == HeatingType.electricBoiler && areRecyclable) {
+      return boilerOrHeatExchangerWeightTons;
+    }
+
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, ruostumaton teräs, lämmönvaihdin
+  num? get recyclableDistrictHeatExchangerTons {
+    if (heatingType == HeatingType.districtHeatExchanger && areRecyclable) {
+      return boilerOrHeatExchangerWeightTons;
+    }
+    return null;
+  }
+
   /// Vesivaraajan paino (tonnia)
   num? get waterHeaterWeightTons {
     return Utils.multiplyOrNull(
         [(CentralHeatingWeights.waterHeaterKg / 1000), waterHeatersPcs]);
   }
 
+  /// Materiaalimäärätaulukkoon luettava arvo, vesivaraajat
+  num? get recyclableWaterHeaterTons {
+    if (areRecyclable == true) {
+      return waterHeaterWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, ruostumaton teräs
+  num? get recyclableWaterHeaterStainlessSteelTons {
+    if (areRecyclable == true) {
+      return waterHeaterWeightTons;
+    }
+    return null;
+  }
+
   /// Laskenta
   /// Lämpökeskus
 
   ///Betoniperustus ja seinät, betoni, puhdas
-  num? get concreteClean => concreteTons;
+  num? get concreteClean {
+    if (carportOrGarage?.buildingFoundationAndWallsContainAsbestosOrPcbPaints ==
+        false) {
+      return concreteTons;
+    }
+    return null;
+  }
 
   /// Betoniperustus ja seinät, betoni, asbestia
   num? get concreteAsbestos {
-    if (CarportOrGarage()
-            .buildingFoundationAndWallsContainAsbestosOrPcbPaints ==
+    if (carportOrGarage?.buildingFoundationAndWallsContainAsbestosOrPcbPaints ==
         true) {
       return concreteTons;
     }
@@ -271,7 +403,7 @@ abstract class ThermalCenter with _$ThermalCenter {
   }
 
   /// Betoniteräs, puhdas
-  num? get reinforcedConcreteClean => reingforcedConcreteTons;
+  num? get reinforcedConcreteClean => reinforcedConcreteTons;
 
   /// Lautaverhous, puhdas
   num? get boardCladding {
@@ -283,7 +415,10 @@ abstract class ThermalCenter with _$ThermalCenter {
 
   /// Tiili, puhdas
   num? get brickWallMaterial {
-    if (garageWallMaterial == GarageWallMaterial.brick) {
+    if (garageWallMaterial == GarageWallMaterial.brick &&
+        CarportOrGarage()
+                .buildingFoundationAndWallsContainAsbestosOrPcbPaints ==
+            false) {
       return outerWallSurfaceMaterial;
     }
     return null;

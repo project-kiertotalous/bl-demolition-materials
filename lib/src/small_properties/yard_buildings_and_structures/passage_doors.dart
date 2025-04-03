@@ -32,6 +32,22 @@ abstract class PassageDoors with _$PassageDoors {
     return sum != null ? sum / 1000 : null;
   }
 
+  /// Materiaalimääärätaulukkoon luettava määrä, puuovet
+  num? get recyclableWoodenDoorTons {
+    if (doorsRecyclable == true) {
+      return woodenDoorTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimääärätaulukkoon luettava määrä, polttokelpoinen puujäte
+  num? get burnableWoodTons {
+    if (doorsRecyclable == false) {
+      return woodenDoorTons;
+    }
+    return null;
+  }
+
   /// Puuovi, lasia (tonnia)
   num? get woodenDoorGlassTons {
     num? multiply = Utils.multiplyOrNull([
@@ -39,6 +55,14 @@ abstract class PassageDoors with _$PassageDoors {
       DoorsAndWindowsWeights.woodenOutdoors210x180Glass05GlassKg
     ]);
     return multiply != null ? multiply / 1000 : null;
+  }
+
+  /// Materiaalimäärään luettava arvo, lasi
+  num? get woodenDoorglassTonsNotRecyclable {
+    if (doorsRecyclable == false) {
+      return woodenDoorGlassTons;
+    }
+    return null;
   }
 
   /// Alumiiniovi (tonnia)
@@ -56,6 +80,22 @@ abstract class PassageDoors with _$PassageDoors {
     return sum != null ? sum / 1000 : null;
   }
 
+  /// Materiaalimääärätaulukkoon luettava määrä, alumiiniovet
+  num? get recyclableAluminiumDoorTons {
+    if (doorsRecyclable == true) {
+      return aluminiumDoorTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimääärätaulukkoon luettava määrä, alumiini
+  num? get aluminiumTons {
+    if (doorsRecyclable == false) {
+      return aluminiumDoorTons;
+    }
+    return null;
+  }
+
   /// Alumiiniovi, lasia (tonnia)
   num? get aluminiumDoorGlassTons {
     num? multiply = Utils.multiplyOrNull([
@@ -63,6 +103,14 @@ abstract class PassageDoors with _$PassageDoors {
       DoorsAndWindowsWeights.aluminiumDoorsWithGlassGlassKg
     ]);
     return multiply != null ? multiply / 1000 : null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, lasi
+  num? get aluminiumDoorGlassTonsNotRecyclable {
+    if (doorsRecyclable == false) {
+      return aluminiumDoorGlassTons;
+    }
+    return null;
   }
 
   /// Teräsovi (tonnia)
@@ -78,6 +126,14 @@ abstract class PassageDoors with _$PassageDoors {
     return sum != null ? sum / 1000 : null;
   }
 
+  /// Materiaalimääärätaulukkoon luettava määrä, teräsovet
+  num? get recyclableSteelDoorTons {
+    if (doorsRecyclable == true) {
+      return steelDoorTons;
+    }
+    return null;
+  }
+
   /// Teräsovi, lasia (tonnia)
   num? get steelDoorGlassTons {
     num? multiply = Utils.multiplyOrNull([
@@ -85,5 +141,21 @@ abstract class PassageDoors with _$PassageDoors {
       DoorsAndWindowsWeights.steelDoorsGlass05sqmGlassKg
     ]);
     return multiply != null ? multiply / 1000 : null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, lasi
+  num? get steelDoorGlassTonsNotRecyclable {
+    if (doorsRecyclable == false) {
+      return steelDoorGlassTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, betoniteräkset, peltikatto ja muu teräsromu
+  num? get steelTons {
+    if (doorsRecyclable == true) {
+      return steelDoorTons;
+    }
+    return null;
   }
 }
