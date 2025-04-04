@@ -3,16 +3,17 @@ import '../../small_properties/apartments/apartment.dart';
 import '../../small_properties/apartments/apartment_size.dart';
 import '../../small_properties/foundations_and_outer_shell/apartments.dart';
 import '../../small_properties/foundations_and_outer_shell/electrical_installations_and_hvac.dart';
-import '../../small_properties/foundations_and_outer_shell/foundations.dart';
+import '../../small_properties/foundations_and_outer_shell/small_properties_excavation_area.dart';
+import '../../small_properties/foundations_and_outer_shell/small_properties_foundation.dart';
 import '../../small_properties/foundations_and_outer_shell/inner_door.dart';
-import '../../small_properties/foundations_and_outer_shell/inner_doors.dart';
+import '../../small_properties/foundations_and_outer_shell/small_property_inner_doors.dart';
 import '../../small_properties/foundations_and_outer_shell/machinery_equipment_and_fixed_structures.dart';
 import '../../small_properties/foundations_and_outer_shell/outer_door.dart';
-import '../../small_properties/foundations_and_outer_shell/outer_doors.dart';
+import '../../small_properties/foundations_and_outer_shell/small_property_outer_doors.dart';
 import '../../small_properties/foundations_and_outer_shell/roof.dart';
 import '../../small_properties/foundations_and_outer_shell/small_property_evaluation_info.dart';
 import '../../small_properties/foundations_and_outer_shell/walls.dart';
-import '../../small_properties/foundations_and_outer_shell/windows.dart';
+import '../../small_properties/foundations_and_outer_shell/small_property_windows.dart';
 import '../../small_properties/yard_buildings_and_structures/carport_or_garage.dart';
 import '../../small_properties/yard_buildings_and_structures/hall_doors.dart';
 import '../../small_properties/yard_buildings_and_structures/passage_door.dart';
@@ -39,8 +40,8 @@ abstract class Counter with _$Counter {
       DressingClosets? dressingClosets,
       Hvac? hvac,
       ElectricStoves? electricStoves,
-      ExcavationAreaSmallProperties? excavationAreaSmallProperties,
-      Foundation? foundation,
+      SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
+      SmallPropertiesFoundation? foundation,
       InnerDoor? innerDoor,
       InnerDoors? innerDoors,
       KitchenBathroomAndToiletWallsAndFloors?
@@ -49,7 +50,7 @@ abstract class Counter with _$Counter {
       MachineryEquipmentAndFixedStructures?
           machineryEquipmentAndFixedStructures,
       OuterDoor? outerDoor,
-      OuterDoors? outerDoors,
+      SmallPropertyOuterDoors? outerDoors,
       PorcelainSeats? porcelainSeats,
       Refrigerators? refrigerators,
       Roof? roof,
@@ -60,7 +61,7 @@ abstract class Counter with _$Counter {
       Walls? walls,
       WashingSinks? washingSinks,
       WaterAccumulators? waterAccumulators,
-      Windows? windows,
+      SmallPropertyWindows? windows,
       CarportOrGarage? carportOrGarage,
       HallDoors? hallDoors,
       PassageDoor? passageDoor,
