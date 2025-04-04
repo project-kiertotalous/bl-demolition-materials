@@ -75,51 +75,98 @@ abstract class Roof with _$Roof {
     return 0;
   }
 
+  /// Materiaalimäärätaulukkoon luettava arvo, puhdas käyttökelpoinen puu
+  num? get cleanWoodTons {
+    if (containsRecyclableWood == true) {
+      return woodenRoofLatticeWeightTons;
+    }
+    return 0;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, polttokelpoinen puujäte
+  num? get burnableWoodTons {
+    if (containsRecyclableWood == false) {
+      return woodenRoofLatticeWeightTons;
+    }
+    return 0;
+  }
+
   /// Aluslaudoituksen paino (tonnia)
   bool get underBoardingWeightTonsSameAsRoofArea {
     return underBoardingWeightTons == roofArea;
   }
 
-  /// Vesikatteen paino (tonnia)
-  num? get waterRoofWeightTons {
+  /// Vesikatteen paino (kg/m2)
+  num? get waterRoofWeightKgPerSqm {
     if (waterRoofType == WaterRoofType.roofingFelt) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         BuildingBoardsAndInsulationMaterialWeights.roofingFeltKgPerSqm
       ]);
-      if (multiply != null) {
-        return multiply;
-      }
-      return multiply! / 1000;
+      return multiply;
     } else if (waterRoofType == WaterRoofType.metalRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         BuildingBoardsAndInsulationMaterialWeights.roofSheet06mmKgPerSqm
       ]);
-      if (multiply != null) {
-        return multiply;
-      }
-      return multiply! / 1000;
+      return multiply;
     } else if (waterRoofType == WaterRoofType.mineriteRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         BuildingBoardsAndInsulationMaterialWeights.mineriteBoardKgPerSqm
       ]);
-      if (multiply != null) {
-        return multiply;
-      }
-      return multiply! / 1000;
+      return multiply;
     } else if (waterRoofType == WaterRoofType.tiledRoof) {
       num? multiply = Utils.multiplyOrNull([
         roofArea,
         BuildingBoardsAndInsulationMaterialWeights.roofBrickKgPerSqm
       ]);
-      if (multiply != null) {
-        return multiply;
-      }
-      return multiply! / 1000;
+      return multiply;
     }
     return 0;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, teräs
+  num? get waterRoofSteelTons {
+    if (waterRoofType == WaterRoofType.metalRoof) {
+      return waterRoofWeightKgPerSqm! / 1000;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, tiili
+  num? get waterRoofTileTons {
+    if (waterRoofType == WaterRoofType.tiledRoof) {
+      return waterRoofWeightKgPerSqm! / 1000;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, huopa
+  num? get waterRoofFeltTons {
+    if (waterRoofType == WaterRoofType.roofingFelt &&
+        coveringMaterialContainsAsbestos == false) {
+      return waterRoofWeightKgPerSqm! / 1000;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, mineriitti- tai huopakate, sisältää asbestia (huopa)
+  num? get waterRoofFeltAsbestosTons {
+    if (waterRoofType == WaterRoofType.roofingFelt &&
+        coveringMaterialContainsAsbestos == true) {
+      return waterRoofWeightKgPerSqm! / 1000;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, mineriitti- tai huopakate, sisältää asbestia (mineriitti)
+  num? get waterRoofMineriteAsbestosTons {
+    if (waterRoofType == WaterRoofType.mineriteRoof &&
+        coveringMaterialContainsAsbestos == true) {
+      return waterRoofWeightKgPerSqm! / 1000;
+    }
+    return null;
   }
 
   /// Aluskate (tonnia)

@@ -29,6 +29,14 @@ abstract class SmallPropertyWindows with _$SmallPropertyWindows {
     return multiply / 1000;
   }
 
+  /// Materiaalimääärätaulukkoon luettava määrä, puuikkunat
+  num? get recyclableWoodenFrameWindowTons {
+    if (areWindowsRecyclable == true) {
+      return woodenFrameWindowWoodTons;
+    }
+    return null;
+  }
+
   num? get woodenFrameWindowGlassTons {
     num? multiply = Utils.multiplyOrNull([
       woodenFramePcs,
@@ -51,6 +59,14 @@ abstract class SmallPropertyWindows with _$SmallPropertyWindows {
     return multiply / 1000;
   }
 
+  /// Materiaalimääärätaulukkoon luettava määrä, teräsikkunat
+  num? get recyclableSteelWindowTons {
+    if (areWindowsRecyclable == true) {
+      return steelWindowSteelTons;
+    }
+    return null;
+  }
+
   num? get steelWindowGlassTons {
     num? multiply = Utils.multiplyOrNull([
       steelPcs,
@@ -71,6 +87,14 @@ abstract class SmallPropertyWindows with _$SmallPropertyWindows {
       return null;
     }
     return multiply / 1000;
+  }
+
+  /// Materiaalimääärätaulukkoon luettava määrä, alumiini-ikkunat
+  num? get recyclableAluminiumWindowTons {
+    if (areWindowsRecyclable == true) {
+      return aluminiumWindowAluminiumTons;
+    }
+    return null;
   }
 
   num? get aluminiumWindowGlassTons {

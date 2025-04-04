@@ -11,15 +11,15 @@ part 'roof.freezed.dart';
 /// Katto
 
 @freezed
-abstract class Roof with _$Roof {
-  const Roof._();
+abstract class YardRoof with _$YardRoof {
+  const YardRoof._();
 
-  const factory Roof(
-      {SmallPropertyRoofType? roofType,
+  const factory YardRoof(
+      {RoofType? roofType,
       WaterRoofType? waterRoofType,
       num? lapelLengthInMeters,
       num? lapelWidthInMeters,
-      required CarportOrGarage carportOrGarage}) = _Roof;
+      required CarportOrGarage carportOrGarage}) = _YardRoof;
 
   /// Kattopinta-ala (m2)
   num? get roofArea {
@@ -66,7 +66,7 @@ abstract class Roof with _$Roof {
     return multiply != null ? multiply / 1000 : null;
   }
 
-  /// Vesikattteen paino (tonnia)
+  /// Vesikatteen paino (tonnia)
   num? get waterRoofWeightTons {
     if (waterRoofType == WaterRoofType.roofingFelt) {
       num? multiply = Utils.multiplyOrNull([
@@ -96,7 +96,7 @@ abstract class Roof with _$Roof {
     return null;
   }
 
-  /// Aluskate (tonnia)
+  /// Aluskate, muovia (tonnia)
   num? get underlaymentWeightTons {
     num? multiply = Utils.multiplyOrNull([
       roofArea,
@@ -123,6 +123,15 @@ abstract class Roof with _$Roof {
   num? get roofingFeltAsbestosWeightTons {
     if (waterRoofType == WaterRoofType.roofingFelt &&
         carportOrGarage.coveringMaterialContainsAsbestos == true) {
+      return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, Energiajäte, maalattupuu, kattohuopa ja aluskate
+  num? get roofingFeltNoAsbestosWeightTons {
+    if (waterRoofType == WaterRoofType.roofingFelt &&
+        carportOrGarage.coveringMaterialContainsAsbestos == false) {
       return waterRoofWeightTons;
     }
     return null;
@@ -157,6 +166,44 @@ abstract class Roof with _$Roof {
     if (waterRoofType == WaterRoofType.tiledRoof &&
         carportOrGarage.coveringMaterialContainsAsbestos == true) {
       return waterRoofWeightTons;
+    }
+    return null;
+  }
+
+  /// Katon paino
+  num? get roofWeight {
+    if (waterRoofType == WaterRoofType.roofingFelt) {
+      num? multiply = Utils.multiplyOrNull([
+        roofArea,
+        BuildingBoardsAndInsulationMaterialWeights.roofingFeltKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    } else if (waterRoofType == WaterRoofType.metalRoof) {
+      num? multiply = Utils.sumOrNull([
+        roofArea,
+        BuildingBoardsAndInsulationMaterialWeights.roofSheet06mmKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    } else if (waterRoofType == WaterRoofType.mineriteRoof) {
+      num? multiply = Utils.sumOrNull([
+        roofArea,
+        BuildingBoardsAndInsulationMaterialWeights.mineriteBoardKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    } else if (waterRoofType == WaterRoofType.tiledRoof) {
+      num? multiply = Utils.sumOrNull([
+        roofArea,
+        BuildingBoardsAndInsulationMaterialWeights.roofBrickKgPerSqm
+      ]);
+      return multiply != null ? multiply / 1000 : null;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, Betoniteräkset, peltikatto ja muu teräsromu
+  num? get steelTons {
+    if (waterRoofType == WaterRoofType.metalRoof) {
+      return roofWeight;
     }
     return null;
   }
