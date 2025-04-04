@@ -1,6 +1,6 @@
-import 'package:bl_demolition_materials/src/small_properties/data_types/exports.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:bl_demolition_materials/src/small_properties/data_types/exports.dart';
 import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 import '../data_types/garage_wall_material.dart';

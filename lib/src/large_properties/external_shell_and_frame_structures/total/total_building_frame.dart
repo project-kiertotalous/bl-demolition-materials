@@ -206,8 +206,8 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return windProtectionBoardTons! /
-        1000 *
+    return windProtectionBoardTons! *
+        1000 /
         WindProtectionBoardFrame().kgPerCubicMeter;
   }
 
@@ -216,8 +216,8 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return mineralWoolInsulationTons! /
-        1000 *
+    return mineralWoolInsulationTons! *
+        1000 /
         MineralWoolFrame().kgPerCubicMeter;
   }
 
@@ -226,7 +226,7 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return limeOrRedBrickTons! / 1000 * LimeOrRedBrickFrame().kgPerCubicMeter;
+    return limeOrRedBrickTons! * 1000 / LimeOrRedBrickFrame().kgPerCubicMeter;
   }
 
   num? get exteriorWoodCladdingVolume {
@@ -234,8 +234,8 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return exteriorWoodCladdingTons! /
-        1000 *
+    return exteriorWoodCladdingTons! *
+        1000 /
         ExteriorCladdingBoardFrame().kgPerCubicMeter;
   }
 
@@ -244,7 +244,7 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return gypsumBoardTons! / 1000 * PlasterBoardFrame().kgPerCubicMeter;
+    return gypsumBoardTons! * 1000 / PlasterBoardFrame().kgPerCubicMeter;
   }
 
   num? get profileSteelSheetVolume {
@@ -252,8 +252,8 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return profileSteelSheetTons! /
-        1000 *
+    return profileSteelSheetTons! *
+        1000 /
         ProfiledSheetMetalBoard().kgPerCubicMeter;
   }
 
@@ -262,8 +262,8 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return semiHardFiberBoardTons! /
-        1000 *
+    return semiHardFiberBoardTons! *
+        1000 /
         SemiHardFiberBoardFrame().kgPerCubicMeter;
   }
 
@@ -272,7 +272,7 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return styrofoamTons! / 1000 * StyrofoamFrame().kgPerCubicMeter;
+    return styrofoamTons! * 1000 / StyrofoamFrame().kgPerCubicMeter;
   }
 
   num? get plasterCoatingVolume {
@@ -280,8 +280,8 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return plasterCoatingTons! /
-        1000 *
+    return plasterCoatingTons! *
+        1000 /
         PlasteringInteriorAndExteriorWallsFrame().kgPerCubicMeter;
   }
 
@@ -290,7 +290,7 @@ abstract class TotalBuildingFrame with _$TotalBuildingFrame {
       return null;
     }
 
-    return mineriteBoardTons! / 1000 * MineriteBoardFrame().kgPerCubicMeter;
+    return mineriteBoardTons! * 1000 / MineriteBoardFrame().kgPerCubicMeter;
   }
 
   num? _envelopeAggregate(num? Function(BuildingEnvelopeFramePart) function) {

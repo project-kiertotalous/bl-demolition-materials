@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../apartments/apartment_size.dart';
+
 import '../apartments/apartment.dart';
+import '../apartments/apartment_size.dart';
 
 part 'apartments.freezed.dart';
 

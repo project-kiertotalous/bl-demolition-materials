@@ -1,5 +1,6 @@
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:test/test.dart';
+
+import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 
 void main() {
   group('WoodMaterialType', () {

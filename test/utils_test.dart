@@ -1,5 +1,6 @@
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:test/test.dart';
+
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 
 void main() {
   group('#multiplyOrNull', () {

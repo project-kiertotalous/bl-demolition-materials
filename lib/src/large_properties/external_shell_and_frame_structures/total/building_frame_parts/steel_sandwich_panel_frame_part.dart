@@ -16,9 +16,9 @@ abstract class SteelSandwichPanelFramePart extends BuildingEnvelopeFramePart
       {TotalBuildingFrame? totalBuildingFrame,
       num? portionPercentage}) = _SteelSandwichPanelFramePart;
 
-  final mineralWoolFrame = MineralWoolFrame();
-  final plasterBoardFrame = PlasterBoardFrame();
-  final styrofoamFrame = StyrofoamFrame();
+  static final mineralWoolFrame = MineralWoolFrame();
+  static final plasterBoardFrame = PlasterBoardFrame();
+  static final styrofoamFrame = StyrofoamFrame();
 
   @override
   num? get mineralWoolInsulationTons =>

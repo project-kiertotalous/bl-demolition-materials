@@ -1,9 +1,6 @@
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:test/test.dart';
 
-num twoDecimals(num? value) {
-  return num.parse(value!.toStringAsFixed(2));
-}
+import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 
 void main() {
   // the purpose of these tests are to explore Foundations functionality

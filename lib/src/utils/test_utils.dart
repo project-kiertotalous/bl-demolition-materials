@@ -502,4 +502,9 @@ class TestUtils {
         gypsumBasedBuildingMaterials: gypsumBasedBuildingMaterials,
         otherMaterials: otherMaterials);
   }
+
+  /// Rounds the given number to 3 decimals
+  static num round(num? val) {
+    return ((val! * 1000).round()) / 1000;
+  }
 }

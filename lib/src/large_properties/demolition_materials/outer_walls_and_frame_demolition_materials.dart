@@ -81,8 +81,7 @@ class VerticalConcreteColumnsFrame extends DemolitionMaterials {
     if (Utils.anyNull([
       totalBuildingFrame?.externalWallsHeight,
       totalBuildingFrame?.externalWallsPerimeter,
-      totalBuildingFrame
-          ?.concreteElementWallsWithoutFrameworkPart.portionPercentage
+      totalBuildingFrame?.concreteVerticalColumnsPart.portionPercentage
     ])) {
       return null;
     }
@@ -90,8 +89,8 @@ class VerticalConcreteColumnsFrame extends DemolitionMaterials {
     return totalBuildingFrame!.externalWallsPerimeter! /
         sizing *
         totalBuildingFrame!.externalWallsHeight! *
-        Utils.percentageToFraction(totalBuildingFrame!
-            .concreteElementWallsWithoutFrameworkPart.portionPercentage)!;
+        Utils.percentageToFraction(
+            totalBuildingFrame!.concreteVerticalColumnsPart.portionPercentage)!;
   }
 
   @override
@@ -224,7 +223,7 @@ class ConcreteWallElementFrame extends DemolitionMaterials {
 class WindProtectionBoardFrame extends DemolitionMaterials {
   final num sizing;
 
-  WindProtectionBoardFrame([this.sizing = 100]);
+  WindProtectionBoardFrame([this.sizing = 15]);
 
   @override
   num get kgPerSquareMeter =>

@@ -1,6 +1,6 @@
-import 'package:bl_demolition_materials/src/shared/doors_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:bl_demolition_materials/src/shared/doors_info.dart';
 import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 

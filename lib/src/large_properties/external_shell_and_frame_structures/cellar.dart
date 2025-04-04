@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../data_types/cellar_exterior_material.dart';
 import '../../utils/utils.dart';
+import '../data_types/cellar_exterior_material.dart';
 import '../demolition_materials/cellar_demolition_materials.dart';
 
 part 'cellar.freezed.dart';
@@ -103,4 +103,7 @@ abstract class Cellar with _$Cellar {
 
   num? get hotBitumenCoatingTons => Utils.sumOrNull(
       [_hotBitumenBrushingGroundFloor.tons, _hotBitumenCoatingInsulation.tons]);
+
+  num? get totalExteriorWallsSurfaceArea =>
+      Utils.multiplyOrNull([exteriorWallsPerimeter, wallHeight]);
 }

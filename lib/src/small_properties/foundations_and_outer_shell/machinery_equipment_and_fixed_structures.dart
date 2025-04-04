@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../bl_demolition_materials.dart';
-import '../data_types/fences_between_apartments.dart';
 import '../../utils/utils.dart';
+import '../data_types/fences_between_apartments.dart';
 
 part 'machinery_equipment_and_fixed_structures.freezed.dart';
 

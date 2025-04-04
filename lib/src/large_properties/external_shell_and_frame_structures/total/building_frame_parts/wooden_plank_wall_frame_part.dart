@@ -16,11 +16,11 @@ abstract class WoodenPlankWallFramePart extends BuildingEnvelopeFramePart
       {TotalBuildingFrame? totalBuildingFrame,
       num? portionPercentage}) = _WoodenPlankWallFramePart;
 
-  final windProtectionBoardFrame = WindProtectionBoardFrame();
-  final mineralWoolFrame = MineralWoolFrame();
-  final limeOrRedBrickFrame = LimeOrRedBrickFrame();
-  final exteriorCladdingBoardFrame = ExteriorCladdingBoardFrame();
-  final plasterBoardFrame = PlasterBoardFrame();
+  static final windProtectionBoardFrame = WindProtectionBoardFrame();
+  static final mineralWoolFrame = MineralWoolFrame();
+  static final limeOrRedBrickFrame = LimeOrRedBrickFrame();
+  static final exteriorCladdingBoardFrame = ExteriorCladdingBoardFrame();
+  static final plasterBoardFrame = PlasterBoardFrame();
 
   @override
   num? get windProtectionBoardTons => area == null
@@ -30,10 +30,6 @@ abstract class WoodenPlankWallFramePart extends BuildingEnvelopeFramePart
   @override
   num? get mineralWoolInsulationTons =>
       area == null ? null : area! * mineralWoolFrame.kgPerSquareMeter / 1000;
-
-  @override
-  num? get limeOrRedBrickTons =>
-      area == null ? null : area! * limeOrRedBrickFrame.kgPerSquareMeter / 1000;
 
   @override
   num? get exteriorWoodCladdingTons => area == null

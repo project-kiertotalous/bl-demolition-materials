@@ -213,7 +213,7 @@ class WoodenTrussFlatOrMonoPitchedRoof extends DemolitionMaterials {
       return 0;
     }
 
-    return kgPerSquareMeter /
+    return kgPerSquareMeter *
         totalRoofs!.defaultFlatOrMonoPitchedRoofCeilingArea! /
         kgPerCubicMeter;
   }
@@ -228,7 +228,7 @@ class WoodenTrussFlatOrMonoPitchedRoof extends DemolitionMaterials {
       return 0;
     }
 
-    return kgPerSquareMeter /
+    return kgPerSquareMeter *
         totalRoofs!.defaultFlatOrMonoPitchedRoofCeilingArea! /
         1000;
   }
