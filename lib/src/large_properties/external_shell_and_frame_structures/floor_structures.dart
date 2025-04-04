@@ -97,14 +97,14 @@ abstract class FloorStructures with _$FloorStructures {
 
   num? get gypsumBoardingMidsoleTons => gypsumBoardingMidsoleVolume == null
       ? null
-      : gypsumBoardingMidsoleVolume! /
-          1000 *
+      : gypsumBoardingMidsoleVolume! *
+          1000 /
           UpperBaseStructureAndWaterRoofWeights.plasterBoardKgPerCbm;
 
   num? get solidBoardingMidsoleTons => solidBoardingMidsoleVolume == null
       ? null
-      : solidBoardingMidsoleVolume! /
-          1000 *
+      : solidBoardingMidsoleVolume! *
+          1000 /
           UpperBaseStructureAndWaterRoofWeights.underPlankingKgPerCbm;
 
   num? get floorPanelFloorVolume {

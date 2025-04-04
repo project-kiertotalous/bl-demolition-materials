@@ -5,10 +5,8 @@ import '../../small_properties/foundations_and_outer_shell/apartments.dart';
 import '../../small_properties/foundations_and_outer_shell/electrical_installations_and_hvac.dart';
 import '../../small_properties/foundations_and_outer_shell/small_properties_excavation_area.dart';
 import '../../small_properties/foundations_and_outer_shell/small_properties_foundation.dart';
-import '../../small_properties/foundations_and_outer_shell/inner_door.dart';
 import '../../small_properties/foundations_and_outer_shell/small_property_inner_doors.dart';
 import '../../small_properties/foundations_and_outer_shell/machinery_equipment_and_fixed_structures.dart';
-import '../../small_properties/foundations_and_outer_shell/outer_door.dart';
 import '../../small_properties/foundations_and_outer_shell/small_property_outer_doors.dart';
 import '../../small_properties/foundations_and_outer_shell/roof.dart';
 import '../../small_properties/foundations_and_outer_shell/small_property_evaluation_info.dart';
@@ -16,7 +14,6 @@ import '../../small_properties/foundations_and_outer_shell/walls.dart';
 import '../../small_properties/foundations_and_outer_shell/small_property_windows.dart';
 import '../../small_properties/yard_buildings_and_structures/carport_or_garage.dart';
 import '../../small_properties/yard_buildings_and_structures/hall_doors.dart';
-import '../../small_properties/yard_buildings_and_structures/passage_door.dart';
 import '../../small_properties/yard_buildings_and_structures/passage_doors.dart';
 import '../../small_properties/yard_buildings_and_structures/roof.dart';
 import '../../small_properties/yard_buildings_and_structures/thermal_center.dart';
@@ -42,14 +39,12 @@ abstract class Counter with _$Counter {
       ElectricStoves? electricStoves,
       SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
       SmallPropertiesFoundation? foundation,
-      InnerDoor? innerDoor,
-      InnerDoors? innerDoors,
+      SmallPropertyInnerDoors? innerDoors,
       KitchenBathroomAndToiletWallsAndFloors?
           kitchenBathroomAndToiletWallsAndFloors,
       KitchenClosets? kitchenClosets,
       MachineryEquipmentAndFixedStructures?
           machineryEquipmentAndFixedStructures,
-      OuterDoor? outerDoor,
       SmallPropertyOuterDoors? outerDoors,
       PorcelainSeats? porcelainSeats,
       Refrigerators? refrigerators,
@@ -64,7 +59,6 @@ abstract class Counter with _$Counter {
       SmallPropertyWindows? windows,
       CarportOrGarage? carportOrGarage,
       HallDoors? hallDoors,
-      PassageDoor? passageDoor,
       PassageDoors? passageDoors,
       YardRoof? yardRoof,
       ThermalCenter? thermalCenter}) = _Counter;
