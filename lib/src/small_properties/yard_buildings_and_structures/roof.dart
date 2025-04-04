@@ -14,8 +14,8 @@ part 'roof.freezed.dart';
 abstract class YardRoof with _$YardRoof {
   const YardRoof._();
 
-  const factory Roof(
-      {SmallPropertyRoofType? roofType,
+  const factory YardRoof(
+      {RoofType? roofType,
       WaterRoofType? waterRoofType,
       num? lapelLengthInMeters,
       num? lapelWidthInMeters,
