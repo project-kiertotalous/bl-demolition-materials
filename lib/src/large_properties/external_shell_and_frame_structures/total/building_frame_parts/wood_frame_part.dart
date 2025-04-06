@@ -37,6 +37,6 @@ abstract class WoodFramePart extends StructuralBuildingFramePart
       return null;
     }
 
-    return woodFrame!.kgPerSquareMeter * area! / woodFrame!.kgPerCubicMeter;
+    return woodFrame!.kgPerSquareMeter * area! / 1000;
   }
 }

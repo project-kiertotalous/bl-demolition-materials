@@ -1,6 +1,6 @@
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:bl_demolition_materials/src/utils/utils.dart';
 import '../../shared/water_roof_type.dart';
 import '../data_types/exports.dart';
 

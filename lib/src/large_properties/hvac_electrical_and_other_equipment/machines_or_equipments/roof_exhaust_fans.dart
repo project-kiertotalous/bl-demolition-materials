@@ -1,7 +1,7 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../../../../bl_demolition_materials.dart';
 import 'machines_or_equipments.dart';
-
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'roof_exhaust_fans.freezed.dart';
 part 'roof_exhaust_fans.g.dart';

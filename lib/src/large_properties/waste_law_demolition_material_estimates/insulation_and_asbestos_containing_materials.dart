@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'exports.dart';
+
 part 'insulation_and_asbestos_containing_materials.g.dart';
 
 part 'insulation_and_asbestos_containing_materials.freezed.dart';

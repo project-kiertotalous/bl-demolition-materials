@@ -1,8 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../bl_demolition_materials.dart';
-import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
-import '../exports.dart';
 import 'building_envelope_frame_part.dart';
 
 part 'minerite_or_other_stone_frame_part.freezed.dart';
@@ -16,9 +14,9 @@ abstract class MineriteOrOtherStoneFramePart extends BuildingEnvelopeFramePart
       {TotalBuildingFrame? totalBuildingFrame,
       num? portionPercentage}) = _MineriteOrOtherStoneFramePart;
 
-  final mineralWoolFrame = MineralWoolFrame();
-  final semiHardFiberBoardFrame = SemiHardFiberBoardFrame();
-  final mineriteBoardFrame = MineriteBoardFrame();
+  static final mineralWoolFrame = MineralWoolFrame();
+  static final semiHardFiberBoardFrame = SemiHardFiberBoardFrame();
+  static final mineriteBoardFrame = MineriteBoardFrame();
 
   @override
   num? get mineralWoolInsulationTons =>

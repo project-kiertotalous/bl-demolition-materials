@@ -4,13 +4,10 @@ import 'dart:io';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'demolition_material_assessment/exports.dart';
-import 'demolition_material_assessment/total/exports.dart';
 import 'external_shell_and_frame_structures/exports.dart';
-import 'external_shell_and_frame_structures/total/exports.dart';
 import 'hvac_electrical_and_other_equipment/exports.dart';
 import 'partition_walls_doors_and_windows/exports.dart';
 import 'waste_law_demolition_material_estimates/exports.dart';
-import 'waste_law_demolition_material_estimates/total/exports.dart';
 
 part 'large_properties_repository.freezed.dart';
 part 'large_properties_repository.g.dart';

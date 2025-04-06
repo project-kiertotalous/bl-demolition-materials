@@ -2,8 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../bl_demolition_materials.dart';
 import '../../../../utils/utils.dart';
-import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
-import '../exports.dart';
 import 'exports.dart';
 
 part 'concrete_element_walls_without_framework_frame_part.freezed.dart';
@@ -21,10 +19,12 @@ abstract class ConcreteElementWallsWithoutFrameworkFramePart
   late final ConcreteWallElementFrame? concreteWallElementFrame =
       ConcreteWallElementFrame(totalBuildingFrame);
 
-  final plasteringInteriorAndExteriorWallsFrame =
+  static final plasteringInteriorAndExteriorWallsFrame =
       PlasteringInteriorAndExteriorWallsFrame();
 
-  final mineralWoolFrame = MineralWoolFrame();
+  static final mineralWoolFrame = MineralWoolFrame();
+
+  static final styrofoamFrame = StyrofoamFrame();
 
   @override
   num? get concreteVolume => concreteWallElementFrame?.concreteVolume;
@@ -55,12 +55,11 @@ abstract class ConcreteElementWallsWithoutFrameworkFramePart
   num? get semiHardFiberBoardTons => null;
 
   @override
-  num? get styrofoamTons => null;
+  num? get styrofoamTons =>
+      area == null ? null : area! * styrofoamFrame.kgPerSquareMeter / 1000;
 
   @override
-  num? get plasterCoatingTons => area == null
-      ? null
-      : area! * plasteringInteriorAndExteriorWallsFrame.kgPerSquareMeter / 1000;
+  num? get plasterCoatingTons => null;
 
   @override
   num? get mineriteBoardTons => null;

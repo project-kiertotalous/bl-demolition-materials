@@ -2,8 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../bl_demolition_materials.dart';
 import '../../../../utils/utils.dart';
-import '../../../demolition_materials/outer_walls_and_frame_demolition_materials.dart';
-import '../exports.dart';
 import 'exports.dart';
 
 part 'double_load_bearing_brick_wall_frame_part.freezed.dart';
@@ -21,8 +19,9 @@ abstract class DoubleLoadBearingBrickWallFramePart
   late final DoubleBrickWallFrame? doubleBrickWallFrame =
       DoubleBrickWallFrame(totalBuildingFrame);
 
-  final mineralWoolFrame = MineralWoolFrame();
-  final styrofoamFrame = StyrofoamFrame();
+  static final mineralWoolFrame = MineralWoolFrame();
+  static final plasteringInteriorAndExteriorWallsFrame =
+      PlasteringInteriorAndExteriorWallsFrame();
 
   @override
   num? get brickVolume => doubleBrickWallFrame?.volume;
@@ -53,11 +52,12 @@ abstract class DoubleLoadBearingBrickWallFramePart
   num? get semiHardFiberBoardTons => null;
 
   @override
-  num? get styrofoamTons =>
-      area == null ? null : area! * styrofoamFrame.kgPerSquareMeter / 1000;
+  num? get styrofoamTons => null;
 
   @override
-  num? get plasterCoatingTons => null;
+  num? get plasterCoatingTons => area == null
+      ? null
+      : area! * plasteringInteriorAndExteriorWallsFrame.kgPerSquareMeter / 1000;
 
   @override
   num? get mineriteBoardTons => null;

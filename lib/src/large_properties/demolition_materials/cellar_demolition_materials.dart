@@ -1,7 +1,4 @@
 import '../../../bl_demolition_materials.dart';
-import '../data_types/cellar_exterior_material.dart';
-import '../external_shell_and_frame_structures/cellar.dart';
-import 'demolition_materials.dart';
 
 /// Maanvarainen lattia
 /// Teräsbetonilaatta (mm)
@@ -34,11 +31,15 @@ class ReinforcedConcreteSlabGroundFloor extends DemolitionMaterials {
   num? get tons => volume == null ? null : volume! * kgPerCubicMeter / 1000;
 
   @override
-  num? get concreteTons => tons == null ? null : tons! - steelTons;
+  num? get concreteTons =>
+      tons == null || steelTons == null ? null : tons! - steelTons!;
 
   @override
-  num get steelTons =>
-      FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm;
+  num? get steelTons => volume == null
+      ? null
+      : volume! *
+          FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm /
+          1000;
 }
 
 /// Kuumabitumisively
@@ -64,7 +65,7 @@ class HotBitumenBrushingGroundFloor extends DemolitionMaterials {
       return null;
     }
 
-    return kgPerSquareMeter / cellar!.floorArea! * kgPerCubicMeter;
+    return kgPerSquareMeter * cellar!.floorArea! / kgPerCubicMeter;
   }
 
   @override
@@ -104,7 +105,7 @@ class MineralWoolGroundFloor extends DemolitionMaterials {
       return null;
     }
 
-    return kgPerSquareMeter / cellar!.floorArea! * kgPerCubicMeter;
+    return kgPerSquareMeter * cellar!.floorArea! / kgPerCubicMeter;
   }
 
   @override
@@ -258,20 +259,22 @@ class FrostProofStyrofoamInsulation extends DemolitionMaterials {
 
   @override
   num? get volume {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / kgPerCubicMeter;
+    return kgPerSquareMeter *
+        cellar!.totalExteriorWallsSurfaceArea! /
+        kgPerCubicMeter;
   }
 
   @override
   num? get tons {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / 1000;
+    return kgPerSquareMeter * cellar!.totalExteriorWallsSurfaceArea! / 1000;
   }
 }
 
@@ -292,20 +295,22 @@ class StyrofoamInsulation extends DemolitionMaterials {
 
   @override
   num? get volume {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / kgPerCubicMeter;
+    return kgPerSquareMeter *
+        cellar!.totalExteriorWallsSurfaceArea! /
+        kgPerCubicMeter;
   }
 
   @override
   num? get tons {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / 1000;
+    return kgPerSquareMeter * cellar!.totalExteriorWallsSurfaceArea! / 1000;
   }
 }
 
@@ -326,20 +331,22 @@ class FinnFoamInsulation extends DemolitionMaterials {
 
   @override
   num? get volume {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / kgPerCubicMeter;
+    return kgPerSquareMeter *
+        cellar!.totalExteriorWallsSurfaceArea! /
+        kgPerCubicMeter;
   }
 
   @override
   num? get tons {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / 1000;
+    return kgPerSquareMeter * cellar!.totalExteriorWallsSurfaceArea! / 1000;
   }
 }
 
@@ -359,20 +366,22 @@ class VaporBarrierPlasticInsulation extends DemolitionMaterials {
 
   @override
   num? get volume {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / kgPerCubicMeter;
+    return kgPerSquareMeter *
+        cellar!.totalExteriorWallsSurfaceArea! /
+        kgPerCubicMeter;
   }
 
   @override
   num? get tons {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / 1000;
+    return kgPerSquareMeter * cellar!.totalExteriorWallsSurfaceArea! / 1000;
   }
 }
 
@@ -392,20 +401,22 @@ class HotBitumenCoatingInsulation extends DemolitionMaterials {
 
   @override
   num? get volume {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / kgPerCubicMeter;
+    return kgPerSquareMeter *
+        cellar!.totalExteriorWallsSurfaceArea! /
+        kgPerCubicMeter;
   }
 
   @override
   num? get tons {
-    if (cellar?.exteriorWallsPerimeter == null) {
+    if (cellar?.totalExteriorWallsSurfaceArea == null) {
       return null;
     }
 
-    return kgPerSquareMeter * cellar!.exteriorWallsPerimeter! / 1000;
+    return kgPerSquareMeter * cellar!.totalExteriorWallsSurfaceArea! / 1000;
   }
 }
 
@@ -581,7 +592,8 @@ class LightweightConcreteBlockWalls extends DemolitionMaterials {
       return 0;
     }
 
-    return (cellar!.wallHeight! * cellar!.exteriorWallsPerimeter!) /
+    return kgPerSquareMeter *
+        (cellar!.wallHeight! * cellar!.exteriorWallsPerimeter!) /
         kgPerCubicMeter;
   }
 
@@ -595,7 +607,9 @@ class LightweightConcreteBlockWalls extends DemolitionMaterials {
       return 0;
     }
 
-    return (cellar!.wallHeight! * cellar!.exteriorWallsPerimeter!) / 1000;
+    return kgPerSquareMeter *
+        (cellar!.wallHeight! * cellar!.exteriorWallsPerimeter!) /
+        1000;
   }
 }
 

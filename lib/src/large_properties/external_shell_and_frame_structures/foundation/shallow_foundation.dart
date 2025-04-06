@@ -77,7 +77,8 @@ abstract class ShallowFoundation extends Foundation with _$ShallowFoundation {
         _frostProofStyrofoamShallowFoundation.tons,
         _finnFoamShallowFoundation.tons,
         _vaporBarrierPlasticShallowFoundation.tons,
-        _styrofoamShallowFoundationGroundFloor.tons
+        // _styrofoamShallowFoundationGroundFloor.tons is not added here. This is according
+        // to spec, but feels wrong.
       ]);
 
   @override

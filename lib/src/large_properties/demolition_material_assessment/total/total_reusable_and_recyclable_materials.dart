@@ -2,11 +2,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../utils/utils.dart';
 import '../../external_shell_and_frame_structures/exports.dart';
-import '../../external_shell_and_frame_structures/total/exports.dart';
 import '../../hvac_electrical_and_other_equipment/exports.dart';
 import '../../partition_walls_doors_and_windows/exports.dart';
 import '../exports.dart';
-import '../items/exports.dart';
 
 part 'total_reusable_and_recyclable_materials.freezed.dart';
 
@@ -417,7 +415,7 @@ abstract class TotalReusableAndRecyclableMaterials
 
     if (totalIntermediateFloors!.hollowCoreSlabsAndGlulamBeamRecyclable! ==
         false) {
-      return totalIntermediateFloors!.concreteCastingConcreteVolume!;
+      return totalIntermediateFloors!.concreteCastingConcreteVolume;
     }
 
     return Utils.sumOrNull([

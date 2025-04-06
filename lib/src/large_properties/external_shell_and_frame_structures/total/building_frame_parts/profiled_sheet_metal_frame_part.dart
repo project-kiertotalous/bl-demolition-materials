@@ -16,10 +16,10 @@ abstract class ProfiledSheetMetalFramePart extends BuildingEnvelopeFramePart
       {TotalBuildingFrame? totalBuildingFrame,
       num? portionPercentage}) = _ProfiledSheetMetalFramePart;
 
-  final windProtectionBoardFrame = WindProtectionBoardFrame();
-  final mineralWoolFrame = MineralWoolFrame();
-  final plasterBoardFrame = PlasterBoardFrame();
-  final profiledSheetMetalBoard = ProfiledSheetMetalBoard();
+  static final windProtectionBoardFrame = WindProtectionBoardFrame();
+  static final mineralWoolFrame = MineralWoolFrame();
+  static final plasterBoardFrame = PlasterBoardFrame();
+  static final profiledSheetMetalBoard = ProfiledSheetMetalBoard();
 
   @override
   num? get windProtectionBoardTons => area == null

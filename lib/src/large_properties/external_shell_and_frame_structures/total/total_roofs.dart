@@ -129,7 +129,7 @@ abstract class TotalRoofs with _$TotalRoofs {
 
   num? get woodVolume => Utils.sumOrNull([
         _woodenTrussRidgeOrGableRoof.woodVolume,
-        _woodenTrussFlatOrMonoPitchedRoof.woodVolume,
+        _woodenTrussFlatOrMonoPitchedRoof.woodVolume, // should be 7.5
         _roofBracketsFlatOrMonoPitchedRoof.woodVolume,
         _woodenUnderPlankingWaterRoof.woodVolume
       ]);
