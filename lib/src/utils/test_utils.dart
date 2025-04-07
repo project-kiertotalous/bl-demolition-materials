@@ -1,7 +1,45 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:uuid/uuid.dart';
+
 import '../../bl_demolition_materials.dart';
 
 /// An utility class for all things related to testing
 class TestUtils {
+  /// Given a Map&lt;String, dynamic&gt;, encodes it to JSON. After encoding,
+  /// decodes it back using the provided function. If writeToDisk is set to true,
+  /// the encoded JSON is additionally written to a temporary file, and read again
+  /// from there after which the encoding process will happen.
+  static T jsonRoundTrip<T>(Map<String, dynamic> objectJSON,
+      T Function(Map<String, dynamic>) fromJSON,
+      [bool writeToDisk = false]) {
+    late Map<String, dynamic> readJSON;
+
+    if (writeToDisk) {
+      withTempFile((file) {
+        final writeJSON = jsonEncode(objectJSON);
+        file.writeAsStringSync(writeJSON);
+        readJSON = jsonDecode(file.readAsStringSync());
+      });
+    } else {
+      final writeJSON = jsonEncode(objectJSON);
+      readJSON = jsonDecode(writeJSON);
+    }
+
+    return fromJSON(readJSON);
+  }
+
+  /// Calls the provided function with a temporary file. The temporary will be
+  /// deleted afterwards.
+  static void withTempFile(Function(File) fileHandler) {
+    final dir = Directory.systemTemp.createTempSync();
+    final File tempFile = File("${dir.path}/$Uuid()");
+    tempFile.createSync();
+    fileHandler(tempFile);
+    dir.deleteSync(recursive: true);
+  }
+
   /// Returns an instance of WasteLawReportExporter with some sample data
   static WasteLawReportExporter get sampleWasteLawReportExporter {
     final repo = sampleLargePropertiesRepository;

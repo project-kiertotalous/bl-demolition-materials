@@ -1,8 +1,7 @@
+import 'package:bl_demolition_materials/src/utils/test_utils.dart';
 import 'package:test/test.dart';
 
 import 'package:bl_demolition_materials/bl_demolition_materials.dart';
-import 'package:bl_demolition_materials/src/large_properties/data_types/cellar_exterior_material.dart';
-import 'package:bl_demolition_materials/src/utils/utils.dart';
 
 void main() {
   group('Basic serialization tests', () {
@@ -16,7 +15,7 @@ void main() {
           exteriorWallsMaterial: CellarExteriorMaterial.concreteCasting);
 
       final readCellar =
-          Utils.jsonRoundTrip(cellar.toJson(), Cellar.fromJson, true);
+          TestUtils.jsonRoundTrip(cellar.toJson(), Cellar.fromJson, true);
 
       expect(readCellar.floorArea, equals(cellar.floorArea));
       expect(readCellar.exteriorWallsPerimeter,
