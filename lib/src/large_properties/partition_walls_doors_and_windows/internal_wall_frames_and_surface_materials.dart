@@ -1,9 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:bl_demolition_materials/src/large_properties/partition_walls_doors_and_windows/total_room_space.dart';
 import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
-import 'room_space.dart';
 
 part 'internal_wall_frames_and_surface_materials.freezed.dart';
 part 'internal_wall_frames_and_surface_materials.g.dart';
@@ -193,7 +191,8 @@ abstract class InternalWallFramesAndSurfaceMaterial
     if (totalBrickWallsVolume == null) {
       return null;
     }
-    return totalBrickWallsVolume! *
+
+    return totalBrickWallsInSquareMeters! *
         FoundationStructureWeights.limeSandBrick130mmKgPerSqm /
         1000;
   }
@@ -202,7 +201,8 @@ abstract class InternalWallFramesAndSurfaceMaterial
     if (totalConcreteElementOrCastingWallsVolume == null) {
       return null;
     }
-    return totalConcreteElementOrCastingWallsVolume! *
+
+    return totalConcreteElementOrCastingWallsInSquareMeters! *
         FrameBarWeights.concreteWallElement200mmThickConcreteKgPerSqm /
         1000;
   }
