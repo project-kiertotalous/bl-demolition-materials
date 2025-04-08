@@ -7,7 +7,7 @@ part 'small_properties_excavation_area.freezed.dart';
 
 /// Poistettavat maa-ainekset, poistettava alue ja määrä
 @freezed
-class SmallPropertiesExcavationArea with _$SmallPropertiesExcavationArea {
+abstract class SmallPropertiesExcavationArea with _$SmallPropertiesExcavationArea {
   SmallPropertiesExcavationArea._();
 
   factory SmallPropertiesExcavationArea({
