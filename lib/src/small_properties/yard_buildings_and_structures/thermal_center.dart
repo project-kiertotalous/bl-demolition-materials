@@ -351,10 +351,26 @@ abstract class ThermalCenter with _$ThermalCenter {
     return null;
   }
 
+  /// Materiaalimäärätaulukkoon luettava arco, sähkökattila (kpl)
+  num? get recyclableHeatingMachinePieces {
+    if (areRecyclable) {
+      return heatingMachinesPcs;
+    }
+    return null;
+  }
+
   /// Materiaalimäärätaulukkoon luettava arvo, ruostumaton teräs, lämmönvaihdin
   num? get recyclableDistrictHeatExchangerTons {
     if (heatingType == HeatingType.districtHeatExchanger && areRecyclable) {
       return boilerOrHeatExchangerWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettrava arvo, kierrätettävä lämmönvaihdin (kpl)
+  num? get recyclableDistrictHeatExchangerPieces {
+    if (areRecyclable) {
+      return heatingMachinesPcs;
     }
     return null;
   }

@@ -41,6 +41,17 @@ abstract class PassageDoors with _$PassageDoors {
     return null;
   }
 
+  /// Materiaalimääärätaulukkoon luettava määrä, kierrätettävät puuovet (kpl)
+  num? get recyclableWoodDoorPieces {
+    if (doorsRecyclable == true) {
+      return Utils.sumOrNull([
+        woodenDoor?.shutDoors,
+        woodenDoor?.glassDoors,
+      ]);
+    }
+    return null;
+  }
+
   /// Materiaalimääärätaulukkoon luettava määrä, polttokelpoinen puujäte
   num? get burnableWoodTons {
     if (doorsRecyclable == false) {
@@ -81,7 +92,7 @@ abstract class PassageDoors with _$PassageDoors {
     return sum != null ? sum / 1000 : null;
   }
 
-  /// Materiaalimääärätaulukkoon luettava määrä, alumiiniovet
+  /// Materiaalimäärätaulukkoon luettava määrä, alumiiniovet
   num? get recyclableAluminiumDoorTons {
     if (doorsRecyclable == true) {
       return aluminiumDoorTons;
@@ -89,7 +100,18 @@ abstract class PassageDoors with _$PassageDoors {
     return null;
   }
 
-  /// Materiaalimääärätaulukkoon luettava määrä, alumiini
+  /// Materiaalimäärätaulukkoon luettava määrä, kierrätettävät alumiiniovet (kpl)
+  num? get recyclableAluminiumDoorPieces {
+    if (doorsRecyclable == true) {
+      return Utils.sumOrNull([
+        aluminiumDoor?.shutDoors,
+        aluminiumDoor?.glassDoors,
+      ]);
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, alumiini
   num? get aluminiumTons {
     if (doorsRecyclable == false) {
       return aluminiumDoorTons;
@@ -131,6 +153,17 @@ abstract class PassageDoors with _$PassageDoors {
   num? get recyclableSteelDoorTons {
     if (doorsRecyclable == true) {
       return steelDoorTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava määrä, kierrätettävät teräsovet (kpl)
+  num? get recyclableSteelDoorPieces {
+    if (doorsRecyclable == true) {
+      return Utils.sumOrNull([
+        steelDoor?.shutDoors,
+        steelDoor?.glassDoors,
+      ]);
     }
     return null;
   }
