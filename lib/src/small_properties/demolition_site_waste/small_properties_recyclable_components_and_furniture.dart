@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'small_properties_recyclable_components_and_furniture.freezed.dart';
-part 'small_properties_recyclable_components_and_furniture.g.dart';
 
 /// KIERRÄTETTÄVÄT RAKENNEOSAT JA KALUSTEET
 @freezed

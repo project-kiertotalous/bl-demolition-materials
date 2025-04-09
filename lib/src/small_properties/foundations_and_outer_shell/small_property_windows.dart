@@ -119,7 +119,7 @@ abstract class SmallPropertyWindows with _$SmallPropertyWindows {
   }
 
   /// Kierrätettävät ikkunat, puuta (kpl)
-  num? get recyclableWindowsPieces {
+  num? get recyclableWoodWindowsPieces {
     if (areWindowsRecyclable == false) {
       return null;
     }

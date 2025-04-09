@@ -26,7 +26,7 @@ abstract class HallDoors with _$HallDoors {
     return multiply != null ? multiply / 1000 : null;
   }
 
-  /// Materiaalimääärätaulukkoon luettava arvo, puuovet
+  /// Materiaalimäärätaulukkoon luettava arvo, puuovet
   num? get recyclableWoodenDoorTons {
     if (areHallDoorsRecyclable == true) {
       return woodenDoorTons;
@@ -34,7 +34,15 @@ abstract class HallDoors with _$HallDoors {
     return null;
   }
 
-  /// Materiaalimääärätaulukkoon luettava arvo, polttokelpoinen puujäte
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävät puuovet (kpl)
+  num? get recyclableWoodDoorPieces {
+    if (areHallDoorsRecyclable == true) {
+      return woodenDoors;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, polttokelpoinen puujäte
   num? get burnableWoodTons {
     if (areHallDoorsRecyclable == false) {
       return woodenDoorTons;
@@ -59,7 +67,15 @@ abstract class HallDoors with _$HallDoors {
     return null;
   }
 
-  /// Materiaalimääärätaulukkoon luettava arvo, alumiini
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävät alumiiniovet (kpl)
+  num? get recyclableAluminiumDoorPieces {
+    if (areHallDoorsRecyclable == true) {
+      return aluminiumDoors;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, alumiini
   num? get aluminiumTons {
     if (areHallDoorsRecyclable == false) {
       return aluminiumDoorTons;
@@ -80,6 +96,14 @@ abstract class HallDoors with _$HallDoors {
   num? get recyclableSteelDoorTons {
     if (areHallDoorsRecyclable == true) {
       return steelDoorTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävät teräsovet (kpl)
+  num? get recyclableSteelDoorPieces {
+    if (areHallDoorsRecyclable == true) {
+      return steelDoors;
     }
     return null;
   }

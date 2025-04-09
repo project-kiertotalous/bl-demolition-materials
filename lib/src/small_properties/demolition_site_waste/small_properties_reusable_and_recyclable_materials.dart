@@ -1,8 +1,6 @@
-import '../../small_properties/quantities_to_material_form/quantities_to_material_form.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'small_properties_reusable_and_recyclable_materials.freezed.dart';
-part 'small_properties_reusable_and_recyclable_materials.g.dart';
 
 /// HYÖDYNTÄMISKELPOISET JA KIERRÄTETTÄVÄT MATERIAALIT
 @freezed
@@ -30,5 +28,5 @@ abstract class SmallPropertiesReusableAndRecyclableMaterials
           num? copperDemolitionCost,
           num? concreteYardTilesAndStonesDemolitionCost,
           num? overallReusableMaterialsDemolitionCost}) =
-      _ReusableAndRecyclableMaterials;
+      _SmallPropertiesReusableAndRecyclableMaterials;
 }

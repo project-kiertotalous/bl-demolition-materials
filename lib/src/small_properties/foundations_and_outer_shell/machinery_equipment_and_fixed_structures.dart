@@ -173,6 +173,14 @@ abstract class MachineryEquipmentAndFixedStructures
     return null;
   }
 
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävä sähkömoottori (kpl)
+  num? get recyclableElectricMotorsPieces {
+    if (areElectricMotorsRecyclable == true) {
+      return electricMotors;
+    }
+    return null;
+  }
+
   /// Ilmanvaihtokoneet (tonnia)
   /// Same problem here
   num? get ventilationMachinesWeightTons {
@@ -196,6 +204,14 @@ abstract class MachineryEquipmentAndFixedStructures
   num? get recyclableVentilationMachinesWeightTons {
     if (areVentilationMachinesRecyclable == true) {
       return ventilationMachinesWeightTons;
+    }
+    return null;
+  }
+
+  /// Materiaalimäärätaulukkoon luettava arvo, kierrätettävä ilmanvaihtokone (kpl)
+  num? get recyclableVentilationMachinesPieces {
+    if (areVentilationMachinesRecyclable == true) {
+      return ventilationMachines;
     }
     return null;
   }
