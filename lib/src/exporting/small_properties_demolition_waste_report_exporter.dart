@@ -422,19 +422,3 @@ ReportTableRow _dispRow(String title, SmallPropertiesWasteDisposalItem? item,
     ReportCell(value: item?.demolitionBatchPrice)
   ]);
 }
-
-void main() {
-  final exporter = SmallPropertiesDemolitionWasteReportExporter(
-      smallPropertiesTotalDemolitionWasteAndCosts:
-          TestUtils.sampleSmallPropertiesTotalDemolitionWasteAndCosts,
-      evaluationInfo: SmallPropertyEvaluationInfo(
-          propertyName: 'Hannuntalo',
-          address: 'Sastamala 6 A 5',
-          buildingType: 'very large residential one'));
-
-  final pdfFile = File("C:\\Users\\Hannu Korvala\\test.pdf");
-  final excelFile = File("C:\\Users\\Hannu Korvala\\test.xlsx");
-
-  exporter.writeAsPdfSync(pdfFile);
-  exporter.writeAsExcelSync(excelFile);
-}
