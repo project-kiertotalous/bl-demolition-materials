@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'small_properties_reusable_and_recyclable_materials.freezed.dart';
+part 'small_properties_reusable_and_recyclable_materials.g.dart';
 
 /// HYÖDYNTÄMISKELPOISET JA KIERRÄTETTÄVÄT MATERIAALIT
 @freezed
@@ -29,4 +30,8 @@ abstract class SmallPropertiesReusableAndRecyclableMaterials
           num? concreteYardTilesAndStonesDemolitionCost,
           num? overallReusableMaterialsDemolitionCost}) =
       _SmallPropertiesReusableAndRecyclableMaterials;
+
+  factory SmallPropertiesReusableAndRecyclableMaterials.fromJson(
+          Map<String, dynamic> json) =>
+      _$SmallPropertiesReusableAndRecyclableMaterialsFromJson(json);
 }

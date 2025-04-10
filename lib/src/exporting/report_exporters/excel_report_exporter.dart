@@ -35,6 +35,7 @@ class ExcelReportExporter extends ReportExporter<Excel> {
           excelCell.value = cell.valueAsExcelValue;
           excelCell.cellStyle = CellStyle(
               bold: cell.bold,
+              fontColorHex: cell.red ? ExcelColor.red : ExcelColor.black,
               horizontalAlign: getCellHorizontalAlign(cell),
               verticalAlign: getCellVerticalAlign(cell),
               textWrapping:

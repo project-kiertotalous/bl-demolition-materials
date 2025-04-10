@@ -93,11 +93,20 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
                                     ? null
                                     : row.height * sizeScale,
                                 child: pw.Text(cell.valueString,
-                                    style: pw.TextStyle(
-                                        font: font,
-                                        fontBold: fontBold,
-                                        fontSize: cell.fontSize * fontScale,
-                                        fontWeight: getCellFontWeight(cell)))))
+                                    style: cell.red
+                                        ? pw.TextStyle(
+                                            // TODO refactor me
+                                            font: font,
+                                            fontBold: fontBold,
+                                            color: PdfColor.fromRYB(1, 0, 0),
+                                            fontSize: cell.fontSize * fontScale,
+                                            fontWeight: getCellFontWeight(cell))
+                                        : pw.TextStyle(
+                                            font: font,
+                                            fontBold: fontBold,
+                                            fontSize: cell.fontSize * fontScale,
+                                            fontWeight:
+                                                getCellFontWeight(cell)))))
                     ])
             ])));
       }

@@ -5,6 +5,7 @@ import '../../utils/utils.dart';
 import '../data_types/exports.dart';
 
 part 'roof.freezed.dart';
+part 'roof.g.dart';
 
 /// This file contains also the roof part from the Laskenta-tab in the Excel sheet.
 /// All the calculations are done on the Laskenta tab.
@@ -25,6 +26,8 @@ abstract class Roof with _$Roof {
     SmallPropertyRoofType? roofType,
     WaterRoofType? waterRoofType,
   }) = _Roof;
+
+  factory Roof.fromJson(Map<String, dynamic> json) => _$RoofFromJson(json);
 
   /// Kattopinta-ala (m2)
   num? get roofArea {

@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'small_properties_disposal_materials_and_hazardous_waste.freezed.dart';
+part 'small_properties_disposal_materials_and_hazardous_waste.g.dart';
 
 /// Loppusijoitettavat materiaalit ja ongelmajätteet
 @freezed
@@ -17,4 +18,8 @@ abstract class SmallPropertiesDisposalMaterialsAndHazardousWaste
           num? mineralWoolOrFeltRoofingContainingAsbestosProcessingCost,
           num? concreteContainingPcbPaintProcessingCost}) =
       _SmallPropertiesDisposalMaterialsAndHazardousWaste;
+
+  factory SmallPropertiesDisposalMaterialsAndHazardousWaste.fromJson(
+          Map<String, dynamic> json) =>
+      _$SmallPropertiesDisposalMaterialsAndHazardousWasteFromJson(json);
 }

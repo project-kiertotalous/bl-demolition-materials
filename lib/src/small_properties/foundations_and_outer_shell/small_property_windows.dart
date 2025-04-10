@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'small_property_windows.freezed.dart';
+part 'small_property_windows.g.dart';
 
 /// Ikkunat
 /// Sisältää tiedot kaikkien ikkunoiden kappalemääristä ja materiaalimääristä yhteensä
@@ -17,6 +18,9 @@ abstract class SmallPropertyWindows with _$SmallPropertyWindows {
     num? aluminiumPcs,
     @Default(false) bool areWindowsRecyclable,
   }) = _SmallPropertyWindows;
+
+  factory SmallPropertyWindows.fromJson(Map<String, dynamic> json) =>
+      _$SmallPropertyWindowsFromJson(json);
 
   num? get woodenFrameWindowWoodTons {
     num? multiply = Utils.multiplyOrNull([

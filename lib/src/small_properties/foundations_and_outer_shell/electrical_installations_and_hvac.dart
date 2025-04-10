@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'electrical_installations_and_hvac.freezed.dart';
+part 'electrical_installations_and_hvac.g.dart';
 
 /// Sähköasennukset ja LVI
 @freezed
@@ -20,6 +21,8 @@ abstract class Hvac with _$Hvac {
     num? sewagePipesPlastic,
     num? rainGutters,
   }) = _Hvac;
+
+  factory Hvac.fromJson(Map<String, dynamic> json) => _$HvacFromJson(json);
 
   /// Sähköjohdot, kupari (kg)
   num? get electricalWiresCopperWeightKg => Utils.multiplyOrNull([

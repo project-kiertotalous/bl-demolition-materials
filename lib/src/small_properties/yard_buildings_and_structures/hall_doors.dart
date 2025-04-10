@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'hall_doors.freezed.dart';
+part 'hall_doors.g.dart';
 
 /// Halliovet
 /// Sisältää tiedot kaikkien halliovien materiaalimäärista yhteensä
@@ -17,6 +18,9 @@ abstract class HallDoors with _$HallDoors {
     num? steelDoors,
     @Default(false) bool areHallDoorsRecyclable,
   }) = _HallDoors;
+
+  factory HallDoors.fromJson(Map<String, dynamic> json) =>
+      _$HallDoorsFromJson(json);
 
   /// Puuovi (tonnia)
   num? get woodenDoorTons {

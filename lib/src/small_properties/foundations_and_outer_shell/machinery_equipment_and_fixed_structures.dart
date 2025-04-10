@@ -5,6 +5,7 @@ import '../../utils/utils.dart';
 import '../data_types/fences_between_apartments.dart';
 
 part 'machinery_equipment_and_fixed_structures.freezed.dart';
+part 'machinery_equipment_and_fixed_structures.g.dart';
 
 /// Koneet, laitteet ja kiinteät rakenteet
 @freezed
@@ -24,6 +25,10 @@ abstract class MachineryEquipmentAndFixedStructures
     num? concreteYardTilesAndStonesInSquareMeters,
     num? fencesBetweenApartmentsInMeters,
   }) = _MachineryEquipmentAndFixedStructures;
+
+  factory MachineryEquipmentAndFixedStructures.fromJson(
+          Map<String, dynamic> json) =>
+      _$MachineryEquipmentAndFixedStructuresFromJson(json);
 
   /// Sähkömoottorit (kg)
   num? get electricMotorsWeightKg => Utils.multiplyOrNull([

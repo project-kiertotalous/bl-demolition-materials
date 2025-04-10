@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'small_property_evaluation_info.freezed.dart';
+part 'small_property_evaluation_info.g.dart';
 
 @freezed
 abstract class SmallPropertyEvaluationInfo with _$SmallPropertyEvaluationInfo {
@@ -10,4 +11,7 @@ abstract class SmallPropertyEvaluationInfo with _$SmallPropertyEvaluationInfo {
     String? address,
     @Default(false) bool isHazardousSubstanceSurveyDone,
   }) = _SmallPropertyEvaluationInfo;
+
+  factory SmallPropertyEvaluationInfo.fromJson(Map<String, dynamic> json) =>
+      _$SmallPropertyEvaluationInfoFromJson(json);
 }

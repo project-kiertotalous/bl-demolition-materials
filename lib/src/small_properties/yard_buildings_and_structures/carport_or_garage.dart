@@ -7,6 +7,7 @@ import '../data_types/foundation_type.dart';
 import '../data_types/garage_wall_material.dart';
 
 part 'carport_or_garage.freezed.dart';
+part 'carport_or_garage.g.dart';
 
 /// Piharakennukset ja rakenteet
 /// Autokatos tai autotalli, erilliset ulkovarastot ja lämpökeskus
@@ -24,6 +25,9 @@ abstract class CarportOrGarage with _$CarportOrGarage {
       InsulationMaterialThickness? insulationMaterialThickness,
       num? wallAverageHeight,
       num? buildingWallLengthTotal}) = _CarportOrGarage;
+
+  factory CarportOrGarage.fromJson(Map<String, dynamic> json) =>
+      _$CarportOrGarageFromJson(json);
 
   /// Asfaltti (tonnia)
   num? get asphaltTons {
