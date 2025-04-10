@@ -40,7 +40,7 @@ abstract class SmallPropertiesExcavationArea
       return null;
     }
 
-    return 1 - cleanSoilFraction;
+    return (1 - cleanSoilFraction) * 100;
   }
 
   // Asfaltti (tonnia)

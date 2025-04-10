@@ -136,7 +136,7 @@ abstract class Counter with _$Counter {
 
   /// Puhdas käyttökelpoinen puu
   num? get cleanWood => Utils.sumOrNull([
-        walls?.cleanWoodTons,
+        walls?.cleanWoodOrBurnableWoodTons,
         roof?.cleanWoodTons,
         yardRoof?.woodenRoofLattice800mmWeightTons,
         thermalCenter?.cleanWoodTons,
@@ -145,7 +145,7 @@ abstract class Counter with _$Counter {
 
   /// Polttokelpoinen puujäte
   num? get burnableWood => Utils.sumOrNull([
-        walls?.burnableWoodTons,
+        walls?.cleanWoodOrBurnableWoodTons,
         walls?.boardCladdingTons,
         roof?.burnableWoodTons,
         outerDoors?.woodenDoorsScrapAndBurnable,
