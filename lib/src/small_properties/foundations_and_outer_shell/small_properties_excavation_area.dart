@@ -7,14 +7,16 @@ part 'small_properties_excavation_area.freezed.dart';
 
 /// Poistettavat maa-ainekset, poistettava alue ja määrä
 @freezed
-abstract class SmallPropertiesExcavationArea with _$SmallPropertiesExcavationArea {
+abstract class SmallPropertiesExcavationArea
+    with _$SmallPropertiesExcavationArea {
   SmallPropertiesExcavationArea._();
 
-  factory SmallPropertiesExcavationArea({
-    num? areOfTheRemovableSoil,
-    num? depthInMeters,
-    num? asphaltAreaInSquareMeters,
-  }) = _SmallPropertiesExcavationArea;
+  factory SmallPropertiesExcavationArea(
+          {num? areOfTheRemovableSoil,
+          num? depthInMeters,
+          num? asphaltAreaInSquareMeters,
+          @Default(100) num removableCleanSoilInPercents}) =
+      _SmallPropertiesExcavationArea;
 
   /// Poistettava määrä (m3)
   num? get soilToBeRemovedVolume =>
@@ -30,11 +32,16 @@ abstract class SmallPropertiesExcavationArea with _$SmallPropertiesExcavationAre
     return multiply! / 1000;
   }
 
-  /// Poistettava puhdas maa (%)
-  num? get removableCleanSoilInPercents => 1;
-
   /// Poistettavasta maasta saastunutta (%)
-  num? get contaminatedSoil => 1 - removableCleanSoilInPercents!;
+  num? get contaminatedSoil {
+    final cleanSoilFraction =
+        Utils.percentageToFraction(removableCleanSoilInPercents);
+    if (cleanSoilFraction == null) {
+      return null;
+    }
+
+    return 1 - cleanSoilFraction;
+  }
 
   // Asfaltti (tonnia)
   num? get asphaltTons {
