@@ -30,11 +30,20 @@ abstract class Walls with _$Walls {
       Utils.multiplyOrNull([lengthInMeters, widthInMeters, heightInMeters, 2]);
 
   /// Kiviseinät ja osittainen ulkovuoraus, betoni
-  num? get concreteWallsPartialExteriorCladdingTons =>
-      partitionWallsConcreteTons;
+  num? get concreteWallsPartialExteriorCladdingTons {
+    if (wallMaterial == WallMaterial.concrete) {
+      return partitionWallsTons;
+    }
+    return null;
+  }
 
   /// Kiviseinät ja osittainen ulkovuoraus, tiili
-  num? get brickWallsPartialExteriorCladdingTons => partitionWallsBricksTons;
+  num? get brickWallsPartialExteriorCladdingTons {
+    if (wallMaterial == WallMaterial.brick) {
+      return partitionWallsTons;
+    }
+    return null;
+  }
 
   /// Runko (tonnia) runkopuu 50x100
   num? get wallTrunkWood50x100Tons => trunkWood50x100Tons;
@@ -70,67 +79,54 @@ abstract class Walls with _$Walls {
   /// Laskenta
   /// Ulko- ja kantavien väliseinien materiaalit
 
-  /// Väliseinät (tonnia), tiili
-  num? get partitionWallsBricksTons {
-    if (wallMaterial == WallMaterial.concrete) {
-      return 0;
-    }
-    num? multiply = Utils.multiplyOrNull([
-      stoneOrBrickWallsInLinearMeters,
-      heightInMeters,
-      StoneAndCeramicMaterialsWeights.brickWallsAndMortarKgPerSqm
-    ]);
-    if (multiply == 0) {
-      return 0;
-    }
-    return multiply! / 1000;
-  }
-
   /// Kierrätyskelpoinen osuus väliseinistä (tonnia), tiili
   num? get recyclablePartitionWallsBricksTons {
-    if (!isAggregateRecyclable) {
+    if (!isAggregateRecyclable && wallMaterial == WallMaterial.brick) {
       return 0;
     }
-    return partitionWallsBricksTons;
+    return partitionWallsTons;
   }
 
   /// Kierrätyskelvoton tiilijäte
   num? get nonRecyclableBrickWasteTons {
-    if (!isAggregateRecyclable) {
-      return partitionWallsBricksTons;
+    if (!isAggregateRecyclable && wallMaterial == WallMaterial.brick) {
+      return partitionWallsTons;
     }
     return 0;
   }
 
-  /// Väliseinät (tonnia), betoni
-  num? get partitionWallsConcreteTons {
+  /// Väliseinät (tonnia), betoni tai tiili
+  num? get partitionWallsTons {
     if (wallMaterial == WallMaterial.brick) {
-      return 0;
+      num? multiply = Utils.multiplyOrNull([
+        stoneOrBrickWallsInLinearMeters,
+        heightInMeters,
+        StoneAndCeramicMaterialsWeights.concreteWallElements100mmKgPerSqm
+      ]);
+      if (multiply == 0) {
+        return 0;
+      }
+      return multiply! / 1000;
+    } else if (wallMaterial == WallMaterial.concrete) {
+      num? multiply = Utils.multiplyOrNull([
+        stoneOrBrickWallsInLinearMeters,
+        heightInMeters,
+        StoneAndCeramicMaterialsWeights.brickWallsAndMortarKgPerSqm
+      ]);
+      if (multiply == 0) {
+        return 0;
+      }
+      return multiply! / 1000;
     }
-    num? multiply = Utils.multiplyOrNull([
-      stoneOrBrickWallsInLinearMeters,
-      heightInMeters,
-      StoneAndCeramicMaterialsWeights.concreteWallElements100mmKgPerSqm
-    ]);
-    if (multiply == 0) {
-      return 0;
-    }
-    return multiply! / 1000;
+    return null;
   }
 
   /// Kierrätyskelpoinen osuus väliseinistä (tonnia), betoni
   num? get recyclablePartitionWallsConcreteTons {
-    if (!isAggregateRecyclable) {
+    if (!isAggregateRecyclable && wallMaterial == WallMaterial.concrete) {
       return 0;
     }
-    return partitionWallsConcreteTons;
-  }
-
-  num? get overallPartitionWallsTons {
-    return Utils.sumOrNull([
-      partitionWallsBricksTons,
-      partitionWallsConcreteTons,
-    ]);
+    return partitionWallsTons;
   }
 
   /// Puurunko, ulkoseinät
@@ -229,36 +225,29 @@ abstract class Walls with _$Walls {
     return multiply / 1000;
   }
 
-  /// Materiaalimäärätaulukkoon laskettava arvo, puhdas käyttökelpoinen puu
-  num? get cleanWoodTons {
+  /// Materiaalimäärätaulukkoon laskettava arvo, puhdas käyttökelpoinen puu / polttokelpoinen puujäte
+  num? get cleanWoodOrBurnableWoodTons {
     if (!isTrunkWoodRecyclable) {
-      return null;
+      return Utils.sumOrNull([
+        trunkWood50x100Tons,
+        trunkWood50x150Tons,
+        trunkWood50x200Tons,
+        trunkWood100x100Tons,
+        trunkWood150x150Tons,
+      ]);
+    } else if (isTrunkWoodRecyclable) {
+      return Utils.sumOrNull([
+        trunkWood50x100Tons,
+        trunkWood50x150Tons,
+        trunkWood50x200Tons,
+        trunkWood100x100Tons,
+        trunkWood150x150Tons,
+      ]);
     }
-    return Utils.sumOrNull([
-      trunkWood50x100Tons,
-      trunkWood50x150Tons,
-      trunkWood50x200Tons,
-      trunkWood100x100Tons,
-      trunkWood150x150Tons,
-    ]);
-  }
-
-  /// Materiaalimäärätaulukkoon luettava arvo, polttokelpoinen puujäte
-  num? get burnableWoodTons {
-    if (isTrunkWoodRecyclable) {
-      return null;
-    }
-    return Utils.sumOrNull([
-      trunkWood50x100Tons,
-      trunkWood50x150Tons,
-      trunkWood50x200Tons,
-      trunkWood100x100Tons,
-      trunkWood150x150Tons,
-    ]);
+    return null;
   }
 
   /// Eristevilla, paino
-  /// In excel the same number is returned no matter the thickness of the wool, so made only one function
   num? get insulationWoolTons {
     num? multiply = Utils.multiplyOrNull([
       outerWallArea,
@@ -267,7 +256,16 @@ abstract class Walls with _$Walls {
     if (multiply == null) {
       return null;
     }
-    return multiply / 1000;
+    if (insulationMaterialThickness == InsulationMaterialThickness.mm100) {
+      return multiply / 1000;
+    } else if (insulationMaterialThickness ==
+        InsulationMaterialThickness.mm200) {
+      return multiply * 2 / 1000;
+    } else if (insulationMaterialThickness ==
+        InsulationMaterialThickness.mm300) {
+      return multiply * 3 / 1000;
+    }
+    return null;
   }
 
   /// Lautaverhousten paino (tonnia)
