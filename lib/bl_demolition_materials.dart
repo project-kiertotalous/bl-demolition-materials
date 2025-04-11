@@ -11,4 +11,7 @@ export 'src/large_properties/partition_walls_doors_and_windows/exports.dart';
 export 'src/large_properties/waste_law_demolition_material_estimates/exports.dart';
 export 'src/shared/exports.dart';
 export 'src/small_properties/apartments/exports.dart';
+export 'src/small_properties/data_types/exports.dart';
 export 'src/small_properties/foundations_and_outer_shell/exports.dart';
+export 'src/small_properties/yard_buildings_and_structures/exports.dart';
+export 'src/small_properties/demolition_site_waste/exports.dart';
