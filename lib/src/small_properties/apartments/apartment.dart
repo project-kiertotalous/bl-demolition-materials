@@ -39,7 +39,8 @@ abstract class Apartment with _$Apartment {
       @Default(false) bool electricStove,
       @Default(false) bool steelTable,
       @Default(false) bool waterHeater,
-      @Default(false) bool saunaStove}) = _Apartment;
+      @Default(false) bool saunaStove,
+      ApartmentSize? apartmentSize}) = _Apartment;
 
   factory Apartment.fromJson(Map<String, dynamic> json) =>
       _$ApartmentFromJson(json);
@@ -67,11 +68,8 @@ abstract class Apartment with _$Apartment {
   }
 
   num? get surfaceMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull([
-      ApartmentSize().totalWallArea,
-      ApartmentWallMaterials(apartment: this, apartmentSize: ApartmentSize())
-          .totalSurfaceMaterial
-    ]);
+    num? multiply = Utils.multiplyOrNull(
+        [wallAreaPerApartment, apartmentSize?.totalSurfaceMaterial]);
     if (multiply == 0) {
       return 0;
     }
@@ -79,7 +77,5 @@ abstract class Apartment with _$Apartment {
   }
 
   num? get floorMaterialPerApartmentTons =>
-      KitchenBathroomAndToiletWallsAndFloors(
-              apartment: this, apartmentSize: ApartmentSize())
-          .overallBathroomToiletFloorMaterialTons;
+      apartmentSize?.overallBathroomToiletFloorMaterialTons;
 }

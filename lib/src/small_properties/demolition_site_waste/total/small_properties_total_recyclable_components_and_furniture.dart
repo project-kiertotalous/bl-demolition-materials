@@ -18,27 +18,16 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
 
   factory SmallPropertiesTotalRecyclableComponentsAndFurniture(
           {Apartment? apartment,
-          ApartmentFloorMaterials? apartmentFloorMaterials,
           ApartmentSize? apartmentSize,
-          ApartmentWallMaterials? apartmentWallMaterials,
           Apartments? apartments,
           CarportOrGarage? carportOrGarage,
           Counter? counter,
-          DressingClosets? dressingClosets,
-          ElectricStoves? electricStoves,
           HallDoors? hallDoors,
           Hvac? hvac,
-          KitchenBathroomAndToiletWallsAndFloors?
-              kitchenBathroomAndToiletWallsAndFloors,
-          KitchenClosets? kitchenClosets,
           MachineryEquipmentAndFixedStructures?
               machineryEquipmentAndFixedStructures,
           PassageDoors? passageDoors,
-          PorcelainSeats? porcelainSeats,
-          Refrigerators? refrigerators,
           Roof? roof,
-          SaunaStoves? saunaStoves,
-          SaunaWallPanels? saunaWallPanels,
           SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
           SmallPropertiesFoundation? foundation,
           SmallPropertiesTotalReusableAndRecyclableMaterials?
@@ -47,11 +36,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
           SmallPropertyInnerDoors? innerDoors,
           SmallPropertyOuterDoors? outerDoors,
           SmallPropertyWindows? windows,
-          SteelTableAndSinks? steelTablesAndSinks,
           ThermalCenter? thermalCenter,
           Walls? walls,
-          WashingSinks? washingSinks,
-          WaterAccumulators? waterAccumulators,
           YardRoof? yardRoof}) =
       _SmalllPropertiesTotalRecyclableComponentsAndFurniture;
 
@@ -124,7 +110,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final porcelainToilets =
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.toiletSeatsRecyclable,
-    pcs: porcelainSeats?.recyclablePorcelainSeatPcs,
+    pcs: apartmentSize?.recyclablePorcelainSeatPcs,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -134,8 +120,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.closetsAndFurniture,
     pcs: Utils.sumOrNull([
-      dressingClosets?.recyclableDressingClosets,
-      kitchenClosets?.recyclableKitchenClosets
+      apartmentSize?.recyclableDressingClosets,
+      apartmentSize?.recyclableKitchenClosets
     ]),
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
@@ -144,7 +130,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   /// Pesuallas, posliini kpl
   late final porcelainSinks = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.washingSinksRecyclable,
-    pcs: washingSinks?.recyclableWashingSinkPcs,
+    pcs: apartmentSize?.recyclableWashingSinkPcs,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -153,7 +139,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final stainlessSteelSinksAndTables =
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.steelSinksAndTables,
-    pcs: steelTablesAndSinks?.recyclableSteelTablePcs,
+    pcs: apartmentSize?.recyclableSteelTablePcs,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -161,7 +147,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   /// Saunankiukaat
   late final saunaStove = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.saunaStovesRecyclable,
-    pcs: saunaStoves?.recyclableSaunaStovePcs,
+    pcs: apartmentSize?.recyclableSaunaStovePcs,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -169,7 +155,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   /// Sähköliedet
   late final electricStove = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.electricStovesRecyclable,
-    pcs: electricStoves?.recyclableElectricStovePcs,
+    pcs: apartmentSize?.recyclableElectricStovePcs,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -177,7 +163,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   /// Jääkaapit
   late final refrigerator = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.refrigeratorsRecyclable,
-    pcs: refrigerators?.recyclableRefrigeratorPcs,
+    pcs: apartmentSize?.recyclableRefrigeratorPcs,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -187,7 +173,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.waterAccumulatorsRecyclable,
     pcs: Utils.sumOrNull([
-      waterAccumulators?.recyclableWaterAccumulatorPcs,
+      apartmentSize?.recyclableWaterAccumulatorPcs,
       thermalCenter?.waterHeaterPcsRecyclable
     ]),
     handlingAndDismantlingCost: 20,

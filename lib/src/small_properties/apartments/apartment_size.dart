@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
-import '../data_types/exports.dart';
 
 part 'apartment_size.freezed.dart';
 part 'apartment_size.g.dart';
@@ -58,29 +57,17 @@ abstract class ApartmentSize with _$ApartmentSize {
       ]);
 
   num? get totalSurfaceMaterialTons {
-    final apartmentWallMaterials = ApartmentWallMaterials(
-      apartment: oneRoom, // or any other Apartment? type
-      apartmentSize: this,
-    );
-    num? multiply = Utils.multiplyOrNull(
-        [totalWallArea, apartmentWallMaterials.totalSurfaceMaterial]);
+    num? multiply = Utils.multiplyOrNull([totalWallArea, totalSurfaceMaterial]);
     if (multiply == 0) {
       return 0;
     }
     return multiply! / 1000;
   }
 
+  /// Materiaalimäärään luettava arvo, energiajäte, maalattu puu, kattohuopa ja aluskate
   num? get totalFloorMaterialTons {
-    final apartmentFloorMaterials = ApartmentFloorMaterials(
-      apartment: oneRoom, // or any other Apartment? type
-      apartmentSize: this,
-    );
-    num? multiply = Utils.multiplyOrNull(
-        [totalFloorArea, apartmentFloorMaterials.totalFloorMaterial]);
-    if (multiply == 0) {
-      return 0;
-    }
-    return multiply! / 1000;
+    num? multiply = Utils.multiplyOrNull([totalFloorArea, totalFloorMaterial]);
+    return multiply != null ? multiply / 1000 : null;
   }
 
   num? get totalkitchenWallArea => Utils.sumOrNull([
@@ -102,10 +89,7 @@ abstract class ApartmentSize with _$ApartmentSize {
         ]),
       ]);
 
-  num? get totalkitchenWallTons => KitchenBathroomAndToiletWallsAndFloors(
-        apartment: oneRoom, // or any other Apartment? type
-        apartmentSize: this,
-      ).overallKitchenWallMaterial;
+  num? get totalkitchenWallTons => overallKitchenWallMaterial;
 
   num? get totalKitchenClosetLength => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -131,13 +115,9 @@ abstract class ApartmentSize with _$ApartmentSize {
             [fourRooms?.dressingClosetsInLinearMeter, fourRooms?.pcsPerHouse]),
       ]);
 
-  num? get totalkitchenClosetTons =>
-      KitchenClosets(apartment: oneRoom, apartmentSize: this)
-          .overallKitchenClosetTons;
+  num? get totalkitchenClosetTons => overallKitchenClosetTons;
 
-  num? get totaldressingClosetTons =>
-      DressingClosets(apartment: oneRoom, apartmentSize: this)
-          .overallDressingClosetTons;
+  num? get totaldressingClosetTons => overallDressingClosetTons;
 
   num? get totalBathroomWallArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -152,10 +132,7 @@ abstract class ApartmentSize with _$ApartmentSize {
             [fourRooms?.bathroomWallAreaPerApartment, fourRooms?.pcsPerHouse]),
       ]);
 
-  num? get totalBathroomWallTons => KitchenBathroomAndToiletWallsAndFloors(
-        apartment: oneRoom, // or any other Apartment? type
-        apartmentSize: this,
-      ).overallBathroomToiletWallMaterialTons;
+  num? get totalBathroomWallTons => overallBathroomToiletWallMaterialTons;
 
   num? get totalBathroomFloorArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -170,10 +147,7 @@ abstract class ApartmentSize with _$ApartmentSize {
             [fourRooms?.bathroomFloorAreaPerApartment, fourRooms?.pcsPerHouse]),
       ]);
 
-  num? get totalBathroomFloorTons => KitchenBathroomAndToiletWallsAndFloors(
-        apartment: oneRoom, // or any other Apartment? type
-        apartmentSize: this,
-      ).overallBathroomToiletFloorMaterialTons;
+  num? get totalBathroomFloorTons => overallBathroomToiletFloorMaterialTons;
 
   num? get totalSaunaPanelingArea => Utils.sumOrNull([
         Utils.multiplyOrNull(
@@ -188,32 +162,18 @@ abstract class ApartmentSize with _$ApartmentSize {
             [fourRooms?.saunaPanelingAreaPerApartment, fourRooms?.pcsPerHouse]),
       ]);
 
-  num? get totalSaunaPanelingTons => SaunaWallPanels(
-          apartment: oneRoom, // Or any other apartment type
-          apartmentSize: this)
-      .saunaPanelingWoodenPanelTons;
+  num? get totalSaunaPanelingTons => saunaPanelingWoodenPanelTons;
 
-  num? get totalKitchenToiletOrSaunaFurnitureTons =>
-      WaterAccumulators(apartment: oneRoom, apartmentSize: this)
-          .overallFurnitureTons;
-}
+  num? get totalKitchenToiletOrSaunaFurnitureTons => overallFurnitureTons;
 
-/// The rest of the code is from Laskenta-tab in the Excel sheet.
-/// Laskenta, huoneistot
-/// Sisäseinät
-@freezed
-abstract class ApartmentWallMaterials with _$ApartmentWallMaterials {
-  const ApartmentWallMaterials._();
+  /// The rest of the code is from Laskenta-tab in the Excel sheet.
+  /// Laskenta, huoneistot
+  /// Sisäseinät
 
-  const factory ApartmentWallMaterials({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _ApartmentWallMaterials;
-
-  num? get overallWallArea => apartmentSize?.totalWallArea;
+  num? get overallWallArea => totalWallArea;
 
   num? get plasterBoardSheetKgPerSqm {
-    if (apartment?.surfaceMaterial == SurfaceMaterial.plasterBoard) {
+    if (oneRoom?.surfaceMaterial == SurfaceMaterial.plasterBoard) {
       return BuildingBoardsAndInsulationMaterialWeights
           .plasterBoard15mmKgPerSqm;
     }
@@ -221,14 +181,14 @@ abstract class ApartmentWallMaterials with _$ApartmentWallMaterials {
   }
 
   num? get chipboardKgPerSqm {
-    if (apartment?.surfaceMaterial == SurfaceMaterial.chipboard) {
+    if (oneRoom?.surfaceMaterial == SurfaceMaterial.chipboard) {
       return BuildingBoardsAndInsulationMaterialWeights.chipBoard11mmKgPerSqm;
     }
     return 0;
   }
 
   num? get woodenPanelKgPerSqm {
-    if (apartment?.surfaceMaterial == SurfaceMaterial.woodenPanel) {
+    if (oneRoom?.surfaceMaterial == SurfaceMaterial.woodenPanel) {
       return WoodMaterialInfo.getBoardConsumptionPerSquareMeter(
           WoodMaterialType.trunkWood50x100);
     }
@@ -237,9 +197,11 @@ abstract class ApartmentWallMaterials with _$ApartmentWallMaterials {
 
   /// Materiaalimäärätaulukkoon luettava arvo, kipsilevy
   num? get plasterBoardTons {
-    if (apartment?.surfaceMaterial == SurfaceMaterial.plasterBoard) {
-      num? multiply =
-          Utils.multiplyOrNull([overallWallArea, plasterBoardSheetKgPerSqm]);
+    if (oneRoom?.surfaceMaterial == SurfaceMaterial.plasterBoard) {
+      num? multiply = Utils.multiplyOrNull([
+        overallWallArea,
+        BuildingBoardsAndInsulationMaterialWeights.plasterBoard15mmKgPerSqm
+      ]);
       return multiply != null ? multiply / 1000 : null;
     }
     return null;
@@ -247,9 +209,11 @@ abstract class ApartmentWallMaterials with _$ApartmentWallMaterials {
 
   /// Materiaalimäärätaulukkoon luettava arvo, lastulevy
   num? get chipboardTons {
-    if (apartment?.surfaceMaterial == SurfaceMaterial.chipboard) {
-      num? multiply =
-          Utils.multiplyOrNull([overallWallArea, chipboardKgPerSqm]);
+    if (oneRoom?.surfaceMaterial == SurfaceMaterial.chipboard) {
+      num? multiply = Utils.multiplyOrNull([
+        overallWallArea,
+        BuildingBoardsAndInsulationMaterialWeights.chipBoard11mmKgPerSqm
+      ]);
       return multiply != null ? multiply / 1000 : null;
     }
     return null;
@@ -257,48 +221,42 @@ abstract class ApartmentWallMaterials with _$ApartmentWallMaterials {
 
   /// Materiaalimäärätaulukkoon luettava arvo, polttokelpoinen puujäte
   num? get burnableWoodTons {
-    if (apartment?.surfaceMaterial == SurfaceMaterial.woodenPanel) {
-      num? multiply =
-          Utils.multiplyOrNull([overallWallArea, woodenPanelKgPerSqm]);
+    if (oneRoom?.surfaceMaterial == SurfaceMaterial.woodenPanel) {
+      num? multiply = Utils.multiplyOrNull([
+        overallWallArea,
+        WoodMaterialInfo.woodWeightPerSquareMeter(WoodMaterialType.board20x125)
+      ]);
       return multiply != null ? multiply / 1000 : null;
     }
     return null;
   }
 
-  num? get totalSurfaceMaterial => Utils.sumOrNull(
-      [plasterBoardSheetKgPerSqm, chipboardKgPerSqm, woodenPanelKgPerSqm]);
+  num? get totalSurfaceMaterial => Utils.sumOrNull([
+        plasterBoardSheetKgPerSqm,
+        chipboardKgPerSqm,
+        woodenPanelKgPerSqm,
+      ]);
 
-  num? get innerWallsWoodTrunksTons => apartmentSize?.totalTrunkWoodTons;
-}
+  num? get innerWallsWoodTrunksTons => totalTrunkWoodTons;
 
-/// Huoneistojen sisälattiat, materiaali
-@freezed
-abstract class ApartmentFloorMaterials with _$ApartmentFloorMaterials {
-  const ApartmentFloorMaterials._();
-
-  const factory ApartmentFloorMaterials({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _ApartmentFloorMaterials;
-
-  num? get overallFloorArea => apartmentSize?.totalFloorArea;
+  /// Huoneistojen sisälattiat, materiaali
 
   num? get parquetKgPerSqm {
-    if (apartment?.floorMaterial == FloorMaterial.parquet) {
+    if (oneRoom?.floorMaterial == FloorMaterial.parquet) {
       return FloorStructuresAndMaterialsWeights.parquetKgPerSqm;
     }
     return 0;
   }
 
   num? get plasticCarpetKgPerSqm {
-    if (apartment?.floorMaterial == FloorMaterial.plasticCarpet) {
+    if (oneRoom?.floorMaterial == FloorMaterial.plasticCarpet) {
       return FloorStructuresAndMaterialsWeights.plasticCarpetKgPerSqm;
     }
     return 0;
   }
 
   num? get woodPanelKgPerSqm {
-    if (apartment?.floorMaterial == FloorMaterial.woodPanel) {
+    if (oneRoom?.floorMaterial == FloorMaterial.woodPanel) {
       return WoodMaterialInfo.woodWeightPerSquareMeter(
           WoodMaterialType.trunkWood50x100);
     }
@@ -308,47 +266,30 @@ abstract class ApartmentFloorMaterials with _$ApartmentFloorMaterials {
   num? get totalFloorMaterial => Utils.sumOrNull(
       [parquetKgPerSqm, plasticCarpetKgPerSqm, woodPanelKgPerSqm]);
 
-  /// Materiaalimäärään luettava arvo, energiajäte, maalattu puu, kattohuopa ja aluskate
-  num? get totalFloorMaterialTons {
-    num? multiply = Utils.multiplyOrNull(
-        [apartmentSize?.totalFloorArea, totalFloorMaterial]);
-    return multiply != null ? multiply / 1000 : null;
-  }
-}
+  /// Keittiö, pesutila ja WC seinät ja lattiat
 
-/// Keittiö, pesutila ja WC seinät ja lattiat
-@freezed
-abstract class KitchenBathroomAndToiletWallsAndFloors
-    with _$KitchenBathroomAndToiletWallsAndFloors {
-  const KitchenBathroomAndToiletWallsAndFloors._();
+  num? get kitchenArea => totalkitchenWallArea;
 
-  const factory KitchenBathroomAndToiletWallsAndFloors({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _KitchenBathroomAndToiletWallsAndFloors;
+  num? get bathroomToiletWallArea => totalBathroomWallArea;
 
-  num? get kitchenArea => apartmentSize?.totalkitchenWallArea;
-
-  num? get bathroomToiletWallArea => apartmentSize?.totalBathroomWallArea;
-
-  num? get bathroomToiletFloorArea => apartmentSize?.totalBathroomFloorArea;
+  num? get bathroomToiletFloorArea => totalBathroomFloorArea;
 
   num? get kitchenCeramicTileKg {
-    if (apartment?.kitchenWallMaterial == KitchenWallMaterial.ceramicTile) {
+    if (oneRoom?.kitchenWallMaterial == KitchenWallMaterial.ceramicTile) {
       return FloorStructuresAndMaterialsWeights.ceramicTilesKgPerSqm;
     }
     return 0;
   }
 
   num? get bathroomToiletWallCeramicTileKg {
-    if (apartment?.bathroomWallMaterial == BathroomWallMaterial.ceramicTile) {
+    if (oneRoom?.bathroomWallMaterial == BathroomWallMaterial.ceramicTile) {
       return FloorStructuresAndMaterialsWeights.ceramicTilesKgPerSqm;
     }
     return 0;
   }
 
   num? get bathroomToiletFloorCeramicTileKg {
-    if (apartment?.bathroomFloorMaterial == BathroomFloorMaterial.ceramicTile) {
+    if (oneRoom?.bathroomFloorMaterial == BathroomFloorMaterial.ceramicTile) {
       return FloorStructuresAndMaterialsWeights.ceramicTilesKgPerSqm;
     }
     return 0;
@@ -367,19 +308,19 @@ abstract class KitchenBathroomAndToiletWallsAndFloors
   }
 
   num? get kitchenPlasticCarpet {
-    if (apartment?.kitchenWallMaterial == KitchenWallMaterial.plasticCarpet) {
+    if (oneRoom?.kitchenWallMaterial == KitchenWallMaterial.plasticCarpet) {
       return FloorStructuresAndMaterialsWeights.plasticCarpetKgPerSqm;
     }
     return 0;
   }
 
   num? get bathroomToiletWallPlasticCarpet =>
-      apartment?.bathroomWallMaterial == BathroomWallMaterial.plasticCarpet
+      oneRoom?.bathroomWallMaterial == BathroomWallMaterial.plasticCarpet
           ? FloorStructuresAndMaterialsWeights.plasticCarpetKgPerSqm
           : 0;
 
   num? get bathroomToiletFloorPlasticCarpet =>
-      apartment?.bathroomFloorMaterial == BathroomFloorMaterial.plasticCarpet
+      oneRoom?.bathroomFloorMaterial == BathroomFloorMaterial.plasticCarpet
           ? FloorStructuresAndMaterialsWeights.plasticCarpetKgPerSqm
           : 0;
 
@@ -427,19 +368,10 @@ abstract class KitchenBathroomAndToiletWallsAndFloors
     ]);
     return sum != null ? sum / 1000 : null;
   }
-}
 
-/// Saunan seinäpaneelit
-@freezed
-abstract class SaunaWallPanels with _$SaunaWallPanels {
-  const SaunaWallPanels._();
+  /// Saunan seinäpaneelit
 
-  const factory SaunaWallPanels({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _SaunaWallPanels;
-
-  num? get saunaPanelingArea => apartmentSize?.totalSaunaPanelingArea;
+  num? get saunaPanelingArea => totalSaunaPanelingArea;
 
   num? get saunaPanelingWoodenPanelTons {
     num? multiply = Utils.multiplyOrNull([
@@ -451,22 +383,12 @@ abstract class SaunaWallPanels with _$SaunaWallPanels {
     }
     return multiply! / 1000;
   }
-}
 
-/// Kalusteet (tonnia)
-/// Keittiön kaapit
-@freezed
-abstract class KitchenClosets with _$KitchenClosets {
-  const KitchenClosets._();
-
-  const factory KitchenClosets({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _KitchenClosets;
+  /// Kalusteet (tonnia)
+  /// Keittiön kaapit
 
   /// Kaapiston pituus yhteensä
-  num? get overAllKitchenClosetLength =>
-      apartmentSize?.totalKitchenClosetLength;
+  num? get overAllKitchenClosetLength => totalKitchenClosetLength;
 
   num? get overallKitchenClosetTons {
     num? multiply = Utils.multiplyOrNull([
@@ -481,7 +403,7 @@ abstract class KitchenClosets with _$KitchenClosets {
   }
 
   num? get recyclableKitchenClosets {
-    if (apartment?.areKitchenClosetsRecyclable == true) {
+    if (oneRoom?.areKitchenClosetsRecyclable == true) {
       return overallKitchenClosetTons;
     }
     return 0;
@@ -489,7 +411,7 @@ abstract class KitchenClosets with _$KitchenClosets {
 
   /// Materiaalimäärätaulukkoon luettava määrä, energiajäte, maalattu puu, kattohuopa ja aluskate
   num? get nonRecyclableKitchenClosetTons {
-    if (apartment?.areKitchenClosetsRecyclable == false) {
+    if (oneRoom?.areKitchenClosetsRecyclable == false) {
       return overallKitchenClosetTons;
     }
     return null;
@@ -501,21 +423,11 @@ abstract class KitchenClosets with _$KitchenClosets {
     }
     return overAllKitchenClosetLength! / 0.6;
   }
-}
 
-/// Vaatekomerot
-@freezed
-abstract class DressingClosets with _$DressingClosets {
-  const DressingClosets._();
-
-  const factory DressingClosets({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _DressingClosets;
+  /// Vaatekomerot
 
   /// Kaapiston pituus yhteensä
-  num? get overAllDressingClosetLength =>
-      apartmentSize?.totalDressingClosetLength;
+  num? get overAllDressingClosetLength => totalDressingClosetLength;
 
   num? get overallDressingClosetTons {
     num? multiply = Utils.multiplyOrNull([
@@ -530,7 +442,7 @@ abstract class DressingClosets with _$DressingClosets {
   }
 
   num? get recyclableDressingClosets {
-    if (apartment?.areDressingClosetsRecyclable == true) {
+    if (oneRoom?.areDressingClosetsRecyclable == true) {
       return overallDressingClosetTons;
     }
     return 0;
@@ -538,7 +450,7 @@ abstract class DressingClosets with _$DressingClosets {
 
   /// Materiaalimäärätaulukkoon luettava määrä, energiajäte, maalattu puu, kattohuopa ja aluskate
   num? get nonRecyclableDressingClosetTons {
-    if (apartment?.areDressingClosetsRecyclable == false) {
+    if (oneRoom?.areDressingClosetsRecyclable == false) {
       return overallDressingClosetTons;
     }
     return null;
@@ -550,27 +462,18 @@ abstract class DressingClosets with _$DressingClosets {
     }
     return overAllDressingClosetLength! / 0.6;
   }
-}
 
-/// WC-istuin, posliini
-@freezed
-abstract class PorcelainSeats with _$PorcelainSeats {
-  const PorcelainSeats._();
-
-  const factory PorcelainSeats({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _PorcelainSeats;
+  /// WC-istuin, posliini
 
   num? get porcelainSeatPcs {
-    if (apartment?.toiletSeat == true) {
-      return apartmentSize?.totalRoomCount;
+    if (oneRoom?.toiletSeat == true) {
+      return totalRoomCount;
     }
     return 0;
   }
 
   num? get recyclablePorcelainSeatPcs {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return porcelainSeatPcs;
     }
     return 0;
@@ -589,7 +492,7 @@ abstract class PorcelainSeats with _$PorcelainSeats {
 
   /// Materiaalimäärätaulukkoon laskettava arvo, kierrätettävät wc-istuimet
   num? get recyclablePorcelainSeatTons {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return porcelainSeatTons;
     }
     return 0;
@@ -608,27 +511,18 @@ abstract class PorcelainSeats with _$PorcelainSeats {
     }
     return multiply! / 1000;
   }
-}
 
-/// Pesuallas, posliini
-@freezed
-abstract class WashingSinks with _$WashingSinks {
-  const WashingSinks._();
-
-  const factory WashingSinks({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _WashingSinks;
+  /// Pesuallas, posliini
 
   num? get washingSinkPcs {
-    if (apartment?.ceramicSink == true) {
-      return apartmentSize?.totalRoomCount;
+    if (oneRoom?.ceramicSink == true) {
+      return totalRoomCount;
     }
     return 0;
   }
 
   num? get recyclableWashingSinkPcs {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return washingSinkPcs;
     }
     return 0;
@@ -647,7 +541,7 @@ abstract class WashingSinks with _$WashingSinks {
 
   /// Materiaalimäärätaulukkoon luettava arvo, pesuallas, posliini
   num? get recyclableWashingSinkTons {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return washingSinkTons;
     }
     return 0;
@@ -666,27 +560,18 @@ abstract class WashingSinks with _$WashingSinks {
     }
     return multiply! / 1000;
   }
-}
 
-/// Teräsaltaat ja pöydät
-@freezed
-abstract class SteelTableAndSinks with _$SteelTableAndSinks {
-  const SteelTableAndSinks._();
-
-  const factory SteelTableAndSinks({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _SteelTableAndSinks;
+  /// Teräsaltaat ja pöydät
 
   num? get steelTablePcs {
-    if (apartment?.steelTable == true) {
-      return apartmentSize?.totalRoomCount;
+    if (oneRoom?.steelTable == true) {
+      return totalRoomCount;
     }
     return 0;
   }
 
   num? get recyclableSteelTablePcs {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return steelTablePcs;
     }
     return 0;
@@ -706,7 +591,7 @@ abstract class SteelTableAndSinks with _$SteelTableAndSinks {
 
   /// Materiaalimäärätaulukkoon luettava arvo, teräsaltaat ja pöydät
   num? get recyclableSteelTableTons {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return steelTableTons;
     }
     return 0;
@@ -726,27 +611,18 @@ abstract class SteelTableAndSinks with _$SteelTableAndSinks {
     }
     return multiply! / 1000;
   }
-}
 
-/// Saunankiukaat
-@freezed
-abstract class SaunaStoves with _$SaunaStoves {
-  const SaunaStoves._();
-
-  const factory SaunaStoves({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _SaunaStoves;
+  /// Saunankiukaat
 
   num? get saunaStovePcs {
-    if (apartment?.saunaStove == true) {
-      return apartmentSize?.totalRoomCount;
+    if (oneRoom?.saunaStove == true) {
+      return totalRoomCount;
     }
     return 0;
   }
 
   num? get recyclableSaunaStovePcs {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return saunaStovePcs;
     }
     return 0;
@@ -765,7 +641,7 @@ abstract class SaunaStoves with _$SaunaStoves {
 
   /// Materiaalilimäärätaulukkoon luettava arvo, saunankiukaat
   num? get recyclableSaunaStoveTons {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return saunaStoveTons;
     }
     return 0;
@@ -784,27 +660,18 @@ abstract class SaunaStoves with _$SaunaStoves {
     }
     return multiply! / 1000;
   }
-}
 
-/// Sähköliedet
-@freezed
-abstract class ElectricStoves with _$ElectricStoves {
-  const ElectricStoves._();
-
-  const factory ElectricStoves({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _ElectricStoves;
+  /// Sähköliedet
 
   num? get electricStovePcs {
-    if (apartment?.electricStove == true) {
-      return apartmentSize?.totalRoomCount;
+    if (oneRoom?.electricStove == true) {
+      return totalRoomCount;
     }
     return 0;
   }
 
   num? get recyclableElectricStovePcs {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return electricStovePcs;
     }
     return 0;
@@ -823,7 +690,7 @@ abstract class ElectricStoves with _$ElectricStoves {
 
   /// Materiaalimäärätaulukkoon luettava arvo, sähköliedet
   num? get recyclableElectricStoveTons {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return electricStoveTons;
     }
     return 0;
@@ -842,27 +709,18 @@ abstract class ElectricStoves with _$ElectricStoves {
     }
     return multiply! / 1000;
   }
-}
 
-/// Jääkaapit
-@freezed
-abstract class Refrigerators with _$Refrigerators {
-  const Refrigerators._();
-
-  const factory Refrigerators({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _Refrigerators;
+  /// Jääkaapit
 
   num? get refrigeratorPcs {
-    if (apartment?.refrigerator == true) {
-      return apartmentSize?.totalRoomCount;
+    if (oneRoom?.refrigerator == true) {
+      return totalRoomCount;
     }
     return 0;
   }
 
   num? get recyclableRefrigeratorPcs {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return refrigeratorPcs;
     }
     return 0;
@@ -881,7 +739,7 @@ abstract class Refrigerators with _$Refrigerators {
 
   /// Materiaalimäärätaulukkoon luettava arvo, jääkaapit
   num? get recyclableRefrigeratorTons {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return refrigeratorTons;
     }
     return 0;
@@ -900,27 +758,18 @@ abstract class Refrigerators with _$Refrigerators {
     }
     return multiply! / 1000;
   }
-}
 
-/// Vesivaraajat
-@freezed
-abstract class WaterAccumulators with _$WaterAccumulators {
-  const WaterAccumulators._();
-
-  const factory WaterAccumulators({
-    Apartment? apartment,
-    ApartmentSize? apartmentSize,
-  }) = _WaterAccumulators;
+  /// Vesivaraajat
 
   num? get waterAccumulatorPcs {
-    if (apartment?.waterHeater == true) {
-      return apartmentSize?.totalRoomCount;
+    if (oneRoom?.waterHeater == true) {
+      return totalRoomCount;
     }
     return 0;
   }
 
   num? get recyclableWaterAccumulatorPcs {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return waterAccumulatorPcs;
     }
     return 0;
@@ -939,7 +788,7 @@ abstract class WaterAccumulators with _$WaterAccumulators {
 
   /// Materiaalimäärätaulukkoon luettava arvo, vesivaraajat
   num? get recyclableWaterAccumulatorTons {
-    if (apartment?.isFurnitureRecyclable == true) {
+    if (oneRoom?.isFurnitureRecyclable == true) {
       return waterAccumulatorTons;
     }
     return 0;
@@ -961,20 +810,13 @@ abstract class WaterAccumulators with _$WaterAccumulators {
 
   num? get overallFurnitureTons {
     return Utils.sumOrNull([
-      PorcelainSeats(apartment: apartment, apartmentSize: apartmentSize)
-          .porcelainSeatTons,
-      WashingSinks(apartment: apartment, apartmentSize: apartmentSize)
-          .washingSinkTons,
-      SteelTableAndSinks(apartment: apartment, apartmentSize: apartmentSize)
-          .steelTableTons,
-      SaunaStoves(apartment: apartment, apartmentSize: apartmentSize)
-          .saunaStoveTons,
-      ElectricStoves(apartment: apartment, apartmentSize: apartmentSize)
-          .electricStoveTons,
-      Refrigerators(apartment: apartment, apartmentSize: apartmentSize)
-          .refrigeratorTons,
-      WaterAccumulators(apartment: apartment, apartmentSize: apartmentSize)
-          .waterAccumulatorTons,
+      porcelainSeatTons,
+      washingSinkTons,
+      steelTableTons,
+      saunaStoveTons,
+      electricStoveTons,
+      refrigeratorTons,
+      waterAccumulatorTons,
     ]);
   }
 }
