@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../..//utils/utils.dart';
 
 part 'small_properties_excavation_area.freezed.dart';
+part 'small_properties_excavation_area.g.dart';
 
 /// Poistettavat maa-ainekset, poistettava alue ja määrä
 @freezed
@@ -17,6 +18,9 @@ abstract class SmallPropertiesExcavationArea
           num? asphaltAreaInSquareMeters,
           @Default(100) num removableCleanSoilInPercents}) =
       _SmallPropertiesExcavationArea;
+
+  factory SmallPropertiesExcavationArea.fromJson(Map<String, dynamic> json) =>
+      _$SmallPropertiesExcavationAreaFromJson(json);
 
   /// Poistettava määrä (m3)
   num? get soilToBeRemovedVolume =>

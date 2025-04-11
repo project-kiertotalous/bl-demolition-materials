@@ -5,6 +5,7 @@ import '../../utils/utils.dart';
 import '../data_types/exports.dart';
 
 part 'apartment_size.freezed.dart';
+part 'apartment_size.g.dart';
 
 @freezed
 abstract class ApartmentSize with _$ApartmentSize {
@@ -16,6 +17,9 @@ abstract class ApartmentSize with _$ApartmentSize {
     Apartment? threeRooms,
     Apartment? fourRooms,
   }) = _ApartmentSize;
+
+  factory ApartmentSize.fromJson(Map<String, dynamic> json) =>
+      _$ApartmentSizeFromJson(json);
 
   num? get totalRoomCount => Utils.sumOrNull([
         oneRoom?.pcsPerHouse,

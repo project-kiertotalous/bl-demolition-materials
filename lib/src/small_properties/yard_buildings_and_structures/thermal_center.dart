@@ -8,6 +8,7 @@ import '../data_types/heating_type.dart';
 import 'carport_or_garage.dart';
 
 part 'thermal_center.freezed.dart';
+part 'thermal_center.g.dart';
 
 /// Piharakennukset ja rakenteet
 /// Lämpökeskus
@@ -32,6 +33,9 @@ abstract class ThermalCenter with _$ThermalCenter {
       num? heatingMachinesPcs,
       num? waterHeatersPcs,
       CarportOrGarage? carportOrGarage}) = _ThermalCenter;
+
+  factory ThermalCenter.fromJson(Map<String, dynamic> json) =>
+      _$ThermalCenterFromJson(json);
 
   /// Betoniperustus ja seinät
 

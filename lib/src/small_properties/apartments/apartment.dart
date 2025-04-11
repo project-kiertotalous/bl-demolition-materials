@@ -6,6 +6,7 @@ import '../apartments/apartment_size.dart';
 import '../data_types/exports.dart';
 
 part 'apartment.freezed.dart';
+part 'apartment.g.dart';
 
 /// Huoneistot
 @freezed
@@ -39,6 +40,9 @@ abstract class Apartment with _$Apartment {
       @Default(false) bool steelTable,
       @Default(false) bool waterHeater,
       @Default(false) bool saunaStove}) = _Apartment;
+
+  factory Apartment.fromJson(Map<String, dynamic> json) =>
+      _$ApartmentFromJson(json);
 
   num? get wallAreaPerApartment =>
       Utils.multiplyOrNull([innerWallsPerApartmentLinearMeters, wallHeight]);

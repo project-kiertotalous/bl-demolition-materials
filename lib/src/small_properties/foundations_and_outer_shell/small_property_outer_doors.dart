@@ -5,6 +5,7 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'small_property_outer_doors.freezed.dart';
+part 'small_property_outer_doors.g.dart';
 
 /// Ulko-ovet
 /// Sisältää tiedot kaikkien ulko-ovien materiaalimäärista yhteensä
@@ -18,6 +19,9 @@ abstract class SmallPropertyOuterDoors with _$SmallPropertyOuterDoors {
     DoorsInfo? steelDoor,
     @Default(false) bool areDoorsRecyclable,
   }) = _SmallPropertyOuterDoors;
+
+  factory SmallPropertyOuterDoors.fromJson(Map<String, dynamic> json) =>
+      _$SmallPropertyOuterDoorsFromJson(json);
 
   num? get woodenDoorTons {
     num? sum = Utils.sumOrNull([

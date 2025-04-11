@@ -3,6 +3,11 @@ import 'dart:io';
 
 import 'package:uuid/uuid.dart';
 
+import 'package:bl_demolition_materials/src/small_properties/data_types/exports.dart';
+import 'package:bl_demolition_materials/src/small_properties/data_types/foundation_type.dart';
+import 'package:bl_demolition_materials/src/small_properties/data_types/garage_wall_material.dart';
+import 'package:bl_demolition_materials/src/small_properties/data_types/heating_type.dart';
+import 'package:bl_demolition_materials/src/small_properties/demolition_site_waste/total/exports.dart';
 import '../../bl_demolition_materials.dart';
 
 /// An utility class for all things related to testing
@@ -56,6 +61,339 @@ class TestUtils {
             repo.insulationAndAsbestosContainingMaterials,
         gypsumBasedBuildingMaterials: repo.gypsumBasedBuildingMaterials,
         totalOtherMaterials: repo.totalOtherMaterials);
+  }
+
+  static SmallPropertiesTotalDemolitionWasteAndCosts
+      get sampleSmallPropertiesTotalDemolitionWasteAndCosts {
+    final carportOrGarage = CarportOrGarage(
+        buildingLengthInMeters: 20,
+        buildingWidthInMeters: 20,
+        foundationType: FoundationType.concretePillars,
+        garageWallMaterial: GarageWallMaterial.board,
+        insulationMaterialThickness: InsulationMaterialThickness.mm300,
+        wallAverageHeight: 4,
+        buildingWallLengthTotal: 18);
+
+    final foundation = SmallPropertiesFoundation(
+        plinthHeightInMeters: 4,
+        plinthLengthInLinearMeters: 6,
+        plinthThicknessInMeters: 5,
+        concreteSlabAreaInSquareMeters: 12,
+        concreteSlabThicknessInMeters: 8);
+
+    final thermalCenter = ThermalCenter(
+        concreteLengthInMeters: 18,
+        concreteWidthInMeters: 25,
+        plinthHeightInMeters: 8,
+        wallHeightInMeters: 9,
+        garageWallMaterial: GarageWallMaterial.concrete,
+        roofType: SmallPropertyRoofType.gableRoof,
+        waterRoofType: WaterRoofType.tiledRoof,
+        roofFlatInMeters: 25,
+        roofLengthInMeters: 13,
+        heatingType: HeatingType.electricBoiler,
+        powerInKiloWatts: 8,
+        heatingMachinesPcs: 2,
+        waterHeatersPcs: 3,
+        carportOrGarage: carportOrGarage);
+
+    final walls = Walls(
+        lengthInMeters: 25,
+        widthInMeters: 18,
+        heightInMeters: 30,
+        stoneOrBrickWallsInLinearMeters: 121,
+        woodMaterialType: WoodMaterialType.trunkWood50x150,
+        wallMaterial: WallMaterial.brick,
+        insulationMaterialThickness: InsulationMaterialThickness.mm200,
+        outerWallSurfaceMaterial: OuterWallSurfaceMaterial.boardCurtain);
+
+    final apartment = Apartment(
+        pcsPerHouse: 4,
+        floorAreaPerApartment: 25,
+        innerWallsPerApartmentLinearMeters: 20,
+        wallHeight: 8,
+        surfaceMaterial: SurfaceMaterial.chipboard,
+        floorMaterial: FloorMaterial.woodPanel,
+        kitchenWallMaterial: KitchenWallMaterial.ceramicTile,
+        bathroomWallMaterial: BathroomWallMaterial.ceramicTile,
+        bathroomFloorMaterial: BathroomFloorMaterial.plasticCarpet,
+        kitchenWallMaterialAreaPerApartment: 25,
+        kitchenClosetsInLinearMeter: 18,
+        dressingClosetsInLinearMeter: 5,
+        bathroomFloorAreaPerApartment: 25,
+        bathroomWallAreaPerApartment: 20,
+        saunaPanelingAreaPerApartment: 8,
+        apartmentSpecificKitchenToiletOrSaunaFurniture: 16);
+
+    final apartmentSize = ApartmentSize(
+        oneRoom: apartment,
+        twoRooms: apartment,
+        threeRooms: apartment,
+        fourRooms: apartment);
+
+    final apartments =
+        Apartments(apartment: apartment, apartmentSize: apartmentSize);
+
+    final apartmentFloorMaterials = ApartmentFloorMaterials(
+        apartmentSize: apartmentSize, apartment: apartment);
+
+    final dressingClosets =
+        DressingClosets(apartment: apartment, apartmentSize: apartmentSize);
+
+    final electricStoves =
+        ElectricStoves(apartmentSize: apartmentSize, apartment: apartment);
+
+    final hallDoors =
+        HallDoors(woodenDoors: 5, aluminiumDoors: 5, steelDoors: 8);
+
+    final hvac = Hvac(
+        electricalWiresCopper: 12,
+        copperPipes: 8,
+        plasticPipesWater: 19,
+        ventilationPipesD200: 128,
+        centralHeatingPipes: 8,
+        castIronPipes: 22,
+        sewagePipesPlastic: 31,
+        rainGutters: 10);
+
+    final kitchenBathroomAndToiletWallsAndFloors =
+        KitchenBathroomAndToiletWallsAndFloors(
+            apartment: apartment, apartmentSize: apartmentSize);
+
+    final kitchenClosets =
+        KitchenClosets(apartmentSize: apartmentSize, apartment: apartment);
+
+    final machineryEquipmentAndFixedStructures =
+        MachineryEquipmentAndFixedStructures(
+            electricalDistributionMachinesAndMeters: 8,
+            ventilationMachines: 2,
+            electricMotors: 2,
+            waterCirculationRadiators: 1,
+            fencesBetweenApartments: FencesBetweenApartments.aluminiumMeshFence,
+            concreteYardTilesAndStonesInSquareMeters: 9,
+            fencesBetweenApartmentsInMeters: 4);
+
+    final passageDoors = PassageDoors(
+        woodenDoor: DoorsInfo(shutDoors: 4, glassDoors: 8),
+        aluminiumDoor: DoorsInfo(shutDoors: 6, glassDoors: 4),
+        steelDoor: DoorsInfo(shutDoors: 3, glassDoors: 1));
+
+    final porcelainSeats =
+        PorcelainSeats(apartment: apartment, apartmentSize: apartmentSize);
+
+    final refrigerators =
+        Refrigerators(apartmentSize: apartmentSize, apartment: apartment);
+
+    final roof = Roof(
+        slopeLengthInMeters: 12,
+        slopeWidthInMeters: 42,
+        roofType: SmallPropertyRoofType.gableRoof,
+        waterRoofType: WaterRoofType.metalRoof);
+
+    final saunaStoves =
+        SaunaStoves(apartment: apartment, apartmentSize: apartmentSize);
+
+    final saunaWallPanels =
+        SaunaWallPanels(apartmentSize: apartmentSize, apartment: apartment);
+
+    final smallPropertiesExcavationArea = SmallPropertiesExcavationArea(
+        areOfTheRemovableSoil: 18,
+        depthInMeters: 25,
+        asphaltAreaInSquareMeters: 2,
+        removableCleanSoilInPercents: 95);
+
+    final evaluationInfo = SmallPropertyEvaluationInfo(
+        propertyName: 'Open Space Org',
+        buildingType: 'A very big one',
+        address: 'Santamiehenkatu 6 A 50001',
+        isHazardousSubstanceSurveyDone: true);
+
+    final smallPropertyInnerDoors = SmallPropertyInnerDoors(
+        woodenDoor: DoorsInfo(shutDoors: 3, glassDoors: 0),
+        panelDoor: DoorsInfo(shutDoors: 2, glassDoors: 2));
+
+    final smallPropertyOuterDoors = SmallPropertyOuterDoors(
+        woodenDoor: DoorsInfo(shutDoors: 3, glassDoors: 0),
+        aluminiumDoor: DoorsInfo(shutDoors: 2, glassDoors: 2),
+        steelDoor: DoorsInfo(shutDoors: 9, glassDoors: 4));
+
+    final smallPropertyWindows =
+        SmallPropertyWindows(woodenFramePcs: 32, steelPcs: 4, aluminiumPcs: 1);
+
+    final steelTableAndSinks =
+        SteelTableAndSinks(apartment: apartment, apartmentSize: apartmentSize);
+
+    final washingSinks =
+        WashingSinks(apartmentSize: apartmentSize, apartment: apartment);
+
+    final waterAccumulators =
+        WaterAccumulators(apartment: apartment, apartmentSize: apartmentSize);
+
+    final yardRoof = YardRoof(
+        roofType: RoofType.woodenTruss,
+        waterRoofType: WaterRoofType.mineriteRoof,
+        lapelLengthInMeters: 20,
+        lapelWidthInMeters: 45,
+        carportOrGarage: carportOrGarage);
+
+    final apartmentWallMaterials = ApartmentWallMaterials(
+        apartmentSize: apartmentSize, apartment: apartment);
+
+    final counter = Counter(
+        apartment: apartment,
+        apartmentSize: apartmentSize,
+        apartmentFloorMaterials: apartmentFloorMaterials,
+        apartmentWallMaterials: apartmentWallMaterials,
+        apartments: apartments,
+        dressingClosets: dressingClosets,
+        hvac: hvac,
+        electricStoves: electricStoves,
+        smallPropertyEvaluationInfo: evaluationInfo,
+        smallPropertiesExcavationArea: smallPropertiesExcavationArea,
+        foundation: foundation,
+        innerDoors: smallPropertyInnerDoors,
+        outerDoors: smallPropertyOuterDoors,
+        windows: smallPropertyWindows,
+        kitchenBathroomAndToiletWallsAndFloors:
+            kitchenBathroomAndToiletWallsAndFloors,
+        kitchenClosets: kitchenClosets,
+        machineryEquipmentAndFixedStructures:
+            machineryEquipmentAndFixedStructures,
+        porcelainSeats: porcelainSeats,
+        refrigerators: refrigerators,
+        roof: roof,
+        saunaStoves: saunaStoves,
+        saunaWallPanels: saunaWallPanels,
+        steelTablesAndSinks: steelTableAndSinks,
+        waterAccumulators: waterAccumulators,
+        washingSinks: washingSinks,
+        walls: walls,
+        carportOrGarage: carportOrGarage,
+        hallDoors: hallDoors,
+        passageDoors: passageDoors,
+        yardRoof: yardRoof,
+        thermalCenter: thermalCenter);
+
+    final smallPropertiesTotalDisposalMaterialsAndHazardousWaste =
+        SmallPropertiesTotalDisposalMaterialsAndHazardousWaste(
+            apartment: apartment,
+            apartmentFloorMaterials: apartmentFloorMaterials,
+            apartmentSize: apartmentSize,
+            carportOrGarage: carportOrGarage,
+            dressingClosets: dressingClosets,
+            electricStoves: electricStoves,
+            hallDoors: hallDoors,
+            hvac: hvac,
+            machineryEquipmentAndFixedStructures:
+                machineryEquipmentAndFixedStructures,
+            passageDoors: passageDoors,
+            kitchenBathroomAndToiletWallsAndFloors:
+                kitchenBathroomAndToiletWallsAndFloors,
+            kitchenClosets: kitchenClosets,
+            porcelainSeats: porcelainSeats,
+            refrigerators: refrigerators,
+            roof: roof,
+            saunaStoves: saunaStoves,
+            smallPropertyEvaluationInfo: evaluationInfo,
+            foundation: foundation,
+            innerDoors: smallPropertyInnerDoors,
+            outerDoors: smallPropertyOuterDoors,
+            windows: smallPropertyWindows,
+            thermalCenter: thermalCenter,
+            walls: walls,
+            steelTablesAndSinks: steelTableAndSinks,
+            washingSinks: washingSinks,
+            waterAccumulators: waterAccumulators,
+            yardRoof: yardRoof,
+            counter: counter);
+
+    final smallPropertiesTotalReusableAndRecyclableMaterials =
+        SmallPropertiesTotalReusableAndRecyclableMaterials(
+            apartment: apartment,
+            apartmentFloorMaterials: apartmentFloorMaterials,
+            apartmentSize: apartmentSize,
+            carportOrGarage: carportOrGarage,
+            dressingClosets: dressingClosets,
+            electricStoves: electricStoves,
+            hallDoors: hallDoors,
+            hvac: hvac,
+            machineryEquipmentAndFixedStructures:
+                machineryEquipmentAndFixedStructures,
+            passageDoors: passageDoors,
+            kitchenBathroomAndToiletWallsAndFloors:
+                kitchenBathroomAndToiletWallsAndFloors,
+            kitchenClosets: kitchenClosets,
+            porcelainSeats: porcelainSeats,
+            refrigerators: refrigerators,
+            roof: roof,
+            saunaStoves: saunaStoves,
+            smallPropertyEvaluationInfo: evaluationInfo,
+            foundation: foundation,
+            innerDoors: smallPropertyInnerDoors,
+            outerDoors: smallPropertyOuterDoors,
+            windows: smallPropertyWindows,
+            thermalCenter: thermalCenter,
+            walls: walls,
+            steelTablesAndSinks: steelTableAndSinks,
+            washingSinks: washingSinks,
+            waterAccumulators: waterAccumulators,
+            yardRoof: yardRoof,
+            counter: counter,
+            smallPropertiesExcavationArea: smallPropertiesExcavationArea,
+            saunaWallPanels: saunaWallPanels,
+            apartments: apartments,
+            apartmentWallMaterials: apartmentWallMaterials);
+
+    final smallPropertiesTotalRecyclableComponentsAndFurniture =
+        SmallPropertiesTotalRecyclableComponentsAndFurniture(
+            apartment: apartment,
+            apartmentFloorMaterials: apartmentFloorMaterials,
+            apartmentSize: apartmentSize,
+            carportOrGarage: carportOrGarage,
+            dressingClosets: dressingClosets,
+            electricStoves: electricStoves,
+            hallDoors: hallDoors,
+            hvac: hvac,
+            machineryEquipmentAndFixedStructures:
+                machineryEquipmentAndFixedStructures,
+            passageDoors: passageDoors,
+            kitchenBathroomAndToiletWallsAndFloors:
+                kitchenBathroomAndToiletWallsAndFloors,
+            kitchenClosets: kitchenClosets,
+            porcelainSeats: porcelainSeats,
+            refrigerators: refrigerators,
+            roof: roof,
+            saunaStoves: saunaStoves,
+            smallPropertyEvaluationInfo: evaluationInfo,
+            foundation: foundation,
+            innerDoors: smallPropertyInnerDoors,
+            outerDoors: smallPropertyOuterDoors,
+            windows: smallPropertyWindows,
+            thermalCenter: thermalCenter,
+            walls: walls,
+            steelTablesAndSinks: steelTableAndSinks,
+            washingSinks: washingSinks,
+            waterAccumulators: waterAccumulators,
+            yardRoof: yardRoof,
+            counter: counter,
+            smallPropertiesExcavationArea: smallPropertiesExcavationArea,
+            saunaWallPanels: saunaWallPanels,
+            reusableAndRecyclableMaterials:
+                smallPropertiesTotalReusableAndRecyclableMaterials,
+            apartments: apartments,
+            apartmentWallMaterials: apartmentWallMaterials);
+
+    return SmallPropertiesTotalDemolitionWasteAndCosts(
+        walls: walls,
+        thermalCenter: thermalCenter,
+        carportOrGarage: carportOrGarage,
+        foundation: foundation,
+        totalDisposalMaterialsAndHazardousWaste:
+            smallPropertiesTotalDisposalMaterialsAndHazardousWaste,
+        totalRecyclableComponentsAndFurniture:
+            smallPropertiesTotalRecyclableComponentsAndFurniture,
+        totalReusableAndRecyclableMaterials:
+            smallPropertiesTotalReusableAndRecyclableMaterials);
   }
 
   /// Returns an instance of LargePropertiesRepositorywith some sample data

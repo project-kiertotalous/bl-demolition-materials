@@ -4,6 +4,7 @@ import '../apartments/apartment.dart';
 import '../apartments/apartment_size.dart';
 
 part 'apartments.freezed.dart';
+part 'apartments.g.dart';
 
 /// Huoneistot
 @freezed
@@ -13,6 +14,9 @@ abstract class Apartments with _$Apartments {
   const factory Apartments(
       {required ApartmentSize apartmentSize,
       required Apartment apartment}) = _Apartments;
+
+  factory Apartments.fromJson(Map<String, dynamic> json) =>
+      _$ApartmentsFromJson(json);
 
   /// Huoneiston koko
   /// 1h, kpl

@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../..//utils/utils.dart';
 
 part 'small_properties_foundation.freezed.dart';
+part 'small_properties_foundation.g.dart';
 
 /// Perustus
 @freezed
@@ -19,6 +20,9 @@ abstract class SmallPropertiesFoundation with _$SmallPropertiesFoundation {
     num? plinthHeightInMeters,
     num? concreteSlabThicknessInMeters,
   }) = _SmallPropertiesFoundation;
+
+  factory SmallPropertiesFoundation.fromJson(Map<String, dynamic> json) =>
+      _$SmallPropertiesFoundationFromJson(json);
 
   /// Betoni (m3)
   num? get concreteVolume => Utils.sumOrNull([

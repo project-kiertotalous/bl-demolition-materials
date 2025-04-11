@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'small_property_inner_doors.freezed.dart';
+part 'small_property_inner_doors.g.dart';
 
 /// Sisäovet
 /// Sisältää tiedot kaikkien sisäovien materiaalimäärista yhteensä
@@ -16,6 +17,9 @@ abstract class SmallPropertyInnerDoors with _$SmallPropertyInnerDoors {
     DoorsInfo? panelDoor,
     @Default(false) bool areDoorsRecyclable,
   }) = _SmallPropertyInnerDoors;
+
+  factory SmallPropertyInnerDoors.fromJson(Map<String, dynamic> json) =>
+      _$SmallPropertyInnerDoorsFromJson(json);
 
   num? get woodenDoorWoodTons {
     num? multiply = Utils.multiplyOrNull([

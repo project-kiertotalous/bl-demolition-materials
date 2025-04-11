@@ -18,7 +18,8 @@ abstract class ReportCell with _$ReportCell {
       @Default(false) bool bold,
       @Default(TextHorizontalAlign.left) TextHorizontalAlign horizontalAlign,
       @Default(TextVerticalAlign.bottom) TextVerticalAlign verticalAlign,
-      @Default(Hint.none) Hint hint}) = _ReportCell;
+      @Default(Hint.none) Hint hint,
+      @Default(false) bool red}) = _ReportCell;
 
   CellValue get valueAsExcelValue {
     if (value is int) {

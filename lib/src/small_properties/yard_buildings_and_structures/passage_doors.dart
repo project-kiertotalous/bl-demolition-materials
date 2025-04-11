@@ -4,6 +4,7 @@ import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
 
 part 'passage_doors.freezed.dart';
+part 'passage_doors.g.dart';
 
 /// Kulkuovet
 /// Sisältää tiedot kaikkien kulkuovien materiaalimäärista yhteensä
@@ -17,6 +18,9 @@ abstract class PassageDoors with _$PassageDoors {
     DoorsInfo? steelDoor,
     @Default(false) bool doorsRecyclable,
   }) = _PassageDoors;
+
+  factory PassageDoors.fromJson(Map<String, dynamic> json) =>
+      _$PassageDoorsFromJson(json);
 
   /// Puuovi (tonnia)
   num? get woodenDoorTons {

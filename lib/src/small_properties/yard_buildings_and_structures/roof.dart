@@ -6,6 +6,7 @@ import '../../utils/utils.dart';
 import '../data_types/exports.dart';
 
 part 'roof.freezed.dart';
+part 'roof.g.dart';
 
 /// Piharakennukset ja rakenteet
 /// Katto
@@ -20,6 +21,9 @@ abstract class YardRoof with _$YardRoof {
       num? lapelLengthInMeters,
       num? lapelWidthInMeters,
       required CarportOrGarage carportOrGarage}) = _YardRoof;
+
+  factory YardRoof.fromJson(Map<String, dynamic> json) =>
+      _$YardRoofFromJson(json);
 
   /// Kattopinta-ala (m2)
   num? get roofArea {

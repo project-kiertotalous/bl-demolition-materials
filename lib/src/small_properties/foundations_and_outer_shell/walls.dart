@@ -5,6 +5,7 @@ import '../../utils/utils.dart';
 import '../data_types/exports.dart';
 
 part 'walls.freezed.dart';
+part 'walls.g.dart';
 
 /// Ulko- ja kantavien väliseinien materiaalit
 @freezed
@@ -24,6 +25,8 @@ abstract class Walls with _$Walls {
     InsulationMaterialThickness? insulationMaterialThickness,
     OuterWallSurfaceMaterial? outerWallSurfaceMaterial,
   }) = _Walls;
+
+  factory Walls.fromJson(Map<String, dynamic> json) => _$WallsFromJson(json);
 
   /// Ulkoseinän pinta-ala (m2)
   num? get outerWallArea =>

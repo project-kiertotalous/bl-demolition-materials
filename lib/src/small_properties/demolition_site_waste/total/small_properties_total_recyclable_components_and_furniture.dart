@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../items/exports.dart';
 import '../../../utils/utils.dart';
 import '../../apartments/exports.dart';
 import '../../foundations_and_outer_shell/exports.dart';
 import '../../quantities_to_material_form/quantities_to_material_form.dart';
 import '../../yard_buildings_and_structures/exports.dart';
+import '../items/exports.dart';
 import '../total/small_properties_total_reusable_and_recyclable_materials.dart';
 
 part 'small_properties_total_recyclable_components_and_furniture.freezed.dart';
