@@ -1,12 +1,12 @@
 import 'dart:io';
 
+import 'package:excel/excel.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import 'package:bl_demolition_materials/src/exporting/report_exporters/excel_report_exporter.dart';
 import 'package:bl_demolition_materials/src/exporting/report_exporters/pdf_report_exporter.dart';
 import 'package:bl_demolition_materials/src/exporting/structures/exports.dart';
 import 'package:bl_demolition_materials/src/exporting/structures/text_align.dart';
-import 'package:excel/excel.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../../bl_demolition_materials.dart';
 
 part 'small_properties_demolition_waste_report_exporter.freezed.dart';

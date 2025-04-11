@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../apartments/exports.dart';
-import '../items/exports.dart';
 import '../../../utils/utils.dart';
+import '../../apartments/exports.dart';
 import '../../foundations_and_outer_shell/exports.dart';
 import '../../quantities_to_material_form/quantities_to_material_form.dart';
 import '../../yard_buildings_and_structures/exports.dart';
+import '../items/exports.dart';
 
 part 'small_properties_total_disposal_materials_and_hazardous_waste.freezed.dart';
 

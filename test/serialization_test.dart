@@ -1,7 +1,7 @@
-import 'package:bl_demolition_materials/src/utils/test_utils.dart';
 import 'package:test/test.dart';
 
 import 'package:bl_demolition_materials/bl_demolition_materials.dart';
+import 'package:bl_demolition_materials/src/utils/test_utils.dart';
 
 void main() {
   group('Basic serialization tests', () {

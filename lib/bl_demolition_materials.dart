@@ -15,8 +15,6 @@ export 'src/small_properties/data_types/exports.dart';
 export 'src/small_properties/foundations_and_outer_shell/exports.dart';
 export 'src/small_properties/yard_buildings_and_structures/exports.dart';
 export 'src/small_properties/demolition_site_waste/exports.dart';
-export 'src/small_properties/yard_buildings_and_structures/exports.dart';
-export 'src/small_properties/demolition_site_waste/exports.dart';
 export 'src/small_properties/demolition_site_waste/total/exports.dart';
 export 'src/small_properties/demolition_site_waste/items/exports.dart';
 export 'src/small_properties/quantities_to_material_form/quantities_to_material_form.dart';

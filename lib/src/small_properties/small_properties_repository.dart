@@ -1,8 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import 'package:bl_demolition_materials/bl_demolition_materials.dart';
 
 part 'small_properties_repository.freezed.dart';
 part 'small_properties_repository.g.dart';
