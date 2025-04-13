@@ -134,15 +134,6 @@ class TestUtils {
     final apartments =
         Apartments(apartment: apartment, apartmentSize: apartmentSize);
 
-    final apartmentFloorMaterials = ApartmentFloorMaterials(
-        apartmentSize: apartmentSize, apartment: apartment);
-
-    final dressingClosets =
-        DressingClosets(apartment: apartment, apartmentSize: apartmentSize);
-
-    final electricStoves =
-        ElectricStoves(apartmentSize: apartmentSize, apartment: apartment);
-
     final hallDoors =
         HallDoors(woodenDoors: 5, aluminiumDoors: 5, steelDoors: 8);
 
@@ -155,13 +146,6 @@ class TestUtils {
         castIronPipes: 22,
         sewagePipesPlastic: 31,
         rainGutters: 10);
-
-    final kitchenBathroomAndToiletWallsAndFloors =
-        KitchenBathroomAndToiletWallsAndFloors(
-            apartment: apartment, apartmentSize: apartmentSize);
-
-    final kitchenClosets =
-        KitchenClosets(apartmentSize: apartmentSize, apartment: apartment);
 
     final machineryEquipmentAndFixedStructures =
         MachineryEquipmentAndFixedStructures(
@@ -178,23 +162,11 @@ class TestUtils {
         aluminiumDoor: DoorsInfo(shutDoors: 6, glassDoors: 4),
         steelDoor: DoorsInfo(shutDoors: 3, glassDoors: 1));
 
-    final porcelainSeats =
-        PorcelainSeats(apartment: apartment, apartmentSize: apartmentSize);
-
-    final refrigerators =
-        Refrigerators(apartmentSize: apartmentSize, apartment: apartment);
-
     final roof = Roof(
         slopeLengthInMeters: 12,
         slopeWidthInMeters: 42,
         roofType: SmallPropertyRoofType.gableRoof,
         waterRoofType: WaterRoofType.metalRoof);
-
-    final saunaStoves =
-        SaunaStoves(apartment: apartment, apartmentSize: apartmentSize);
-
-    final saunaWallPanels =
-        SaunaWallPanels(apartmentSize: apartmentSize, apartment: apartment);
 
     final smallPropertiesExcavationArea = SmallPropertiesExcavationArea(
         areOfTheRemovableSoil: 18,
@@ -220,15 +192,6 @@ class TestUtils {
     final smallPropertyWindows =
         SmallPropertyWindows(woodenFramePcs: 32, steelPcs: 4, aluminiumPcs: 1);
 
-    final steelTableAndSinks =
-        SteelTableAndSinks(apartment: apartment, apartmentSize: apartmentSize);
-
-    final washingSinks =
-        WashingSinks(apartmentSize: apartmentSize, apartment: apartment);
-
-    final waterAccumulators =
-        WaterAccumulators(apartment: apartment, apartmentSize: apartmentSize);
-
     final yardRoof = YardRoof(
         roofType: RoofType.woodenTruss,
         waterRoofType: WaterRoofType.mineriteRoof,
@@ -236,37 +199,20 @@ class TestUtils {
         lapelWidthInMeters: 45,
         carportOrGarage: carportOrGarage);
 
-    final apartmentWallMaterials = ApartmentWallMaterials(
-        apartmentSize: apartmentSize, apartment: apartment);
-
     final counter = Counter(
         apartment: apartment,
         apartmentSize: apartmentSize,
-        apartmentFloorMaterials: apartmentFloorMaterials,
-        apartmentWallMaterials: apartmentWallMaterials,
         apartments: apartments,
-        dressingClosets: dressingClosets,
         hvac: hvac,
-        electricStoves: electricStoves,
         smallPropertyEvaluationInfo: evaluationInfo,
         smallPropertiesExcavationArea: smallPropertiesExcavationArea,
         foundation: foundation,
         innerDoors: smallPropertyInnerDoors,
         outerDoors: smallPropertyOuterDoors,
         windows: smallPropertyWindows,
-        kitchenBathroomAndToiletWallsAndFloors:
-            kitchenBathroomAndToiletWallsAndFloors,
-        kitchenClosets: kitchenClosets,
         machineryEquipmentAndFixedStructures:
             machineryEquipmentAndFixedStructures,
-        porcelainSeats: porcelainSeats,
-        refrigerators: refrigerators,
         roof: roof,
-        saunaStoves: saunaStoves,
-        saunaWallPanels: saunaWallPanels,
-        steelTablesAndSinks: steelTableAndSinks,
-        waterAccumulators: waterAccumulators,
-        washingSinks: washingSinks,
         walls: walls,
         carportOrGarage: carportOrGarage,
         hallDoors: hallDoors,
@@ -277,23 +223,14 @@ class TestUtils {
     final smallPropertiesTotalDisposalMaterialsAndHazardousWaste =
         SmallPropertiesTotalDisposalMaterialsAndHazardousWaste(
             apartment: apartment,
-            apartmentFloorMaterials: apartmentFloorMaterials,
             apartmentSize: apartmentSize,
             carportOrGarage: carportOrGarage,
-            dressingClosets: dressingClosets,
-            electricStoves: electricStoves,
             hallDoors: hallDoors,
             hvac: hvac,
             machineryEquipmentAndFixedStructures:
                 machineryEquipmentAndFixedStructures,
             passageDoors: passageDoors,
-            kitchenBathroomAndToiletWallsAndFloors:
-                kitchenBathroomAndToiletWallsAndFloors,
-            kitchenClosets: kitchenClosets,
-            porcelainSeats: porcelainSeats,
-            refrigerators: refrigerators,
             roof: roof,
-            saunaStoves: saunaStoves,
             smallPropertyEvaluationInfo: evaluationInfo,
             foundation: foundation,
             innerDoors: smallPropertyInnerDoors,
@@ -301,32 +238,20 @@ class TestUtils {
             windows: smallPropertyWindows,
             thermalCenter: thermalCenter,
             walls: walls,
-            steelTablesAndSinks: steelTableAndSinks,
-            washingSinks: washingSinks,
-            waterAccumulators: waterAccumulators,
             yardRoof: yardRoof,
             counter: counter);
 
     final smallPropertiesTotalReusableAndRecyclableMaterials =
         SmallPropertiesTotalReusableAndRecyclableMaterials(
             apartment: apartment,
-            apartmentFloorMaterials: apartmentFloorMaterials,
             apartmentSize: apartmentSize,
             carportOrGarage: carportOrGarage,
-            dressingClosets: dressingClosets,
-            electricStoves: electricStoves,
             hallDoors: hallDoors,
             hvac: hvac,
             machineryEquipmentAndFixedStructures:
                 machineryEquipmentAndFixedStructures,
             passageDoors: passageDoors,
-            kitchenBathroomAndToiletWallsAndFloors:
-                kitchenBathroomAndToiletWallsAndFloors,
-            kitchenClosets: kitchenClosets,
-            porcelainSeats: porcelainSeats,
-            refrigerators: refrigerators,
             roof: roof,
-            saunaStoves: saunaStoves,
             smallPropertyEvaluationInfo: evaluationInfo,
             foundation: foundation,
             innerDoors: smallPropertyInnerDoors,
@@ -334,36 +259,22 @@ class TestUtils {
             windows: smallPropertyWindows,
             thermalCenter: thermalCenter,
             walls: walls,
-            steelTablesAndSinks: steelTableAndSinks,
-            washingSinks: washingSinks,
-            waterAccumulators: waterAccumulators,
             yardRoof: yardRoof,
             counter: counter,
             smallPropertiesExcavationArea: smallPropertiesExcavationArea,
-            saunaWallPanels: saunaWallPanels,
-            apartments: apartments,
-            apartmentWallMaterials: apartmentWallMaterials);
+            apartments: apartments);
 
     final smallPropertiesTotalRecyclableComponentsAndFurniture =
         SmallPropertiesTotalRecyclableComponentsAndFurniture(
             apartment: apartment,
-            apartmentFloorMaterials: apartmentFloorMaterials,
             apartmentSize: apartmentSize,
             carportOrGarage: carportOrGarage,
-            dressingClosets: dressingClosets,
-            electricStoves: electricStoves,
             hallDoors: hallDoors,
             hvac: hvac,
             machineryEquipmentAndFixedStructures:
                 machineryEquipmentAndFixedStructures,
             passageDoors: passageDoors,
-            kitchenBathroomAndToiletWallsAndFloors:
-                kitchenBathroomAndToiletWallsAndFloors,
-            kitchenClosets: kitchenClosets,
-            porcelainSeats: porcelainSeats,
-            refrigerators: refrigerators,
             roof: roof,
-            saunaStoves: saunaStoves,
             smallPropertyEvaluationInfo: evaluationInfo,
             foundation: foundation,
             innerDoors: smallPropertyInnerDoors,
@@ -371,17 +282,12 @@ class TestUtils {
             windows: smallPropertyWindows,
             thermalCenter: thermalCenter,
             walls: walls,
-            steelTablesAndSinks: steelTableAndSinks,
-            washingSinks: washingSinks,
-            waterAccumulators: waterAccumulators,
             yardRoof: yardRoof,
             counter: counter,
             smallPropertiesExcavationArea: smallPropertiesExcavationArea,
-            saunaWallPanels: saunaWallPanels,
             reusableAndRecyclableMaterials:
                 smallPropertiesTotalReusableAndRecyclableMaterials,
-            apartments: apartments,
-            apartmentWallMaterials: apartmentWallMaterials);
+            apartments: apartments);
 
     return SmallPropertiesTotalDemolitionWasteAndCosts(
         walls: walls,

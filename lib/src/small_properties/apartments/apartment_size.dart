@@ -64,6 +64,46 @@ abstract class ApartmentSize with _$ApartmentSize {
     return multiply! / 1000;
   }
 
+  /// These five next functions are from apartment.dart to avoid cyclic dependency
+  num? get oneRoomSurfaceMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [oneRoom?.wallAreaPerApartment, totalSurfaceMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
+  num? get twoRoomsSurfaceMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [twoRooms?.wallAreaPerApartment, totalSurfaceMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
+  num? get threeRoomsSurfaceMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [threeRooms?.wallAreaPerApartment, totalSurfaceMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
+  num? get fourRoomsSurfaceMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [fourRooms?.wallAreaPerApartment, totalSurfaceMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
+  num? get floorMaterialPerApartmentTons =>
+      overallBathroomToiletFloorMaterialTons;
+
   /// Materiaalimäärään luettava arvo, energiajäte, maalattu puu, kattohuopa ja aluskate
   num? get totalFloorMaterialTons {
     num? multiply = Utils.multiplyOrNull([totalFloorArea, totalFloorMaterial]);
