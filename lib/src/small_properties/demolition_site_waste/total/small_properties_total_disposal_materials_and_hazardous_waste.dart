@@ -42,16 +42,23 @@ abstract class SmallPropertiesTotalDisposalMaterialsAndHazardousWaste
   late final ceramicTilePorcelainAndGlassAndInsulationWool =
       SmallPropertiesWasteDisposalItem(
           quantityEstimate: counter?.nonRecyclableCeramicWaste,
+          exploitingOrProcessingOrFinalDisposalSite:
+              ceramicTilePorcelainAndGlassAndInsulationWool
+                  .exploitingOrProcessingOrFinalDisposalSite,
           demolitionOrProcessingCost: 15);
 
   /// Kierrätyskelvoton tiilijäte
   late final nonRecyclableBrickWaste = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.nonRecyclableBrickWaste,
+      exploitingOrProcessingOrFinalDisposalSite:
+          nonRecyclableBrickWaste.exploitingOrProcessingOrFinalDisposalSite,
       demolitionOrProcessingCost: 15);
 
   /// Kierrätyskelvoton kipsilevy
   late final nonRecyclablePlasterBoard = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.nonRecyclablePlasterBoardTons,
+      exploitingOrProcessingOrFinalDisposalSite:
+          nonRecyclablePlasterBoard.exploitingOrProcessingOrFinalDisposalSite,
       demolitionOrProcessingCost: 15);
 
   /// Saastunut maa
@@ -60,11 +67,15 @@ abstract class SmallPropertiesTotalDisposalMaterialsAndHazardousWaste
         smallPropertiesExcavationArea?.soilToBeRemovedTons,
         smallPropertiesExcavationArea?.contaminatedSoil
       ]),
+      exploitingOrProcessingOrFinalDisposalSite:
+          contaminatedSoil.exploitingOrProcessingOrFinalDisposalSite,
       demolitionOrProcessingCost: 20);
 
   /// Asbestia sisältävä betoni
   late final concreteContainingAsbestos = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.concreteWithAsbestos,
+      exploitingOrProcessingOrFinalDisposalSite:
+          concreteContainingAsbestos.exploitingOrProcessingOrFinalDisposalSite,
       demolitionOrProcessingCost: 20);
 
   /// Mineriitti- tai huopakate, sisältää asbestia
@@ -76,6 +87,8 @@ abstract class SmallPropertiesTotalDisposalMaterialsAndHazardousWaste
   /// PCB maalia sisältävä betoni
   late final concreteContainingPcbPaint = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.concreteWithPcbPaints,
+      exploitingOrProcessingOrFinalDisposalSite:
+          concreteContainingPcbPaint.exploitingOrProcessingOrFinalDisposalSite,
       demolitionOrProcessingCost: 20);
 
   List<SmallPropertiesWasteDisposalItem> get all => [

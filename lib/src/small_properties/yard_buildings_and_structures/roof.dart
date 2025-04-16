@@ -1,9 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../bl_demolition_materials.dart';
-import '../../small_properties/yard_buildings_and_structures/carport_or_garage.dart';
 import '../../utils/utils.dart';
-import '../data_types/exports.dart';
 
 part 'roof.freezed.dart';
 part 'roof.g.dart';
@@ -16,7 +14,7 @@ abstract class YardRoof with _$YardRoof {
   const YardRoof._();
 
   const factory YardRoof(
-      {RoofType? roofType,
+      {SmallPropertyRoofType? roofType,
       WaterRoofType? waterRoofType,
       num? lapelLengthInMeters,
       num? lapelWidthInMeters,

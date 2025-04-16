@@ -313,10 +313,7 @@ abstract class ThermalCenter with _$ThermalCenter {
           heatingMachinesPcs
         ]);
       case HeatingType.districtHeatExchanger:
-        return Utils.multiplyOrNull([
-          (CentralHeatingWeights.remoteHeatChangerKg / 1000),
-          heatingMachinesPcs
-        ]);
+        return CentralHeatingWeights.remoteHeatChangerKg / 1000;
       default:
         return null;
     }
