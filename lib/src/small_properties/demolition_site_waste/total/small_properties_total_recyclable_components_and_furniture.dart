@@ -52,6 +52,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       innerDoors?.recyclableWoodenInnerDoorsPieces,
       innerDoors?.recyclablePanelInnerDoorsPieces
     ]),
+    exploitingOrProcessingOrFinalDisposalSite:
+        woodAndFiberboardDoors.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 10,
     unitPrice: 5,
   );
@@ -64,6 +66,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       passageDoors?.recyclableAluminiumDoorPieces,
       hallDoors?.recyclableAluminiumDoorPieces
     ]),
+    exploitingOrProcessingOrFinalDisposalSite:
+        aluminumDoors.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -76,6 +80,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       passageDoors?.recyclableSteelDoorPieces,
       hallDoors?.recyclableSteelDoorPieces
     ]),
+    exploitingOrProcessingOrFinalDisposalSite:
+        steelDoors.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -84,6 +90,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final woodenWindows = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.woodenWindows,
     pcs: windows?.recyclableWoodWindowsPieces,
+    exploitingOrProcessingOrFinalDisposalSite:
+        woodenWindows.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 10,
     unitPrice: 5,
   );
@@ -93,6 +101,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.steelWindows,
     pcs: windows?.recyclableSteelWindowsPieces,
+    exploitingOrProcessingOrFinalDisposalSite:
+        steelFrameWindows.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -102,6 +112,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.aluminiumWindows,
     pcs: windows?.recyclableAluminiumWindowsPieces,
+    exploitingOrProcessingOrFinalDisposalSite:
+        aluminumFrameWindows.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -111,6 +123,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.toiletSeatsRecyclable,
     pcs: apartmentSize?.recyclablePorcelainSeatPcs,
+    exploitingOrProcessingOrFinalDisposalSite:
+        porcelainToilets.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -123,6 +137,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       apartmentSize?.recyclableDressingClosets,
       apartmentSize?.recyclableKitchenClosets
     ]),
+    exploitingOrProcessingOrFinalDisposalSite:
+        cabinetsAndFurniture.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -131,6 +147,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final porcelainSinks = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.washingSinksRecyclable,
     pcs: apartmentSize?.recyclableWashingSinkPcs,
+    exploitingOrProcessingOrFinalDisposalSite:
+        porcelainSinks.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -140,6 +158,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.steelSinksAndTables,
     pcs: apartmentSize?.recyclableSteelTablePcs,
+    exploitingOrProcessingOrFinalDisposalSite:
+        stainlessSteelSinksAndTables.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -148,6 +168,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final saunaStove = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.saunaStovesRecyclable,
     pcs: apartmentSize?.recyclableSaunaStovePcs,
+    exploitingOrProcessingOrFinalDisposalSite:
+        saunaStove.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -156,6 +178,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final electricStove = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.electricStovesRecyclable,
     pcs: apartmentSize?.recyclableElectricStovePcs,
+    exploitingOrProcessingOrFinalDisposalSite:
+        electricStove.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -164,6 +188,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final refrigerator = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.refrigeratorsRecyclable,
     pcs: apartmentSize?.recyclableRefrigeratorPcs,
+    exploitingOrProcessingOrFinalDisposalSite:
+        refrigerator.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -176,6 +202,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       apartmentSize?.recyclableWaterAccumulatorPcs,
       thermalCenter?.waterHeaterPcsRecyclable
     ]),
+    exploitingOrProcessingOrFinalDisposalSite:
+        waterAccumulator.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -184,6 +212,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final electricMotors = SmallPropertiesRecyclableComponentOrFurnitureItem(
     quantityEstimate: counter?.electricMotorsRecyclable,
     pcs: machineryEquipmentAndFixedStructures?.recyclableElectricMotorsPieces,
+    exploitingOrProcessingOrFinalDisposalSite:
+        electricMotors.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -194,6 +224,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.ventilationMachinesRecyclable,
     pcs: machineryEquipmentAndFixedStructures
         ?.recyclableVentilationMachinesPieces,
+    exploitingOrProcessingOrFinalDisposalSite:
+        ventilationMachines.exploitingOrProcessingOrFinalDisposalSite,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -202,6 +234,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
   late final thermalBoiler = SmallPropertiesRecyclableComponentOrFurnitureItem(
       quantityEstimate: counter?.pelletBoilerRecyclable,
       pcs: thermalCenter?.recyclableHeatingMachinePieces,
+      exploitingOrProcessingOrFinalDisposalSite:
+          thermalBoiler.exploitingOrProcessingOrFinalDisposalSite,
       handlingAndDismantlingCost: null,
       unitPrice: null);
 
@@ -210,6 +244,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
           quantityEstimate: counter?.districtHeatExchangerRecyclable,
           pcs: thermalCenter?.recyclableDistrictHeatExchangerPieces,
+          exploitingOrProcessingOrFinalDisposalSite: districtHeatingExchanger
+              .exploitingOrProcessingOrFinalDisposalSite,
           handlingAndDismantlingCost: null,
           unitPrice: null);
 

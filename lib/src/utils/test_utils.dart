@@ -193,7 +193,7 @@ class TestUtils {
         SmallPropertyWindows(woodenFramePcs: 32, steelPcs: 4, aluminiumPcs: 1);
 
     final yardRoof = YardRoof(
-        roofType: RoofType.woodenTruss,
+        roofType: SmallPropertyRoofType.gableRoof,
         waterRoofType: WaterRoofType.mineriteRoof,
         lapelLengthInMeters: 20,
         lapelWidthInMeters: 45,
