@@ -101,6 +101,42 @@ abstract class ApartmentSize with _$ApartmentSize {
     return multiply! / 1000;
   }
 
+  num? get oneRoomFloorMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [oneRoom?.floorAreaPerApartment, totalFloorMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
+  num? get twoRoomsFloorMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [twoRooms?.floorAreaPerApartment, totalFloorMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
+  num? get threeRoomsFloorMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [threeRooms?.floorAreaPerApartment, totalFloorMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
+  num? get fourRoomsFloorMaterialPerApartmentTons {
+    num? multiply = Utils.multiplyOrNull(
+        [fourRooms?.floorAreaPerApartment, totalFloorMaterial]);
+    if (multiply == 0) {
+      return 0;
+    }
+    return multiply! / 1000;
+  }
+
   num? get floorMaterialPerApartmentTons =>
       overallBathroomToiletFloorMaterialTons;
 
