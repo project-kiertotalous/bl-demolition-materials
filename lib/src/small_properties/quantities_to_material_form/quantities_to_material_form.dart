@@ -32,31 +32,17 @@ abstract class Counter with _$Counter {
   const factory Counter(
       {Apartment? apartment,
       ApartmentSize? apartmentSize,
-      ApartmentFloorMaterials? apartmentFloorMaterials,
-      ApartmentWallMaterials? apartmentWallMaterials,
       Apartments? apartments,
-      DressingClosets? dressingClosets,
       Hvac? hvac,
-      ElectricStoves? electricStoves,
       SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
       SmallPropertiesFoundation? foundation,
       SmallPropertyInnerDoors? innerDoors,
-      KitchenBathroomAndToiletWallsAndFloors?
-          kitchenBathroomAndToiletWallsAndFloors,
-      KitchenClosets? kitchenClosets,
       MachineryEquipmentAndFixedStructures?
           machineryEquipmentAndFixedStructures,
       SmallPropertyOuterDoors? outerDoors,
-      PorcelainSeats? porcelainSeats,
-      Refrigerators? refrigerators,
       Roof? roof,
-      SaunaStoves? saunaStoves,
-      SaunaWallPanels? saunaWallPanels,
       SmallPropertyEvaluationInfo? smallPropertyEvaluationInfo,
-      SteelTableAndSinks? steelTablesAndSinks,
       Walls? walls,
-      WashingSinks? washingSinks,
-      WaterAccumulators? waterAccumulators,
       SmallPropertyWindows? windows,
       CarportOrGarage? carportOrGarage,
       HallDoors? hallDoors,
@@ -152,7 +138,7 @@ abstract class Counter with _$Counter {
         innerDoors?.woodenInnerDoorsScrapAndBurnable,
         innerDoors?.panelInnerDoorsScrapAndBurnable,
         windows?.woodenWindowsScrapAndBurnable,
-        apartmentWallMaterials?.burnableWoodTons,
+        apartmentSize?.burnableWoodTons,
         apartmentSize?.totalTrunkWoodTons,
         machineryEquipmentAndFixedStructures?.burnableWoodTons,
         carportOrGarage?.burnableWoodTons,
@@ -169,7 +155,7 @@ abstract class Counter with _$Counter {
       [walls?.insulationWoolTons, carportOrGarage?.insulationThicknessTons]);
 
   /// Kipsilevyt, cyproc
-  num? get plasterBoardTons => apartmentWallMaterials?.plasterBoardTons;
+  num? get plasterBoardTons => apartmentSize?.plasterBoardTons;
 
   /// Kierrätyskelvoton kipsilevy
   num? get nonRecyclablePlasterBoardTons => null;
@@ -177,17 +163,17 @@ abstract class Counter with _$Counter {
   /// Materiaalimäärätaulukko does not have any values on this one
 
   /// Lastulevy
-  num? get chipboardTons => apartmentWallMaterials?.chipboardTons;
+  num? get chipboardTons => apartmentSize?.chipboardTons;
 
   /// Energiajäte, maalattu puu, kattohuopa ja aluskate
   num? get energyWaste => Utils.sumOrNull([
         roof?.waterRoofFeltTons,
         roof?.underLaymentTons,
-        apartmentFloorMaterials?.totalFloorMaterialTons,
-        kitchenBathroomAndToiletWallsAndFloors?.plasticCarpetTons,
-        saunaWallPanels?.saunaPanelingWoodenPanelTons,
-        kitchenClosets?.nonRecyclableKitchenClosetTons,
-        dressingClosets?.nonRecyclableDressingClosetTons,
+        apartmentSize?.totalFloorMaterialTons,
+        apartmentSize?.plasticCarpetTons,
+        apartmentSize?.saunaPanelingWoodenPanelTons,
+        apartmentSize?.nonRecyclableKitchenClosetTons,
+        apartmentSize?.nonRecyclableDressingClosetTons,
         hvac?.plasticPipesWaterWeightTons,
         hvac?.sewagePipesPlasticWeightTons,
         yardRoof?.roofingFeltNoAsbestosWeightTons,
@@ -265,22 +251,22 @@ abstract class Counter with _$Counter {
 
   /// Käyttökelvoton kaakeli, posliini sekä lasi- ja mineraalieristevilla
   num? get nonRecyclableCeramicWaste => Utils.sumOrNull([
-        kitchenBathroomAndToiletWallsAndFloors?.ceramicTileTonsNonRecyclable,
-        porcelainSeats?.porcelainSeatScrapTons,
-        washingSinks?.washingSinkScrapTons
+        apartmentSize?.ceramicTileTonsNonRecyclable,
+        apartmentSize?.porcelainSeatScrapTons,
+        apartmentSize?.washingSinkScrapTons
       ]);
 
   /// Kaapit ja kalusteet
   num? get closetsAndFurniture => Utils.sumOrNull([
-        kitchenClosets?.recyclableKitchenClosets,
-        dressingClosets?.recyclableDressingClosets
+        apartmentSize?.recyclableKitchenClosets,
+        apartmentSize?.recyclableDressingClosets
       ]);
 
   /// Muu metalliromu, sähkökaapit, liedet, jääkaapit yms.
   num? get otherMetalScrap => Utils.sumOrNull([
-        saunaStoves?.saunaStoveScrapTons,
-        electricStoves?.electricStoveScrapTons,
-        refrigerators?.refrigeratorScrapTons,
+        apartmentSize?.saunaStoveScrapTons,
+        apartmentSize?.electricStoveScrapTons,
+        apartmentSize?.refrigeratorScrapTons,
         machineryEquipmentAndFixedStructures
             ?.electricalDistributionMachinesAndMetersWeighTons,
         hvac?.castIronPipesWeightTons,
@@ -294,8 +280,8 @@ abstract class Counter with _$Counter {
 
   /// Ruostumaton teräs
   num? get stainlessSteel => Utils.sumOrNull([
-        steelTablesAndSinks?.steelTableScrapTons,
-        waterAccumulators?.waterAccumulatorScrapTons,
+        apartmentSize?.steelTableScrapTons,
+        apartmentSize?.waterAccumulatorScrapTons,
         thermalCenter?.recyclableDistrictHeatExchangerTons,
         thermalCenter?.recyclableWaterHeaterTons
       ]);
@@ -307,27 +293,27 @@ abstract class Counter with _$Counter {
       ]);
 
   /// WC-istuimet
-  num? get toiletSeatsRecyclable => porcelainSeats?.recyclablePorcelainSeatTons;
+  num? get toiletSeatsRecyclable => apartmentSize?.recyclablePorcelainSeatTons;
 
   /// Pesuallas, posliini tonnia
-  num? get washingSinksRecyclable => washingSinks?.recyclableWashingSinkTons;
+  num? get washingSinksRecyclable => apartmentSize?.recyclableWashingSinkTons;
 
   /// Teräsaltaat ja pöydät
-  num? get steelSinksAndTables => steelTablesAndSinks?.recyclableSteelTableTons;
+  num? get steelSinksAndTables => apartmentSize?.recyclableSteelTableTons;
 
   /// Saunankiukaas
-  num? get saunaStovesRecyclable => saunaStoves?.recyclableSaunaStoveTons;
+  num? get saunaStovesRecyclable => apartmentSize?.recyclableSaunaStoveTons;
 
   /// Sähköliedet
   num? get electricStovesRecyclable =>
-      electricStoves?.recyclableElectricStoveTons;
+      apartmentSize?.recyclableElectricStoveTons;
 
   /// Jääkaapit
-  num? get refrigeratorsRecyclable => refrigerators?.recyclableRefrigeratorTons;
+  num? get refrigeratorsRecyclable => apartmentSize?.recyclableRefrigeratorTons;
 
   /// Vesivaraajat
   num? get waterAccumulatorsRecyclable => Utils.sumOrNull([
-        waterAccumulators?.recyclableWaterAccumulatorTons,
+        apartmentSize?.recyclableWaterAccumulatorTons,
         thermalCenter?.recyclableWaterHeaterTons
       ]);
 

@@ -2,8 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../bl_demolition_materials.dart';
 import '../../utils/utils.dart';
-import '../apartments/apartment_size.dart';
-import '../data_types/exports.dart';
 
 part 'apartment.freezed.dart';
 part 'apartment.g.dart';
@@ -65,21 +63,4 @@ abstract class Apartment with _$Apartment {
         ])! /
         1000;
   }
-
-  num? get surfaceMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull([
-      ApartmentSize().totalWallArea,
-      ApartmentWallMaterials(apartment: this, apartmentSize: ApartmentSize())
-          .totalSurfaceMaterial
-    ]);
-    if (multiply == 0) {
-      return 0;
-    }
-    return multiply! / 1000;
-  }
-
-  num? get floorMaterialPerApartmentTons =>
-      KitchenBathroomAndToiletWallsAndFloors(
-              apartment: this, apartmentSize: ApartmentSize())
-          .overallBathroomToiletFloorMaterialTons;
 }

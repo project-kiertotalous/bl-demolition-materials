@@ -17,27 +17,16 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
 
   factory SmallPropertiesTotalReusableAndRecyclableMaterials(
           {Apartment? apartment,
-          ApartmentFloorMaterials? apartmentFloorMaterials,
           ApartmentSize? apartmentSize,
-          ApartmentWallMaterials? apartmentWallMaterials,
           Apartments? apartments,
           CarportOrGarage? carportOrGarage,
           Counter? counter,
-          DressingClosets? dressingClosets,
-          ElectricStoves? electricStoves,
           HallDoors? hallDoors,
           Hvac? hvac,
-          KitchenBathroomAndToiletWallsAndFloors?
-              kitchenBathroomAndToiletWallsAndFloors,
-          KitchenClosets? kitchenClosets,
           MachineryEquipmentAndFixedStructures?
               machineryEquipmentAndFixedStructures,
           PassageDoors? passageDoors,
-          PorcelainSeats? porcelainSeats,
-          Refrigerators? refrigerators,
           Roof? roof,
-          SaunaStoves? saunaStoves,
-          SaunaWallPanels? saunaWallPanels,
           SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
           SmallPropertiesFoundation? foundation,
           SmallPropertiesTotalReusableAndRecyclableMaterials?
@@ -46,11 +35,8 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
           SmallPropertyInnerDoors? innerDoors,
           SmallPropertyOuterDoors? outerDoors,
           SmallPropertyWindows? windows,
-          SteelTableAndSinks? steelTablesAndSinks,
           ThermalCenter? thermalCenter,
           Walls? walls,
-          WashingSinks? washingSinks,
-          WaterAccumulators? waterAccumulators,
           YardRoof? yardRoof}) =
       _SmallPropertiesTotalReusableAndRecyclableMaterials;
 
