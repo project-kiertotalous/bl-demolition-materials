@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -52,9 +53,13 @@ abstract class SmallPropertiesDemolitionWasteReportExporter
     file.writeAsBytesSync(exporter.export().encode()!);
   }
 
-  void writeAsPdfSync(File file) {
+  void writeAsPdfSync(File file,
+      {ByteData? fontRegularByteData, ByteData? fontBoldByteData}) {
     final exporter = PDFReportExporter(_report,
-        columnWidths: [30, 8.5, 8.5, 40, 8.5, 8.5, 8.5, 8.5], sizeScale: 0.9);
+        columnWidths: [30, 8.5, 8.5, 40, 8.5, 8.5, 8.5, 8.5],
+        sizeScale: 0.9,
+        fontRegularByteData: fontRegularByteData,
+        fontBoldByteData: fontBoldByteData);
     exporter.export().save().then((val) => file.writeAsBytesSync(val));
   }
 

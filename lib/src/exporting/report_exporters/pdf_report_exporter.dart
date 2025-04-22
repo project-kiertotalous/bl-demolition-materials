@@ -1,5 +1,4 @@
-import 'dart:io';
-import 'dart:isolate';
+import 'dart:typed_data';
 
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -13,31 +12,23 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
   final double tableVerticalMargin;
   final double cellPadding;
   final List<double>? columnWidths;
+  final ByteData? fontRegularByteData;
+  final ByteData? fontBoldByteData;
 
-  static pw.Font get font {
-    final packageUri = Uri.parse('package:bl_demolition_materials/');
-    final uri = Isolate.resolvePackageUriSync(packageUri);
-    final fontUri = uri!.resolve('../assets/Carlito-Regular.ttf');
-    final file = File.fromUri(fontUri);
-
-    if (!file.existsSync()) {
+  pw.Font get font {
+    if (fontRegularByteData == null) {
       return pw.Font.helvetica();
     }
 
-    return pw.Font.ttf(file.readAsBytesSync().buffer.asByteData());
+    return pw.Font.ttf(fontRegularByteData!);
   }
 
-  static pw.Font get fontBold {
-    final packageUri = Uri.parse('package:bl_demolition_materials/');
-    final uri = Isolate.resolvePackageUriSync(packageUri);
-    final fontUri = uri!.resolve('../assets/Carlito-Bold.ttf');
-    final file = File.fromUri(fontUri);
-
-    if (!file.existsSync()) {
-      return pw.Font.helvetica();
+  pw.Font get fontBold {
+    if (fontBoldByteData == null) {
+      return pw.Font.helveticaBold();
     }
 
-    return pw.Font.ttf(file.readAsBytesSync().buffer.asByteData());
+    return pw.Font.ttf(fontBoldByteData!);
   }
 
   const PDFReportExporter(super.report,
@@ -45,7 +36,9 @@ class PDFReportExporter extends ReportExporter<pw.Document> {
       this.sizeScale = 0.55,
       this.tableVerticalMargin = 12,
       this.cellPadding = 2,
-      this.columnWidths});
+      this.columnWidths,
+      this.fontRegularByteData,
+      this.fontBoldByteData});
 
   @override
   pw.Document export() {

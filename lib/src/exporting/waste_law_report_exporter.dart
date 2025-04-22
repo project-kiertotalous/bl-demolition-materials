@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:excel/excel.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -53,9 +54,12 @@ abstract class WasteLawReportExporter with _$WasteLawReportExporter {
     file.writeAsBytesSync(exporter.export().encode()!);
   }
 
-  void writeAsPdfSync(File file) {
-    final exporter =
-        PDFReportExporter(_report, columnWidths: [17, 50, 10, 10, 45]);
+  void writeAsPdfSync(File file,
+      {ByteData? fontRegularByteData, ByteData? fontBoldByteData}) {
+    final exporter = PDFReportExporter(_report,
+        columnWidths: [17, 50, 10, 10, 45],
+        fontRegularByteData: fontRegularByteData,
+        fontBoldByteData: fontBoldByteData);
     exporter.export().save().then((val) => file.writeAsBytesSync(val));
   }
 
