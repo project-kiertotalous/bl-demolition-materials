@@ -57,6 +57,7 @@ abstract class WasteLawReportExporter with _$WasteLawReportExporter {
   void writeAsPdfSync(File file,
       {ByteData? fontRegularByteData, ByteData? fontBoldByteData}) {
     final exporter = PDFReportExporter(_report,
+        sizeScale: 0.9,
         columnWidths: [17, 50, 10, 10, 45],
         fontRegularByteData: fontRegularByteData,
         fontBoldByteData: fontBoldByteData);
