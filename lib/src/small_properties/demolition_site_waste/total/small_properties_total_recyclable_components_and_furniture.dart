@@ -5,8 +5,7 @@ import '../../apartments/exports.dart';
 import '../../foundations_and_outer_shell/exports.dart';
 import '../../quantities_to_material_form/quantities_to_material_form.dart';
 import '../../yard_buildings_and_structures/exports.dart';
-import '../items/exports.dart';
-import '../total/small_properties_total_reusable_and_recyclable_materials.dart';
+import '../exports.dart';
 
 part 'small_properties_total_recyclable_components_and_furniture.freezed.dart';
 
@@ -27,6 +26,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
           MachineryEquipmentAndFixedStructures?
               machineryEquipmentAndFixedStructures,
           PassageDoors? passageDoors,
+          RecyclableComponentsNotes? recyclableComponentsNotes,
           Roof? roof,
           SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
           SmallPropertiesFoundation? foundation,
@@ -53,7 +53,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       innerDoors?.recyclablePanelInnerDoorsPieces
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
-        woodAndFiberboardDoors.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.woodAndFiberboardDoorsNotes,
     handlingAndDismantlingCost: 10,
     unitPrice: 5,
   );
@@ -67,7 +67,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       hallDoors?.recyclableAluminiumDoorPieces
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
-        aluminumDoors.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.aluminumDoorsNotes,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -81,7 +81,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       hallDoors?.recyclableSteelDoorPieces
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
-        steelDoors.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.steelDoorsNotes,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -91,7 +91,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.woodenWindows,
     pcs: windows?.recyclableWoodWindowsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
-        woodenWindows.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.woodenWindowsNotes,
     handlingAndDismantlingCost: 10,
     unitPrice: 5,
   );
@@ -102,7 +102,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.steelWindows,
     pcs: windows?.recyclableSteelWindowsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
-        steelFrameWindows.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.steelFrameWindowsNotes,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -113,7 +113,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.aluminiumWindows,
     pcs: windows?.recyclableAluminiumWindowsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
-        aluminumFrameWindows.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.aluminumFrameWindowsNotes,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -124,7 +124,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.toiletSeatsRecyclable,
     pcs: apartmentSize?.recyclablePorcelainSeatPcs,
     exploitingOrProcessingOrFinalDisposalSite:
-        porcelainToilets.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.porcelainToiletsNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -138,7 +138,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       apartmentSize?.recyclableKitchenClosets
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
-        cabinetsAndFurniture.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.cabinetsAndFurnitureNotes,
     handlingAndDismantlingCost: 10,
     unitPrice: 10,
   );
@@ -148,7 +148,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.washingSinksRecyclable,
     pcs: apartmentSize?.recyclableWashingSinkPcs,
     exploitingOrProcessingOrFinalDisposalSite:
-        porcelainSinks.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.porcelainSinksNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -159,7 +159,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.steelSinksAndTables,
     pcs: apartmentSize?.recyclableSteelTablePcs,
     exploitingOrProcessingOrFinalDisposalSite:
-        stainlessSteelSinksAndTables.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.stainlessSteelSinksAndTablesNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -169,7 +169,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.saunaStovesRecyclable,
     pcs: apartmentSize?.recyclableSaunaStovePcs,
     exploitingOrProcessingOrFinalDisposalSite:
-        saunaStove.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.saunaStovesNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -179,7 +179,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.electricStovesRecyclable,
     pcs: apartmentSize?.recyclableElectricStovePcs,
     exploitingOrProcessingOrFinalDisposalSite:
-        electricStove.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.electricStovesNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -189,7 +189,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.refrigeratorsRecyclable,
     pcs: apartmentSize?.recyclableRefrigeratorPcs,
     exploitingOrProcessingOrFinalDisposalSite:
-        refrigerator.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.refrigeratorsNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -203,7 +203,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       thermalCenter?.waterHeaterPcsRecyclable
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
-        waterAccumulator.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.waterAccumulatorsNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -213,7 +213,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     quantityEstimate: counter?.electricMotorsRecyclable,
     pcs: machineryEquipmentAndFixedStructures?.recyclableElectricMotorsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
-        electricMotors.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.electricMotorsNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -225,7 +225,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: machineryEquipmentAndFixedStructures
         ?.recyclableVentilationMachinesPieces,
     exploitingOrProcessingOrFinalDisposalSite:
-        ventilationMachines.exploitingOrProcessingOrFinalDisposalSite,
+        recyclableComponentsNotes?.ventilationMachinesNotes,
     handlingAndDismantlingCost: 20,
     unitPrice: 10,
   );
@@ -235,7 +235,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       quantityEstimate: counter?.pelletBoilerRecyclable,
       pcs: thermalCenter?.recyclableHeatingMachinePieces,
       exploitingOrProcessingOrFinalDisposalSite:
-          thermalBoiler.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableComponentsNotes?.thermalBoilerNotes,
       handlingAndDismantlingCost: null,
       unitPrice: null);
 
@@ -244,8 +244,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       SmallPropertiesRecyclableComponentOrFurnitureItem(
           quantityEstimate: counter?.districtHeatExchangerRecyclable,
           pcs: thermalCenter?.recyclableDistrictHeatExchangerPieces,
-          exploitingOrProcessingOrFinalDisposalSite: districtHeatingExchanger
-              .exploitingOrProcessingOrFinalDisposalSite,
+          exploitingOrProcessingOrFinalDisposalSite:
+              recyclableComponentsNotes?.districtHeatingExchangerNotes,
           handlingAndDismantlingCost: null,
           unitPrice: null);
 

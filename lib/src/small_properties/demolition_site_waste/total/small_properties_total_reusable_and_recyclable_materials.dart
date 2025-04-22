@@ -26,6 +26,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
           MachineryEquipmentAndFixedStructures?
               machineryEquipmentAndFixedStructures,
           PassageDoors? passageDoors,
+          RecyclableMaterialNotes? recyclableMaterialNotes,
           Roof? roof,
           SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
           SmallPropertiesFoundation? foundation,
@@ -47,7 +48,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
         smallPropertiesExcavationArea?.removableCleanSoilInPercents
       ]),
       exploitingOrProcessingOrFinalDisposalSite:
-          cleanSoil.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.cleanSoilNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 0);
 
@@ -58,7 +59,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
         carportOrGarage?.asphaltTons
       ]),
       exploitingOrProcessingOrFinalDisposalSite:
-          asphaltWaste.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.asphaltWasteNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 0);
 
@@ -66,7 +67,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final cleanConcrete = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.cleanConcrete,
       exploitingOrProcessingOrFinalDisposalSite:
-          cleanConcrete.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.cleanConcreteNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 0);
 
@@ -74,7 +75,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final steel = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.steel,
       exploitingOrProcessingOrFinalDisposalSite:
-          steel.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.steelNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 40);
 
@@ -82,7 +83,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final wallAndRoofTiles = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.wallAndRoofTiles,
       exploitingOrProcessingOrFinalDisposalSite:
-          wallAndRoofTiles.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.wallAndRoofTilesNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 0);
 
@@ -90,7 +91,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final cleanUsableWood = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.cleanWood,
       exploitingOrProcessingOrFinalDisposalSite:
-          cleanUsableWood.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.cleanUsableWoodNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 3);
 
@@ -98,7 +99,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final combustibleWoodWaste = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.burnableWood,
       exploitingOrProcessingOrFinalDisposalSite:
-          combustibleWoodWaste.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.combustibleWoodWasteNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 3);
 
@@ -106,7 +107,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final windProtectionBoard = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.windProtectionPlates,
       exploitingOrProcessingOrFinalDisposalSite:
-          windProtectionBoard.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.windProtectionBoardNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 0.5);
 
@@ -114,7 +115,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final glassAndMineralWool = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.glassAndMineralInsulation,
       exploitingOrProcessingOrFinalDisposalSite:
-          glassAndMineralWool.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.glassAndMineralWoolNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 0);
 
@@ -122,7 +123,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final gypsumBoards = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.plasterBoardTons,
       exploitingOrProcessingOrFinalDisposalSite:
-          gypsumBoards.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.gypsumBoardsNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 0);
 
@@ -130,7 +131,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final chipboard = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.chipboardTons,
       exploitingOrProcessingOrFinalDisposalSite:
-          chipboard.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.chipboardNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 0.5);
 
@@ -138,7 +139,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final energyWaste = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.energyWaste,
       exploitingOrProcessingOrFinalDisposalSite:
-          energyWaste.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.energyWasteNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 0.5);
 
@@ -146,7 +147,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final glass = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.glass,
       exploitingOrProcessingOrFinalDisposalSite:
-          glass.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.glassNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 0);
 
@@ -154,7 +155,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final aluminium = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.aluminium,
       exploitingOrProcessingOrFinalDisposalSite:
-          aluminium.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.aluminiumNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 40);
 
@@ -162,7 +163,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final rebarAndSteelScrap = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.otherMetalScrap,
       exploitingOrProcessingOrFinalDisposalSite:
-          rebarAndSteelScrap.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.rebarAndSteelScrapNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 45);
 
@@ -170,7 +171,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final stainlessSteel = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.stainlessSteel,
       exploitingOrProcessingOrFinalDisposalSite:
-          stainlessSteel.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.stainlessSteelNotes,
       handlingAndDismantlingCost: 10,
       materialValue: 650);
 
@@ -178,7 +179,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final copper = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.copper,
       exploitingOrProcessingOrFinalDisposalSite:
-          copper.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.copperNotes,
       handlingAndDismantlingCost: 11,
       materialValue: 1300);
 
@@ -186,7 +187,7 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   late final concreteBlocks = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.recyclableYardTilesAndStones,
       exploitingOrProcessingOrFinalDisposalSite:
-          concreteBlocks.exploitingOrProcessingOrFinalDisposalSite,
+          recyclableMaterialNotes?.concreteBlocksNotes,
       handlingAndDismantlingCost: 6,
       materialValue: 3);
 

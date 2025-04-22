@@ -5,7 +5,7 @@ import '../../apartments/exports.dart';
 import '../../foundations_and_outer_shell/exports.dart';
 import '../../quantities_to_material_form/quantities_to_material_form.dart';
 import '../../yard_buildings_and_structures/exports.dart';
-import '../items/exports.dart';
+import '../exports.dart';
 
 part 'small_properties_total_disposal_materials_and_hazardous_waste.freezed.dart';
 
@@ -21,6 +21,7 @@ abstract class SmallPropertiesTotalDisposalMaterialsAndHazardousWaste
           Apartments? apartments,
           CarportOrGarage? carportOrGarage,
           Counter? counter,
+          DisposableAndHazardousNotes? disposableAndHazardousNotes,
           HallDoors? hallDoors,
           Hvac? hvac,
           MachineryEquipmentAndFixedStructures?
@@ -42,23 +43,22 @@ abstract class SmallPropertiesTotalDisposalMaterialsAndHazardousWaste
   late final ceramicTilePorcelainAndGlassAndInsulationWool =
       SmallPropertiesWasteDisposalItem(
           quantityEstimate: counter?.nonRecyclableCeramicWaste,
-          exploitingOrProcessingOrFinalDisposalSite:
-              ceramicTilePorcelainAndGlassAndInsulationWool
-                  .exploitingOrProcessingOrFinalDisposalSite,
+          exploitingOrProcessingOrFinalDisposalSite: disposableAndHazardousNotes
+              ?.ceramicTilePorcelainAndGlassAndInsulationWoolNotes,
           demolitionOrProcessingCost: 15);
 
   /// Kierrätyskelvoton tiilijäte
   late final nonRecyclableBrickWaste = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.nonRecyclableBrickWaste,
       exploitingOrProcessingOrFinalDisposalSite:
-          nonRecyclableBrickWaste.exploitingOrProcessingOrFinalDisposalSite,
+          disposableAndHazardousNotes?.nonRecyclableBrickWasteNotes,
       demolitionOrProcessingCost: 15);
 
   /// Kierrätyskelvoton kipsilevy
   late final nonRecyclablePlasterBoard = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.nonRecyclablePlasterBoardTons,
       exploitingOrProcessingOrFinalDisposalSite:
-          nonRecyclablePlasterBoard.exploitingOrProcessingOrFinalDisposalSite,
+          disposableAndHazardousNotes?.nonRecyclablePlasterBoardNotes,
       demolitionOrProcessingCost: 15);
 
   /// Saastunut maa
@@ -68,27 +68,29 @@ abstract class SmallPropertiesTotalDisposalMaterialsAndHazardousWaste
         smallPropertiesExcavationArea?.contaminatedSoil
       ]),
       exploitingOrProcessingOrFinalDisposalSite:
-          contaminatedSoil.exploitingOrProcessingOrFinalDisposalSite,
+          disposableAndHazardousNotes?.contaminatedSoilNotes,
       demolitionOrProcessingCost: 20);
 
   /// Asbestia sisältävä betoni
   late final concreteContainingAsbestos = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.concreteWithAsbestos,
       exploitingOrProcessingOrFinalDisposalSite:
-          concreteContainingAsbestos.exploitingOrProcessingOrFinalDisposalSite,
+          disposableAndHazardousNotes?.concreteContainingAsbestosNotes,
       demolitionOrProcessingCost: 20);
 
   /// Mineriitti- tai huopakate, sisältää asbestia
   late final mineriteOrFeltContainingAsbestos =
       SmallPropertiesWasteDisposalItem(
           quantityEstimate: counter?.mineriteOrFeltContainsAsbestos,
+          exploitingOrProcessingOrFinalDisposalSite: disposableAndHazardousNotes
+              ?.mineriteOrFeltContainingAsbestosNotes,
           demolitionOrProcessingCost: 20);
 
   /// PCB maalia sisältävä betoni
   late final concreteContainingPcbPaint = SmallPropertiesWasteDisposalItem(
       quantityEstimate: counter?.concreteWithPcbPaints,
       exploitingOrProcessingOrFinalDisposalSite:
-          concreteContainingPcbPaint.exploitingOrProcessingOrFinalDisposalSite,
+          disposableAndHazardousNotes?.concreteContainingPcbPaintingNotes,
       demolitionOrProcessingCost: 20);
 
   List<SmallPropertiesWasteDisposalItem> get all => [
