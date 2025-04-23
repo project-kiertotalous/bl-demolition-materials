@@ -27,6 +27,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
               machineryEquipmentAndFixedStructures,
           PassageDoors? passageDoors,
           RecyclableComponentsNotes? recyclableComponentsNotes,
+          RecyclableComponentsHandlingAndDismantlingCosts? costs,
+          RecyclableComponentsUnitPrice? unitPrice,
           Roof? roof,
           SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
           SmallPropertiesFoundation? foundation,
@@ -54,8 +56,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.woodAndFiberboardDoorsNotes,
-    handlingAndDismantlingCost: 10,
-    unitPrice: 5,
+    handlingAndDismantlingCost:
+        costs?.woodAndFiberboardDoorsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.woodAndFiberboardDoorsUnitPrice,
   );
 
   /// Alumiiniovet
@@ -68,8 +71,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.aluminumDoorsNotes,
-    handlingAndDismantlingCost: 10,
-    unitPrice: 10,
+    handlingAndDismantlingCost: costs?.aluminumDoorsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.aluminumDoorsUnitPrice,
   );
 
   /// Teräsovet
@@ -82,8 +85,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.steelDoorsNotes,
-    handlingAndDismantlingCost: 10,
-    unitPrice: 10,
+    handlingAndDismantlingCost: costs?.steelDoorsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.steelDoorsUnitPrice,
   );
 
   /// Puiset ikkunat
@@ -92,8 +95,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: windows?.recyclableWoodWindowsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.woodenWindowsNotes,
-    handlingAndDismantlingCost: 10,
-    unitPrice: 5,
+    handlingAndDismantlingCost: costs?.woodenWindowsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.woodenWindowsUnitPrice,
   );
 
   /// Teräskarmi-ikkunat
@@ -103,8 +106,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: windows?.recyclableSteelWindowsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.steelFrameWindowsNotes,
-    handlingAndDismantlingCost: 10,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.steelFrameWindowsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.steelFrameWindowsUnitPrice,
   );
 
   /// Alumiinikarmi-ikkunat
@@ -114,8 +118,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: windows?.recyclableAluminiumWindowsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.aluminumFrameWindowsNotes,
-    handlingAndDismantlingCost: 10,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.aluminumFrameWindowsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.aluminumFrameWindowsUnitPrice,
   );
 
   /// WC-istuimet
@@ -125,8 +130,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: apartmentSize?.recyclablePorcelainSeatPcs,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.porcelainToiletsNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.porcelainToiletsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.porcelainToiletsUnitPrice,
   );
 
   /// Kaapit ja kalusteet
@@ -139,8 +145,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.cabinetsAndFurnitureNotes,
-    handlingAndDismantlingCost: 10,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.cabinetsAndFurnitureHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.cabinetsAndFurnitureUnitPrice,
   );
 
   /// Pesuallas, posliini kpl
@@ -149,8 +156,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: apartmentSize?.recyclableWashingSinkPcs,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.porcelainSinksNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.porcelainSinksHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.porcelainSinksUnitPrice,
   );
 
   /// Teräsaltaat ja pöydät
@@ -160,8 +168,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: apartmentSize?.recyclableSteelTablePcs,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.stainlessSteelSinksAndTablesNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.stainlessSteelSinksAndTablesHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.stainlessSteelSinksAndTablesUnitPrice,
   );
 
   /// Saunankiukaat
@@ -170,8 +179,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: apartmentSize?.recyclableSaunaStovePcs,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.saunaStovesNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost: costs?.saunaStovesHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.saunaStovesUnitPrice,
   );
 
   /// Sähköliedet
@@ -180,8 +189,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: apartmentSize?.recyclableElectricStovePcs,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.electricStovesNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.electricStovesHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.electricStovesUnitPrice,
   );
 
   /// Jääkaapit
@@ -190,8 +200,8 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: apartmentSize?.recyclableRefrigeratorPcs,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.refrigeratorsNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost: costs?.refrigeratorsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.refrigeratorsUnitPrice,
   );
 
   /// Vesivaraajat
@@ -204,8 +214,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     ]),
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.waterAccumulatorsNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.waterAccumulatorsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.waterAccumulatorsUnitPrice,
   );
 
   /// Sähkömoottorit
@@ -214,8 +225,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
     pcs: machineryEquipmentAndFixedStructures?.recyclableElectricMotorsPieces,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.electricMotorsNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.electricMotorsHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.electricMotorsUnitPrice,
   );
 
   /// Ilmanvaihtokoneet
@@ -226,8 +238,9 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
         ?.recyclableVentilationMachinesPieces,
     exploitingOrProcessingOrFinalDisposalSite:
         recyclableComponentsNotes?.ventilationMachinesNotes,
-    handlingAndDismantlingCost: 20,
-    unitPrice: 10,
+    handlingAndDismantlingCost:
+        costs?.ventilationMachinesHandlingAndDismantlingCosts,
+    unitPrice: unitPrice?.ventilationMachinesUnitPrice,
   );
 
   /// Lämpökattila
@@ -235,9 +248,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
       quantityEstimate: counter?.pelletBoilerRecyclable,
       pcs: thermalCenter?.recyclableHeatingMachinePieces,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableComponentsNotes?.thermalBoilerNotes,
-      handlingAndDismantlingCost: null,
-      unitPrice: null);
+          recyclableComponentsNotes?.thermalBoilerNotes);
 
   /// Kaukolämmönvaihdin
   late final districtHeatingExchanger =
@@ -245,9 +256,7 @@ abstract class SmallPropertiesTotalRecyclableComponentsAndFurniture
           quantityEstimate: counter?.districtHeatExchangerRecyclable,
           pcs: thermalCenter?.recyclableDistrictHeatExchangerPieces,
           exploitingOrProcessingOrFinalDisposalSite:
-              recyclableComponentsNotes?.districtHeatingExchangerNotes,
-          handlingAndDismantlingCost: null,
-          unitPrice: null);
+              recyclableComponentsNotes?.districtHeatingExchangerNotes);
 
   List<SmallPropertiesRecyclableComponentOrFurnitureItem> get all => [
         woodAndFiberboardDoors,

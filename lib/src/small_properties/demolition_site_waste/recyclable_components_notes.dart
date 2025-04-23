@@ -1,11 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'exports.dart';
-
 part 'recyclable_components_notes.freezed.dart';
 part 'recyclable_components_notes.g.dart';
 
-/// betoni, tiilet, laatat ja keramiikka
 @freezed
 abstract class RecyclableComponentsNotes with _$RecyclableComponentsNotes {
   RecyclableComponentsNotes._();

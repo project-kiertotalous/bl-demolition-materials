@@ -26,7 +26,10 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
           MachineryEquipmentAndFixedStructures?
               machineryEquipmentAndFixedStructures,
           PassageDoors? passageDoors,
-          RecyclableMaterialNotes? recyclableMaterialNotes,
+          RecyclableMaterialsNotes? recyclableMaterialsNotes,
+          RecyclableMaterialsMaterialValue? materialValue,
+          RecyclableMaterialsHandlingAndDismantlingCosts?
+              handlingAndDismantlingCosts,
           Roof? roof,
           SmallPropertiesExcavationArea? smallPropertiesExcavationArea,
           SmallPropertiesFoundation? foundation,
@@ -48,9 +51,10 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
         smallPropertiesExcavationArea?.removableCleanSoilInPercents
       ]),
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.cleanSoilNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 0);
+          recyclableMaterialsNotes?.cleanSoilNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.cleanSoilHandlingAndDismantlingCosts,
+      materialValue: materialValue?.cleanSoilMaterialValue);
 
   /// Asfalttijäte
   late final asphaltWaste = SmallPropertiesRecyclableMaterialItem(
@@ -59,137 +63,154 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
         carportOrGarage?.asphaltTons
       ]),
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.asphaltWasteNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 0);
+          recyclableMaterialsNotes?.asphaltWasteNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.asphaltWasteHandlingAndDismantlingCosts,
+      materialValue: materialValue?.asphaltWasteMaterialValue);
 
   /// Puhdas betoni
   late final cleanConcrete = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.cleanConcrete,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.cleanConcreteNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 0);
+          recyclableMaterialsNotes?.cleanConcreteNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.cleanConcreteHandlingAndDismantlingCosts,
+      materialValue: materialValue?.cleanConcreteMaterialValue);
 
   /// Betoniteräkset, peltikatto ja muu
   late final steel = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.steel,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.steelNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 40);
+          recyclableMaterialsNotes?.steelNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.steelHandlingAndDismantlingCosts,
+      materialValue: materialValue?.steelMaterialValue);
 
   /// Seinä- ja kattotiilet
   late final wallAndRoofTiles = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.wallAndRoofTiles,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.wallAndRoofTilesNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 0);
+          recyclableMaterialsNotes?.wallAndRoofTilesNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.wallAndRoofTilesHandlingAndDismantlingCosts,
+      materialValue: materialValue?.wallAndRoofTilesMaterialValue);
 
   /// Puhdas käyttökelpoinen puu
   late final cleanUsableWood = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.cleanWood,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.cleanUsableWoodNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 3);
+          recyclableMaterialsNotes?.cleanUsableWoodNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.cleanUsableWoodHandlingAndDismantlingCosts,
+      materialValue: materialValue?.cleanUsableWoodMaterialValue);
 
   /// Polttokelpoinen puujäte
   late final combustibleWoodWaste = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.burnableWood,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.combustibleWoodWasteNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 3);
+          recyclableMaterialsNotes?.combustibleWoodWasteNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.combustibleWoodWasteHandlingAndDismantlingCosts,
+      materialValue: materialValue?.combustibleWoodWasteMaterialValue);
 
   /// Tuulensuojalevyt (bitulitti tai vastaava)
   late final windProtectionBoard = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.windProtectionPlates,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.windProtectionBoardNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 0.5);
+          recyclableMaterialsNotes?.windProtectionBoardNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.windProtectionBoardHandlingAndDismantlingCosts,
+      materialValue: materialValue?.windProtectionBoardMaterialValue);
 
   /// Lasi- ja mineraalieristevilla
   late final glassAndMineralWool = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.glassAndMineralInsulation,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.glassAndMineralWoolNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 0);
+          recyclableMaterialsNotes?.glassAndMineralWoolNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.glassAndMineralWoolHandlingAndDismantlingCosts,
+      materialValue: materialValue?.glassAndMineralWoolMaterialValue);
 
   /// Kipsilevyt
   late final gypsumBoards = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.plasterBoardTons,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.gypsumBoardsNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 0);
+          recyclableMaterialsNotes?.gypsumBoardsNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.gypsumBoardsHandlingAndDismantlingCosts,
+      materialValue: materialValue?.gypsumBoardsMaterialValue);
 
   /// Lastulevy
   late final chipboard = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.chipboardTons,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.chipboardNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 0.5);
+          recyclableMaterialsNotes?.chipboardNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.chipboardHandlingAndDismantlingCosts,
+      materialValue: materialValue?.chipboardMaterialValue);
 
   /// Energiajäte, maalattupuu, kattohuopa, ja aluskate
   late final energyWaste = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.energyWaste,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.energyWasteNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 0.5);
+          recyclableMaterialsNotes?.energyWasteNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.energyWasteHandlingAndDismantlingCosts,
+      materialValue: materialValue?.energyWasteMaterialValue);
 
   /// Lasi
   late final glass = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.glass,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.glassNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 0);
+          recyclableMaterialsNotes?.glassNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.glassHandlingAndDismantlingCosts,
+      materialValue: materialValue?.glassMaterialValue);
 
   /// Alumiini
   late final aluminium = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.aluminium,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.aluminiumNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 40);
+          recyclableMaterialsNotes?.aluminiumNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.aluminiumHandlingAndDismantlingCosts,
+      materialValue: materialValue?.aluminiumMaterialValue);
 
   /// Muu metalliromu, sähkökaapit, liedet, jääkaapit yms.
   late final rebarAndSteelScrap = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.otherMetalScrap,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.rebarAndSteelScrapNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 45);
+          recyclableMaterialsNotes?.rebarAndSteelScrapNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.rebarAndSteelScrapHandlingAndDismantlingCosts,
+      materialValue: materialValue?.rebarAndSteelScrapMaterialValue);
 
   /// Ruostumaton teräs
   late final stainlessSteel = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.stainlessSteel,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.stainlessSteelNotes,
-      handlingAndDismantlingCost: 10,
-      materialValue: 650);
+          recyclableMaterialsNotes?.stainlessSteelNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.stainlessSteelHandlingAndDismantlingCosts,
+      materialValue: materialValue?.stainlessSteelMaterialValue);
 
   /// Kupari
   late final copper = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.copper,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.copperNotes,
-      handlingAndDismantlingCost: 11,
-      materialValue: 1300);
+          recyclableMaterialsNotes?.copperNotes,
+      handlingAndDismantlingCost:
+          handlingAndDismantlingCosts?.copperHandlingAndDismantlingCosts,
+      materialValue: materialValue?.copperMaterialValue);
 
   /// Betoniset pihalaatat ja muurikivet
   late final concreteBlocks = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: counter?.recyclableYardTilesAndStones,
       exploitingOrProcessingOrFinalDisposalSite:
-          recyclableMaterialNotes?.concreteBlocksNotes,
-      handlingAndDismantlingCost: 6,
-      materialValue: 3);
+          recyclableMaterialsNotes?.concreteBlocksNotes,
+      handlingAndDismantlingCost: handlingAndDismantlingCosts
+          ?.concreteBlocksHandlingAndDismantlingCosts,
+      materialValue: materialValue?.concreteBlocksMaterialValue);
 
   List<SmallPropertiesRecyclableMaterialItem> get all => [
         cleanSoil,

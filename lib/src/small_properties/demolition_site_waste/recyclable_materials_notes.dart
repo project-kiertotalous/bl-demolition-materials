@@ -1,16 +1,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'exports.dart';
+part 'recyclable_materials_notes.freezed.dart';
+part 'recyclable_materials_notes.g.dart';
 
-part 'recyclable_material_notes.freezed.dart';
-part 'recyclable_material_notes.g.dart';
-
-/// betoni, tiilet, laatat ja keramiikka
 @freezed
-abstract class RecyclableMaterialNotes with _$RecyclableMaterialNotes {
-  RecyclableMaterialNotes._();
+abstract class RecyclableMaterialsNotes with _$RecyclableMaterialsNotes {
+  RecyclableMaterialsNotes._();
 
-  factory RecyclableMaterialNotes(
+  factory RecyclableMaterialsNotes(
       {String? cleanSoilNotes,
       String? asphaltWasteNotes,
       String? cleanConcreteNotes,
@@ -28,8 +25,8 @@ abstract class RecyclableMaterialNotes with _$RecyclableMaterialNotes {
       String? rebarAndSteelScrapNotes,
       String? stainlessSteelNotes,
       String? copperNotes,
-      String? concreteBlocksNotes}) = _RecyclableMaterialNotes;
+      String? concreteBlocksNotes}) = _RecyclableMaterialsNotes;
 
-  factory RecyclableMaterialNotes.fromJson(Map<String, dynamic> json) =>
-      _$RecyclableMaterialNotesFromJson(json);
+  factory RecyclableMaterialsNotes.fromJson(Map<String, dynamic> json) =>
+      _$RecyclableMaterialsNotesFromJson(json);
 }

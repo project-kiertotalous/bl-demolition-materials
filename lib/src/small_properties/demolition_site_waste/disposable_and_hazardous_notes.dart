@@ -1,11 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'exports.dart';
-
 part 'disposable_and_hazardous_notes.freezed.dart';
 part 'disposable_and_hazardous_notes.g.dart';
 
-/// betoni, tiilet, laatat ja keramiikka
 @freezed
 abstract class DisposableAndHazardousNotes with _$DisposableAndHazardousNotes {
   DisposableAndHazardousNotes._();
