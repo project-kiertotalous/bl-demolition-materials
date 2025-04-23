@@ -215,7 +215,7 @@ abstract class WasteLawReportExporter with _$WasteLawReportExporter {
                       'maa-ainekset (pilaantuneilta alueilta kaivetut maa-ainekset mukaan luettuina), kiviainekset ja ruoppausmassat',
                   bold: true),
             ],
-            height: 15),
+            height: 45),
         _wasteLawEntryRow(
             '17 05 03*',
             'maa- ja kiviainekset, jotka sisältävät vaarallisia aineita',
