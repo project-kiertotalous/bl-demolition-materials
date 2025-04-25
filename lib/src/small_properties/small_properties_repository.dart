@@ -39,7 +39,18 @@ abstract class SmallPropertiesRepository with _$SmallPropertiesRepository {
           SmallPropertiesRecyclableComponentsAndFurniture?
               smallPropertiesRecyclableComponentsAndFurniture,
           SmallPropertiesReusableAndRecyclableMaterials?
-              smallPropertiesReusableAndRecyclableMaterials}) =
+              smallPropertiesReusableAndRecyclableMaterials,
+          DisposableAndHazardousNotes? disposableAndHazardousNotes,
+          DisposableAndHazardousDemolitionOrProcessingCosts?
+              disposableAndHazardousDemolitionProcessingCosts,
+          RecyclableComponentsHandlingAndDismantlingCosts?
+              recyclableComponentsHandlingAndDismantlingCosts,
+          RecyclableComponentsNotes? recyclableComponentsNotes,
+          RecyclableComponentsUnitPrice? recyclableComponentsUnitPrice,
+          RecyclableMaterialsHandlingAndDismantlingCosts?
+              recyclableMaterialsHandlingAndDismantlingCosts,
+          RecyclableMaterialsMaterialValue? recyclableMaterialsMaterialValue,
+          RecyclableMaterialsNotes? recyclableMaterialsNotes}) =
       _SmallPropertiesRepository;
 
   factory SmallPropertiesRepository.fromJson(Map<String, dynamic> json) =>

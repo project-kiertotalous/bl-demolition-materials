@@ -47,9 +47,10 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
   /// Maa-ainekset
   late final cleanSoil = SmallPropertiesRecyclableMaterialItem(
       quantityEstimate: Utils.multiplyOrZero([
-        smallPropertiesExcavationArea?.soilToBeRemovedTons,
-        smallPropertiesExcavationArea?.removableCleanSoilInPercents
-      ]),
+            smallPropertiesExcavationArea?.soilToBeRemovedTons,
+            smallPropertiesExcavationArea?.removableCleanSoilInPercents
+          ]) ??
+          0 / 100,
       exploitingOrProcessingOrFinalDisposalSite:
           recyclableMaterialsNotes?.cleanSoilNotes,
       handlingAndDismantlingCost:
@@ -240,5 +241,5 @@ abstract class SmallPropertiesTotalReusableAndRecyclableMaterials
       0, (acc, element) => acc + (element.demolitionCostPerMaterialBatch ?? 0));
 
   num? get totalMaterialPrice =>
-      all.fold<num>(0, (acc, element) => acc + (element.batchPrice ?? 0));
+      all.fold<num>(0, (acc, element) => acc * (element.batchPrice ?? 0));
 }

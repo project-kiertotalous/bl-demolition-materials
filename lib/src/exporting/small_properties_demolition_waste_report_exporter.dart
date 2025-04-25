@@ -340,7 +340,7 @@ abstract class SmallPropertiesDemolitionWasteReportExporter
           ReportCell(bold: true, value: tot?.demolitionCostPerCubicMeter)
         ]),
         ReportTableRow(cells: [
-          ReportCell(bold: true, value: 'Myytävätä materiaalierät (€)'),
+          ReportCell(bold: true, value: 'Myytävät materiaalierät (€)'),
           ReportCell(bold: true, value: tot?.sellableMaterialBatchesPrice)
         ])
       ])
