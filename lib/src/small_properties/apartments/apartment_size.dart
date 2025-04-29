@@ -75,8 +75,11 @@ abstract class ApartmentSize with _$ApartmentSize {
   }
 
   num? get twoRoomsSurfaceMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull(
-        [twoRooms?.wallAreaPerApartment, totalSurfaceMaterial]);
+    num? multiply = Utils.multiplyOrNull([
+      twoRooms?.pcsPerHouse,
+      twoRooms?.wallAreaPerApartment,
+      totalSurfaceMaterial
+    ]);
     if (multiply == 0) {
       return 0;
     }
@@ -84,8 +87,11 @@ abstract class ApartmentSize with _$ApartmentSize {
   }
 
   num? get threeRoomsSurfaceMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull(
-        [threeRooms?.wallAreaPerApartment, totalSurfaceMaterial]);
+    num? multiply = Utils.multiplyOrNull([
+      threeRooms?.pcsPerHouse,
+      threeRooms?.wallAreaPerApartment,
+      totalSurfaceMaterial
+    ]);
     if (multiply == 0) {
       return 0;
     }
@@ -93,8 +99,11 @@ abstract class ApartmentSize with _$ApartmentSize {
   }
 
   num? get fourRoomsSurfaceMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull(
-        [fourRooms?.wallAreaPerApartment, totalSurfaceMaterial]);
+    num? multiply = Utils.multiplyOrNull([
+      fourRooms?.pcsPerHouse,
+      fourRooms?.wallAreaPerApartment,
+      totalSurfaceMaterial
+    ]);
     if (multiply == 0) {
       return 0;
     }
@@ -111,8 +120,11 @@ abstract class ApartmentSize with _$ApartmentSize {
   }
 
   num? get twoRoomsFloorMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull(
-        [twoRooms?.floorAreaPerApartment, totalFloorMaterial]);
+    num? multiply = Utils.multiplyOrNull([
+      twoRooms?.pcsPerHouse,
+      twoRooms?.floorAreaPerApartment,
+      totalFloorMaterial
+    ]);
     if (multiply == 0) {
       return 0;
     }
@@ -120,8 +132,11 @@ abstract class ApartmentSize with _$ApartmentSize {
   }
 
   num? get threeRoomsFloorMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull(
-        [threeRooms?.floorAreaPerApartment, totalFloorMaterial]);
+    num? multiply = Utils.multiplyOrNull([
+      threeRooms?.pcsPerHouse,
+      threeRooms?.floorAreaPerApartment,
+      totalFloorMaterial
+    ]);
     if (multiply == 0) {
       return 0;
     }
@@ -129,8 +144,11 @@ abstract class ApartmentSize with _$ApartmentSize {
   }
 
   num? get fourRoomsFloorMaterialPerApartmentTons {
-    num? multiply = Utils.multiplyOrNull(
-        [fourRooms?.floorAreaPerApartment, totalFloorMaterial]);
+    num? multiply = Utils.multiplyOrNull([
+      fourRooms?.pcsPerHouse,
+      fourRooms?.floorAreaPerApartment,
+      totalFloorMaterial
+    ]);
     if (multiply == 0) {
       return 0;
     }
